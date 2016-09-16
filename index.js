@@ -7,7 +7,7 @@ var builder = ProtoBuf.loadProtoFile('./krpc.proto');
 var proto = builder.build();
 var socket = new WebSocket('ws://127.0.0.1:50000');
 socket.binaryType = 'arraybuffer';
-var rpcHelloMessage = new Buffer('KRPC-RPC');
+//var rpcHelloMessage = new Buffer('KRPC-RPC');
 socket.onopen = connectionOpened;
 socket.onerror = socketError;
 socket.onclose = socketClosed;
@@ -18,34 +18,35 @@ function connectionOpened() {
     getStatus();
 }
 
-function sendHello() {
-    socket.send(toArrayBuffer(rpcHelloMessage));
-}
+// function sendHello() {
+//     socket.send(toArrayBuffer(rpcHelloMessage));
+// }
+//
+// function sendConnectionRequest() {
+//     let clientName = "node-test";
+//     let connectionRequest = new proto.krpc.schema.ConnectionRequest(clientName);
+//     socket.send(connectionRequest.toArrayBuffer());
+// }
 
-function sendConnectionRequest() {
-    let clientName = "node-test";
-    let connectionRequest = new proto.krpc.schema.ConnectionRequest(clientName);
-    socket.send(connectionRequest.toArrayBuffer());
-}
 function getStatus() {
     let req = new proto.krpc.schema.Request('KRPC', 'GetStatus');
     socket.send(req.toArrayBuffer());
 }
 
-function getServices() {
-    let req = new proto.krpc.schema.Request('KRPC', 'GetServices');
-    socket.send(req.toArrayBuffer());
-}
-
-function getClients() {
-    let req = new proto.krpc.schema.Request('KRPC', 'get_Clients');
-    socket.send(req.toArrayBuffer());
-}
-
-function getCurrentGameScene() {
-    let req = new proto.krpc.schema.Request('KRPC', 'get_CurrentGameScene');
-    socket.send(req.toArrayBuffer());
-}
+// function getServices() {
+//     let req = new proto.krpc.schema.Request('KRPC', 'GetServices');
+//     socket.send(req.toArrayBuffer());
+// }
+//
+// function getClients() {
+//     let req = new proto.krpc.schema.Request('KRPC', 'get_Clients');
+//     socket.send(req.toArrayBuffer());
+// }
+//
+// function getCurrentGameScene() {
+//     let req = new proto.krpc.schema.Request('KRPC', 'get_CurrentGameScene');
+//     socket.send(req.toArrayBuffer());
+// }
 
 
 function messageReceived(event) {
@@ -67,23 +68,23 @@ function messageReceived(event) {
     console.log(resp);
 }
 
-function toArrayBuffer(buf) {
-    var ab = new ArrayBuffer(buf.length);
-    var view = new Uint8Array(ab);
-    for (var i = 0; i < buf.length; ++i) {
-        view[i] = buf[i];
-    }
-    return ab;
-}
-
-function toBuffer(ab) {
-    var buf = new Buffer(ab.byteLength);
-    var view = new Uint8Array(ab);
-    for (var i = 0; i < buf.length; ++i) {
-        buf[i] = view[i];
-    }
-    return buf;
-}
+// function toArrayBuffer(buf) {
+//     var ab = new ArrayBuffer(buf.length);
+//     var view = new Uint8Array(ab);
+//     for (var i = 0; i < buf.length; ++i) {
+//         view[i] = buf[i];
+//     }
+//     return ab;
+// }
+//
+// function toBuffer(ab) {
+//     var buf = new Buffer(ab.byteLength);
+//     var view = new Uint8Array(ab);
+//     for (var i = 0; i < buf.length; ++i) {
+//         buf[i] = view[i];
+//     }
+//     return buf;
+// }
 
 function socketError(err) {
     console.error('Error on socket', err);

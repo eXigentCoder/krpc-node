@@ -1,0 +1,11 @@
+{
+    "rules": {
+        "no-invalid-this": "off"
+    },
+    "globals": {
+        "chai": true,
+        "expect": true,
+        "assert": true,
+        "should": true
+    }
+}
