@@ -1,0 +1,11 @@
+test/
+coverage/
+node_modules/
+.travis.yml
+.eslintrc.js,
+.eslintrc
+.editorconfig
+report/
+docs/
+utility/
+GameData/

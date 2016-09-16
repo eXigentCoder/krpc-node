@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+- 6
+branches:
+  only:
+  - master
+  - develop
+before_install:
+- git checkout -qf master
+before_script:
+- npm run lint
+before_deploy:
+- git config --global user.email "potz666@gmail.com"
+- git config --global user.name "eXigentCoder-CI"
+- git config credential.helper "store --file=.git/credentials"
+- npm version patch -m "Release %s of the library [skip ci]"
+- git push https://$GH_TOKEN@github.com/eXigentCoder/krpc-node.git --all
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: potz666@gmail.com
+  api_key:
+    secure: Y63lh/mLMc+N+pKjUg+4LrUZPb+b8Sc2cBjTL9Se3xdiHPME9WRKDhBKoXHVS7aRAtfN31zvMcD0aUjOUPlPJhspJVAFOvYhGCb7kuKdfUHarKBXd+42Eh2UhrEJ9vqYXg9MvZoZ54syz8MijKvIv5AVwjvt6ErJ5cuOZ7wgxzWW0xYvDMYyOM9mCidP+doWpK0DtsQ4Bul1BovWYJDSMrPpphRVcvPp+ZM92+3HaLtWXme2C1lpLmgMsYvt2O0a+DKeMoRE5DQxdedUcuEOMZ9CIYVTssgYDSGcd7m/CHZR7pnkP8he1IEq0um7wpQXHQiD0ZMYfW7yGESLpYQqL2YZYBUFyxGkFjhEmWBLstGIqu40nGiFJUiS5874/ZQDQK0JpS6JiPk8JdFA7419o08kr6JmOMp4ZlI/VP7YNsk+Pa+zvMaujA0IGmWB28e2V+U6i1SOLVqzKUVHWeSxhDXEG/o+O6ax1u8JJzUdqoPAlCYDjGctrYfdOogSyoHiaVDYAgTV9i+jjymA+RkmAtBDOvVAbqwLtupdz7iYKeAaqZ+PMkbztYcJyuuwrQJ4SY7x6Ney3i+Wprzvsdj8/WrrKk7gigp8lGVoaYLBS7S77fTUE0rke6g0zdG1yokoYNKDCN7L5aHoYaBE1yHxPfLIHAQLYpOUdp2qZLx3j3U=
+  on:
+    branch: master
+    repo: eXigentCoder/krpc-node
+env:
+  global:
+    secure: qOiJgzsJEaZ/kGUMADjd/MYLmGX8J6ngIjtw2/icFl/TfHqiARScKBQP7Tttx+PVliTW+cV2bl166P9TfK1BXlYlGy9N3gw+acFN92X4DK6KEoS+0tu5Bu0YlTtvQbzaEQJ/BQJf3cs2J9DxySJ55iEzy6mSDxmb2Z5ZYn8APbM3abtOgLvSWkYWeyOz6aE9XDjcqi8MUDbM4GqdV3t6pWTjCByHFl81ko9RFaDDuy4nU8TO/zwc8KPQxC8hVBIpM/BJvOU9NxEw3nHJJxCAGM5H2LBUGLWtK1WDA+YkDFnQC7Y/O74G33xSUQ4VTpv0bUsF5k3NQUUTIkH9dSapTnYpt3/3oX6gNqIi3nPuam6bnwRwBXZRR99WI1xDKOqd0fWCjFjmc6Sgko0NV+HGdjW0F/WdN7Af+cSSuaSw2apv92clVARRJqU9L8Tsbmx0bmtigmDPUDosmk7ycatXs7ZkegA5e1CDCiB4nJIu3RTt3rVODbyKTQ7CNI/UUKdziXnBZrmR7SLjxof1Cs0sOuT97cDTAyR8ykpsN7LiJ4ebCIrbn25sEhPPcaURQitQvlr/10Mak4pDADztcYpgTRqtRrFaIRIIUAv2dNCfdJfTh52kUR4WCGnLcbYDIaSwS9UxO/rGdtEjaYwzBFIcdUEAirgeXb61ksJZGlzYhpM=
