@@ -8,79 +8,14 @@ var proto = builder.build();
 var socket = new WebSocket('ws://127.0.0.1:50000');
 socket.binaryType = 'arraybuffer';
 var rpcHelloMessage = new Buffer('KRPC-RPC');
-
 socket.onopen = connectionOpened;
+socket.onerror = socketError;
+socket.onclose = socketClosed;
+socket.onmessage = messageReceived;
+
 function connectionOpened() {
-    //getStatus(); // Error: Illegal wire type for unknown field 7 in Message .krpc.schema.Response#decode: 7
-    //sendHello(); // messageReceived never gets called
-
-    //sendConnectionRequest();
-    /*
-     Error: Illegal offset: 0 <= 757 (+1) <= 757
-     Error receiving message
-     Service node-test not found
-     at KRPC.Service.Services.GetProcedureSignature (System.String service, System.String procedure) [0x00000] in <filename unknown>:0
-     at KRPC.Server.ProtocolBuffers.MessageExtensions.ToMessage (KRPC.Schema.KRPC.Request request) [0x00000] in <filename unknown>:0
-     at KRPC.Server.WebSockets.RPCStream.Read (KRPC.Service.Messages.Request& request, System.Byte[] data, Int32 offset, Int32 length) [0x00000] in <filename unknown>:0
-     at KRPC.Server.Message.RPCStream.Poll () [0x00000] in <filename unknown>:0
-     at KRPC.Server.Message.RPCStream.get_DataAvailable () [0x00000] in <filename unknown>:0
-     at KRPC.Core.PollRequests (IList`1 yieldedContinuations) [0x00000] in <filename unknown>:0
-     at WebSocket.messageReceived (C:\Development\krpc-node\index.js:49:15)
-     at WebSocket.onMessage (C:\Development\krpc-node\node_modules\ws\lib\WebSocket.js:442:14)
-     at emitTwo (events.js:106:13)
-     at WebSocket.emit (events.js:191:7)
-     at Receiver.onbinary (C:\Development\krpc-node\node_modules\ws\lib\WebSocket.js:848:10)
-     at C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:628:18
-     at Receiver.applyExtensions (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:371:5)
-     at C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:604:14
-     at Receiver.flush (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:347:3)
-     at Receiver.finish (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:633:12)
-     */
-
-    //getServices();
-    /*
-     Error: Illegal wire type for unknown field 28636 in Message .krpc.schema.Response#decode: 6
-     ��
-     �{
-     UI�
-     AddCanvasdUICanvas"�<doc>
-     <summary>
-     Add a new canvas.
-     </summary>
-     <remarks>
-     If you want to add UI elements to KSPs stock UI canvas, use <see cref="M:UI.StockCanvas" />.
-     </remarks>
-     </doc>�
-     Message
-     content
-     duration
-     */
-
-    //getClients();
-    /*
-     Error: Illegal wire type for unknown field 4 in Message .krpc.schema.Response#decode: 6
-     &$
-     "
-     3-n��X7I��R�J�R
-     
-     */
-
-    //getCurrentGameScene();
-    /*
-     Error: Illegal offset: 0 <= 4 (+1) <= 4
-     
-     at WebSocket.messageReceived (C:\Development\krpc-node\index.js:115:15)
-     at WebSocket.onMessage (C:\Development\krpc-node\node_modules\ws\lib\WebSocket.js:442:14)
-     at emitTwo (events.js:106:13)
-     at WebSocket.emit (events.js:191:7)
-     at Receiver.onbinary (C:\Development\krpc-node\node_modules\ws\lib\WebSocket.js:848:10)
-     at C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:628:18
-     at Receiver.applyExtensions (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:371:5)
-     at C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:604:14
-     at Receiver.flush (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:347:3)
-     at Receiver.finish (C:\Development\krpc-node\node_modules\ws\lib\Receiver.js:633:12)
-     */
-    getStatus();
+    console.log("Socket Connection Opened");
+    sendHello();
 }
 
 function sendHello() {
@@ -112,7 +47,6 @@ function getCurrentGameScene() {
     socket.send(req.toArrayBuffer());
 }
 
-socket.onmessage = messageReceived;
 
 function messageReceived(event) {
     let resp;
@@ -150,3 +84,15 @@ function toBuffer(ab) {
     }
     return buf;
 }
+
+function socketError(err) {
+    console.error('Error on socket', err);
+}
+function socketClosed() {
+    console.log("Socket Connection Closed");
+}
+
+process.on('uncaughtException', function (err) {
+    console.error(err, err.stack);
+    throw err;
+});
