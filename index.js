@@ -15,7 +15,7 @@ socket.onmessage = messageReceived;
 
 function connectionOpened() {
     console.log("Socket Connection Opened");
-    sendHello();
+    getStatus();
 }
 
 function sendHello() {
