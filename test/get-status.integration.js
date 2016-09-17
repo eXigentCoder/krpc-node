@@ -5,23 +5,30 @@ var krpc = require('../lib/krpc');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
-        Client(null, function (err, client) {
-            if (err) {
-                return done(err);
-            }
-            client.on('error', onError);
-            client.on('message', onMessage);
-            client.send(krpc.getStatus());
-            function onError(err) {
-                done(err);
-            }
-
-            function onMessage(response) {
-                console.log(response);
-                return done();
-            }
-        });
+        var client = Client();
+        client.on('open', onOpen(client));
+        client.on('error', onError(done));
+        client.on('message', onMessage(done));
     });
 });
 
+function onOpen(client) {
+    return function () {
+        client.send(krpc.getStatus());
+    };
+}
+
+
+function onError(done) {
+    return function (err) {
+        done(err);
+    };
+}
+
+function onMessage(done) {
+    return function (response) {
+        console.log(response);
+        return done();
+    };
+}
 
