@@ -1,6 +1,6 @@
 'use strict';
-var chai = require('chai');
-var dirtyChai = require('dirty-chai');
+let chai = require('chai');
+let dirtyChai = require('dirty-chai');
 chai.use(dirtyChai);
 
 global.chai = chai;

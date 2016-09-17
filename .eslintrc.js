@@ -235,7 +235,7 @@ module.exports = {
         "no-useless-computed-key": ["off"],// disallow unnecessary computed property keys in object literals
         "no-useless-constructor": ["off"],// disallow unnecessary constructors
         "no-useless-rename": ["off"],// disallow renaming import, export, and destructured assignments to the same name
-        "no-var": ["off"],// require let or const instead of var
+        "no-var": ["warn"],// require let or const instead of var
         "object-shorthand": ["off"],// require or disallow method and property shorthand syntax for object literals
         "prefer-arrow-callback": ["off"],// require arrow functions as callbacks
         "prefer-const": ["off"],// require const declarations for variables that are never reassigned after declared
