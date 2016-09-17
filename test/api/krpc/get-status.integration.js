@@ -1,7 +1,7 @@
 'use strict';
-require('./init');
-var Client = require('../lib/client');
-var krpc = require('../lib/krpc');
+require('./../../init');
+var Client = require('../../../lib/client');
+var krpc = require('../../../lib/api/krpc');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
