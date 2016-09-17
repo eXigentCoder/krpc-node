@@ -5,6 +5,7 @@ branches:
   only:
   - master
   - develop
+  - dev
 before_install:
 - git checkout -qf master
 before_script:
