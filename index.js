@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('lodash');
 var WebSocket = require('ws');
 var util = require('util');
 var os = require('os');
@@ -11,47 +12,33 @@ socket.onerror = socketError;
 socket.onclose = socketClosed;
 socket.onmessage = messageReceived;
 var krpc = require('./lib/krpc');
+
 function connectionOpened() {
     console.log("Socket Connection Opened");
-    getStatus();
+    sendRequest(krpc.getStatus());
 }
 
-// function sendHello() {
-//     socket.send(toArrayBuffer(rpcHelloMessage));
-// }
-//
-// function sendConnectionRequest() {
-//     let clientName = "node-test";
-//     let connectionRequest = new proto.krpc.schema.ConnectionRequest(clientName);
-//     socket.send(connectionRequest.toArrayBuffer());
-// }
-
-function getStatus() {
-    let call = krpc.getStatus('KRPC', 'GetStatus');
-    let req = new proto.krpc.schema.Request([call]);
+function sendRequest(calls) {
+    if (_.isNil(calls)) {
+        throw new Error("The calls argument must be provided when calling sendRequest");
+    }
+    if (!_.isObject(calls)) {
+        throw new Error("The calls argument must either be an object or an array of objects when calling sendRequest");
+    }
+    if (!_.isArray(calls)) {
+        calls = [calls];
+    }
+    let req = new proto.krpc.schema.Request(calls);
     socket.send(req.toArrayBuffer());
 }
-
-// function getServices() {
-//     let req = new proto.krpc.schema.Request('KRPC', 'GetServices');
-//     socket.send(req.toArrayBuffer());
-// }
-//
-// function getClients() {
-//     let req = new proto.krpc.schema.Request('KRPC', 'get_Clients');
-//     socket.send(req.toArrayBuffer());
-// }
-//
-// function getCurrentGameScene() {
-//     let req = new proto.krpc.schema.Request('KRPC', 'get_CurrentGameScene');
-//     socket.send(req.toArrayBuffer());
-// }
-
 
 function messageReceived(event) {
     let resp;
     try {
         resp = proto.krpc.schema.Response.decode(event.data);
+        // if (resp.error) {
+        //     throw resp.error;
+        // }
         let status = proto.krpc.schema.Status.decode(resp.results[0].value);
         console.log(status);
     }
