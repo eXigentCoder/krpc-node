@@ -1,7 +1,6 @@
 'use strict';
 require('./../../init');
 var Client = require('../../../lib/client');
-var krpc = require('../../../lib/api/krpc');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
@@ -14,7 +13,7 @@ describe('Get-status', function () {
 
 function onOpen(client) {
     return function () {
-        client.send(krpc.status.get());
+        client.send(client.apis.krpc.status.get());
     };
 }
 
@@ -30,7 +29,7 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         var statusResponse = response.results[0];
         expect(statusResponse.error).to.not.be.ok();
-        var status = krpc.status.decode(statusResponse.value);
+        var status = Client.apis.krpc.status.decode(statusResponse.value);
         expect(status).to.be.ok();
         return done();
     };
