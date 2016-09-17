@@ -36,9 +36,6 @@ function messageReceived(event) {
     let resp;
     try {
         resp = proto.krpc.schema.Response.decode(event.data);
-        // if (resp.error) {
-        //     throw resp.error;
-        // }
         let status = proto.krpc.schema.Status.decode(resp.results[0].value);
         console.log(status);
     }

@@ -14,10 +14,9 @@ describe('Get-status', function () {
 
 function onOpen(client) {
     return function () {
-        client.send(krpc.getStatus());
+        client.send(krpc.status.get());
     };
 }
-
 
 function onError(done) {
     return function (err) {
@@ -27,7 +26,12 @@ function onError(done) {
 
 function onMessage(done) {
     return function (response) {
-        console.log(response);
+        expect(response.error).to.not.be.ok();
+        expect(response.results.length).to.equal(1);
+        var statusResponse = response.results[0];
+        expect(statusResponse.error).to.not.be.ok();
+        var status = krpc.status.decode(statusResponse.value);
+        expect(status).to.be.ok();
         return done();
     };
 }
