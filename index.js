@@ -29,7 +29,8 @@ function connectionOpened() {
 // }
 
 function getStatus() {
-    let req = new proto.krpc.schema.Request('KRPC', 'GetStatus');
+    let call = new proto.krpc.schema.ProcedureCall('KRPC', 'GetStatus');
+    let req = new proto.krpc.schema.Request([call]);
     socket.send(req.toArrayBuffer());
 }
 
@@ -53,6 +54,8 @@ function messageReceived(event) {
     let resp;
     try {
         resp = proto.krpc.schema.Response.decode(event.data);
+        let status = proto.krpc.schema.Status.decode(resp.results[0].value);
+        console.log(status);
     }
     catch (err) {
         var parsedMessage;
