@@ -1,0 +1,12 @@
+syntax = "proto3";
+package krpc.schema;
+
+message Client {
+    string id = 1;
+    string name = 2;
+    string address = 3;
+}
+
+message Clients {
+    repeated Client clients = 1;
+}
