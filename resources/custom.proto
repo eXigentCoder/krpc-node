@@ -10,3 +10,11 @@ message Client {
 message Clients {
     repeated Client clients = 1;
 }
+
+enum GameScene {
+    SpaceCenter = 0;
+    Flight = 1; //2
+    TrackingStation = 2; //4
+    EditorVAB = 3; //6
+    EditorSPH = 4; //8
+}
