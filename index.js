@@ -1,10 +1,8 @@
 'use strict';
 var WebSocket = require('ws');
-var ProtoBuf = require('protobufjs');
 var util = require('util');
 var os = require('os');
-var builder = ProtoBuf.loadProtoFile('./krpc.proto');
-var proto = builder.build();
+var proto = require('./lib/proto');
 var socket = new WebSocket('ws://127.0.0.1:50000');
 socket.binaryType = 'arraybuffer';
 //var rpcHelloMessage = new Buffer('KRPC-RPC');
@@ -12,7 +10,7 @@ socket.onopen = connectionOpened;
 socket.onerror = socketError;
 socket.onclose = socketClosed;
 socket.onmessage = messageReceived;
-
+var krpc = require('./lib/krpc');
 function connectionOpened() {
     console.log("Socket Connection Opened");
     getStatus();
@@ -29,7 +27,7 @@ function connectionOpened() {
 // }
 
 function getStatus() {
-    let call = new proto.krpc.schema.ProcedureCall('KRPC', 'GetStatus');
+    let call = krpc.getStatus('KRPC', 'GetStatus');
     let req = new proto.krpc.schema.Request([call]);
     socket.send(req.toArrayBuffer());
 }
