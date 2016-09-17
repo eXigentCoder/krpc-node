@@ -1,5 +1,5 @@
 'use strict';
-require('./../../init');
+require('../../init');
 let Client = require('../../../lib/client');
 
 describe('Get-clients', function () {
