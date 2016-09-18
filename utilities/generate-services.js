@@ -147,7 +147,8 @@ function getTypeStringFromCode(type, doNotAddBraces) {
             return processTypeCode300(type, doNotAddBraces);
         case 301:
             return processTypeCode301(type, doNotAddBraces);
-
+        case 303:
+            return processTypeCode303(type, doNotAddBraces);
         default:
             todo(type);
             throw new Error(util.format("Unable to determine type string for type for %j", type));
@@ -185,6 +186,7 @@ function processTypeCode300(type, doNotAddBraces) {
     typeString += '}';
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
+
 function processTypeCode301(type, doNotAddBraces) {
     let typeString = '';
     let length = type.types.length;
@@ -196,12 +198,24 @@ function processTypeCode301(type, doNotAddBraces) {
     });
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
-
 function addBracesIfRequired(typeString, doNotAddBraces) {
     if (doNotAddBraces) {
         return typeString;
     }
     return '{' + typeString + '}';
+}
+
+function processTypeCode303(type, doNotAddBraces) {
+    let typeString = '';
+    let length = type.types.length;
+    if (length !== 2) {
+        throw new Error("Dictionary should be key-value pair");
+    }
+    if (type.types[0].code !== 8) {
+        throw new Error("Expected dictionary key to be a string");
+    }
+    typeString = 'key : ' + getTypeStringFromCode(type.types[1], true);
+    return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
 function todo(type) {
