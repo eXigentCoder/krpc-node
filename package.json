@@ -2,10 +2,10 @@
   "name": "krpc-node",
   "version": "1.0.2",
   "description": "Node client lib for krpc",
-  "main": "index.js",
+  "main": "lib/client.js",
   "scripts": {
     "mocha": "mocha --full-trace test/**/*.js",
-    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" index.js --fix",
+    "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "test": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
     "check-dependencies": "npm-check -Eu"
@@ -22,6 +22,7 @@
   "author": "Ryan Kotzen",
   "license": "MIT",
   "dependencies": {
+    "lodash": "4.15.0",
     "protobufjs": "5.0.1",
     "ws": "1.1.1"
   },
