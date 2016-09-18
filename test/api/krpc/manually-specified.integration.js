@@ -14,7 +14,7 @@ describe('Get-status', function () {
 let callStack = [];
 function onOpen(client) {
     return function () {
-        let procedure = client.services.krpc.getStatus();
+        let procedure = client.services.spaceCenter.clearTarget();
         callStack.push(procedure.decode);
         client.send(procedure.call);
     };
@@ -33,8 +33,10 @@ function onMessage(done) {
         response.results.forEach(function (result) {
             expect(result.error).to.not.be.ok();
             let decodeType = callStack.pop();
-            let decodedResult = Client.decode(result.value, decodeType);
-            expect(decodedResult).to.be.ok();
+            if (decodeType) {
+                let decodedResult = Client.decode(result.value, decodeType);
+                expect(decodedResult).to.be.ok();
+            }
         });
         return done();
     };
