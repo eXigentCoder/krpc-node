@@ -278,7 +278,7 @@ function getDecodeFn(procedure, service) {
         case 202:
             return 'proto.krpc.schema.Status';
         case 203:
-            return 'proto.krpc.schema.Service';
+            return 'proto.krpc.schema.Services';
         case 300:
             return 'proto.krpc.schema.Tuple';
         case 301:
