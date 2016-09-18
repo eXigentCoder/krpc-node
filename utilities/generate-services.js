@@ -85,7 +85,11 @@ function processDocumentation(procedure) {
         content += eol;
     }
     if (procedure.return_type) {
-        content += documentReturnType(procedure.return_type, procedure);
+        content += documentResultType(procedure.return_type, procedure);
+        content += ' * @returns {{call :Object, decode: function}}' + eol;
+    } else {
+        content += ' * @result {void}' + eol;
+        content += ' * @returns {void}' + eol;
     }
     content += '*/' + eol;
     return content;
@@ -95,8 +99,8 @@ function documentParam(param) {
     return eol + ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param);
 }
 
-function documentReturnType(returnType, procedure) {
-    return ' * @returns ' + getTypeStringFromCode(returnType, null, procedure) + eol;
+function documentResultType(returnType, procedure) {
+    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + eol;
 }
 
 function addParameter(parameters) {
