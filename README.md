@@ -7,6 +7,8 @@ A node.js client library for krpc. Allows you to send commands to Kerbal Space P
 
 [![Build status][spe-ci-image] ][spe-ci-url]
 
+## todo
+* Call stack mode? - wait for previous response before allowing new requests, auto decode responses - probably better to use streams?
 
 [spe-npm-icon]: https://nodei.co/npm/krpc-node.svg
 [spe-npm-url]: https://npmjs.org/package/krpc-node
