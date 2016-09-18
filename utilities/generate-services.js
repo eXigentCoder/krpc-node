@@ -127,15 +127,36 @@ const typeCodeMappings = {
     303: {originalName: 'DICTIONARY', dotNet: 'Dictionary', jsDoc: 'Object'}
 };
 
-function getTypeStringFromCode(type) {
+function getTypeStringFromCode(type, dontAddBraces) {
     let typeString;
-    if (type.code === 100 || type.code === 101) {
-        typeString = type.service + '.' + type.name;
-    } else {
-        typeString = typeCodeMappings[type.code].jsDoc;
+    switch (type.code) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            typeString = processValueType(type);
+            break;
+        case 100:
+        case 101:
+            typeString = processObjectType(type);
+            break;
+        case 300:
+            typeString = processTypeCode300(type);
+            break;
+        default:
+            throw new Error(util.format("Unable to determine type string for type for %j", type));
     }
     if (!typeString) {
         throw new Error(util.format("Unable to determine type string for type for %j", type));
+    }
+    if (dontAddBraces) {
+        return typeString;
     }
     return '{' + typeString + '}';
 }
@@ -149,4 +170,28 @@ function getParamName(param) {
         throw new Error('Name was null');
     }
     return name;
+}
+
+function processValueType(type) {
+    return typeCodeMappings[type.code].jsDoc;
+}
+function processObjectType(type) {
+    return type.service + '.' + type.name;
+}
+
+function processTypeCode300(type) {
+    let typeString = '';
+    if (type.code !== 300) {
+        return typeString;
+    }
+    typeString = '{';
+    let length = type.types.length;
+    type.types.forEach(function (innerType, index) {
+        typeString += getTypeStringFromCode(innerType, true);
+        if (index < length - 1) {
+            typeString += ', ';
+        }
+    });
+    typeString += '}';
+    return typeString;
 }
