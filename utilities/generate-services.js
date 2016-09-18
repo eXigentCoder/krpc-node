@@ -5,12 +5,14 @@ const async = require('async');
 const _ = require('lodash');
 const os = require('os');
 const util = require('util');
+const procCallName = 'buildProcedureCall';
+const decodersName = 'decoders';
 let eol = os.EOL;
 let client = Client();
 client.on('open', onOpen);
 client.on('error', onError);
 client.on('message', onMessage);
-
+var enums = {};
 function onOpen() {
     client.send(client.apis.krpc.services.get());
 }
@@ -22,6 +24,9 @@ function onError(err) {
 function onMessage(response) {
     let serviceResponse = response.results[0];
     serviceResponse = Client.apis.krpc.services.decode(serviceResponse.value);
+    serviceResponse.services.forEach(function (service) {
+        enums[service.name] = service.enumerations;
+    });
     async.eachSeries(serviceResponse.services, createService, function (err) {
         if (err) {
             throw err;
@@ -37,7 +42,8 @@ function createService(service, callback) {
 }
 
 function buildContent(service) {
-    let content = processDocumentation(service);
+    let content = requires();
+    content += processDocumentation(service);
     content += eol;
     service.procedures.forEach(function (procedure) {
         content += getProcedureCode(procedure, service);
@@ -45,18 +51,27 @@ function buildContent(service) {
     return content;
 }
 
-/**
- *
- * @param procedure
- * @param service
- * @returns {*}
- */
+function requires() {
+    let content = "'use strict';" + eol;
+    content += 'const ' + procCallName + ' = require(\'../procedure-call\');' + eol;
+    content += 'const proto = require(\'../utilities/proto\');' + eol;
+    content += 'const ' + decodersName + ' = require(\'../decoders\');' + eol;
+    return content;
+}
 function getProcedureCode(procedure, service) {
     let content = eol;
     content += processDocumentation(procedure);
-    content += 'function ' + _.camelCase(procedure.name) + '(' + addParameter(procedure.parameters) + ') {' + eol;
-    content += '\t//todo' + eol;
-    content += '}' + eol;
+    let paramString = addParameter(procedure.parameters);
+    var procName = _.camelCase(procedure.name);
+    content += 'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
+    content += '    return {' + eol;
+    if (paramString) {
+        paramString = ', ' + paramString;
+    }
+    content += '        call: ' + procCallName + '(\'' + service.name + '\', \'' + procedure.name + '\'' + paramString + '),' + eol;
+    content += '        decode: ' + getDecodeFn(procedure, service) + eol;
+    content += '    };' + eol;
+    content += '};' + eol;
     return content;
 }
 
@@ -155,7 +170,7 @@ function getTypeStringFromCode(type, doNotAddBraces, param) {
         case 303:
             return processTypeCode303(type, doNotAddBraces, param);
         default:
-            todo(type, doNotAddBraces, param);
+            todo(type, param);
             throw new Error(util.format("Unable to determine type string for type for %j", type));
     }
 }
@@ -223,6 +238,73 @@ function processTypeCode303(type, doNotAddBraces, param) {
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
-function todo(type, doNotAddBraces, param) {
-    console.log(type.code, type, param);
+function todo(procedure, service) {
+    console.log(arguments);
+}
+
+//proto.krpc.schema.Status
+function getDecodeFn(procedure, service) {
+    if (!procedure.return_type) {
+        return 'null';
+    }
+    switch (procedure.return_type.code) {
+        case 0:
+            return 'null';
+        case 1:
+            return decodersName + '.double';
+        case 2:
+            return decodersName + '.float';
+        case 3:
+            return decodersName + '.sInt32';
+        case 4:
+            return decodersName + '.sInt64';
+        case 5:
+            return decodersName + '.uInt32';
+        case 6:
+            return decodersName + '.uInt64';
+        case 7:
+            return decodersName + '.bool';
+        case 8:
+            return decodersName + '.string';
+        case 9:
+            return decodersName + '.bytes';
+        case 100:
+            return 'proto.krpc.schema.Stream';
+        case 101:
+            return getEnumFunction(procedure, service);
+        // case 200:
+        // case 201:
+        // case 202:
+        // case 203:
+        // case 204:
+        //     return processValueType(type, doNotAddBraces, param);
+        case 300:
+            return 'proto.krpc.schema.Tuple';
+        case 301:
+            return 'proto.krpc.schema.List';
+        case 302:
+            return 'proto.krpc.schema.Set';
+        case 303:
+            return 'proto.krpc.schema.Dictionary';
+        default:
+            todo(procedure, service);
+            throw new Error(util.format("Unable to determine type string for type for %j", procedure.return_type));
+    }
+}
+
+function getEnumFunction(procedure, service) {
+    let enumVal = _.find(enums[procedure.return_type.service], {name: procedure.return_type.name});
+    if (!enumVal) {
+        throw new Error("enum not found");
+    }
+    let content = decodersName + '.enum({';
+    let length = enumVal.values.length;
+    enumVal.values.forEach(function (enumEntry, index) {
+        content += enumEntry.value + ' : \'' + enumEntry.name + '\'';
+        if (index < length - 1) {
+            content += ', ';
+        }
+    });
+    content += '})';
+    return content;
 }
