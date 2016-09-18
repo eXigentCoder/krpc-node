@@ -37,7 +37,7 @@ function createService(service, callback) {
 }
 
 function buildContent(service) {
-    let content = processDocumentation(service.documentation);
+    let content = processDocumentation(service);
     content += eol;
     service.procedures.forEach(function (procedure) {
         content += getProcedureCode(procedure, service);
@@ -53,35 +53,35 @@ function buildContent(service) {
  */
 function getProcedureCode(procedure, service) {
     let content = eol;
-    content += processDocumentation(procedure.documentation, procedure.parameters, procedure.return_type);
+    content += processDocumentation(procedure);
     content += 'function ' + _.camelCase(procedure.name) + '(' + addParameter(procedure.parameters) + ') {' + eol;
     content += '\t//todo' + eol;
     content += '}' + eol;
     return content;
 }
 
-function processDocumentation(documentation, parameters, returnType) {
+function processDocumentation(procedure) {
     let content = '/**' + eol;
-    content += ' * ' + documentation.replace(/\n/g, eol + ' * ');
-    if (parameters && parameters.length !== 0) {
-        parameters.forEach(function (param) {
+    content += ' * ' + procedure.documentation.replace(/\n/g, eol + ' * ');
+    if (procedure.parameters && procedure.parameters.length !== 0) {
+        procedure.parameters.forEach(function (param) {
             content += documentParam(param);
         });
         content += eol;
     }
-    if (returnType) {
-        content += documentReturnType(returnType);
+    if (procedure.return_type) {
+        content += documentReturnType(procedure.return_type, procedure);
     }
     content += '*/' + eol;
     return content;
 }
 
 function documentParam(param) {
-    return eol + ' * @param ' + getTypeStringFromCode(param.type) + ' ' + getParamName(param);
+    return eol + ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param);
 }
 
-function documentReturnType(returnType) {
-    return ' * @returns ' + getTypeStringFromCode(returnType) + eol;
+function documentReturnType(returnType, procedure) {
+    return ' * @returns ' + getTypeStringFromCode(returnType, null, procedure) + eol;
 }
 
 function addParameter(parameters) {
@@ -127,7 +127,7 @@ const typeCodeMappings = {
     303: {originalName: 'DICTIONARY', dotNet: 'Dictionary', jsDoc: 'Object'}
 };
 
-function getTypeStringFromCode(type, doNotAddBraces) {
+function getTypeStringFromCode(type, doNotAddBraces, param) {
     switch (type.code) {
         case 0:
         case 1:
@@ -139,18 +139,23 @@ function getTypeStringFromCode(type, doNotAddBraces) {
         case 7:
         case 8:
         case 9:
-            return processValueType(type, doNotAddBraces);
+        case 200:
+        case 201:
+        case 202:
+        case 203:
+        case 204:
+            return processValueType(type, doNotAddBraces, param);
         case 100:
         case 101:
-            return processObjectType(type, doNotAddBraces);
+            return processObjectType(type, doNotAddBraces, param);
         case 300:
-            return processTypeCode300(type, doNotAddBraces);
+            return processTypeCode300(type, doNotAddBraces, param);
         case 301:
-            return processTypeCode301(type, doNotAddBraces);
+            return processTypeCode301(type, doNotAddBraces, param);
         case 303:
-            return processTypeCode303(type, doNotAddBraces);
+            return processTypeCode303(type, doNotAddBraces, param);
         default:
-            todo(type);
+            todo(type, doNotAddBraces, param);
             throw new Error(util.format("Unable to determine type string for type for %j", type));
     }
 }
@@ -174,11 +179,11 @@ function processObjectType(type, doNotAddBraces) {
     return addBracesIfRequired(type.service + '.' + type.name, doNotAddBraces);
 }
 
-function processTypeCode300(type, doNotAddBraces) {
+function processTypeCode300(type, doNotAddBraces, param) {
     let typeString = '{';
     let length = type.types.length;
     type.types.forEach(function (innerType, index) {
-        typeString += getTypeStringFromCode(innerType, true);
+        typeString += getTypeStringFromCode(innerType, true, param);
         if (index < length - 1) {
             typeString += ', ';
         }
@@ -187,17 +192,18 @@ function processTypeCode300(type, doNotAddBraces) {
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
-function processTypeCode301(type, doNotAddBraces) {
+function processTypeCode301(type, doNotAddBraces, param) {
     let typeString = '';
     let length = type.types.length;
     type.types.forEach(function (innerType, index) {
-        typeString += getTypeStringFromCode(innerType, true) + '[]';
+        typeString += getTypeStringFromCode(innerType, true, param) + '[]';
         if (index < length - 1) {
             typeString += ', ';
         }
     });
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
+
 function addBracesIfRequired(typeString, doNotAddBraces) {
     if (doNotAddBraces) {
         return typeString;
@@ -205,8 +211,7 @@ function addBracesIfRequired(typeString, doNotAddBraces) {
     return '{' + typeString + '}';
 }
 
-function processTypeCode303(type, doNotAddBraces) {
-    let typeString = '';
+function processTypeCode303(type, doNotAddBraces, param) {
     let length = type.types.length;
     if (length !== 2) {
         throw new Error("Dictionary should be key-value pair");
@@ -214,10 +219,10 @@ function processTypeCode303(type, doNotAddBraces) {
     if (type.types[0].code !== 8) {
         throw new Error("Expected dictionary key to be a string");
     }
-    typeString = 'key : ' + getTypeStringFromCode(type.types[1], true);
+    let typeString = 'key : ' + getTypeStringFromCode(type.types[1], true, param);
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
-function todo(type) {
-    console.log(type.code, type);
+function todo(type, doNotAddBraces, param) {
+    console.log(type.code, type, param);
 }
