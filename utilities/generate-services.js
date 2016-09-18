@@ -158,7 +158,6 @@ function getTypeStringFromCode(type, doNotAddBraces, param) {
         case 201:
         case 202:
         case 203:
-        case 204:
             return processValueType(type, doNotAddBraces, param);
         case 100:
         case 101:
@@ -272,12 +271,14 @@ function getDecodeFn(procedure, service) {
             return 'proto.krpc.schema.Stream';
         case 101:
             return getEnumFunction(procedure, service);
-        // case 200:
-        // case 201:
-        // case 202:
-        // case 203:
-        // case 204:
-        //     return processValueType(type, doNotAddBraces, param);
+        case 200:
+            return 'proto.krpc.schema.ProcedureCall';
+        case 201:
+            return 'proto.krpc.schema.Stream';
+        case 202:
+            return 'proto.krpc.schema.Status';
+        case 203:
+            return 'proto.krpc.schema.Service';
         case 300:
             return 'proto.krpc.schema.Tuple';
         case 301:
