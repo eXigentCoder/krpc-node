@@ -10,10 +10,12 @@ describe('Get-status', function () {
         client.on('message', onMessage(done));
     });
 });
-
+let callStack = [];
 function onOpen(client) {
     return function () {
-        client.send(client.apis.krpc.status.get());
+        let getStatus = client.apis.krpc.getStatus();
+        callStack.push(getStatus.decode);
+        client.send(getStatus.call);
     };
 }
 
@@ -27,10 +29,12 @@ function onMessage(done) {
     return function (response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
-        let statusResponse = response.results[0];
-        expect(statusResponse.error).to.not.be.ok();
-        let status = Client.apis.krpc.status.decode(statusResponse.value);
-        expect(status).to.be.ok();
+        response.results.forEach(function (result) {
+            expect(result.error).to.not.be.ok();
+            let decodeType = callStack.pop();
+            let status = Client.decode(result.value, decodeType);
+            expect(status).to.be.ok();
+        });
         return done();
     };
 }
