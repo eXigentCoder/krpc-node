@@ -5,7 +5,7 @@ const async = require('async');
 const _ = require('lodash');
 const os = require('os');
 const util = require('util');
-var eol = os.EOL;
+let eol = os.EOL;
 let client = Client();
 client.on('open', onOpen);
 client.on('error', onError);
@@ -77,7 +77,7 @@ function processDocumentation(documentation, parameters, returnType) {
 }
 
 function documentParam(param) {
-    return eol + ' * @param ' + getTypeStringFromCode(param.type) + ' ' + param.name;
+    return eol + ' * @param ' + getTypeStringFromCode(param.type) + ' ' + getParamName(param);
 }
 
 function documentReturnType(returnType) {
@@ -128,9 +128,25 @@ const typeCodeMappings = {
 };
 
 function getTypeStringFromCode(type) {
-    let typeString = typeCodeMappings[type.code].jsDoc;
+    let typeString;
+    if (type.code === 100 || type.code === 101) {
+        typeString = type.service + '.' + type.name;
+    } else {
+        typeString = typeCodeMappings[type.code].jsDoc;
+    }
     if (!typeString) {
         throw new Error(util.format("Unable to determine type string for type for %j", type));
     }
     return '{' + typeString + '}';
+}
+
+function getParamName(param) {
+    let name = param.name;
+    if (name === 'this') {
+        name = _.camelCase(param.type.name);
+    }
+    if (!name) {
+        throw new Error('Name was null');
+    }
+    return name;
 }
