@@ -127,8 +127,7 @@ const typeCodeMappings = {
     303: {originalName: 'DICTIONARY', dotNet: 'Dictionary', jsDoc: 'Object'}
 };
 
-function getTypeStringFromCode(type, dontAddBraces) {
-    let typeString;
+function getTypeStringFromCode(type, doNotAddBraces) {
     switch (type.code) {
         case 0:
         case 1:
@@ -140,25 +139,19 @@ function getTypeStringFromCode(type, dontAddBraces) {
         case 7:
         case 8:
         case 9:
-            typeString = processValueType(type);
-            break;
+            return processValueType(type, doNotAddBraces);
         case 100:
         case 101:
-            typeString = processObjectType(type);
-            break;
+            return processObjectType(type, doNotAddBraces);
         case 300:
-            typeString = processTypeCode300(type);
-            break;
+            return processTypeCode300(type, doNotAddBraces);
+        case 301:
+            return processTypeCode301(type, doNotAddBraces);
+
         default:
+            todo(type);
             throw new Error(util.format("Unable to determine type string for type for %j", type));
     }
-    if (!typeString) {
-        throw new Error(util.format("Unable to determine type string for type for %j", type));
-    }
-    if (dontAddBraces) {
-        return typeString;
-    }
-    return '{' + typeString + '}';
 }
 
 function getParamName(param) {
@@ -172,19 +165,16 @@ function getParamName(param) {
     return name;
 }
 
-function processValueType(type) {
-    return typeCodeMappings[type.code].jsDoc;
-}
-function processObjectType(type) {
-    return type.service + '.' + type.name;
+function processValueType(type, doNotAddBraces) {
+    return addBracesIfRequired(typeCodeMappings[type.code].jsDoc, doNotAddBraces);
 }
 
-function processTypeCode300(type) {
-    let typeString = '';
-    if (type.code !== 300) {
-        return typeString;
-    }
-    typeString = '{';
+function processObjectType(type, doNotAddBraces) {
+    return addBracesIfRequired(type.service + '.' + type.name, doNotAddBraces);
+}
+
+function processTypeCode300(type, doNotAddBraces) {
+    let typeString = '{';
     let length = type.types.length;
     type.types.forEach(function (innerType, index) {
         typeString += getTypeStringFromCode(innerType, true);
@@ -193,5 +183,27 @@ function processTypeCode300(type) {
         }
     });
     typeString += '}';
-    return typeString;
+    return addBracesIfRequired(typeString, doNotAddBraces);
+}
+function processTypeCode301(type, doNotAddBraces) {
+    let typeString = '';
+    let length = type.types.length;
+    type.types.forEach(function (innerType, index) {
+        typeString += getTypeStringFromCode(innerType, true) + '[]';
+        if (index < length - 1) {
+            typeString += ', ';
+        }
+    });
+    return addBracesIfRequired(typeString, doNotAddBraces);
+}
+
+function addBracesIfRequired(typeString, doNotAddBraces) {
+    if (doNotAddBraces) {
+        return typeString;
+    }
+    return '{' + typeString + '}';
+}
+
+function todo(type) {
+    console.log(type.code, type);
 }
