@@ -67,6 +67,7 @@ function processDocumentation(documentation, parameters, returnType) {
         parameters.forEach(function (param) {
             content += documentParam(param);
         });
+        content += eol;
     }
     if (returnType) {
         content += documentReturnType(returnType);
