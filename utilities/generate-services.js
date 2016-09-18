@@ -71,7 +71,7 @@ function processDocumentation(documentation, parameters, returnType) {
     if (returnType) {
         content += documentReturnType(returnType);
     }
-    content += eol + '*/' + eol;
+    content += '*/' + eol;
     return content;
 }
 
@@ -87,7 +87,15 @@ function addParameter(parameters) {
     if (!parameters || parameters.length === 0) {
         return '';
     }
-    //console.log(parameters);
+    let content = '';
+    let paramCount = parameters.length;
+    parameters.forEach(function (param, index) {
+        content += param.name;
+        if (index < paramCount - 1) {
+            content += ', ';
+        }
+    });
+    return content;
 }
 
 const typeCodeMappings = {
