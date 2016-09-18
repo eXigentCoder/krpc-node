@@ -91,7 +91,7 @@ function addParameter(parameters) {
     let content = '';
     let paramCount = parameters.length;
     parameters.forEach(function (param, index) {
-        content += param.name;
+        content += getParamName(param);
         if (index < paramCount - 1) {
             content += ', ';
         }
