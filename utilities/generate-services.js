@@ -71,18 +71,16 @@ function processDocumentation(documentation, parameters, returnType) {
     if (returnType) {
         content += documentReturnType(returnType);
     }
-    content += eol + '*/';
+    content += eol + '*/' + eol;
     return content;
 }
 
 function documentParam(param) {
-    let content = eol + ' * @param ' + getTypeStringFromCode(param.type) + ' ' + param.name;
-    return content;
+    return eol + ' * @param ' + getTypeStringFromCode(param.type) + ' ' + param.name;
 }
 
 function documentReturnType(returnType) {
-    let content = ' * @returns ' + getTypeStringFromCode(returnType);
-    return content;
+    return ' * @returns ' + getTypeStringFromCode(returnType) + eol;
 }
 
 function addParameter(parameters) {
