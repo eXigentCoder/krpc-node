@@ -8,6 +8,7 @@ describe('Get-status', function () {
         client.on('open', onOpen(client));
         client.on('error', onError(done));
         client.on('message', onMessage(client, done));
+        client.on('close', onClose(done));
     });
 });
 
@@ -25,6 +26,12 @@ function onOpen(client) {
 
 function onError(done) {
     return function (err) {
+        done(err);
+    };
+}
+function onClose(done) {
+    return function (err) {
+        console.log('err');
         done(err);
     };
 }
