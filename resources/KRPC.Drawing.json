@@ -1,0 +1,1475 @@
+{
+  "Drawing": {
+    "documentation": "<doc>\n  <summary>\nProvides functionality for drawing objects in the flight scene.\n</summary>\n  <remarks>\nFor drawing and interacting with the user interface, see the UI service.\n</remarks>\n</doc>",
+    "procedures": {
+      "AddLine": {
+        "parameters": [
+          {
+            "name": "start",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          },
+          {
+            "name": "end",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          },
+          {
+            "name": "referenceFrame",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "Drawing",
+          "name": "Line"
+        },
+        "documentation": "<doc>\n  <summary>\nDraw a line in the scene.\n</summary>\n  <param name=\"start\">Position of the start of the line.</param>\n  <param name=\"end\">Position of the end of the line.</param>\n  <param name=\"referenceFrame\">Reference frame that the positions are in.</param>\n  <param name=\"visible\">Whether the line is visible.</param>\n</doc>"
+      },
+      "AddDirection": {
+        "parameters": [
+          {
+            "name": "direction",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          },
+          {
+            "name": "referenceFrame",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          },
+          {
+            "name": "length",
+            "type": {
+              "code": "FLOAT"
+            },
+            "default_value": "AAAgQQ=="
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "Drawing",
+          "name": "Line"
+        },
+        "documentation": "<doc>\n  <summary>\nDraw a direction vector in the scene, from the center of mass of the active vessel.\n</summary>\n  <param name=\"direction\">Direction to draw the line in.</param>\n  <param name=\"referenceFrame\">Reference frame that the direction is in.</param>\n  <param name=\"length\">The length of the line.</param>\n  <param name=\"visible\">Whether the line is visible.</param>\n</doc>"
+      },
+      "AddPolygon": {
+        "parameters": [
+          {
+            "name": "vertices",
+            "type": {
+              "code": "LIST",
+              "types": [
+                {
+                  "code": "TUPLE",
+                  "types": [
+                    {
+                      "code": "DOUBLE"
+                    },
+                    {
+                      "code": "DOUBLE"
+                    },
+                    {
+                      "code": "DOUBLE"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "name": "referenceFrame",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "Drawing",
+          "name": "Polygon"
+        },
+        "documentation": "<doc>\n  <summary>\nDraw a polygon in the scene, defined by a list of vertices.\n</summary>\n  <param name=\"vertices\">Vertices of the polygon.</param>\n  <param name=\"referenceFrame\">Reference frame that the vertices are in.</param>\n  <param name=\"visible\">Whether the polygon is visible.</param>\n</doc>"
+      },
+      "AddText": {
+        "parameters": [
+          {
+            "name": "text",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "referenceFrame",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          },
+          {
+            "name": "position",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          },
+          {
+            "name": "rotation",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "Drawing",
+          "name": "Text"
+        },
+        "documentation": "<doc>\n  <summary>\nDraw text in the scene.\n</summary>\n  <param name=\"text\">The string to draw.</param>\n  <param name=\"referenceFrame\">Reference frame that the text position is in.</param>\n  <param name=\"position\">Position of the text.</param>\n  <param name=\"rotation\">Rotation of the text, as a quaternion.</param>\n  <param name=\"visible\">Whether the text is visible.</param>\n</doc>"
+      },
+      "Clear": {
+        "parameters": [
+          {
+            "name": "clientOnly",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AA=="
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove all objects being drawn.\n</summary>\n  <param name=\"clientOnly\">If true, only remove objects created by the calling client.</param>\n</doc>"
+      },
+      "Line_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the object.\n</summary>\n</doc>"
+      },
+      "Line_get_Start": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nStart position of the line.\n</summary>\n</doc>"
+      },
+      "Line_set_Start": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nStart position of the line.\n</summary>\n</doc>"
+      },
+      "Line_get_End": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nEnd position of the line.\n</summary>\n</doc>"
+      },
+      "Line_set_End": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nEnd position of the line.\n</summary>\n</doc>"
+      },
+      "Line_get_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Line_set_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Line_get_Thickness": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nSet the thickness\n</summary>\n</doc>"
+      },
+      "Line_set_Thickness": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the thickness\n</summary>\n</doc>"
+      },
+      "Line_get_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "SpaceCenter",
+          "name": "ReferenceFrame"
+        },
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Line_set_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Line_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Line_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Line_get_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      },
+      "Line_set_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Line"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      },
+      "Polygon_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the object.\n</summary>\n</doc>"
+      },
+      "Polygon_get_Vertices": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nVertices for the polygon.\n</summary>\n</doc>"
+      },
+      "Polygon_set_Vertices": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "LIST",
+              "types": [
+                {
+                  "code": "TUPLE",
+                  "types": [
+                    {
+                      "code": "DOUBLE"
+                    },
+                    {
+                      "code": "DOUBLE"
+                    },
+                    {
+                      "code": "DOUBLE"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nVertices for the polygon.\n</summary>\n</doc>"
+      },
+      "Polygon_get_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Polygon_set_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Polygon_get_Thickness": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nSet the thickness\n</summary>\n</doc>"
+      },
+      "Polygon_set_Thickness": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the thickness\n</summary>\n</doc>"
+      },
+      "Polygon_get_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "SpaceCenter",
+          "name": "ReferenceFrame"
+        },
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Polygon_set_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Polygon_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Polygon_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Polygon_get_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      },
+      "Polygon_set_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Polygon"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      },
+      "Text_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the object.\n</summary>\n</doc>"
+      },
+      "Text_get_Position": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nPosition of the text.\n</summary>\n</doc>"
+      },
+      "Text_set_Position": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nPosition of the text.\n</summary>\n</doc>"
+      },
+      "Text_get_Rotation": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nRotation of the text as a quaternion.\n</summary>\n</doc>"
+      },
+      "Text_set_Rotation": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRotation of the text as a quaternion.\n</summary>\n</doc>"
+      },
+      "Text_get_AvailableFonts": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "STRING"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nA list of all available fonts.\n</summary>\n</doc>"
+      },
+      "Text_get_Content": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe text string\n</summary>\n</doc>"
+      },
+      "Text_set_Content": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe text string\n</summary>\n</doc>"
+      },
+      "Text_get_Font": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nName of the font\n</summary>\n</doc>"
+      },
+      "Text_set_Font": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nName of the font\n</summary>\n</doc>"
+      },
+      "Text_get_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "SINT32"
+        },
+        "documentation": "<doc>\n  <summary>\nFont size.\n</summary>\n</doc>"
+      },
+      "Text_set_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "SINT32"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nFont size.\n</summary>\n</doc>"
+      },
+      "Text_get_CharacterSize": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nCharacter size.\n</summary>\n</doc>"
+      },
+      "Text_set_CharacterSize": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nCharacter size.\n</summary>\n</doc>"
+      },
+      "Text_get_Style": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "ENUMERATION",
+          "service": "UI",
+          "name": "FontStyle"
+        },
+        "documentation": "<doc>\n  <summary>\nFont style.\n</summary>\n</doc>"
+      },
+      "Text_set_Style": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "FontStyle"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nFont style.\n</summary>\n</doc>"
+      },
+      "Text_get_Alignment": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "ENUMERATION",
+          "service": "UI",
+          "name": "TextAlignment"
+        },
+        "documentation": "<doc>\n  <summary>\nAlignment.\n</summary>\n</doc>"
+      },
+      "Text_set_Alignment": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "TextAlignment"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nAlignment.\n</summary>\n</doc>"
+      },
+      "Text_get_LineSpacing": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nLine spacing.\n</summary>\n</doc>"
+      },
+      "Text_set_LineSpacing": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nLine spacing.\n</summary>\n</doc>"
+      },
+      "Text_get_Anchor": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "ENUMERATION",
+          "service": "UI",
+          "name": "TextAnchor"
+        },
+        "documentation": "<doc>\n  <summary>\nAnchor.\n</summary>\n</doc>"
+      },
+      "Text_set_Anchor": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "TextAnchor"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nAnchor.\n</summary>\n</doc>"
+      },
+      "Text_get_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Text_set_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Text_get_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "SpaceCenter",
+          "name": "ReferenceFrame"
+        },
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Text_set_ReferenceFrame": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "ReferenceFrame"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nReference frame for the positions of the object.\n</summary>\n</doc>"
+      },
+      "Text_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Text_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the object is visible.\n</summary>\n</doc>"
+      },
+      "Text_get_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      },
+      "Text_set_Material": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "Drawing",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMaterial used to render the object.\nCreates the material from a shader with the given name.\n</summary>\n</doc>"
+      }
+    },
+    "classes": {
+      "Line": {
+        "documentation": "<doc>\n  <summary>\nA line. Created using <see cref=\"M:Drawing.AddLine\" />.\n</summary>\n</doc>"
+      },
+      "Polygon": {
+        "documentation": "<doc>\n  <summary>\nA polygon. Created using <see cref=\"M:Drawing.AddPolygon\" />.\n</summary>\n</doc>"
+      },
+      "Text": {
+        "documentation": "<doc>\n  <summary>\nText. Created using <see cref=\"M:Drawing.AddText\" />.\n</summary>\n</doc>"
+      }
+    },
+    "enumerations": {}
+  }
+}

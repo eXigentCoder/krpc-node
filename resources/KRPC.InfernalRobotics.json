@@ -1,0 +1,926 @@
+{
+  "InfernalRobotics": {
+    "documentation": "<doc>\n  <summary>\nThis service provides functionality to interact with\n<a href=\"http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214/\">Infernal Robotics</a>.\n</summary>\n</doc>",
+    "procedures": {
+      "ServoGroups": {
+        "parameters": [
+          {
+            "name": "vessel",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "Vessel"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nA list of all the servo groups in the given <paramref name=\"vessel\" />.\n</summary>\n</doc>"
+      },
+      "ServoGroupWithName": {
+        "parameters": [
+          {
+            "name": "vessel",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "Vessel"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "InfernalRobotics",
+          "name": "ServoGroup"
+        },
+        "documentation": "<doc>\n  <summary>\nReturns the servo group in the given <paramref name=\"vessel\" /> with the given <paramref name=\"name\" />,\nor <c>null</c> if none exists. If multiple servo groups have the same name, only one of them is returned.\n</summary>\n  <param name=\"vessel\">Vessel to check.</param>\n  <param name=\"name\">Name of servo group to find.</param>\n</doc>"
+      },
+      "ServoWithName": {
+        "parameters": [
+          {
+            "name": "vessel",
+            "type": {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "Vessel"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "InfernalRobotics",
+          "name": "Servo"
+        },
+        "documentation": "<doc>\n  <summary>\nReturns the servo in the given <paramref name=\"vessel\" /> with the given <paramref name=\"name\" /> or\n<c>null</c> if none exists. If multiple servos have the same name, only one of them is returned.\n</summary>\n  <param name=\"vessel\">Vessel to check.</param>\n  <param name=\"name\">Name of the servo to find.</param>\n</doc>"
+      },
+      "Servo_MoveRight": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to the right.\n</summary>\n</doc>"
+      },
+      "Servo_MoveLeft": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to the left.\n</summary>\n</doc>"
+      },
+      "Servo_MoveCenter": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to the center.\n</summary>\n</doc>"
+      },
+      "Servo_MoveNextPreset": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to the next preset.\n</summary>\n</doc>"
+      },
+      "Servo_MovePrevPreset": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to the previous preset.\n</summary>\n</doc>"
+      },
+      "Servo_MoveTo": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "position",
+            "type": {
+              "code": "FLOAT"
+            }
+          },
+          {
+            "name": "speed",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves the servo to <paramref name=\"position\" /> and sets the\nspeed multiplier to <paramref name=\"speed\" />.\n</summary>\n  <param name=\"position\">The position to move the servo to.</param>\n  <param name=\"speed\">Speed multiplier for the movement.</param>\n</doc>"
+      },
+      "Servo_Stop": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nStops the servo.\n</summary>\n</doc>"
+      },
+      "Servo_get_Name": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe name of the servo.\n</summary>\n</doc>"
+      },
+      "Servo_set_Name": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe name of the servo.\n</summary>\n</doc>"
+      },
+      "Servo_get_Part": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "SpaceCenter",
+          "name": "Part"
+        },
+        "documentation": "<doc>\n  <summary>\nThe part containing the servo.\n</summary>\n</doc>"
+      },
+      "Servo_set_Highlight": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the servo should be highlighted in-game.\n</summary>\n</doc>"
+      },
+      "Servo_get_Position": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe position of the servo.\n</summary>\n</doc>"
+      },
+      "Servo_get_MinConfigPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe minimum position of the servo, specified by the part configuration.\n</summary>\n</doc>"
+      },
+      "Servo_get_MaxConfigPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe maximum position of the servo, specified by the part configuration.\n</summary>\n</doc>"
+      },
+      "Servo_get_MinPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe minimum position of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_set_MinPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe minimum position of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_get_MaxPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe maximum position of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_set_MaxPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe maximum position of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_get_ConfigSpeed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe speed multiplier of the servo, specified by the part configuration.\n</summary>\n</doc>"
+      },
+      "Servo_get_Speed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe speed multiplier of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_set_Speed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe speed multiplier of the servo, specified by the in-game tweak menu.\n</summary>\n</doc>"
+      },
+      "Servo_get_CurrentSpeed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe current speed at which the servo is moving.\n</summary>\n</doc>"
+      },
+      "Servo_set_CurrentSpeed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe current speed at which the servo is moving.\n</summary>\n</doc>"
+      },
+      "Servo_get_Acceleration": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe current speed multiplier set in the UI.\n</summary>\n</doc>"
+      },
+      "Servo_set_Acceleration": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe current speed multiplier set in the UI.\n</summary>\n</doc>"
+      },
+      "Servo_get_IsMoving": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the servo is moving.\n</summary>\n</doc>"
+      },
+      "Servo_get_IsFreeMoving": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the servo is freely moving.\n</summary>\n</doc>"
+      },
+      "Servo_get_IsLocked": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the servo is locked.\n</summary>\n</doc>"
+      },
+      "Servo_set_IsLocked": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the servo is locked.\n</summary>\n</doc>"
+      },
+      "Servo_get_IsAxisInverted": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the servos axis is inverted.\n</summary>\n</doc>"
+      },
+      "Servo_set_IsAxisInverted": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the servos axis is inverted.\n</summary>\n</doc>"
+      },
+      "ServoGroup_ServoWithName": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "InfernalRobotics",
+          "name": "Servo"
+        },
+        "documentation": "<doc>\n  <summary>\nReturns the servo with the given <paramref name=\"name\" /> from this group,\nor <c>null</c> if none exists.\n</summary>\n  <param name=\"name\">Name of servo to find.</param>\n</doc>"
+      },
+      "ServoGroup_MoveRight": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves all of the servos in the group to the right.\n</summary>\n</doc>"
+      },
+      "ServoGroup_MoveLeft": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves all of the servos in the group to the left.\n</summary>\n</doc>"
+      },
+      "ServoGroup_MoveCenter": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves all of the servos in the group to the center.\n</summary>\n</doc>"
+      },
+      "ServoGroup_MoveNextPreset": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves all of the servos in the group to the next preset.\n</summary>\n</doc>"
+      },
+      "ServoGroup_MovePrevPreset": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nMoves all of the servos in the group to the previous preset.\n</summary>\n</doc>"
+      },
+      "ServoGroup_Stop": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nStops the servos in the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_Name": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe name of the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_set_Name": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe name of the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_ForwardKey": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe key assigned to be the \"forward\" key for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_set_ForwardKey": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe key assigned to be the \"forward\" key for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_ReverseKey": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe key assigned to be the \"reverse\" key for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_set_ReverseKey": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe key assigned to be the \"reverse\" key for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_Speed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nThe speed multiplier for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_set_Speed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe speed multiplier for the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_Expanded": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the group is expanded in the InfernalRobotics UI.\n</summary>\n</doc>"
+      },
+      "ServoGroup_set_Expanded": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the group is expanded in the InfernalRobotics UI.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_Servos": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "Servo"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nThe servos that are in the group.\n</summary>\n</doc>"
+      },
+      "ServoGroup_get_Parts": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "InfernalRobotics",
+              "name": "ServoGroup"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "CLASS",
+              "service": "SpaceCenter",
+              "name": "Part"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nThe parts containing the servos in the group.\n</summary>\n</doc>"
+      }
+    },
+    "classes": {
+      "Servo": {
+        "documentation": "<doc>\n  <summary>\nRepresents a servo. Obtained using\n<see cref=\"M:InfernalRobotics.ServoGroup.Servos\" />,\n<see cref=\"M:InfernalRobotics.ServoGroup.ServoWithName\" />\nor <see cref=\"M:InfernalRobotics.ServoWithName\" />.\n</summary>\n</doc>"
+      },
+      "ServoGroup": {
+        "documentation": "<doc>\n  <summary>\nA group of servos, obtained by calling <see cref=\"M:InfernalRobotics.ServoGroups\" />\nor <see cref=\"M:InfernalRobotics.ServoGroupWithName\" />. Represents the \"Servo Groups\"\nin the InfernalRobotics UI.\n</summary>\n</doc>"
+      }
+    },
+    "enumerations": {}
+  }
+}
