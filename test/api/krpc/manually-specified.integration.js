@@ -31,7 +31,7 @@ function onError(done) {
 }
 function onClose(done) {
     return function (err) {
-        console.log('err');
+        console.log('err', err);
         done(err);
     };
 }
