@@ -4,6 +4,7 @@ let Client = require('../../../lib/client');
 let client;
 var success = false;
 let util = require('util');
+var proto = require('../../../lib/utilities/proto');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
@@ -54,9 +55,11 @@ function onMessage(done) {
                 expect(decodedResult).to.be.ok();
                 if (counter === 1) {
                     vessel = decodedResult;
-                    let procedure = client.services.spaceCenter.vesselGetControl(result.value);
-                    callStack.push(procedure.decode);
-                    client.send(procedure.call);
+                    let arg = new proto.krpc.schema.Argument(0, result.value);
+                    let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Vessel_get_Control', arg);
+                    //let procedure = client.services.spaceCenter.vesselGetControl(result.value);
+                    //callStack.push(procedure.decode);
+                    client.send(call);
                 }
                 else if (counter === 2) {
                     control = decodedResult;
