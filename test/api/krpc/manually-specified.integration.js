@@ -1,28 +1,29 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
+let client;
+var success = false;
+let util = require('util');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
-        let client = Client();
-        client.on('open', onOpen(client));
+        client = Client();
+        client.on('open', onOpen);
         client.on('error', onError(done));
-        client.on('message', onMessage(client, done));
+        client.on('message', onMessage(done));
         client.on('close', onClose(done));
     });
 });
 
 let callStack = [];
-function onOpen(client) {
-    return function () {
-        // let procedure = client.services.spaceCenter.clearTarget();
-        // callStack.push(procedure.decode);
-        // client.send(procedure.call);
-        let procedure = client.services.spaceCenter.getActiveVessel();
-        callStack.push(procedure.decode);
-        client.send(procedure.call);
-    };
-}
+function onOpen() {
+    // let procedure = client.services.spaceCenter.clearTarget();
+    // callStack.push(procedure.decode);
+    // client.send(procedure.call);
+    let procedure = client.services.spaceCenter.getActiveVessel();
+    callStack.push(procedure.decode);
+    client.send(procedure.call);
+};
 
 function onError(done) {
     return function (err) {
@@ -30,15 +31,17 @@ function onError(done) {
     };
 }
 function onClose(done) {
-    return function (err) {
-        console.log('err', err);
-        done(err);
+    return function (event) {
+        if (success) {
+            done();
+        }
+        return done(new Error(util.format("Socket closed before done", event)));
     };
 }
 var counter = 0;
 var control = null;
 var vessel = null;
-function onMessage(client, done) {
+function onMessage(done) {
     return function (response) {
         counter++;
         expect(response.error).to.not.be.ok();
@@ -51,7 +54,7 @@ function onMessage(client, done) {
                 expect(decodedResult).to.be.ok();
                 if (counter === 1) {
                     vessel = decodedResult;
-                    let procedure = client.services.spaceCenter.vesselGetControl(vessel.id);
+                    let procedure = client.services.spaceCenter.vesselGetControl(result.value);
                     callStack.push(procedure.decode);
                     client.send(procedure.call);
                 }
@@ -61,6 +64,7 @@ function onMessage(client, done) {
                     callStack.push(procedure.decode);
                     client.send(procedure.call);
                 } else {
+                    success = true;
                     return done();
                 }
             }
