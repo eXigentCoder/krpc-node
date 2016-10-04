@@ -1,0 +1,1758 @@
+{
+  "UI": {
+    "documentation": "<doc>\n  <summary>\nProvides functionality for drawing and interacting with in-game user interface elements.\n</summary>\n  <remarks>\nFor drawing 3D objects in the flight scene, see the Drawing service.\n</remarks>\n</doc>",
+    "procedures": {
+      "AddCanvas": {
+        "parameters": [],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Canvas"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd a new canvas.\n</summary>\n  <remarks>\nIf you want to add UI elements to KSPs stock UI canvas, use <see cref=\"M:UI.StockCanvas\" />.\n</remarks>\n</doc>"
+      },
+      "Message": {
+        "parameters": [
+          {
+            "name": "content",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "duration",
+            "type": {
+              "code": "FLOAT"
+            },
+            "default_value": "AACAPw=="
+          },
+          {
+            "name": "position",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "MessagePosition"
+            },
+            "default_value": "Ag=="
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nDisplay a message on the screen.\n</summary>\n  <remarks>\nThe message appears just like a stock message, for example quicksave or quickload messages.\n</remarks>\n  <param name=\"content\">Message content.</param>\n  <param name=\"duration\">Duration before the message disappears, in seconds.</param>\n  <param name=\"position\">Position to display the message.</param>\n</doc>"
+      },
+      "Clear": {
+        "parameters": [
+          {
+            "name": "clientOnly",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AA=="
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove all user interface elements.\n</summary>\n  <param name=\"clientOnly\">If true, only remove objects created by the calling client.</param>\n</doc>"
+      },
+      "get_StockCanvas": {
+        "parameters": [],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Canvas"
+        },
+        "documentation": "<doc>\n  <summary>\nThe stock UI canvas.\n</summary>\n</doc>"
+      },
+      "Button_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the UI object.\n</summary>\n</doc>"
+      },
+      "Button_get_RectTransform": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "RectTransform"
+        },
+        "documentation": "<doc>\n  <summary>\nThe rect transform for the text.\n</summary>\n</doc>"
+      },
+      "Button_get_Text": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Text"
+        },
+        "documentation": "<doc>\n  <summary>\nThe text for the button.\n</summary>\n</doc>"
+      },
+      "Button_get_Clicked": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the button has been clicked.\n</summary>\n  <remarks>\nThis property is set to true when the user clicks the button.\nA client script should reset the property to false in order to detect subsequent button presses.\n</remarks>\n</doc>"
+      },
+      "Button_set_Clicked": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the button has been clicked.\n</summary>\n  <remarks>\nThis property is set to true when the user clicks the button.\nA client script should reset the property to false in order to detect subsequent button presses.\n</remarks>\n</doc>"
+      },
+      "Button_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Button_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Button"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Canvas_AddPanel": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Panel"
+        },
+        "documentation": "<doc>\n  <summary>\nCreate a new container for user interface elements.\n</summary>\n  <param name=\"visible\">Whether the panel is visible.</param>\n</doc>"
+      },
+      "Canvas_AddText": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          },
+          {
+            "name": "content",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Text"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd text to the canvas.\n</summary>\n  <param name=\"content\">The text.</param>\n  <param name=\"visible\">Whether the text is visible.</param>\n</doc>"
+      },
+      "Canvas_AddInputField": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "InputField"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd an input field to the canvas.\n</summary>\n  <param name=\"visible\">Whether the input field is visible.</param>\n</doc>"
+      },
+      "Canvas_AddButton": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          },
+          {
+            "name": "content",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Button"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd a button to the canvas.\n</summary>\n  <param name=\"content\">The label for the button.</param>\n  <param name=\"visible\">Whether the button is visible.</param>\n</doc>"
+      },
+      "Canvas_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the UI object.\n</summary>\n</doc>"
+      },
+      "Canvas_get_RectTransform": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "RectTransform"
+        },
+        "documentation": "<doc>\n  <summary>\nThe rect transform for the canvas.\n</summary>\n</doc>"
+      },
+      "Canvas_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Canvas_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Canvas"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "InputField_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the UI object.\n</summary>\n</doc>"
+      },
+      "InputField_get_RectTransform": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "RectTransform"
+        },
+        "documentation": "<doc>\n  <summary>\nThe rect transform for the input field.\n</summary>\n</doc>"
+      },
+      "InputField_get_Value": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe value of the input field.\n</summary>\n</doc>"
+      },
+      "InputField_set_Value": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe value of the input field.\n</summary>\n</doc>"
+      },
+      "InputField_get_Text": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Text"
+        },
+        "documentation": "<doc>\n  <summary>\nThe text component of the input field.\n</summary>\n  <remarks>\nUse <see cref=\"M:UI.InputField.Value\" /> to get and set the value in the field.\nThis object can be used to alter the style of the input field's text.\n</remarks>\n</doc>"
+      },
+      "InputField_get_Changed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the input field has been changed.\n</summary>\n  <remarks>\nThis property is set to true when the user modifies the value of the input field.\nA client script should reset the property to false in order to detect subsequent changes.\n</remarks>\n</doc>"
+      },
+      "InputField_set_Changed": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the input field has been changed.\n</summary>\n  <remarks>\nThis property is set to true when the user modifies the value of the input field.\nA client script should reset the property to false in order to detect subsequent changes.\n</remarks>\n</doc>"
+      },
+      "InputField_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "InputField_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "InputField"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Panel_AddPanel": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Panel"
+        },
+        "documentation": "<doc>\n  <summary>\nCreate a panel within this panel.\n</summary>\n  <param name=\"visible\">Whether the new panel is visible.</param>\n</doc>"
+      },
+      "Panel_AddText": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          },
+          {
+            "name": "content",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Text"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd text to the panel.\n</summary>\n  <param name=\"content\">The text.</param>\n  <param name=\"visible\">Whether the text is visible.</param>\n</doc>"
+      },
+      "Panel_AddInputField": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "InputField"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd an input field to the panel.\n</summary>\n  <param name=\"visible\">Whether the input field is visible.</param>\n</doc>"
+      },
+      "Panel_AddButton": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          },
+          {
+            "name": "content",
+            "type": {
+              "code": "STRING"
+            }
+          },
+          {
+            "name": "visible",
+            "type": {
+              "code": "BOOL"
+            },
+            "default_value": "AQ=="
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "Button"
+        },
+        "documentation": "<doc>\n  <summary>\nAdd a button to the panel.\n</summary>\n  <param name=\"content\">The label for the button.</param>\n  <param name=\"visible\">Whether the button is visible.</param>\n</doc>"
+      },
+      "Panel_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the UI object.\n</summary>\n</doc>"
+      },
+      "Panel_get_RectTransform": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "RectTransform"
+        },
+        "documentation": "<doc>\n  <summary>\nThe rect transform for the panel.\n</summary>\n</doc>"
+      },
+      "Panel_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Panel_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Panel"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_Position": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles pivot point relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Position": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles pivot point relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_LocalPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles pivot point relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_LocalPosition": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles pivot point relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nWidth and height of the rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWidth and height of the rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_UpperRight": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles upper right corner relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_UpperRight": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles upper right corner relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_LowerLeft": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles lower left corner relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_LowerLeft": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nPosition of the rectangles lower left corner relative to the anchors.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Anchor": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the minimum and maximum anchor points as a fraction of the size of the parent rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_AnchorMax": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nThe anchor point for the lower left corner of the rectangle defined as a fraction of the size of the parent rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_AnchorMax": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe anchor point for the lower left corner of the rectangle defined as a fraction of the size of the parent rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_AnchorMin": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nThe anchor point for the upper right corner of the rectangle defined as a fraction of the size of the parent rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_AnchorMin": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe anchor point for the upper right corner of the rectangle defined as a fraction of the size of the parent rectangle.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_Pivot": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nLocation of the pivot point around which the rectangle rotates, defined as a fraction of the size of the rectangle itself.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Pivot": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nLocation of the pivot point around which the rectangle rotates, defined as a fraction of the size of the rectangle itself.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_Rotation": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nRotation, as a quaternion, of the object around its pivot point.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Rotation": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRotation, as a quaternion, of the object around its pivot point.\n</summary>\n</doc>"
+      },
+      "RectTransform_get_Scale": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nScale factor applied to the object in the x, y and z dimensions.\n</summary>\n</doc>"
+      },
+      "RectTransform_set_Scale": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "RectTransform"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nScale factor applied to the object in the x, y and z dimensions.\n</summary>\n</doc>"
+      },
+      "Text_Remove": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nRemove the UI object.\n</summary>\n</doc>"
+      },
+      "Text_get_RectTransform": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "CLASS",
+          "service": "UI",
+          "name": "RectTransform"
+        },
+        "documentation": "<doc>\n  <summary>\nThe rect transform for the text.\n</summary>\n</doc>"
+      },
+      "Text_get_AvailableFonts": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "LIST",
+          "types": [
+            {
+              "code": "STRING"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nA list of all available fonts.\n</summary>\n</doc>"
+      },
+      "Text_get_Content": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nThe text string\n</summary>\n</doc>"
+      },
+      "Text_set_Content": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nThe text string\n</summary>\n</doc>"
+      },
+      "Text_get_Font": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "STRING"
+        },
+        "documentation": "<doc>\n  <summary>\nName of the font\n</summary>\n</doc>"
+      },
+      "Text_set_Font": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "STRING"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nName of the font\n</summary>\n</doc>"
+      },
+      "Text_get_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "SINT32"
+        },
+        "documentation": "<doc>\n  <summary>\nFont size.\n</summary>\n</doc>"
+      },
+      "Text_set_Size": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "SINT32"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nFont size.\n</summary>\n</doc>"
+      },
+      "Text_get_Style": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "ENUMERATION",
+          "service": "UI",
+          "name": "FontStyle"
+        },
+        "documentation": "<doc>\n  <summary>\nFont style.\n</summary>\n</doc>"
+      },
+      "Text_set_Style": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "FontStyle"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nFont style.\n</summary>\n</doc>"
+      },
+      "Text_get_Alignment": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "ENUMERATION",
+          "service": "UI",
+          "name": "TextAnchor"
+        },
+        "documentation": "<doc>\n  <summary>\nAlignment.\n</summary>\n</doc>"
+      },
+      "Text_set_Alignment": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "ENUMERATION",
+              "service": "UI",
+              "name": "TextAnchor"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nAlignment.\n</summary>\n</doc>"
+      },
+      "Text_get_LineSpacing": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "FLOAT"
+        },
+        "documentation": "<doc>\n  <summary>\nLine spacing.\n</summary>\n</doc>"
+      },
+      "Text_set_LineSpacing": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "FLOAT"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nLine spacing.\n</summary>\n</doc>"
+      },
+      "Text_get_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "TUPLE",
+          "types": [
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            },
+            {
+              "code": "DOUBLE"
+            }
+          ]
+        },
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Text_set_Color": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "TUPLE",
+              "types": [
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                },
+                {
+                  "code": "DOUBLE"
+                }
+              ]
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nSet the color\n</summary>\n</doc>"
+      },
+      "Text_get_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          }
+        ],
+        "return_type": {
+          "code": "BOOL"
+        },
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      },
+      "Text_set_Visible": {
+        "parameters": [
+          {
+            "name": "this",
+            "type": {
+              "code": "CLASS",
+              "service": "UI",
+              "name": "Text"
+            }
+          },
+          {
+            "name": "value",
+            "type": {
+              "code": "BOOL"
+            }
+          }
+        ],
+        "documentation": "<doc>\n  <summary>\nWhether the UI object is visible.\n</summary>\n</doc>"
+      }
+    },
+    "classes": {
+      "Button": {
+        "documentation": "<doc>\n  <summary>\nA text label. See <see cref=\"M:UI.Panel.AddButton\" />.\n</summary>\n</doc>"
+      },
+      "Canvas": {
+        "documentation": "<doc>\n  <summary>\nA canvas for user interface elements. See <see cref=\"M:UI.StockCanvas\" /> and <see cref=\"M:UI.AddCanvas\" />.\n</summary>\n</doc>"
+      },
+      "InputField": {
+        "documentation": "<doc>\n  <summary>\nAn input field. See <see cref=\"M:UI.Panel.AddInputField\" />.\n</summary>\n</doc>"
+      },
+      "Panel": {
+        "documentation": "<doc>\n  <summary>\nA container for user interface elements. See <see cref=\"M:UI.Canvas.AddPanel\" />.\n</summary>\n</doc>"
+      },
+      "RectTransform": {
+        "documentation": "<doc>\n  <summary>\nA Unity engine Rect Transform for a UI object.\nSee the <a href=\"http://docs.unity3d.com/Manual/class-RectTransform.html\">Unity manual</a> for more details.\n</summary>\n</doc>"
+      },
+      "Text": {
+        "documentation": "<doc>\n  <summary>\nA text label. See <see cref=\"M:UI.Panel.AddText\" />.\n</summary>\n</doc>"
+      }
+    },
+    "enumerations": {
+      "FontStyle": {
+        "documentation": "<doc>\n  <summary>\nFont style.\n</summary>\n</doc>",
+        "values": [
+          {
+            "name": "Normal",
+            "value": 0,
+            "documentation": "<doc>\n  <summary>\nNormal.\n</summary>\n</doc>"
+          },
+          {
+            "name": "Bold",
+            "value": 1,
+            "documentation": "<doc>\n  <summary>\nBold.\n</summary>\n</doc>"
+          },
+          {
+            "name": "Italic",
+            "value": 2,
+            "documentation": "<doc>\n  <summary>\nItalic.\n</summary>\n</doc>"
+          },
+          {
+            "name": "BoldAndItalic",
+            "value": 3,
+            "documentation": "<doc>\n  <summary>\nBold and italic.\n</summary>\n</doc>"
+          }
+        ]
+      },
+      "MessagePosition": {
+        "documentation": "<doc>\n  <summary>\nMessage position.\n</summary>\n</doc>",
+        "values": [
+          {
+            "name": "BottomCenter",
+            "value": 0,
+            "documentation": "<doc>\n  <summary>\nBottom center.\n</summary>\n</doc>"
+          },
+          {
+            "name": "TopCenter",
+            "value": 1,
+            "documentation": "<doc>\n  <summary>\nTop center.\n</summary>\n</doc>"
+          },
+          {
+            "name": "TopLeft",
+            "value": 2,
+            "documentation": "<doc>\n  <summary>\nTop left.\n</summary>\n</doc>"
+          },
+          {
+            "name": "TopRight",
+            "value": 3,
+            "documentation": "<doc>\n  <summary>\nTop right.\n</summary>\n</doc>"
+          }
+        ]
+      },
+      "TextAlignment": {
+        "documentation": "<doc>\n  <summary>\nText alignment.\n</summary>\n</doc>",
+        "values": [
+          {
+            "name": "Left",
+            "value": 0,
+            "documentation": "<doc>\n  <summary>\nLeft aligned.\n</summary>\n</doc>"
+          },
+          {
+            "name": "Right",
+            "value": 1,
+            "documentation": "<doc>\n  <summary>\nRight aligned.\n</summary>\n</doc>"
+          },
+          {
+            "name": "Center",
+            "value": 2,
+            "documentation": "<doc>\n  <summary>\nCenter aligned.\n</summary>\n</doc>"
+          }
+        ]
+      },
+      "TextAnchor": {
+        "documentation": "<doc>\n  <summary>\nText alignment.\n</summary>\n</doc>",
+        "values": [
+          {
+            "name": "LowerCenter",
+            "value": 0,
+            "documentation": "<doc>\n  <summary>\nLower center.\n</summary>\n</doc>"
+          },
+          {
+            "name": "LowerLeft",
+            "value": 1,
+            "documentation": "<doc>\n  <summary>\nLower left.\n</summary>\n</doc>"
+          },
+          {
+            "name": "LowerRight",
+            "value": 2,
+            "documentation": "<doc>\n  <summary>\nLower right.\n</summary>\n</doc>"
+          },
+          {
+            "name": "MiddleCenter",
+            "value": 3,
+            "documentation": "<doc>\n  <summary>\nMiddle center.\n</summary>\n</doc>"
+          },
+          {
+            "name": "MiddleLeft",
+            "value": 4,
+            "documentation": "<doc>\n  <summary>\nMiddle left.\n</summary>\n</doc>"
+          },
+          {
+            "name": "MiddleRight",
+            "value": 5,
+            "documentation": "<doc>\n  <summary>\nMiddle right.\n</summary>\n</doc>"
+          },
+          {
+            "name": "UpperCenter",
+            "value": 6,
+            "documentation": "<doc>\n  <summary>\nUpper center.\n</summary>\n</doc>"
+          },
+          {
+            "name": "UpperLeft",
+            "value": 7,
+            "documentation": "<doc>\n  <summary>\nUpper left.\n</summary>\n</doc>"
+          },
+          {
+            "name": "UpperRight",
+            "value": 8,
+            "documentation": "<doc>\n  <summary>\nUpper right.\n</summary>\n</doc>"
+          }
+        ]
+      }
+    }
+  }
+}
