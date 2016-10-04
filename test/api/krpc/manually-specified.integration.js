@@ -23,7 +23,7 @@ function onOpen() {
     // let procedure = client.services.spaceCenter.clearTarget();
     // callStack.push(procedure.decode);
     // client.send(procedure.call);
-    let procedure = client.services.spaceCenter.getVessels();
+    let procedure = client.services.spaceCenter.getActiveVessel();
     callStack.push(procedure.decode);
     client.send(procedure.call);
 };
