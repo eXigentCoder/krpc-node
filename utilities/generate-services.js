@@ -7,6 +7,7 @@ const os = require('os');
 const util = require('util');
 const procCallName = 'buildProcedureCall';
 const decodersName = 'decoders';
+const encodersName = 'encoders';
 let eol = os.EOL;
 let client = Client();
 client.on('open', onOpen);
@@ -56,8 +57,10 @@ function requires() {
     content += 'const ' + procCallName + ' = require(\'../procedure-call\');' + eol;
     content += 'const proto = require(\'../utilities/proto\');' + eol;
     content += 'const ' + decodersName + ' = require(\'../decoders\');' + eol;
+    content += 'const ' + encodersName + ' = require(\'../encoders\');' + eol;
     return content;
 }
+
 function getProcedureCode(procedure, service) {
     let content = eol;
     content += processDocumentation(procedure);
@@ -69,6 +72,7 @@ function getProcedureCode(procedure, service) {
         paramString = ', ' + paramString;
     }
     content += '        call: ' + procCallName + '(\'' + service.name + '\', \'' + procedure.name + '\'' + paramString + '),' + eol;
+    content += '        encode: ' + getEncodeFn(procedure.parameters, service) + eol;
     content += '        decode: ' + getDecodeFn(procedure, service) + eol;
     content += '    };' + eol;
     content += '};' + eol;
@@ -274,7 +278,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(procedure, service);
+            return getEnumFunction(procedure);
         case 200:
             return 'proto.krpc.schema.ProcedureCall';
         case 201:
@@ -293,11 +297,72 @@ function getDecodeFn(procedure, service) {
             return 'proto.krpc.schema.Dictionary';
         default:
             todo(procedure, service);
-            throw new Error(util.format("Unable to determine type string for type for %j", procedure.return_type));
+            throw new Error(util.format("Unable to determine decoder type string for type for %j", procedure.return_type));
+    }
+}
+function getEncodeFn(parameters, service) {
+    if (parameters.length === 0) {
+        return '[],';
+    }
+    let content = '[';
+    let fnArray = parameters.map(async.apply(getEncodeFnForParam, service));
+    content += fnArray.join(', ');
+    content += '],';
+    return content;
+}
+
+function getEncodeFnForParam(service, parameter) {
+    if (!parameter.return_type) {
+        return 'null';
+    }
+    switch (parameter.return_type.code) {
+        case 0:
+            return 'null';
+        case 1:
+            return encodersName + '.double';
+        case 2:
+            return encodersName + '.float';
+        case 3:
+            return encodersName + '.sInt32';
+        case 4:
+            return encodersName + '.sInt64';
+        case 5:
+            return encodersName + '.uInt32';
+        case 6:
+            return encodersName + '.uInt64';
+        case 7:
+            return encodersName + '.bool';
+        case 8:
+            return encodersName + '.string';
+        case 9:
+            return encodersName + '.bytes';
+        case 100:
+            return encodersName + '.uInt64';
+        case 101:
+            return todo(parameter, service);
+        case 200:
+            return 'proto.krpc.schema.ProcedureCall';
+        case 201:
+            return 'proto.krpc.schema.Stream';
+        case 202:
+            return 'proto.krpc.schema.Status';
+        case 203:
+            return 'proto.krpc.schema.Services';
+        case 300:
+            return 'proto.krpc.schema.Tuple';
+        case 301:
+            return 'proto.krpc.schema.List';
+        case 302:
+            return 'proto.krpc.schema.Set';
+        case 303:
+            return 'proto.krpc.schema.Dictionary';
+        default:
+            todo(parameter, service);
+            throw new Error(util.format("Unable to determine encoder type string for type for %j", parameter.return_type));
     }
 }
 
-function getEnumFunction(procedure, service) {
+function getEnumFunction(procedure) {
     let enumVal = _.find(enums[procedure.return_type.service], {name: procedure.return_type.name});
     if (!enumVal) {
         throw new Error("enum not found");
