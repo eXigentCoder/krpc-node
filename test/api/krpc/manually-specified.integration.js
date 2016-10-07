@@ -50,37 +50,40 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         response.results.forEach(function (result) {
             expect(result.error).to.not.be.ok();
-            let decodeType = callStack.pop();
-            if (decodeType) {
-                // let decodedResult = Client.decode(result.value, decodeType);
-                // expect(decodedResult).to.be.ok();
-                if (counter === 1) {
-                    //vessel = decodedResult;
-                    //let hardCodedVesselBuffer = Buffer.from([0x01]); //works, finds the instance.
-                    let vesselId = decode(result.value, 'uint64'); // works, gets the value of 1
-                    let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
-                    // let buffer = new ByteBuffer();
-                    // let vesselBuffer = buffer.writeUint8(Number(vesselId.toString()));
-                    let arg = new proto.krpc.schema.Argument(0, vesselBuffer.buffer);
-                    let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Vessel_get_Control', arg);
-                    //let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer);
-                    callStack.push(function () {
-                        console.log(1);
-                    });
-                    client.send(call);
-                }
-                else if (counter === 2) {
-                    //control = decodedResult;
-                    let controlId = Buffer.from([0x06]);
-                    let trueBuf = Buffer.from([0x01]);
-                    let procedure = client.services.spaceCenter.controlSetAbort(controlId, trueBuf);
-                    callStack.push(procedure.decode);
-                    client.send(procedure.call);
-                } else {
-                    success = true;
-                    return done();
-                }
+            // let decodeType = callStack.pop();
+            // if (decodeType) {
+            // let decodedResult = Client.decode(result.value, decodeType);
+            // expect(decodedResult).to.be.ok();
+            if (counter === 1) {
+                //vessel = decodedResult;
+                //let hardCodedVesselBuffer = Buffer.from([0x01]); //works, finds the instance.
+                let vesselId = decode(result.value, 'uint64'); // works, gets the value of 1
+                console.log("Vessel id : " + vesselId.toString());
+                let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
+                let arg = new proto.krpc.schema.Argument(0, vesselBuffer.buffer);
+                let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Vessel_get_Control', [arg]);
+                //let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer);
+                //callStack.push(procedure.decode);
+                client.send(call);
             }
+            else if (counter === 2) {
+                //control = decodedResult;
+                let controlId = decode(result.value, 'uint64');
+                console.log("Control id : " + controlId.toString());
+                let controlArg = new proto.krpc.schema.Argument(0, encode(controlId, 'uint64').buffer);
+                let trueArg = new proto.krpc.schema.Argument(1, encode(true, 'bool').buffer);
+                let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Control_set_Abort', [controlArg, trueArg]);
+                // let controlId = Buffer.from([0x06]);
+                // let trueBuf = Buffer.from([0x01]);
+                // let procedure = client.services.spaceCenter.controlSetAbort(controlId, trueBuf);
+                //callStack.push(procedure.decode);
+                //client.send(procedure.call);
+                client.send(call);
+            } else {
+                success = true;
+                return done();
+            }
+            //}
         });
     };
 }
