@@ -278,7 +278,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(procedure);
+            return getEnumFunction(procedure.return_type);
         case 200:
             return 'proto.krpc.schema.ProcedureCall';
         case 201:
@@ -300,6 +300,7 @@ function getDecodeFn(procedure, service) {
             throw new Error(util.format("Unable to determine decoder type string for type for %j", procedure.return_type));
     }
 }
+
 function getEncodeFn(parameters, service) {
     if (parameters.length === 0) {
         return '[],';
@@ -312,10 +313,10 @@ function getEncodeFn(parameters, service) {
 }
 
 function getEncodeFnForParam(service, parameter) {
-    if (!parameter.return_type) {
+    if (!parameter.type) {
         return 'null';
     }
-    switch (parameter.return_type.code) {
+    switch (parameter.type.code) {
         case 0:
             return 'null';
         case 1:
@@ -339,7 +340,7 @@ function getEncodeFnForParam(service, parameter) {
         case 100:
             return encodersName + '.uInt64';
         case 101:
-            return todo(parameter, service);
+            return getEnumFunction(parameter.type);
         case 200:
             return 'proto.krpc.schema.ProcedureCall';
         case 201:
@@ -358,12 +359,12 @@ function getEncodeFnForParam(service, parameter) {
             return 'proto.krpc.schema.Dictionary';
         default:
             todo(parameter, service);
-            throw new Error(util.format("Unable to determine encoder type string for type for %j", parameter.return_type));
+            throw new Error(util.format("Unable to determine encoder type string for type for %j", parameter.type));
     }
 }
 
-function getEnumFunction(procedure) {
-    let enumVal = _.find(enums[procedure.return_type.service], {name: procedure.return_type.name});
+function getEnumFunction(type) {
+    let enumVal = _.find(enums[type.service], {name: type.name});
     if (!enumVal) {
         throw new Error("enum not found");
     }
