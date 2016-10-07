@@ -58,9 +58,9 @@ function onMessage(done) {
                     //vessel = decodedResult;
                     //let hardCodedVesselBuffer = Buffer.from([0x01]); //works, finds the instance.
                     let vesselId = decode(result.value, 'uint64'); // works, gets the value of 1
-                    //let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
-                    let buffer = new ByteBuffer();
-                    let vesselBuffer = buffer.writeUint8(Number(vesselId.toString()));
+                    let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
+                    // let buffer = new ByteBuffer();
+                    // let vesselBuffer = buffer.writeUint8(Number(vesselId.toString()));
                     let arg = new proto.krpc.schema.Argument(0, vesselBuffer.buffer);
                     let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Vessel_get_Control', arg);
                     //let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer);
