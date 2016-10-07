@@ -66,23 +66,17 @@ function onMessage(done) {
             }
             else if (counter === 2) {
                 let controlId = decodedResult;
-                //let controlId = decode(result.value, 'uint64');
-                console.log("Control id : " + controlId.toString());
-                let controlArg = new proto.krpc.schema.Argument(0, encode(controlId, 'uint64').buffer);
-                let trueArg = new proto.krpc.schema.Argument(1, encode(true, 'bool').buffer);
-                let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Control_set_Abort', [controlArg, trueArg]);
-                // let controlId = Buffer.from([0x06]);
-                // let trueBuf = Buffer.from([0x01]);
-                // let procedure = client.services.spaceCenter.controlSetAbort(controlId, trueBuf);
-                //callStack.push(procedure.decode);
-                //client.send(procedure.call);
-                callStack.push(false);
-                client.send(call);
+                var contolBuffer = encode(controlId, 'uint64').buffer;
+                var trueBuffer = encode(true, 'bool').buffer;
+                let procedure = client.services.spaceCenter.controlSetAbort(contolBuffer, trueBuffer);
+                callStack.push(procedure.decode);
+                client.send(procedure.call);
+                //callStack.push(false);
+                //client.send(call);
             } else {
                 success = true;
                 return done();
             }
-            //}
         });
     };
 }
