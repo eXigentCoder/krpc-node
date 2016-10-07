@@ -50,25 +50,23 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         response.results.forEach(function (result) {
             expect(result.error).to.not.be.ok();
-            // let decodeType = callStack.pop();
-            // if (decodeType) {
-            // let decodedResult = Client.decode(result.value, decodeType);
-            // expect(decodedResult).to.be.ok();
+            let decodeType = callStack.pop();
+            let decodedResult;
+            if (decodeType) {
+                decodedResult = Client.decode(result.value, decodeType);
+                expect(decodedResult).to.be.ok();
+            }
             if (counter === 1) {
-                //vessel = decodedResult;
-                //let hardCodedVesselBuffer = Buffer.from([0x01]); //works, finds the instance.
-                let vesselId = decode(result.value, 'uint64'); // works, gets the value of 1
+                let vesselId = decodedResult;
                 console.log("Vessel id : " + vesselId.toString());
                 let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
-                let arg = new proto.krpc.schema.Argument(0, vesselBuffer.buffer);
-                let call = new proto.krpc.schema.ProcedureCall('SpaceCenter', 'Vessel_get_Control', [arg]);
-                //let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer);
-                //callStack.push(procedure.decode);
-                client.send(call);
+                let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer.buffer);
+                callStack.push(procedure.decode);
+                client.send(procedure.call);
             }
             else if (counter === 2) {
-                //control = decodedResult;
-                let controlId = decode(result.value, 'uint64');
+                let controlId = decodedResult;
+                //let controlId = decode(result.value, 'uint64');
                 console.log("Control id : " + controlId.toString());
                 let controlArg = new proto.krpc.schema.Argument(0, encode(controlId, 'uint64').buffer);
                 let trueArg = new proto.krpc.schema.Argument(1, encode(true, 'bool').buffer);
@@ -78,6 +76,7 @@ function onMessage(done) {
                 // let procedure = client.services.spaceCenter.controlSetAbort(controlId, trueBuf);
                 //callStack.push(procedure.decode);
                 //client.send(procedure.call);
+                callStack.push(false);
                 client.send(call);
             } else {
                 success = true;

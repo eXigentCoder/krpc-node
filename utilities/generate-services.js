@@ -272,7 +272,7 @@ function getDecodeFn(procedure, service) {
         case 9:
             return decodersName + '.bytes';
         case 100:
-            return 'proto.krpc.schema.Stream';
+            return decodersName + '.uInt64';
         case 101:
             return getEnumFunction(procedure, service);
         case 200:
