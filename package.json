@@ -22,6 +22,7 @@
   "author": "Ryan Kotzen",
   "license": "MIT",
   "dependencies": {
+    "bytebuffer": "5.0.1",
     "lodash": "4.15.0",
     "protobufjs": "5.0.1",
     "ws": "1.1.1"
