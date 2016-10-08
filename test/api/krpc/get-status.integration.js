@@ -1,7 +1,7 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
-var _ = require('lodash');
+const _ = require('lodash');
 
 describe('Get-status', function () {
     it('Should work', function (done) {

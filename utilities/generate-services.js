@@ -24,8 +24,10 @@ function onError(err) {
 
 function onMessage(response) {
     let serviceResponse = response.results[0];
-    serviceResponse = Client.apis.krpc.services.decode(serviceResponse.value);
-    serviceResponse.services.forEach(function (service) {
+    if (serviceResponse.error) {
+        throw new Error(serviceResponse.error);
+    }
+    serviceResponse.value.services.forEach(function (service) {
         enums[service.name] = service.enumerations;
     });
     async.eachSeries(serviceResponse.services, createService, function (err) {
