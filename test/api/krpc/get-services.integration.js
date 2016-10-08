@@ -29,7 +29,8 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         let serviceResponse = response.results[0];
         expect(serviceResponse.error).to.not.be.ok();
-        expect(serviceResponse.value.items).to.be.ok();
+        expect(serviceResponse.value.services).to.be.ok();
+        expect(serviceResponse.value.services.length).to.equal(7);
         return done();
     };
 }

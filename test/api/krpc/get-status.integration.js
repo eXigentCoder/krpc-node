@@ -1,6 +1,7 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
+var _ = require('lodash');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
@@ -10,12 +11,11 @@ describe('Get-status', function () {
         client.on('message', onMessage(done));
     });
 });
-let callStack = [];
+
 function onOpen(client) {
     return function () {
-        let getStatus = client.apis.krpc.getStatus();
-        callStack.push(getStatus.decode);
-        client.send(getStatus.call);
+        let getStatus = client.services.krpc.getStatus();
+        client.send(getStatus);
     };
 }
 
@@ -29,12 +29,13 @@ function onMessage(done) {
     return function (response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
-        response.results.forEach(function (result) {
-            expect(result.error).to.not.be.ok();
-            let decodeType = callStack.pop();
-            let status = Client.decode(result.value, decodeType);
-            expect(status).to.be.ok();
-        });
+        let statusResult = response.results[0];
+        expect(statusResult).to.be.ok();
+        expect(statusResult.error).to.not.be.ok();
+        let status = statusResult.value;
+        expect(status).to.be.ok();
+        expect(_.isObject(status)).to.be.ok();
+        expect(_.isNil(status.adaptive_rate_control)).to.not.be.ok();
         return done();
     };
 }

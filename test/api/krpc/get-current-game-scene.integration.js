@@ -1,6 +1,7 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
+const _ = require('lodash');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
@@ -30,6 +31,7 @@ function onMessage(done) {
         let gameSceneResult = response.results[0];
         expect(gameSceneResult.error).to.not.be.ok();
         expect(gameSceneResult.value).to.be.ok();
+        expect(_.isString(gameSceneResult.value)).to.be.ok();
         return done();
     };
 }
