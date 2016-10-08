@@ -47,7 +47,7 @@ function createService(service, callback) {
 
 function buildContent(service) {
     let content = requires();
-    content += processDocumentation(service);
+    content += processDocumentation(service, true);
     content += eol;
     service.procedures.forEach(function (procedure) {
         content += getProcedureCode(procedure, service);
@@ -79,20 +79,23 @@ function getProcedureCode(procedure, service) {
     return content;
 }
 
-function processDocumentation(procedure) {
+function processDocumentation(procedureOrService, isService) {
     let content = '/**' + eol;
-    content += ' * ' + procedure.documentation.replace(/\n/g, eol + ' * ');
-    if (procedure.parameters && procedure.parameters.length !== 0) {
-        procedure.parameters.forEach(function (param) {
+    content += ' * ' + procedureOrService.documentation.replace(/\n/g, eol + ' * ');
+    if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
+        procedureOrService.parameters.forEach(function (param) {
             content += documentParam(param);
         });
         content += eol;
     }
-    if (procedure.return_type) {
-        content += documentResultType(procedure.return_type, procedure);
+    if (procedureOrService.return_type) {
+        content += documentResultType(procedureOrService.return_type, procedureOrService);
         content += ' * @returns {{call :Object, decode: function}}' + eol;
     } else {
-        content += eol + ' * @result {void}' + eol;
+        if (isService) {
+            content += eol;
+        }
+        content += ' * @result {void}' + eol;
         content += ' * @returns {void}' + eol;
     }
     content += '*/' + eol;
