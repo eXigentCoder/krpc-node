@@ -1,7 +1,6 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
-
 describe('Get-clients', function () {
     it('Should work', function (done) {
         let client = Client();
@@ -29,8 +28,6 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         let clientsResponse = response.results[0];
         expect(clientsResponse.error).to.not.be.ok();
-        let clients = Client.apis.krpc.clients.decode(clientsResponse.value);
-        expect(clients).to.be.ok();
         return done();
     };
 }

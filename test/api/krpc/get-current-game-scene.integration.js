@@ -13,7 +13,7 @@ describe('Get-status', function () {
 
 function onOpen(client) {
     return function () {
-        client.send(client.apis.krpc.currentGameScene.get());
+        client.send(client.services.krpc.getCurrentGameScene());
     };
 }
 
@@ -29,8 +29,7 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         let gameSceneResult = response.results[0];
         expect(gameSceneResult.error).to.not.be.ok();
-        let gameScene = Client.apis.krpc.currentGameScene.decode(gameSceneResult.value);
-        expect(gameScene).to.be.ok();
+        expect(gameSceneResult.value).to.be.ok();
         return done();
     };
 }
