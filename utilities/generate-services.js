@@ -347,21 +347,21 @@ function getDecodeFn(procedure, service) {
         case 101:
             return getEnumFunction(decodersName, procedure.return_type);
         case 200:
-            return 'proto.krpc.schema.ProcedureCall';
+            return 'proto.ProcedureCall';
         case 201:
-            return 'proto.krpc.schema.Stream';
+            return 'proto.Stream';
         case 202:
-            return 'proto.krpc.schema.Status';
+            return 'proto.Status';
         case 203:
-            return 'proto.krpc.schema.Services';
+            return 'proto.Services';
         case 300:
-            return 'proto.krpc.schema.Tuple';
+            return 'proto.Tuple';
         case 301:
-            return 'proto.krpc.schema.List';
+            return 'proto.List';
         case 302:
-            return 'proto.krpc.schema.Set';
+            return 'proto.Set';
         case 303:
-            return 'proto.krpc.schema.Dictionary';
+            return 'proto.Dictionary';
         default:
             throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.return_type, service));
     }
@@ -420,28 +420,28 @@ function getEncodeFnForParam(service, parameter) {
             content += getEnumFunction(encodersName, parameter.type);
             break;
         case 200:
-            content += 'new proto.krpc.schema.ProcedureCall';
+            content += 'new proto.ProcedureCall';
             break;
         case 201:
-            content += 'new proto.krpc.schema.Stream';
+            content += 'new proto.Stream';
             break;
         case 202:
-            content += 'new proto.krpc.schema.Status';
+            content += 'new proto.Status';
             break;
         case 203:
-            content += 'new proto.krpc.schema.Services';
+            content += 'new proto.Services';
             break;
         case 300:
-            content += 'new proto.krpc.schema.Tuple';
+            content += 'new proto.Tuple';
             break;
         case 301:
-            content += 'new proto.krpc.schema.List';
+            content += 'new proto.List';
             break;
         case 302:
-            content += 'new proto.krpc.schema.Set';
+            content += 'new proto.Set';
             break;
         case 303:
-            content += 'new proto.krpc.schema.Dictionary';
+            content += 'new proto.Dictionary';
             break;
         default:
             throw new Error(util.format("Unable to determine encoder type string for type for %j %j", parameter, service));
