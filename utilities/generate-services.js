@@ -95,8 +95,9 @@ function processDocumentation(procedureOrService, isService) {
     content += ' * ' + doc;
     if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
         content += eol;
+        let paramDictionary = buildParamDescriptionDictionary(procedureOrService.documentation);
         procedureOrService.parameters.forEach(function (param) {
-            content += documentParam(param) + eol;
+            content += documentParam(param, paramDictionary, procedureOrService) + eol;
         });
     } else {
         content += eol;
@@ -112,12 +113,28 @@ function processDocumentation(procedureOrService, isService) {
     return content;
 }
 
-function documentParam(param) {
-    return ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param) + ' ' + getParamDescription(param.type, param);
+function documentParam(param, paramDictionary, procedureOrService) {
+    let typeString = getTypeStringFromCode(param.type, null, param);
+    let name = getParamName(param);
+    let options = {
+        type: param.type,
+        paramDictionary: paramDictionary,
+        paramName: name
+    };
+    let description = getParamDescription(options);
+    if (description !== '') {
+        return ' * @param ' + typeString + ' ' + name + ' - ' + description;
+    }
+    return ' * @param ' + typeString + ' ' + name;
 }
 
-function documentResultType(returnType, procedure) {
-    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + ' ' + getParamDescription(returnType, procedure);
+function documentResultType(returnType, procedureOrService) {
+    let typeString = getTypeStringFromCode(returnType, null, procedureOrService);
+    let options = {
+        type: returnType
+    };
+    let description = getParamDescription(options);
+    return ' * @result ' + typeString + ' ' + description;
 }
 
 function addParameter(parameters) {
@@ -214,18 +231,46 @@ function processObjectType(type, doNotAddBraces) {
 }
 
 const allowedCodes = [100, 101];
-function getParamDescription(type, procedureOrParam, isList) {
-    if (type.code === 301 && type.types.length === 1) {
-        return getParamDescription(type.types[0], null, true);
+function getParamDescription(options) {
+    if (options.type.code === 301 && options.type.types.length === 1) {
+        let newOptions = {
+            type: options.type.types[0],
+            isList: true,
+            paramDictionary: options.paramDictionary,
+            paramName: options.paramName
+        };
+        return getParamDescription(newOptions);
     }
-    if (allowedCodes.indexOf(type.code) < 0) {
+    if (allowedCodes.indexOf(options.type.code) < 0) {
+        if (options.paramName && options.paramDictionary) {
+            return options.paramDictionary[options.paramName] || '';
+        }
         return '';
     }
-    let cSharpName = type.service + '.' + type.name;
-    if (isList) {
-        return util.format('- A list of long values representing the ids for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+    let cSharpName = options.type.service + '.' + options.type.name;
+    if (options.isList) {
+        return util.format('A list of long values representing the ids for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
     }
-    return util.format('- A long value representing the id for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+    return util.format('A long value representing the id for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+}
+
+function buildParamDescriptionDictionary(documentation) {
+    let parts = documentation.split('<param name=');
+    if (parts.length === 1) {
+        return '';
+    }
+    parts.splice(0, 1);
+    let result = {};
+    parts.forEach(function (part) {
+        let subParts = part.split('">');
+        if (subParts.length !== 2) {
+            throw new Error("Invalid");
+        }
+        let name = subParts[0].replace('"', '');
+        let description = subParts[1].split('</param>')[0];
+        result[name] = description;
+    });
+    return result;
 }
 
 function processTypeCode300(type, doNotAddBraces, param) {
