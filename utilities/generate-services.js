@@ -30,11 +30,12 @@ function onMessage(response) {
     serviceResponse.value.services.forEach(function (service) {
         enums[service.name] = service.enumerations;
     });
-    async.eachSeries(serviceResponse.services, createService, function (err) {
+    async.eachSeries(serviceResponse.value.services, createService, function (err) {
         if (err) {
             throw err;
         }
         client.socket.close(1000);
+        process.exit(0);
     });
 }
 
@@ -271,7 +272,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(procedure.return_type);
+            return getEnumFunction(decodersName, procedure.return_type);
         case 200:
             return 'proto.krpc.schema.ProcedureCall';
         case 201:
@@ -343,7 +344,7 @@ function getEncodeFnForParam(service, parameter) {
             content += encodersName + '.uInt64';
             break;
         case 101:
-            content += getEnumFunction(parameter.type);
+            content += getEnumFunction(encodersName, parameter.type);
             break;
         case 200:
             content += 'new proto.krpc.schema.ProcedureCall';
@@ -376,12 +377,12 @@ function getEncodeFnForParam(service, parameter) {
     return content;
 }
 
-function getEnumFunction(type) {
+function getEnumFunction(prefix, type) {
     let enumVal = _.find(enums[type.service], {name: type.name});
     if (!enumVal) {
         throw new Error("enum not found");
     }
-    let content = decodersName + '.enum({';
+    let content = prefix + '.enum({';
     let length = enumVal.values.length;
     enumVal.values.forEach(function (enumEntry, index) {
         content += enumEntry.value + ' : \'' + enumEntry.name + '\'';
