@@ -92,7 +92,7 @@ function processDocumentation(procedure) {
         content += documentResultType(procedure.return_type, procedure);
         content += ' * @returns {{call :Object, decode: function}}' + eol;
     } else {
-        content += ' * @result {void}' + eol;
+        content += eol + ' * @result {void}' + eol;
         content += ' * @returns {void}' + eol;
     }
     content += '*/' + eol;
