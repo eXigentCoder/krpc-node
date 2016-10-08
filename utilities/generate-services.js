@@ -87,6 +87,8 @@ function processDocumentation(procedureOrService, isService) {
             content += documentParam(param);
         });
         content += eol;
+    } else {
+        content += eol;
     }
     if (procedureOrService.return_type) {
         content += documentResultType(procedureOrService.return_type, procedureOrService);
@@ -205,13 +207,6 @@ function processObjectType(type, doNotAddBraces) {
 
 const allowedCodes = [100, 101];
 function getParamDescription(type, procedureOrParam, isList) {
-    if (type.code > 101) {
-        type.types.forEach(function (tp) {
-            if (tp.code > 101) {
-                console.log(type, procedureOrParam);
-            }
-        });
-    }
     if (type.code === 301 && type.types.length === 1) {
         return getParamDescription(type.types[0], null, true);
     }
