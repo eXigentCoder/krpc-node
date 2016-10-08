@@ -103,11 +103,11 @@ function processDocumentation(procedureOrService, isService) {
 }
 
 function documentParam(param) {
-    return eol + ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param) + ' ' + getParamDescription(param.type);
+    return eol + ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param) + ' ' + getParamDescription(param.type, param);
 }
 
 function documentResultType(returnType, procedure) {
-    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + ' ' + getParamDescription(returnType)+ eol;
+    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + ' ' + getParamDescription(returnType, procedure) + eol;
 }
 
 function addParameter(parameters) {
@@ -204,11 +204,24 @@ function processObjectType(type, doNotAddBraces) {
 }
 
 const allowedCodes = [100, 101];
-function getParamDescription(type) {
-    if (allowedCodes.indexOf(type.code)) {
+function getParamDescription(type, procedureOrParam, isList) {
+    if (type.code > 101) {
+        type.types.forEach(function (tp) {
+            if (tp.code > 101) {
+                console.log(type, procedureOrParam);
+            }
+        });
+    }
+    if (type.code === 301 && type.types.length === 1) {
+        return getParamDescription(type.types[0], null, true);
+    }
+    if (allowedCodes.indexOf(type.code) < 0) {
         return '';
     }
     let cSharpName = type.service + '.' + type.name;
+    if (isList) {
+        return util.format('- A list of long values representing the ids for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+    }
     return util.format('- A long value representing the id for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
 }
 
