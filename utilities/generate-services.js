@@ -65,14 +65,11 @@ function getProcedureCode(procedure, service) {
     let content = eol;
     content += processDocumentation(procedure);
     let paramString = addParameter(procedure.parameters);
-    var procName = _.camelCase(procedure.name);
+    let procName = _.camelCase(procedure.name);
     content += 'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
+    content += '    let encodedArguments = ' + getEncodersArray(procedure.parameters, service) + ';' + eol;
     content += '    return {' + eol;
-    if (paramString) {
-        paramString = ', ' + paramString;
-    }
-    content += '        call: ' + procCallName + '(\'' + service.name + '\', \'' + procedure.name + '\'' + paramString + '),' + eol;
-    content += '        encode: ' + getEncodeFn(procedure.parameters, service) + eol;
+    content += '        call: ' + procCallName + '(\'' + service.name + '\', \'' + procedure.name + '\', encodedArguments),' + eol;
     content += '        decode: ' + getDecodeFn(procedure, service) + eol;
     content += '    };' + eol;
     content += '};' + eol;
@@ -301,66 +298,88 @@ function getDecodeFn(procedure, service) {
     }
 }
 
-function getEncodeFn(parameters, service) {
+function getEncodersArray(parameters, service) {
     if (parameters.length === 0) {
-        return '[],';
+        return '[]';
     }
-    let content = '[';
+    let content = '[' + eol;
     let fnArray = parameters.map(async.apply(getEncodeFnForParam, service));
-    content += fnArray.join(', ');
-    content += '],';
+    content += fnArray.join(', ' + eol);
+    content += eol + '    ]';
     return content;
 }
 
 function getEncodeFnForParam(service, parameter) {
     if (!parameter.type) {
-        return 'null';
+        throw new Error("Not implemented");
     }
+    let content = '        ';
     switch (parameter.type.code) {
         case 0:
-            return 'null';
+            throw new Error("Not implemented");
         case 1:
-            return encodersName + '.double';
+            content += encodersName + '.double';
+            break;
         case 2:
-            return encodersName + '.float';
+            content += encodersName + '.float';
+            break;
         case 3:
-            return encodersName + '.sInt32';
+            content += encodersName + '.sInt32';
+            break;
         case 4:
-            return encodersName + '.sInt64';
+            content += encodersName + '.sInt64';
+            break;
         case 5:
-            return encodersName + '.uInt32';
+            content += encodersName + '.uInt32';
+            break;
         case 6:
-            return encodersName + '.uInt64';
+            content += encodersName + '.uInt64';
+            break;
         case 7:
-            return encodersName + '.bool';
+            content += encodersName + '.bool';
+            break;
         case 8:
-            return encodersName + '.string';
+            content += encodersName + '.string';
+            break;
         case 9:
-            return encodersName + '.bytes';
+            content += encodersName + '.bytes';
+            break;
         case 100:
-            return encodersName + '.uInt64';
+            content += encodersName + '.uInt64';
+            break;
         case 101:
-            return getEnumFunction(parameter.type);
+            content += getEnumFunction(parameter.type);
+            break;
         case 200:
-            return 'proto.krpc.schema.ProcedureCall';
+            content += 'new proto.krpc.schema.ProcedureCall';
+            break;
         case 201:
-            return 'proto.krpc.schema.Stream';
+            content += 'new proto.krpc.schema.Stream';
+            break;
         case 202:
-            return 'proto.krpc.schema.Status';
+            content += 'new proto.krpc.schema.Status';
+            break;
         case 203:
-            return 'proto.krpc.schema.Services';
+            content += 'new proto.krpc.schema.Services';
+            break;
         case 300:
-            return 'proto.krpc.schema.Tuple';
+            content += 'new proto.krpc.schema.Tuple';
+            break;
         case 301:
-            return 'proto.krpc.schema.List';
+            content += 'new proto.krpc.schema.List';
+            break;
         case 302:
-            return 'proto.krpc.schema.Set';
+            content += 'new proto.krpc.schema.Set';
+            break;
         case 303:
-            return 'proto.krpc.schema.Dictionary';
+            content += 'new proto.krpc.schema.Dictionary';
+            break;
         default:
             todo(parameter, service);
             throw new Error(util.format("Unable to determine encoder type string for type for %j", parameter.type));
     }
+    content += '(' + getParamName(parameter) + ')';
+    return content;
 }
 
 function getEnumFunction(type) {

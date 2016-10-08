@@ -58,17 +58,13 @@ function onMessage(done) {
             }
             if (counter === 1) {
                 let vesselId = decodedResult;
-                console.log("Vessel id : " + vesselId.toString());
-                let vesselBuffer = encode(vesselId, 'uint64');// Instance not found
-                let procedure = client.services.spaceCenter.vesselGetControl(vesselBuffer.buffer);
+                let procedure = client.services.spaceCenter.vesselGetControl(vesselId);
                 callStack.push(procedure.decode);
                 client.send(procedure.call);
             }
             else if (counter === 2) {
                 let controlId = decodedResult;
-                var contolBuffer = encode(controlId, 'uint64').buffer;
-                var trueBuffer = encode(true, 'bool').buffer;
-                let procedure = client.services.spaceCenter.controlSetAbort(contolBuffer, trueBuffer);
+                let procedure = client.services.spaceCenter.controlSetAbort(controlId, true);
                 callStack.push(procedure.decode);
                 client.send(procedure.call);
                 //callStack.push(false);
