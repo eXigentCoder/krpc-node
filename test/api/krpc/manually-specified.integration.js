@@ -15,11 +15,9 @@ describe('Manual test workflow', function () {
     });
 });
 
-let callStack = [];
 function onOpen() {
     let procedure = client.services.spaceCenter.getActiveVessel();
-    callStack.push(procedure.decode);
-    client.send(procedure.call);
+    client.send(procedure);
 }
 
 function onError(done) {
@@ -43,23 +41,15 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         response.results.forEach(function (result) {
             expect(result.error).to.not.be.ok();
-            let decodeType = callStack.pop();
-            let decodedResult;
-            if (decodeType) {
-                decodedResult = Client.decode(result.value, decodeType);
-                expect(decodedResult).to.be.ok();
-            }
             if (counter === 1) {
-                let vesselId = decodedResult;
+                let vesselId = result.value;
                 let procedure = client.services.spaceCenter.vesselGetControl(vesselId);
-                callStack.push(procedure.decode);
-                client.send(procedure.call);
+                client.send(procedure);
             }
             else if (counter === 2) {
-                let controlId = decodedResult;
+                let controlId = result.value;
                 let procedure = client.services.spaceCenter.controlSetAbort(controlId, true);
-                callStack.push(procedure.decode);
-                client.send(procedure.call);
+                client.send(procedure);
             } else {
                 success = true;
                 return done();
