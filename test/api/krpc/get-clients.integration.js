@@ -13,7 +13,7 @@ describe('Get-clients', function () {
 
 function onOpen(client) {
     return function () {
-        client.send(client.apis.krpc.clients.get());
+        client.send(client.services.krpc.getClients());
     };
 }
 

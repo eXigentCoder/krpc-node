@@ -15,7 +15,7 @@ client.on('error', onError);
 client.on('message', onMessage);
 var enums = {};
 function onOpen() {
-    client.send(client.apis.krpc.services.get());
+    client.send(client.services.krpc.getServices());
 }
 
 function onError(err) {
@@ -174,8 +174,7 @@ function getTypeStringFromCode(type, doNotAddBraces, param) {
         case 303:
             return processTypeCode303(type, doNotAddBraces, param);
         default:
-            todo(type, param);
-            throw new Error(util.format("Unable to determine type string for type for %j", type));
+            throw new Error(util.format("Unable to determine type string for type for %j %j", type, param));
     }
 }
 
@@ -242,11 +241,6 @@ function processTypeCode303(type, doNotAddBraces, param) {
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
-function todo(procedure, service) {
-    console.log(arguments);
-}
-
-//proto.krpc.schema.Status
 function getDecodeFn(procedure, service) {
     if (!procedure.return_type) {
         return 'null';
@@ -293,8 +287,7 @@ function getDecodeFn(procedure, service) {
         case 303:
             return 'proto.krpc.schema.Dictionary';
         default:
-            todo(procedure, service);
-            throw new Error(util.format("Unable to determine decoder type string for type for %j", procedure.return_type));
+            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.return_type, service));
     }
 }
 
@@ -375,8 +368,7 @@ function getEncodeFnForParam(service, parameter) {
             content += 'new proto.krpc.schema.Dictionary';
             break;
         default:
-            todo(parameter, service);
-            throw new Error(util.format("Unable to determine encoder type string for type for %j", parameter.type));
+            throw new Error(util.format("Unable to determine encoder type string for type for %j %j", parameter, service));
     }
     content += '(' + getParamName(parameter) + ')';
     return content;
