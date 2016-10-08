@@ -1,6 +1,8 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
+let proto = require('../../../lib/utilities/proto');
+var decoders = require('../../../lib/decoders');
 describe('Get-clients', function () {
     it('Should work', function (done) {
         let client = Client();
@@ -28,6 +30,12 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         let clientsResponse = response.results[0];
         expect(clientsResponse.error).to.not.be.ok();
+        clientsResponse.value.items.forEach(function (item) {
+            let client = proto.custom.krpc.schema.Client.decode(item);
+            let id = decoders.uInt32(client.id);
+            expect(client).to.be.ok();
+            expect(id).to.be.ok();
+        });
         return done();
     };
 }

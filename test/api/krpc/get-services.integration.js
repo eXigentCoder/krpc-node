@@ -29,8 +29,7 @@ function onMessage(done) {
         expect(response.results.length).to.equal(1);
         let serviceResponse = response.results[0];
         expect(serviceResponse.error).to.not.be.ok();
-        let services = Client.apis.krpc.services.decode(serviceResponse.value);
-        expect(services).to.be.ok();
+        expect(serviceResponse.value.items).to.be.ok();
         return done();
     };
 }
