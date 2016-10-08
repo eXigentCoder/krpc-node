@@ -66,7 +66,7 @@ function requires() {
 
 function getProcedureCode(procedure, service) {
     let content = eol;
-    content += processDocumentation(procedure);
+    content += processDocumentation(procedure, false, service.name);
     let paramString = addParameter(procedure.parameters);
     let procName = _.camelCase(procedure.name);
     content += 'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
@@ -79,8 +79,13 @@ function getProcedureCode(procedure, service) {
     return content;
 }
 
-function processDocumentation(procedureOrService, isService) {
+function processDocumentation(procedureOrService, isService, serviceName) {
     let content = '/**' + eol;
+    if (isService) {
+        content += ' * @constructor ' + procedureOrService.name + eol;
+    } else {
+        content += ' * @augments ' + serviceName + eol;
+    }
     let doc = procedureOrService.documentation
         .replace(/<doc>\s/g, '@description')
         .replace(/<\/doc>/g, '')
