@@ -81,22 +81,30 @@ function getProcedureCode(procedure, service) {
 
 function processDocumentation(procedureOrService, isService) {
     let content = '/**' + eol;
-    content += ' * ' + procedureOrService.documentation.replace(/\n/g, eol + ' * ');
+    let doc = procedureOrService.documentation
+        .replace(/<doc>\s/g, '@description')
+        .replace(/<\/doc>/g, '')
+        .replace(/\s<summary>\s/g, '')
+        .replace(/<\/summary>\s/g, '')
+        .replace(/\s<remarks>\s/g, '')
+        .replace(/<\/remarks>\s/g, '')
+        .replace(/\s<param.*<\/param>\s/g, '')
+        .replace(/<see cref="/g, '{@link ')
+        .replace(/" \/>/g, '}');
+    doc = doc.trim().replace(/\n\s/g, eol + ' * ');
+    content += ' * ' + doc;
     if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
-        procedureOrService.parameters.forEach(function (param) {
-            content += documentParam(param);
-        });
         content += eol;
+        procedureOrService.parameters.forEach(function (param) {
+            content += documentParam(param) + eol;
+        });
     } else {
         content += eol;
     }
     if (procedureOrService.return_type) {
-        content += documentResultType(procedureOrService.return_type, procedureOrService);
+        content += documentResultType(procedureOrService.return_type, procedureOrService) + eol;
         content += ' * @returns {{call :Object, decode: function}}' + eol;
     } else {
-        if (isService) {
-            content += eol;
-        }
         content += ' * @result {void}' + eol;
         content += ' * @returns {void}' + eol;
     }
@@ -105,11 +113,11 @@ function processDocumentation(procedureOrService, isService) {
 }
 
 function documentParam(param) {
-    return eol + ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param) + ' ' + getParamDescription(param.type, param);
+    return ' * @param ' + getTypeStringFromCode(param.type, null, param) + ' ' + getParamName(param) + ' ' + getParamDescription(param.type, param);
 }
 
 function documentResultType(returnType, procedure) {
-    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + ' ' + getParamDescription(returnType, procedure) + eol;
+    return ' * @result ' + getTypeStringFromCode(returnType, null, procedure) + ' ' + getParamDescription(returnType, procedure);
 }
 
 function addParameter(parameters) {
