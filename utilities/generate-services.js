@@ -83,6 +83,7 @@ function processDocumentation(procedureOrService, isService, serviceName) {
     let content = '/**' + eol;
     if (isService) {
         content += ' * @constructor ' + procedureOrService.name + eol;
+        content += ' * @name ' + procedureOrService.name + eol;
     } else {
         content += ' * @augments ' + serviceName + eol;
     }

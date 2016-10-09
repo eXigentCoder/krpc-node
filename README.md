@@ -14,9 +14,16 @@ A node.js client library for krpc. Allows you to send commands to Kerbal Space P
 
 ## Table of Contents
 
--   Client:
--   [Client](#Client)
+-   [Client constructor function](#Client)
+-   [Client object](#client)
 -   Services:
+-   [Drawing](#Drawing)
+-   [InfernalRobotics](#InfernalRobotics)
+-   [KerbalAlarmClock](#KerbalAlarmClock)
+-   [KRPC](#KRPC)
+-   [RemoteTech](#RemoteTech)
+-   [SpaceCenter](#SpaceCenter)
+-   [UI](#UI)
 
 ## Client
 
@@ -25,11 +32,30 @@ Create a new krpc-node client
 **Parameters**
 
 -   `options` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options used to create the client
-    -   `options.protocol` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The protocol to use to connect to the server. ws or wss.
-    -   `options.host` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The host address of the server.
-    -   `options.port` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** The port number on which to connect to the server.
+    -   `options.protocol` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** ="ws" - The protocol to use to connect to the server. ws or wss.
+    -   `options.host` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** ="127.0.0.1" - The host address of the server.
+    -   `options.port` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** ="50000" - The port number on which to connect to the server.
     -   `options.wsProtocols` **\[([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>)]** WebSocket protocols.
--   `object`  } - Additional connection options.
+    -   `options.wsOptions` **\[[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** Additional connection options.
+
+**Examples**
+
+```javascript
+let Client = require('krpc-node');
+let client = Client();
+client.on('open', function (event) {
+    client.send(client.services.krpc.getClients());
+});
+client.on('error', function (err) {
+
+});
+client.on('message', function (response , event) {
+
+});
+client.on('close', function (event) {
+
+});
+```
 
 Returns **[client](#client)** 
 
@@ -44,6 +70,14 @@ An instance of the Client class
 -   `decodeStack` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)>** The stack of functions to use to decode responses from the server.
 -   `send` **[send](#send)** Sends one or more calls to the server to process
 -   `on` **[on](#on)** Registers for one of the events [open, message, error, close].
+-   `services` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of services that can be called. Each function within a service will return a procedureCall object.
+    -   `services.drawing` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing objects in the flight scene. For drawing and interacting with the user interface, see the UI service.
+    -   `services.infernalRobotics` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214/">Infernal Robotics</a>.
+    -   `services.kerbalAlarmClock` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/22809-10x-kerbal-alarm-clock-v3500-dec-3/">Kerbal Alarm Clock</a>.
+    -   `services.krpc` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Main kRPC service, used by clients to interact with basic server functionality.
+    -   `services.remoteTech` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/">RemoteTech</a>.
+    -   `services.spaceCenter` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality to interact with Kerbal Space Program. This includes controlling the active vessel, managing its resources, planning maneuver nodes and auto-piloting.
+    -   `services.ui` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing and interacting with in-game user interface elements. For drawing 3D objects in the flight scene, see the Drawing service.
 
 ## on
 
