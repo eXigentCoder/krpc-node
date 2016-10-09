@@ -1,7 +1,8 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
-
+let proto = require('../../../lib/utilities/proto');
+var decoders = require('../../../lib/decoders');
 describe('Get-clients', function () {
     it('Should work', function (done) {
         let client = Client();
@@ -13,7 +14,7 @@ describe('Get-clients', function () {
 
 function onOpen(client) {
     return function () {
-        client.send(client.apis.krpc.clients.get());
+        client.send(client.services.krpc.getClients());
     };
 }
 
@@ -27,10 +28,12 @@ function onMessage(done) {
     return function (response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
-        let clientsResponse = response.results[0];
-        expect(clientsResponse.error).to.not.be.ok();
-        let clients = Client.apis.krpc.clients.decode(clientsResponse.value);
-        expect(clients).to.be.ok();
+        let result = response.results[0];
+        expect(result.error).to.not.be.ok();
+        result.value.items.forEach(function (item) {
+            expect(item).to.be.ok();
+            //todo
+        });
         return done();
     };
 }
