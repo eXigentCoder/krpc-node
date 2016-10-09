@@ -8,6 +8,14 @@
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "test": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
+    "readme-client": "node_modules/.bin/documentation readme --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
+    "readme-drawing": "node_modules/.bin/documentation readme \"lib/services/drawing.js\" --readme-file=\"documentation/drawing.md\" --section=API --shallow=true",
+    "readme-infernal-robotics": "node_modules/.bin/documentation readme \"lib/services/infernal-robotics.js\" --readme-file=\"documentation/infernal-robotics.md\" --section=API --shallow=true",
+    "readme-kerbal-alarm-clock": "node_modules/.bin/documentation readme \"lib/services/kerbal-alarm-clock.js\" --readme-file=\"documentation/kerbal-alarm-clock.md\" --section=API --shallow=true",
+    "readme-krpc": "node_modules/.bin/documentation readme \"lib/services/krpc.js\" --readme-file=\"documentation/krpc.md\" --section=API --shallow=true",
+    "readme-remote-tech": "node_modules/.bin/documentation readme \"lib/services/remote-tech.js\" --readme-file=\"documentation/remote-tech.md\" --section=API --shallow=true",
+    "readme-space-center": "node_modules/.bin/documentation readme \"lib/services/space-center.js\" --readme-file=\"documentation/space-center.md\" --section=API --shallow=true",
+    "readme-ui": "node_modules/.bin/documentation readme \"lib/services/ui.js\" --readme-file=\"documentation/ui.md\" --section=API --shallow=true",
     "check-dependencies": "npm-check -Eu"
   },
   "repository": {
@@ -22,6 +30,8 @@
   "author": "Ryan Kotzen",
   "license": "MIT",
   "dependencies": {
+    "bytebuffer": "5.0.1",
+    "documentation": "4.0.0-beta10",
     "lodash": "4.15.0",
     "protobufjs": "5.0.1",
     "ws": "1.1.1"
