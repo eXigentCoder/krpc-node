@@ -1,16 +1,4 @@
 toc:
- - name: Table of Contents
-   description: |
-     - [Client constructor function](#Client)
-     - [Client object](#client)
-     - Services:
-     - [Drawing](#Drawing)
-     - [InfernalRobotics](#InfernalRobotics)
-     - [KerbalAlarmClock](#KerbalAlarmClock)
-     - [KRPC](#KRPC)
-     - [RemoteTech](#RemoteTech)
-     - [SpaceCenter](#SpaceCenter)
-     - [UI](#UI)
  - Client
  - client
  - on
