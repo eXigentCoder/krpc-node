@@ -1,8 +1,6 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
-let proto = require('../../../lib/utilities/proto');
-var decoders = require('../../../lib/decoders');
 describe('Get-clients', function () {
     it('Should work', function (done) {
         let client = Client();
