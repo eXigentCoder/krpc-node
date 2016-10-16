@@ -8,7 +8,7 @@
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
-    "readme-client": "node_modules/.bin/documentation readme --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
+    "readme-client": "node_modules/.bin/documentation readme \"lib/client.js\" \"lib/encoders.js\" \"lib/decoders.js\" --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
     "readme-drawing": "node_modules/.bin/documentation readme \"lib/services/drawing.js\" --readme-file=\"documentation/drawing.md\" --section=API --shallow=true",
     "readme-infernal-robotics": "node_modules/.bin/documentation readme \"lib/services/infernal-robotics.js\" --readme-file=\"documentation/infernal-robotics.md\" --section=API --shallow=true",
     "readme-kerbal-alarm-clock": "node_modules/.bin/documentation readme \"lib/services/kerbal-alarm-clock.js\" --readme-file=\"documentation/kerbal-alarm-clock.md\" --section=API --shallow=true",
