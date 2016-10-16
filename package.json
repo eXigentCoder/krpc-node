@@ -6,7 +6,7 @@
   "scripts": {
     "mocha": "mocha --full-trace test/**/*.js",
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
-    "test": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
+    "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
     "readme-client": "node_modules/.bin/documentation readme --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
     "readme-drawing": "node_modules/.bin/documentation readme \"lib/services/drawing.js\" --readme-file=\"documentation/drawing.md\" --section=API --shallow=true",
