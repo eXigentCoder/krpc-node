@@ -4,7 +4,7 @@ A node.js client library for krpc. Allows you to send commands to Kerbal Space P
 
 > JavaScript to space via krpc!
 
-![NPM](https://nodei.co/npm/krpc-node.svg)
+![NPM](https://nodei.co/npm/krpc-node.png)
 
 ![Build status](https://travis-ci.org/eXigentCoder/krpc-node.svg?branch=master)
 
