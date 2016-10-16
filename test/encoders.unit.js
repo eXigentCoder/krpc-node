@@ -3,7 +3,6 @@ require('./init.js');
 let encoders = require('../lib/encoders');
 let decoders = require('../lib/decoders');
 let ByteBuffer = require("bytebuffer");
-let _ = require('lodash');
 
 describe('example', function () {
     it('Decoded value that has been encoded should equal the original value for floats', function () {
