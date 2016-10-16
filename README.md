@@ -12,7 +12,7 @@ A node.js client library for krpc. Allows you to send commands to Kerbal Space P
 
 > Client
 
--   [Client constructor function](#Client)
+-   [Client constructor function](#clientconstructorfunction)
 -   [Client object](#client)
 
 > Services:
