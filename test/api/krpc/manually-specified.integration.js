@@ -8,16 +8,16 @@ let util = require('util');
 describe('Manual test workflow', function () {
     it('Should work', function (done) {
         client = Client();
-        client.on('open', onOpen);
-        client.on('error', onError(done));
-        client.on('message', onMessage(done));
-        client.on('close', onClose(done));
+        client.rpc.on('open', onOpen);
+        client.rpc.on('error', onError(done));
+        client.rpc.on('message', onMessage(done));
+        client.rpc.on('close', onClose(done));
     });
 });
 
 function onOpen() {
     let procedure = client.services.spaceCenter.getActiveVessel();
-    client.send(procedure);
+    client.rpc.send(procedure);
 }
 
 function onError(done) {
@@ -44,12 +44,12 @@ function onMessage(done) {
             if (counter === 1) {
                 let vesselId = result.value;
                 let procedure = client.services.spaceCenter.vesselGetControl(vesselId);
-                client.send(procedure);
+                client.rpc.send(procedure);
             }
             else if (counter === 2) {
                 let controlId = result.value;
                 let procedure = client.services.spaceCenter.controlSetAbort(controlId, true);
-                client.send(procedure);
+                client.rpc.send(procedure);
             } else {
                 success = true;
                 return done();

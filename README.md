@@ -52,17 +52,17 @@ Create a new krpc-node client
 let util = require('util');
 let Client = require('krpc-node');
 let client = Client();
-client.on('open', function (event) {
+client.rpc.on('open', function (event) {
     console.log(util.format('Connection Opened : %j', event));
     client.send(client.services.krpc.getClients());
 });
-client.on('error', function (err) {
+client.rpc.on('error', function (err) {
     console.log(util.format('Error : %j', err));
 });
-client.on('message', function (response , event) {
+client.rpc.on('message', function (response , event) {
     console.log(util.format('Response : %j', response));
 });
-client.on('close', function (event) {
+client.rpc.on('close', function (event) {
     console.log(util.format('Connection Closed : %j', event));
 });
 ```
@@ -125,7 +125,7 @@ Takes in a value and encodes it as a `double` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeFloat
 
@@ -135,7 +135,7 @@ Takes in a value and encodes it as a `float` stored in a [ByteBuffer]<https://ww
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeSInt32
 
@@ -145,7 +145,7 @@ Takes in a value and encodes it as a `sInt32` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeSInt64
 
@@ -155,7 +155,7 @@ Takes in a value and encodes it as a `sInt64` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeUInt32
 
@@ -165,7 +165,7 @@ Takes in a value and encodes it as a `uInt32` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeUInt64
 
@@ -175,7 +175,7 @@ Takes in a value and encodes it as a `uInt64` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeBool
 
@@ -185,7 +185,7 @@ Takes in a value and encodes it as a `bool` stored in a [ByteBuffer]<https://www
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeString
 
@@ -195,7 +195,7 @@ Takes in a value and encodes it as a `string` stored in a [ByteBuffer]<https://w
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeBytes
 
@@ -205,7 +205,7 @@ Takes in a value and encodes it as `bytes` stored in a [ByteBuffer]<https://www.
 
 -   `value`  The value to encode.
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## encodeEnum
 
@@ -228,7 +228,7 @@ Takes in a string value and using the provided enum definition encodes it as a `
 
 -   Throws **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** If the provided value was not found in the enum definition
 
-Returns **(ByteBuffer | void)** 
+Returns **(ByteBuffer | void)**
 
 ## decodeDouble
 
@@ -238,7 +238,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)** 
+Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)**
 
 ## decodeFloat
 
@@ -248,7 +248,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)** 
+Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)**
 
 ## decodeSInt32
 
@@ -258,7 +258,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**
 
 ## decodeSInt64
 
@@ -268,7 +268,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **(!Long | !{value: Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | !Long | {value: !Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})** 
+Returns **(!Long | !{value: Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | !Long | {value: !Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})**
 
 ## decodeUInt32
 
@@ -278,7 +278,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **({value, length} | [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | !{value: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})** 
+Returns **({value, length} | [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | !{value: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})**
 
 ## decodeUInt64
 
@@ -288,7 +288,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **any** 
+Returns **any**
 
 ## decodeBool
 
@@ -298,7 +298,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
 
 ## decodeString
 
@@ -308,7 +308,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | !{string: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | {string, length})** 
+Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | !{string: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | {string, length})**
 
 ## decodeBytes
 
@@ -318,7 +318,7 @@ Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object represe
 
 -   `buffer` **ByteBuffer** The buffer object
 
-Returns **any** 
+Returns **any**
 
 ## decodeEnum
 

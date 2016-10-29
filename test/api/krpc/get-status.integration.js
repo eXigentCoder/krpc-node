@@ -6,16 +6,16 @@ const _ = require('lodash');
 describe('Get-status', function () {
     it('Should work', function (done) {
         let client = Client();
-        client.on('open', onOpen(client));
-        client.on('error', onError(done));
-        client.on('message', onMessage(done));
+        client.rpc.on('open', onOpen(client));
+        client.rpc.on('error', onError(done));
+        client.rpc.on('message', onMessage(done));
     });
 });
 
 function onOpen(client) {
     return function () {
         let getStatus = client.services.krpc.getStatus();
-        client.send(getStatus);
+        client.rpc.send(getStatus);
     };
 }
 

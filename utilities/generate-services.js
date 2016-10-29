@@ -10,12 +10,12 @@ const decodersName = 'decoders';
 const encodersName = 'encoders';
 let eol = os.EOL;
 let client = Client();
-client.on('open', onOpen);
-client.on('error', onError);
-client.on('message', onMessage);
+client.rpc.on('open', onOpen);
+client.rpc.on('error', onError);
+client.rpc.on('message', onMessage);
 var enums = {};
 function onOpen() {
-    client.send(client.services.krpc.getServices());
+    client.rpc.send(client.services.krpc.getServices());
 }
 
 function onError(err) {
@@ -34,7 +34,7 @@ function onMessage(response) {
         if (err) {
             throw err;
         }
-        client.socket.close(1000);
+        client.rpc.socket.close(1000);
         process.exit(0);
     });
 }
