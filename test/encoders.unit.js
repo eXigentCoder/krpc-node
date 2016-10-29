@@ -3,7 +3,7 @@ require('./init.js');
 let encoders = require('../lib/encoders');
 let decoders = require('../lib/decoders');
 let ByteBuffer = require("bytebuffer");
-var Long = require('long');
+let Long = require('long');
 
 describe('Encoders', function () {
     describe('Double', function () {
