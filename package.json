@@ -5,6 +5,7 @@
   "main": "lib/client.js",
   "scripts": {
     "mocha": "mocha --full-trace test/**/*.js",
+    "test": "mocha --full-trace test/**/*.unit.js",
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
@@ -42,6 +43,7 @@
     "dirty-chai": "1.2.2",
     "eslint": "3.4.0",
     "istanbul": "0.4.5",
+    "long": "3.2.0",
     "mocha": "3.0.2",
     "npm-check": "5.2.3",
     "plato": "1.7.0"
