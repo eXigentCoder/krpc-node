@@ -7,6 +7,7 @@
     "mocha": "mocha --full-trace test/**/*.js",
     "test": "mocha --full-trace test/**/*.unit.js",
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
+    "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "report": "plato -r -d report -e .eslintrc lib",
     "readme-client": "node_modules/.bin/documentation readme \"lib/client.js\" \"lib/encoders.js\" \"lib/decoders.js\" --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",

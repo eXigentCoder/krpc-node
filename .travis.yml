@@ -6,11 +6,10 @@ branches:
   - master
   - develop
   - dev
-before_install:
-- git checkout -qf master
 before_script:
-- npm run lint
+- npm run lint-ci
 before_deploy:
+- git checkout -qf master
 - git config --global user.email "potz666@gmail.com"
 - git config --global user.name "eXigentCoder-CI"
 - git config credential.helper "store --file=.git/credentials"
