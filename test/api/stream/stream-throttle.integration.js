@@ -15,14 +15,15 @@ describe('Streams', function () {
         client.rpc.on('error', onError);
         client.rpc.on('message', getActiveVesselComplete);
         client.rpc.on('close', onClose);
-        client.connectToStreamServer();
-        client.stream.on('open', onOpen);
+
+        // client.stream.on('open', onOpen);
     });
 });
 
 function onOpen() {
     openCounter++;
     if (openCounter < 2) {
+        client.connectToStreamServer();
         return;
     }
     let procedure = client.services.spaceCenter.getActiveVessel();
