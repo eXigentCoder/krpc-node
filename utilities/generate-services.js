@@ -80,43 +80,43 @@ function getProcedureCode(procedure, service) {
 }
 
 function processDocumentation(procedureOrService, isService, serviceName) {
-    let content = '/**' + eol;
-    if (isService) {
-        content += ' * @constructor ' + procedureOrService.name + eol;
-        content += ' * @name ' + procedureOrService.name + eol;
-    } else {
-        content += ' * @augments ' + serviceName + eol;
-    }
-    let doc = procedureOrService.documentation
-        .replace(/<doc>\s/g, '@description')
-        .replace(/<\/doc>/g, '')
-        .replace(/\s<summary>\s/g, '')
-        .replace(/<\/summary>\s/g, '')
-        .replace(/\s<remarks>\s/g, '')
-        .replace(/<\/remarks>\s/g, '')
-        .replace(/\s<param.*<\/param>\s/g, '')
-        .replace(/<see cref="/g, '{@link ')
-        .replace(/" \/>/g, '}');
-    doc = doc.trim().replace(/\n\s/g, eol + ' * ');
-    content += ' * ' + doc;
-    if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
-        content += eol;
-        let paramDictionary = buildParamDescriptionDictionary(procedureOrService.documentation);
-        procedureOrService.parameters.forEach(function (param) {
-            content += documentParam(param, paramDictionary, procedureOrService) + eol;
-        });
-    } else {
-        content += eol;
-    }
-    if (procedureOrService.return_type) {
-        content += documentResultType(procedureOrService.return_type, procedureOrService) + eol;
-        content += ' * @returns {{call :Object, decode: function}}' + eol;
-    } else {
-        content += ' * @result {void}' + eol;
-        content += ' * @returns {void}' + eol;
-    }
-    content += '*/' + eol;
-    return content;
+        let content = '/**' + eol;
+        if (isService) {
+            content += ' * @constructor ' + procedureOrService.name + eol;
+            content += ' * @name ' + procedureOrService.name + eol;
+        } else {
+            content += ' * @augments ' + serviceName + eol;
+        }
+        let doc = procedureOrService.documentation
+            .replace(/<doc>\s/g, '@description ')
+            .replace(/<\/doc>/g, '')
+            .replace(/\s<summary>\s/g, ' ')
+            .replace(/<\/summary>\s/g, '')
+            .replace(/\s<remarks>\s/g, '\n ')
+            .replace(/<\/remarks>\s/g, '')
+            .replace(/<param.*<\/param>/g, '')
+            .replace(/<see cref="/g, '{@link ')
+            .replace(/" \/>/g, '}');
+        doc = doc.trim().replace(/\n/g, eol + ' * ');
+        content += ' * ' + doc;
+        if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
+            content += eol;
+            let paramDictionary = buildParamDescriptionDictionary(procedureOrService.documentation);
+            procedureOrService.parameters.forEach(function (param) {
+                content += documentParam(param, paramDictionary, procedureOrService) + eol;
+            });
+        } else {
+            content += eol;
+        }
+        if (procedureOrService.return_type) {
+            content += _.trimEnd(documentResultType(procedureOrService.return_type, procedureOrService)) + eol;
+            content += ' * @returns {{call :Object, decode: function}}' + eol;
+        } else {
+            content += ' * @result {void}' + eol;
+            content += ' * @returns {void}' + eol;
+        }
+        content += '*/' + eol;
+        return content;
 }
 
 function documentParam(param, paramDictionary, procedureOrService) {
@@ -209,7 +209,8 @@ function getTypeStringFromCode(type, doNotAddBraces, param) {
         case 300:
             return processTypeCode300(type, doNotAddBraces, param);
         case 301:
-            return processTypeCode301(type, doNotAddBraces, param);
+        case 302:
+            return processTypeCode301or302(type, doNotAddBraces, param);
         case 303:
             return processTypeCode303(type, doNotAddBraces, param);
         default:
@@ -269,11 +270,12 @@ function buildParamDescriptionDictionary(documentation) {
     let result = {};
     parts.forEach(function (part) {
         let subParts = part.split('">');
-        if (subParts.length !== 2) {
-            throw new Error("Invalid");
+        if (subParts.length < 2) {
+            throw new Error("Invalid", documentation);
         }
         let name = subParts[0].replace('"', '');
-        let description = subParts[1].split('</param>')[0];
+        var descriptionParts = subParts.slice(1, subParts.length);
+        let description = descriptionParts.join().split('</param>')[0];
         result[name] = description;
     });
     return result;
@@ -292,7 +294,7 @@ function processTypeCode300(type, doNotAddBraces, param) {
     return addBracesIfRequired(typeString, doNotAddBraces);
 }
 
-function processTypeCode301(type, doNotAddBraces, param) {
+function processTypeCode301or302(type, doNotAddBraces, param) {
     let typeString = '';
     let length = type.types.length;
     type.types.forEach(function (innerType, index) {
@@ -379,7 +381,7 @@ function getEncodersArray(parameters, service) {
     }
     let content = '[' + eol;
     let fnArray = parameters.map(async.apply(getEncodeFnForParam, service));
-    content += fnArray.join(', ' + eol);
+    content += fnArray.join(',' + eol);
     content += eol + '    ]';
     return content;
 }
