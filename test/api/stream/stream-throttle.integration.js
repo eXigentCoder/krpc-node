@@ -76,11 +76,19 @@ function getActiveVesselControlComplete(response) {
         id: getFirstResult(response)
     };
     let getThrottleCall = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id).call;
-    client.rpc.send(client.services.krpc.addStream(getThrottleCall));
+    var addStreamCall = client.services.krpc.addStream(getThrottleCall);
+    client.rpc.send(addStreamCall);
+    replaceMessageHandler(streamAdded);
     client.stream.on('message', getThrottleComplete);
     //example of how to call without streams:
     // client.rpc.send(client.services.spaceCenter.controlGetThrottle(game.vessel.control.id));
     // replaceMessageHandler(getThrottleComplete);
+}
+
+function streamAdded(response) {
+    var stream = getFirstResult(response);
+    game.streams = game.streams || [];
+    game.streams.push(stream.id);
 }
 
 function getThrottleComplete(response) {
