@@ -6,30 +6,18 @@ let client;
 let success = false;
 let game = {};
 let done;
-var openCounter = 0;
+
 describe('Streams', function () {
     it('Stream throttle', function (testDone) {
         done = testDone;
         client = Client();
-        client.rpc.on('open', onOpen);
+        client.rpc.on('open', clientConnectionOpen);
         client.rpc.on('error', onError);
-        client.rpc.on('message', getActiveVesselComplete);
         client.rpc.on('close', onClose);
-
-        // client.stream.on('open', onOpen);
     });
 });
 
-function onOpen() {
-    openCounter++;
-    if (openCounter < 2) {
-        client.connectToStreamServer();
-        return;
-    }
-    let procedure = client.services.spaceCenter.getActiveVessel();
-    client.rpc.send(procedure);
-}
-
+// ----=================[ Start helper functions ]=================----
 function onError(err) {
     done(err);
 }
@@ -41,12 +29,46 @@ function onClose(event) {
     return done(new Error(util.format("Socket closed before done", event)));
 }
 
+function getFirstResult(response) {
+    expect(response.error).to.not.be.ok();
+    expect(response.results.length).to.equal(1);
+    let result = response.results[0];
+    expect(result.error).to.not.be.ok();
+    return result.value;
+}
+
+function replaceMessageHandler(fn) {
+    client.rpc.emitter.removeAllListeners('message');
+    client.rpc.on('message', fn);
+}
+// ----=================[ End helper functions ]=================----
+
+function clientConnectionOpen() {
+    let procedure = client.services.krpc.getClientId();
+    client.rpc.send(procedure);
+    client.rpc.on('message', getClientIdComplete);
+}
+
+function getClientIdComplete(response) {
+    var id = getFirstResult(response).toString('base64');
+    client.connectToStreamServer(id);
+    client.stream.on('open', streamOpen);
+    client.stream.on('error', onError);
+    client.stream.on('close', onClose);
+}
+
+function streamOpen() {
+    let procedure = client.services.spaceCenter.getActiveVessel();
+    client.rpc.send(procedure);
+    replaceMessageHandler(getActiveVesselComplete);
+}
+
 function getActiveVesselComplete(response) {
     game.vessel = {
         id: getFirstResult(response)
     };
-    replaceMessageHandler(getActiveVesselControlComplete);
     client.rpc.send(client.services.spaceCenter.vesselGetControl(game.vessel.id));
+    replaceMessageHandler(getActiveVesselControlComplete);
 }
 
 function getActiveVesselControlComplete(response) {
@@ -54,11 +76,14 @@ function getActiveVesselControlComplete(response) {
         id: getFirstResult(response)
     };
     let getThrottleCall = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id).call;
-    replaceMessageHandler(addStreamResponse);
     client.rpc.send(client.services.krpc.addStream(getThrottleCall));
+    client.stream.on('message', getThrottleComplete);
+    //example of how to call without streams:
+    // client.rpc.send(client.services.spaceCenter.controlGetThrottle(game.vessel.control.id));
+    // replaceMessageHandler(getThrottleComplete);
 }
 
-function addStreamResponse(response) {
+function getThrottleComplete(response) {
     game.vessel.control.throttle = getFirstResult(response);
     console.log(util.format("Updating throttle value from %s to 1", game.vessel.control.throttle));
     replaceMessageHandler(setThrottleToFullComplete);
@@ -75,17 +100,4 @@ function launched(response) {
     let vesselId = getFirstResult(response);
     expect(vesselId).to.be.ok();
     process.exit(0);
-}
-
-function getFirstResult(response) {
-    expect(response.error).to.not.be.ok();
-    expect(response.results.length).to.equal(1);
-    let result = response.results[0];
-    expect(result.error).to.not.be.ok();
-    return result.value;
-}
-
-function replaceMessageHandler(fn) {
-    client.rpc.emitter.removeAllListeners('message');
-    client.rpc.on('message', fn);
 }
