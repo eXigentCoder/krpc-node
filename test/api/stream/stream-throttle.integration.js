@@ -75,37 +75,42 @@ function getActiveVesselControlComplete(response) {
     game.vessel.control = {
         id: getFirstResult(response)
     };
-    let getThrottleCall = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id).call;
-    var addStreamCall = client.services.krpc.addStream(getThrottleCall);
+    let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
+    var addStreamCall = client.services.krpc.addStream(getThrottle.call);
     client.rpc.send(addStreamCall);
     replaceMessageHandler(streamAdded);
-    client.stream.on('message', getThrottleComplete);
-    //example of how to call without streams:
-    // client.rpc.send(client.services.spaceCenter.controlGetThrottle(game.vessel.control.id));
-    // replaceMessageHandler(getThrottleComplete);
+    client.stream.on('message', streamUpdate);
+    function streamAdded(response) {
+        var stream = getFirstResult(response);
+        game.streams = game.streams || [];
+        game.streams[stream.id.toString()] = getThrottle.decode;
+    }
 }
 
-function streamAdded(response) {
-    var stream = getFirstResult(response);
-    game.streams = game.streams || [];
-    game.streams.push(stream.id);
+
+function streamUpdate(streamUpdate) {
+    streamUpdate.results.forEach(function (update) {
+        if (update.result.error) {
+            console.error(update.result.error)
+            return;
+        }
+        var parsedThrottleValue = game.streams[update.id.toString()](update.result.value);
+        console.log(parsedThrottleValue);
+    });
+    // game.vessel.control.throttle = getFirstResult(response);
+    // console.log(util.format("Updating throttle value from %s to 1", game.vessel.control.throttle));
+    // replaceMessageHandler(setThrottleToFullComplete);
+    // let call = client.services.spaceCenter.controlSetThrottle(game.vessel.control.id, 1);
+    // client.rpc.send(call);
 }
 
-function getThrottleComplete(response) {
-    game.vessel.control.throttle = getFirstResult(response);
-    console.log(util.format("Updating throttle value from %s to 1", game.vessel.control.throttle));
-    replaceMessageHandler(setThrottleToFullComplete);
-    let call = client.services.spaceCenter.controlSetThrottle(game.vessel.control.id, 1);
-    client.rpc.send(call);
-}
+// function setThrottleToFullComplete(response) {
+//     replaceMessageHandler(launched);
+//     client.rpc.send(client.services.spaceCenter.controlActivateNextStage(game.vessel.control.id));
+// }
 
-function setThrottleToFullComplete(response) {
-    replaceMessageHandler(launched);
-    client.rpc.send(client.services.spaceCenter.controlActivateNextStage(game.vessel.control.id));
-}
-
-function launched(response) {
-    let vesselId = getFirstResult(response);
-    expect(vesselId).to.be.ok();
-    process.exit(0);
-}
+// function launched(response) {
+//     let vesselId = getFirstResult(response);
+//     expect(vesselId).to.be.ok();
+//     process.exit(0);
+// }
