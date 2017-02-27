@@ -80,43 +80,43 @@ function getProcedureCode(procedure, service) {
 }
 
 function processDocumentation(procedureOrService, isService, serviceName) {
-    let content = '/**' + eol;
-    if (isService) {
-        content += ' * @constructor ' + procedureOrService.name + eol;
-        content += ' * @name ' + procedureOrService.name + eol;
-    } else {
-        content += ' * @augments ' + serviceName + eol;
-    }
-    let doc = procedureOrService.documentation
-        .replace(/<doc>\s/g, '@description ')
-        .replace(/<\/doc>/g, '')
-        .replace(/\s<summary>\s/g, ' ')
-        .replace(/<\/summary>\s/g, '')
-        .replace(/\s<remarks>\s/g, '\n ')
-        .replace(/<\/remarks>\s/g, '')
-        .replace(/<param.*<\/param>/g, '')
-        .replace(/<see cref="/g, '{@link ')
-        .replace(/" \/>/g, '}');
-    doc = doc.trim().replace(/\n/g, eol + ' * ');
-    content += ' * ' + doc;
-    if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
-        content += eol;
-        let paramDictionary = buildParamDescriptionDictionary(procedureOrService.documentation);
-        procedureOrService.parameters.forEach(function (param) {
-            content += documentParam(param, paramDictionary, procedureOrService) + eol;
-        });
-    } else {
-        content += eol;
-    }
-    if (procedureOrService.return_type) {
-        content += _.trimEnd(documentResultType(procedureOrService.return_type, procedureOrService)) + eol;
-        content += ' * @returns {{call :Object, decode: function}}' + eol;
-    } else {
-        content += ' * @result {void}' + eol;
-        content += ' * @returns {void}' + eol;
-    }
-    content += '*/' + eol;
-    return content;
+        let content = '/**' + eol;
+        if (isService) {
+            content += ' * @constructor ' + procedureOrService.name + eol;
+            content += ' * @name ' + procedureOrService.name + eol;
+        } else {
+            content += ' * @augments ' + serviceName + eol;
+        }
+        let doc = procedureOrService.documentation
+            .replace(/<doc>\s/g, '@description ')
+            .replace(/<\/doc>/g, '')
+            .replace(/\s<summary>\s/g, ' ')
+            .replace(/<\/summary>\s/g, '')
+            .replace(/\s<remarks>\s/g, '\n ')
+            .replace(/<\/remarks>\s/g, '')
+            .replace(/<param.*<\/param>/g, '')
+            .replace(/<see cref="/g, '{@link ')
+            .replace(/" \/>/g, '}');
+        doc = doc.trim().replace(/\n/g, eol + ' * ');
+        content += ' * ' + doc;
+        if (procedureOrService.parameters && procedureOrService.parameters.length !== 0) {
+            content += eol;
+            let paramDictionary = buildParamDescriptionDictionary(procedureOrService.documentation);
+            procedureOrService.parameters.forEach(function (param) {
+                content += documentParam(param, paramDictionary, procedureOrService) + eol;
+            });
+        } else {
+            content += eol;
+        }
+        if (procedureOrService.return_type) {
+            content += _.trimEnd(documentResultType(procedureOrService.return_type, procedureOrService)) + eol;
+            content += ' * @returns {{call :Object, decode: function}}' + eol;
+        } else {
+            content += ' * @result {void}' + eol;
+            content += ' * @returns {void}' + eol;
+        }
+        content += '*/' + eol;
+        return content;
 }
 
 function documentParam(param, paramDictionary, procedureOrService) {
@@ -256,9 +256,9 @@ function getParamDescription(options) {
     }
     let cSharpName = options.type.service + '.' + options.type.name;
     if (options.isList) {
-        return util.format('A list of long values representing the ids for the', cSharpName);
+        return util.format('A list of long values representing the ids for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
     }
-    return util.format('A long value representing the id for the', cSharpName);
+    return util.format('A long value representing the id for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
 }
 
 function buildParamDescriptionDictionary(documentation) {
