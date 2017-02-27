@@ -91,12 +91,27 @@ function getVesselFlightComplete(response) {
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
     var addStreamCall = client.services.krpc.addStream(getThrottle.call);
     client.rpc.send(addStreamCall);
-    replaceMessageHandler(streamAdded);
+    replaceMessageHandler(throttleStreamAdded);
     client.stream.on('message', streamUpdate);
-    function streamAdded(response) {
+    function throttleStreamAdded(response) {
         var stream = getFirstResult(response);
         game.streams = game.streams || [];
-        game.streams[stream.id.toString()] = getThrottle.decode;
+        game.streams[stream.id.toString()] = {
+            name: "Throttle",
+            decode: getThrottle.decode
+        };
+        let getHeading = client.services.spaceCenter.flightGetHeading(game.vessel.flight.id);
+        addStreamCall = client.services.krpc.addStream(getHeading.call);
+        client.rpc.send(addStreamCall);
+        replaceMessageHandler(headingStreamAdded);
+
+        function headingStreamAdded(response) {
+            stream = getFirstResult(response);
+            game.streams[stream.id.toString()] = {
+                name: "Heading",
+                decode: getHeading.decode
+            };
+        }
     }
 }
 
@@ -106,8 +121,9 @@ function streamUpdate(streamUpdate) {
             console.error(update.result.error);
             return;
         }
-        var parsedThrottleValue = game.streams[update.id.toString()](update.result.value);
-        console.log(parsedThrottleValue);
+        var stream = game.streams[update.id.toString()];
+        var parsedValue = stream.decode(update.result.value);
+        console.log(stream.name, ' : ', parsedValue);
     });
     // game.vessel.control.throttle = getFirstResult(response);
     // console.log(util.format("Updating throttle value from %s to 1", game.vessel.control.throttle));
