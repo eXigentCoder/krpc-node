@@ -75,6 +75,19 @@ function getActiveVesselControlComplete(response) {
     game.vessel.control = {
         id: getFirstResult(response)
     };
+    client.rpc.send(client.services.spaceCenter.vesselGetOrbitalReferenceFrame(game.vessel.id));
+    replaceMessageHandler(getOrbitalReferenceFrame);
+}
+function getOrbitalReferenceFrame(response) {
+    game.vessel.orbitalReference = getFirstResult(response);
+    client.rpc.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
+    replaceMessageHandler(getVesselFlightComplete);
+}
+
+function getVesselFlightComplete(response) {
+    game.vessel.flight = {
+        id: getFirstResult(response)
+    };
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
     var addStreamCall = client.services.krpc.addStream(getThrottle.call);
     client.rpc.send(addStreamCall);
@@ -86,7 +99,6 @@ function getActiveVesselControlComplete(response) {
         game.streams[stream.id.toString()] = getThrottle.decode;
     }
 }
-
 
 function streamUpdate(streamUpdate) {
     streamUpdate.results.forEach(function (update) {
