@@ -256,9 +256,9 @@ function getParamDescription(options) {
     }
     let cSharpName = options.type.service + '.' + options.type.name;
     if (options.isList) {
-        return util.format('A list of long values representing the ids for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+        return util.format('A list of long values representing the ids for the', cSharpName);
     }
-    return util.format('A long value representing the id for the', cSharpName, 'see [Long.js]{@link https://www.npmjs.com/package/long}');
+    return util.format('A long value representing the id for the', cSharpName);
 }
 
 function buildParamDescriptionDictionary(documentation) {
