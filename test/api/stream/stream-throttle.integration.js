@@ -91,7 +91,7 @@ function getActiveVesselControlComplete(response) {
 function streamUpdate(streamUpdate) {
     streamUpdate.results.forEach(function (update) {
         if (update.result.error) {
-            console.error(update.result.error)
+            console.error(update.result.error);
             return;
         }
         var parsedThrottleValue = game.streams[update.id.toString()](update.result.value);
