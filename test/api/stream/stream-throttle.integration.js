@@ -50,7 +50,7 @@ function clientConnectionOpen() {
 }
 
 function getClientIdComplete(response) {
-    var id = getFirstResult(response).toString('base64');
+    let id = getFirstResult(response).toString('base64');
     client.connectToStreamServer(id);
     client.stream.on('open', streamOpen);
     client.stream.on('error', onError);
@@ -84,17 +84,17 @@ function getOrbitalReferenceFrame(response) {
     replaceMessageHandler(getVesselFlightComplete);
 }
 
-function getVesselFlightComplete(response) {
+function getVesselFlightComplete(getVesselResponse) {
     game.vessel.flight = {
-        id: getFirstResult(response)
+        id: getFirstResult(getVesselResponse)
     };
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
-    var addStreamCall = client.services.krpc.addStream(getThrottle.call);
+    let addStreamCall = client.services.krpc.addStream(getThrottle.call);
     client.rpc.send(addStreamCall);
     replaceMessageHandler(throttleStreamAdded);
     client.stream.on('message', streamUpdate);
-    function throttleStreamAdded(response) {
-        var stream = getFirstResult(response);
+    function throttleStreamAdded(throttleResponse) {
+        let stream = getFirstResult(throttleResponse);
         game.streams = game.streams || [];
         game.streams[stream.id.toString()] = {
             name: "Throttle",
@@ -105,8 +105,8 @@ function getVesselFlightComplete(response) {
         client.rpc.send(addStreamCall);
         replaceMessageHandler(headingStreamAdded);
 
-        function headingStreamAdded(response) {
-            stream = getFirstResult(response);
+        function headingStreamAdded(headingResponse) {
+            stream = getFirstResult(headingResponse);
             game.streams[stream.id.toString()] = {
                 name: "Heading",
                 decode: getHeading.decode
@@ -115,14 +115,14 @@ function getVesselFlightComplete(response) {
     }
 }
 
-function streamUpdate(streamUpdate) {
-    streamUpdate.results.forEach(function (update) {
+function streamUpdate(streamUpdateResponse) {
+    streamUpdateResponse.results.forEach(function (update) {
         if (update.result.error) {
             console.error(update.result.error);
             return;
         }
-        var stream = game.streams[update.id.toString()];
-        var parsedValue = stream.decode(update.result.value);
+        let stream = game.streams[update.id.toString()];
+        let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
     });
     // game.vessel.control.throttle = getFirstResult(response);
