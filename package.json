@@ -32,14 +32,14 @@
   "author": "Ryan Kotzen",
   "license": "MIT",
   "dependencies": {
+    "async": "2.1.5",
     "bytebuffer": "5.0.1",
     "documentation": "4.0.0-beta10",
     "lodash": "4.17.4",
-    "protobufjs": "5.0.1",
+    "protobufjs": "6.6.5",
     "ws": "2.2.0"
   },
   "devDependencies": {
-    "async": "2.1.5",
     "chai": "3.5.0",
     "dirty-chai": "1.2.2",
     "eslint": "3.17.1",
