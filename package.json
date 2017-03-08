@@ -36,7 +36,7 @@
     "documentation": "4.0.0-beta10",
     "lodash": "4.17.4",
     "protobufjs": "5.0.1",
-    "ws": "1.1.1"
+    "ws": "2.2.0"
   },
   "devDependencies": {
     "async": "2.1.5",
