@@ -115,6 +115,7 @@ function getVesselFlightComplete(getVesselResponse) {
     }
 }
 
+let counter = 0;
 function streamUpdate(streamUpdateResponse) {
     streamUpdateResponse.results.forEach(function (update) {
         if (update.result.error) {
@@ -124,21 +125,9 @@ function streamUpdate(streamUpdateResponse) {
         let stream = game.streams[update.id.toString()];
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
+        counter++;
+        if (counter > 50) {
+            done();
+        }
     });
-    // game.vessel.control.throttle = getFirstResult(response);
-    // console.log(util.format("Updating throttle value from %s to 1", game.vessel.control.throttle));
-    // replaceMessageHandler(setThrottleToFullComplete);
-    // let call = client.services.spaceCenter.controlSetThrottle(game.vessel.control.id, 1);
-    // client.rpc.send(call);
 }
-
-// function setThrottleToFullComplete(response) {
-//     replaceMessageHandler(launched);
-//     client.rpc.send(client.services.spaceCenter.controlActivateNextStage(game.vessel.control.id));
-// }
-
-// function launched(response) {
-//     let vesselId = getFirstResult(response);
-//     expect(vesselId).to.be.ok();
-//     process.exit(0);
-// }
