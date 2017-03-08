@@ -5,10 +5,16 @@ const _ = require('lodash');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
-        let client = Client();
-        client.rpc.on('open', onOpen(client));
-        client.rpc.on('error', onError(done));
-        client.rpc.on('message', onMessage(done));
+        Client(null, clientCreated);
+
+        function clientCreated(err, client) {
+            if (err) {
+                return done(err);
+            }
+            client.rpc.on('open', onOpen(client));
+            client.rpc.on('error', onError(done));
+            client.rpc.on('message', onMessage(done));
+        }
     });
 });
 
