@@ -110,8 +110,8 @@ function processDocumentation(procedureOrService, isService, serviceName) {
     } else {
         content += eol;
     }
-    if (procedureOrService.return_type) {
-        content += _.trimEnd(documentResultType(procedureOrService.return_type, procedureOrService)) + eol;
+    if (procedureOrService.returnType) {
+        content += _.trimEnd(documentResultType(procedureOrService.returnType, procedureOrService)) + eol;
         content += ' * @returns {{call :Object, decode: function}}' + eol;
     } else {
         content += ' * @result {void}' + eol;
@@ -328,10 +328,10 @@ function processTypeCode303(type, doNotAddBraces, param) {
 }
 
 function getDecodeFn(procedure, service) {
-    if (!procedure.return_type) {
+    if (!procedure.returnType) {
         return 'null';
     }
-    switch (procedure.return_type.code) {
+    switch (procedure.returnType.code) {
         case 0:
             return 'null';
         case 1:
@@ -355,7 +355,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(decodersName, procedure.return_type);
+            return getEnumFunction(decodersName, procedure.returnType);
         case 200:
             return 'proto.ProcedureCall';
         case 201:
@@ -373,7 +373,7 @@ function getDecodeFn(procedure, service) {
         case 303:
             return 'proto.Dictionary';
         default:
-            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.return_type, service));
+            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.returnType, service));
     }
 }
 
@@ -393,6 +393,7 @@ function getEncodeFnForParam(service, parameter) {
         throw new Error("Not implemented");
     }
     let content = '        ';
+    var addDotFinish = false;
     switch (parameter.type.code) {
         case 0:
             throw new Error("Not implemented");
@@ -430,33 +431,44 @@ function getEncodeFnForParam(service, parameter) {
             content += getEnumFunction(encodersName, parameter.type);
             break;
         case 200:
-            content += 'new proto.ProcedureCall';
+            content += '{buffer: proto.ProcedureCall.encode';
+            addDotFinish = true;
             break;
         case 201:
-            content += 'new proto.Stream';
+            content += '{buffer: proto.Stream.encode';
+            addDotFinish = true;
             break;
         case 202:
-            content += 'new proto.Status';
+            content += '{buffer: proto.Status.encode';
+            addDotFinish = true;
             break;
         case 203:
-            content += 'new proto.Services';
+            content += '{buffer: proto.Services.encode';
+            addDotFinish = true;
             break;
         case 300:
-            content += 'new proto.Tuple';
+            content += '{buffer: proto.Tuple.encode';
+            addDotFinish = true;
             break;
         case 301:
-            content += 'new proto.List';
+            content += '{buffer: proto.List.encode';
+            addDotFinish = true;
             break;
         case 302:
-            content += 'new proto.Set';
+            content += '{buffer: proto.Set.encode';
+            addDotFinish = true;
             break;
         case 303:
-            content += 'new proto.Dictionary';
+            content += '{buffer: proto.Dictionary.encode';
+            addDotFinish = true;
             break;
         default:
             throw new Error(util.format("Unable to determine encoder type string for type for %j %j", parameter, service));
     }
     content += '(' + getParamName(parameter) + ')';
+    if (addDotFinish) {
+        content += '.finish()}';
+    }
     return content;
 }
 
