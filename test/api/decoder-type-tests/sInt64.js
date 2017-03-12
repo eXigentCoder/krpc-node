@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 const decoders = require('../../../lib/decoders');
-describe('Decoder type tests', function () {
-    it.skip('Should be able to decode a `sint32`', function (done) {
+describe('Decoding - sInt64', function () {
+    it.skip('Should be able to decode a `sInt64` successfully', function (done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {

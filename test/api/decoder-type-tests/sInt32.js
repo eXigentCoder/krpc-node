@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('Decoder type tests', function () {
-    it('Should be able to decode a `sint32`', function (done) {
+describe('Decoding - sInt32', function () {
+    it('Should be able to decode a `sInt32` successfully', function (done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {

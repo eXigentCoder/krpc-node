@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const _ = require('lodash');
 
-describe('Get-current-game-scene', function () {
-    it('Should work', function (done) {
+describe('Decoding - enum', function () {
+    it('Should be able to decode a `enum` successfully', function (done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {

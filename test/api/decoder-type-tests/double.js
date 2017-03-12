@@ -4,8 +4,8 @@ let Client = require('../../../lib/client');
 const async = require('async');
 const util = require("util");
 
-describe('Decoder type tests', function () {
-    it('Should be able to decode a `uInt64` and `double`', function (done) {
+describe('Decoding - double', function () {
+    it('Should be able to decode a `double` successfully', function (done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
