@@ -15,7 +15,7 @@ client.rpc.on('error', onError);
 client.rpc.on('message', onMessage);
 var enums = {};
 function onOpen() {
-    client.rpc.send(client.services.krpc.getServices());
+    client.send(client.services.krpc.getServices());
 }
 
 function onError(err) {

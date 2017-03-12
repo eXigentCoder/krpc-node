@@ -18,7 +18,7 @@ describe('Get-clients', function () {
 
 function onOpen(client) {
     return function () {
-        client.rpc.send(client.services.krpc.getClients());
+        client.send(client.services.krpc.getClients());
     };
 }
 

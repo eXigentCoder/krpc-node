@@ -58,7 +58,7 @@ function replaceMessageHandler(fn) {
 
 function clientConnectionOpen() {
     let procedure = client.services.krpc.getClientId();
-    client.rpc.send(procedure);
+    client.send(procedure);
     client.rpc.on('message', getClientIdComplete);
 }
 
@@ -73,7 +73,7 @@ function getClientIdComplete(response) {
 
 function streamOpen() {
     let procedure = client.services.spaceCenter.getActiveVessel();
-    client.rpc.send(procedure);
+    client.send(procedure);
     replaceMessageHandler(getActiveVesselComplete);
 }
 
@@ -81,7 +81,7 @@ function getActiveVesselComplete(response) {
     game.vessel = {
         id: getFirstResult(response)
     };
-    client.rpc.send(client.services.spaceCenter.vesselGetControl(game.vessel.id));
+    client.send(client.services.spaceCenter.vesselGetControl(game.vessel.id));
     replaceMessageHandler(getActiveVesselControlComplete);
 }
 
@@ -89,12 +89,12 @@ function getActiveVesselControlComplete(response) {
     game.vessel.control = {
         id: getFirstResult(response)
     };
-    client.rpc.send(client.services.spaceCenter.vesselGetOrbitalReferenceFrame(game.vessel.id));
+    client.send(client.services.spaceCenter.vesselGetOrbitalReferenceFrame(game.vessel.id));
     replaceMessageHandler(getOrbitalReferenceFrame);
 }
 function getOrbitalReferenceFrame(response) {
     game.vessel.orbitalReference = getFirstResult(response);
-    client.rpc.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
+    client.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
     replaceMessageHandler(getVesselFlightComplete);
 }
 
@@ -104,7 +104,7 @@ function getVesselFlightComplete(getVesselResponse) {
     };
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
     let addStreamCall = client.services.krpc.addStream(getThrottle.call);
-    client.rpc.send(addStreamCall);
+    client.send(addStreamCall);
     replaceMessageHandler(throttleStreamAdded);
     client.stream.on('message', streamUpdate);
     function throttleStreamAdded(throttleResponse) {
@@ -116,7 +116,7 @@ function getVesselFlightComplete(getVesselResponse) {
         };
         let getHeading = client.services.spaceCenter.flightGetHeading(game.vessel.flight.id);
         addStreamCall = client.services.krpc.addStream(getHeading.call);
-        client.rpc.send(addStreamCall);
+        client.send(addStreamCall);
         replaceMessageHandler(headingStreamAdded);
 
         function headingStreamAdded(headingResponse) {

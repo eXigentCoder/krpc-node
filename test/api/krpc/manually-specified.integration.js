@@ -23,7 +23,7 @@ describe('Manual test workflow', function () {
 function onOpen(client) {
     return function () {
         let procedure = client.services.spaceCenter.getActiveVessel();
-        client.rpc.send(procedure);
+        client.send(procedure);
     };
 }
 
@@ -52,12 +52,12 @@ function onMessage(done, client) {
             if (counter === 1) {
                 let vesselId = result.value;
                 let procedure = client.services.spaceCenter.vesselGetControl(vesselId);
-                client.rpc.send(procedure);
+                client.send(procedure);
             }
             else if (counter === 2) {
                 let controlId = result.value;
                 let procedure = client.services.spaceCenter.controlSetAbort(controlId, true);
-                client.rpc.send(procedure);
+                client.send(procedure);
             } else {
                 success = true;
                 return done();

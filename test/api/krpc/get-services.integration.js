@@ -19,7 +19,7 @@ describe('Get-services', function () {
 
 function onOpen(client) {
     return function () {
-        client.rpc.send(client.services.krpc.getServices());
+        client.send(client.services.krpc.getServices());
     };
 }
 

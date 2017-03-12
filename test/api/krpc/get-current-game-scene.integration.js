@@ -20,7 +20,7 @@ describe('Get-status', function () {
 
 function onOpen(client) {
     return function () {
-        client.rpc.send(client.services.krpc.getCurrentGameScene());
+        client.send(client.services.krpc.getCurrentGameScene());
     };
 }
 

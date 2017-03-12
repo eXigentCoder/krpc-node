@@ -18,7 +18,7 @@ describe('Get-clients', function () {
 
 function onOpen(client) {
     return function () {
-        client.rpc.send(client.services.ui.message('Hello World!', 5, 'TopCenter'));
+        client.send(client.services.ui.message('Hello World!', 5, 'TopCenter'));
     };
 }
 

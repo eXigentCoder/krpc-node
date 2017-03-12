@@ -21,7 +21,7 @@ describe('Get-status', function () {
 function onOpen(client) {
     return function () {
         let getStatus = client.services.krpc.getStatus();
-        client.rpc.send(getStatus);
+        client.send(getStatus);
     };
 }
 
