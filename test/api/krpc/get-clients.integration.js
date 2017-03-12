@@ -7,7 +7,7 @@ describe('Get-clients', function () {
     it('Should work', function (done) {
         async.waterfall([
             async.apply(createClient, {}),
-            getClients
+            getConnectedClients
         ], function (err) {
             if (err) {
                 return done(err);
@@ -24,7 +24,7 @@ function createClient(options, callback) {
     }
 }
 
-function getClients(client, callback) {
+function getConnectedClients(client, callback) {
     client.send(client.services.krpc.getClients(), function (err, response) {
         if (err) {
             return callback(err);
