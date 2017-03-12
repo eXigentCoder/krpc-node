@@ -9,35 +9,37 @@ const procCallName = 'buildProcedureCall';
 const decodersName = 'decoders';
 const encodersName = 'encoders';
 let eol = os.EOL;
-let client = Client();
-client.rpc.on('open', onOpen);
-client.rpc.on('error', onError);
-client.rpc.on('message', onMessage);
-var enums = {};
-function onOpen() {
-    client.send(client.services.krpc.getServices());
-}
+let enums = {};
 
-function onError(err) {
-    throw err;
-}
-
-function onMessage(response) {
-    let serviceResponse = response.results[0];
-    if (serviceResponse.error) {
-        throw new Error(serviceResponse.error);
+Client(null, function (clientCreationErr, client) {
+    if (clientCreationErr) {
+        throw clientCreationErr;
     }
-    serviceResponse.value.services.forEach(function (service) {
-        enums[service.name] = service.enumerations;
-    });
-    async.eachSeries(serviceResponse.value.services, createService, function (err) {
-        if (err) {
-            throw err;
+    client.send(client.services.krpc.getServices(), servicesRetrieved);
+    function servicesRetrieved(serviceErr, response) {
+        if (serviceErr) {
+            throw serviceErr;
         }
+        let serviceResponse = response.results[0];
+        if (serviceResponse.error) {
+            throw new Error(serviceResponse.error);
+        }
+        serviceResponse.value.services.forEach(function (service) {
+            enums[service.name] = service.enumerations;
+        });
         client.rpc.socket.close(1000);
-        process.exit(0);
-    });
-}
+        async.eachSeries(serviceResponse.value.services, createService, servicesCreated);
+
+        function servicesCreated(serviceCreationErr) {
+            if (serviceCreationErr) {
+                throw serviceCreationErr;
+            }
+            //eslint-disable-next-line no-process-exit
+            process.exit(0);
+        }
+    }
+});
+
 
 function createService(service, callback) {
     let fileName = _.kebabCase(service.name) + ".js";
