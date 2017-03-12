@@ -41,7 +41,7 @@ function onMessage(done) {
         let status = statusResult.value;
         expect(status).to.be.ok();
         expect(_.isObject(status)).to.be.ok();
-        expect(_.isNil(status.adaptive_rate_control)).to.not.be.ok();
+        expect(_.isNil(status.adaptiveRateControl)).to.not.be.ok();
         return done();
     };
 }
