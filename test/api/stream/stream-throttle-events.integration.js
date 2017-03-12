@@ -8,7 +8,7 @@ let game = {};
 let done;
 
 describe('Streams', function () {
-    it('Stream throttle', function (testDone) {
+    it('Stream throttle - events', function (testDone) {
         done = testDone;
         Client(null, clientCreated);
 
