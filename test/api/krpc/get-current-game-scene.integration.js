@@ -28,7 +28,6 @@ function onMessage(done) {
         expect(gameSceneResult.error).to.not.be.ok();
         expect(gameSceneResult.value).to.be.ok();
         expect(_.isString(gameSceneResult.value)).to.be.ok();
-        //{0: 'SpaceCenter', 1: 'Flight', 2: 'TrackingStation', 3: 'EditorVAB', 4: 'EditorSPH'}
         console.log("Game Scene: " + gameSceneResult.value);
         return done();
     };
