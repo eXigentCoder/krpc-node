@@ -23,9 +23,9 @@ describe('Stream throttle - callbacks', function () {
                 getVesselFlight,
                 addThrottleToStream,
                 addHeadingToStream
-            ], function (err) {
-                if (err) {
-                    return done(err);
+            ], function (waterfallErr) {
+                if (waterfallErr) {
+                    return done(waterfallErr);
                 }
             });
         }
@@ -114,6 +114,7 @@ function addThrottleToStream(data, callback) {
         return callback(null, data);
     }
 }
+
 function addHeadingToStream(data, callback) {
     let getHeading = data.client.services.spaceCenter.flightGetHeading(data.vessel.flightId);
     let addStreamCall = data.client.services.krpc.addStream(getHeading.call);
