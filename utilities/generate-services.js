@@ -40,7 +40,6 @@ Client(null, function (clientCreationErr, client) {
     }
 });
 
-
 function createService(service, callback) {
     let fileName = _.kebabCase(service.name) + ".js";
     let filePath = './lib/services/' + fileName;
@@ -117,7 +116,7 @@ function processDocumentation(procedureOrService, isService, serviceName) {
         content += ' * @result {void}' + eol;
         content += ' * @returns {void}' + eol;
     }
-    content += '*/' + eol;
+    content += ' */' + eol;
     return content;
 }
 
