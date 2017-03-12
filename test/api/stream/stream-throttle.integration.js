@@ -33,7 +33,7 @@ function onClose(event) {
     if (success) {
         done();
     }
-    return done(new Error(util.format("Socket closed before done", event)));
+    return done(new Error(util.format("Socket closed before done: %s (%s)", event.reason, event.code)));
 }
 
 function getFirstResult(response) {
