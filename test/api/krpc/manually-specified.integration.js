@@ -7,11 +7,18 @@ let util = require('util');
 
 describe('Manual test workflow', function () {
     it('Should work', function (done) {
-        client = Client();
-        client.rpc.on('open', onOpen);
-        client.rpc.on('error', onError(done));
-        client.rpc.on('message', onMessage(done));
-        client.rpc.on('close', onClose(done));
+        Client(null, clientCreated);
+
+        function clientCreated(err, _client) {
+            if (err) {
+                return done(err);
+            }
+            client = _client;
+            client.rpc.on('open', onOpen(client));
+            client.rpc.on('error', onError(done));
+            client.rpc.on('message', onMessage(done));
+            client.rpc.on('close', onClose(done));
+        }
     });
 });
 
