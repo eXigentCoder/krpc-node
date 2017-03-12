@@ -1,51 +1,42 @@
 'use strict';
 require('../../init');
-let createClient = require('../../../lib/client');
+let Client = require('../../../lib/client');
 const async = require('async');
 
 describe('Get-clients', function () {
     it('Should work', function (done) {
         async.waterfall([
-            async.apply(createClient, null),
-            clientCreated
+            async.apply(createClient, {}),
+            getClients
         ], function (err) {
             if (err) {
                 return done(err);
             }
+            done();
         });
-
-        function clientCreated(client, callback) {
-            client.rpc.on('open', onOpen(client, done));
-            client.rpc.on('error', onError(done));
-            callback();
-        }
     });
 });
 
-
-function onOpen(client, done) {
-    return function () {
-        client.send(client.services.krpc.getClients(), getClientsComplete);
-
-        function getClientsComplete(err, response) {
-            if (err) {
-                return done(err);
-            }
-            expect(response.error).to.not.be.ok();
-            expect(response.results.length).to.equal(1);
-            let result = response.results[0];
-            expect(result.error).to.not.be.ok();
-            result.value.items.forEach(function (item) {
-                expect(item).to.be.ok();
-                //todo
-            });
-            return done();
-        }
-    };
+function createClient(options, callback) {
+    Client(options, clientCreated);
+    function clientCreated(err, client) {
+        return callback(err, client);
+    }
 }
 
-function onError(done) {
-    return function (err) {
-        done(err);
-    };
+function getClients(client, callback) {
+    client.send(client.services.krpc.getClients(), function (err, response) {
+        if (err) {
+            return callback(err);
+        }
+        expect(response.error).to.not.be.ok();
+        expect(response.results.length).to.equal(1);
+        let result = response.results[0];
+        expect(result.error).to.not.be.ok();
+        result.value.items.forEach(function (item) {
+            expect(item).to.be.ok();
+            //todo
+        });
+        return callback();
+    });
 }
