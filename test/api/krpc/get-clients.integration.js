@@ -11,14 +11,16 @@ describe('Get-clients', function () {
             }
             client.rpc.on('open', onOpen(client));
             client.rpc.on('error', onError(done));
-            client.rpc.on('message', onMessage(done));
+            //client.rpc.on('message', onMessage(done));
         }
     });
 });
 
 function onOpen(client) {
     return function () {
-        client.send(client.services.krpc.getClients());
+        client.send(client.services.krpc.getClients(), function (err, response) {
+            console.log(err, response);
+        });
     };
 }
 
