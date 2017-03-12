@@ -26,6 +26,12 @@ describe('Streams', function () {
 
 // ----=================[ Start helper functions ]=================----
 function onError(err) {
+    console.error("Client Error");
+    done(err);
+}
+
+function streamError(err) {
+    console.error("Stream Error");
     done(err);
 }
 
@@ -60,7 +66,7 @@ function getClientIdComplete(response) {
     let id = getFirstResult(response).toString('base64');
     client.connectToStreamServer(id);
     client.stream.on('open', streamOpen);
-    client.stream.on('error', onError);
+    client.stream.on('error', streamError);
     client.stream.on('close', onClose);
 }
 
