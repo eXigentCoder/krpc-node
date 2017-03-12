@@ -63,7 +63,8 @@ function clientConnectionOpen() {
 }
 
 function getClientIdComplete(response) {
-    let id = getFirstResult(response).toString('base64');
+    let firstResult = getFirstResult(response);
+    let id = firstResult.toString('base64');
     client.connectToStreamServer(id);
     client.stream.on('open', streamOpen);
     client.stream.on('error', streamError);
