@@ -21,23 +21,6 @@ describe('Encoders', function () {
             let decoded = decoders.float(buffer.buffer);
             expect(decoded).to.equal(value);
         });
-        // it('Should decode a known value', function () {
-        //     let buffer = ByteBuffer.fromBinary([18, 6, 18, 4, 0, 0, 0, 63]);
-        //     buffer.offset = 4;
-        //     buffer.littleEndian = true;
-        //     let decoded = decoders.float(buffer.buffer);
-        //     expect(decoded).to.equal(0.5);
-        // });
-        // it('Should encode to a known value', function () {
-        //     let expectedBuffer = ByteBuffer.fromBinary([18, 6, 18, 4, 0, 0, 0, 63]);
-        //     expectedBuffer.littleEndian = true;
-        //     expectedBuffer.offset = 4;
-        //     let expected = decoders.float(expectedBuffer);
-        //     let buffer = encoders.float(0.5);
-        //     buffer.offset = 0;
-        //     let actual = decoders.float(buffer.buffer);
-        //     expect(actual).to.equal(expected);
-        // });
     });
     describe('sInt32', function () {
         it('value should equal decode(encode(value))', function () {
