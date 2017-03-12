@@ -35,7 +35,6 @@ function getClients(client, callback) {
         expect(result.error).to.not.be.ok();
         result.value.items.forEach(function (item) {
             expect(item).to.be.ok();
-            //todo
         });
         return callback();
     });
