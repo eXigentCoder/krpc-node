@@ -40,6 +40,7 @@ function onClose(done) {
         return done(new Error(util.format("Socket closed before done", event)));
     };
 }
+
 let counter = 0;
 function onMessage(done, client) {
     return function (response) {

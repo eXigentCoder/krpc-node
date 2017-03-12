@@ -10,10 +10,17 @@ let done;
 describe('Streams', function () {
     it('Stream throttle', function (testDone) {
         done = testDone;
-        client = Client();
-        client.rpc.on('open', clientConnectionOpen);
-        client.rpc.on('error', onError);
-        client.rpc.on('close', onClose);
+        Client(null, clientCreated);
+
+        function clientCreated(err, _client) {
+            if (err) {
+                return done(err);
+            }
+            client = _client;
+            client.rpc.on('open', clientConnectionOpen);
+            client.rpc.on('error', onError);
+            client.rpc.on('close', onClose);
+        }
     });
 });
 
