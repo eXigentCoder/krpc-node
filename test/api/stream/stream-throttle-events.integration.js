@@ -137,6 +137,9 @@ function streamUpdate(streamUpdateResponse) {
             return;
         }
         let stream = game.streams[update.id.toString()];
+        if (!stream) {
+            return;
+        }
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
         counter++;
