@@ -476,14 +476,15 @@ function getEnumFunction(prefix, type) {
     if (!enumVal) {
         throw new Error("enum not found");
     }
-    let content = prefix + '.enum({';
+    let content = prefix + '.enum({' + eol;
     let length = enumVal.values.length;
     enumVal.values.forEach(function (enumEntry, index) {
-        content += enumEntry.value + ' : \'' + enumEntry.name + '\'';
+        content += '            ' + enumEntry.value + ': \'' + enumEntry.name + '\'';
         if (index < length - 1) {
-            content += ', ';
+            content += ',';
         }
+        content += eol;
     });
-    content += '})';
+    content += '        })';
     return content;
 }
