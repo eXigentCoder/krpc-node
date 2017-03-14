@@ -130,7 +130,7 @@ function getVesselFlightComplete(getVesselResponse) {
 }
 
 let counter = 0;
-function streamUpdate(streamUpdateResponse) {
+function streamUpdate(streamState, streamUpdateResponse) {
     streamUpdateResponse.results.forEach(function (update) {
         if (update.result.error) {
             console.error(update.result.error);

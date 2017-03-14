@@ -98,56 +98,28 @@ function getVesselFlight(data, callback) {
 
 function addThrottleToStream(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
-    let addStreamCall = data.client.services.krpc.addStream(getThrottle.call);
-    data.client.send(addStreamCall, throttleStreamAdded);
-    data.client.stream.on('message', streamUpdate(data));
-    function throttleStreamAdded(err, response) {
-        if (err) {
-            return callback(err);
-        }
-        let stream = getFirstResult(response);
-        data.streams = data.streams || [];
-        data.streams[stream.id.toString()] = {
-            name: "Throttle",
-            decode: getThrottle.decode
-        };
-        return callback(null, data);
+    data.client.addStream(getThrottle, "Throttle", throttleStreamAdded);
+    function throttleStreamAdded(err) {
+        return callback(err, data);
     }
 }
 
 function addHeadingToStream(data, callback) {
     let getHeading = data.client.services.spaceCenter.flightGetHeading(data.vessel.flightId);
-    let addStreamCall = data.client.services.krpc.addStream(getHeading.call);
-    data.client.send(addStreamCall, headingStreamAdded);
-
-    function headingStreamAdded(err, response) {
-        if (err) {
-            return callback(err);
-        }
-        let stream = getFirstResult(response);
-        data.streams[stream.id.toString()] = {
-            name: "Heading",
-            decode: getHeading.decode
-        };
-        return callback(null, data);
+    data.client.addStream(getHeading, "Heading", throttleStreamAdded);
+    function throttleStreamAdded(err) {
+        data.client.stream.on('message', streamUpdate(data));
+        return callback(err, data);
     }
 }
 
 function streamUpdate(data) {
     let counter = 0;
-    return function _streamUpdate(streamUpdateResponse) {
-        streamUpdateResponse.results.forEach(function (update) {
-            if (update.result.error) {
-                console.error(update.result.error);
-                return;
-            }
-            let stream = data.streams[update.id.toString()];
-            let parsedValue = stream.decode(update.result.value);
-            console.log(stream.name, ' : ', parsedValue);
-            counter++;
-            if (counter > 50) {
-                data.done();
-            }
-        });
+    return function _streamUpdate(streamState) {
+        console.log(streamState);
+        counter++;
+        if (counter > 50) {
+            data.done();
+        }
     };
 }
