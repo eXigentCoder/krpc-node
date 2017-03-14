@@ -39,3 +39,4 @@ GameData/*
 .idea/*
 notes.txt
 resources/*
+*.orig
