@@ -99,7 +99,7 @@ function getVesselFlight(data, callback) {
 function addThrottleToStream(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
     let addStreamCall = data.client.services.krpc.addStream(getThrottle.call);
-    data.client.addStreamCall(addStreamCall, throttleStreamAdded);
+    data.client.send(addStreamCall, throttleStreamAdded);
     data.client.stream.on('message', streamUpdate(data));
     function throttleStreamAdded(err, response) {
         if (err) {
