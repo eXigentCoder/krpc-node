@@ -110,6 +110,7 @@ An instance of the Client class
 - `streamState` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The last known values of the result returned from the streams.
 - `connectToStreamServer` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Establishes a separate connection to the stream server.
 - `addStream` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Adds a single call to the stream communication. Make sure you call connectToStreamServer fist.
+- `removeStream` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Removes a single call from the stream communication. Make sure you call connectToStreamServer and of course have called addStream fist.
 - `stream` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating with the stream server.
     - `stream.socket` **[WebSocket](https://developer.mozilla.org/en-US/docs/WebSockets)** The underlying websocket instance used to communicate with the server.
     - `stream.emitter` **[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)** The emitter that handles events.
@@ -162,6 +163,18 @@ Adds an call to the continuous update stream.
 -	`err` **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** The error object if there was a problem creating the client, otherwise null.
 -	`stream` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The stream object.
 
+## removeStream
+
+Removes a call from the continuous update stream.
+
+**Parameters**
+
+-   `propertyPath` **[procedureCall](#procedurecall)** The [lodash set path](https://lodash.com/docs/4.17.4#set) to used to set the result of the stream call on `client.streamState`.
+-   `callback` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)** The function called once the stream has been added.
+
+**Callback Parameters**
+
+-	`err` **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** The error object if there was a problem creating the client, otherwise null.
 
 # Practical Examples
 
