@@ -56,7 +56,7 @@ function getAutoPilotRollThreshold(data, callback) {
         if (err) {
             return callback(err);
         }
-        var actualValue = response.results[0].value;
+        let actualValue = response.results[0].value;
         if (data.autoPilotRollThreshold !== actualValue) {
             return callback(new Error(util.format("actual autoPilotRollThreshold (%s) did not match the set autoPilotRollThreshold (%s)", actualValue, data.autoPilotRollThreshold)));
         }
