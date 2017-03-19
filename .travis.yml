@@ -13,7 +13,7 @@ before_deploy:
 - git config --global user.email "potz666@gmail.com"
 - git config --global user.name "eXigentCoder-CI"
 - git config credential.helper "store --file=.git/credentials"
-- npm version patch -m "Release %s of the library [skip ci]"
+- npm version 2.0.0 -m "Release %s of the library [skip ci]"
 - git push https://$GH_TOKEN@github.com/eXigentCoder/krpc-node.git --all
 deploy:
   skip_cleanup: true

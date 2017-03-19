@@ -2,7 +2,6 @@
 require('./init.js');
 let encoders = require('../lib/encoders');
 let decoders = require('../lib/decoders');
-let ByteBuffer = require("bytebuffer");
 let Long = require('long');
 
 describe('Encoders', function () {
