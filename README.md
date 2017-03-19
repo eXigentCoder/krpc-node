@@ -45,29 +45,43 @@ Create a new krpc-node client
     -   `options.port` **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number))** ="50000" - The port number on which to connect to the server.
     -   `options.wsProtocols` **\[([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>)]** WebSocket protocols.
     -   `options.wsOptions` **\[[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** Additional connection options.
+-   `callback` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)** The function called once the client has been created.
+
+**Callback Parameters**
+
+-	`err` **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** The error object if there was a problem creating the client, otherwise null.
+-	`client` **[Client](#client)** The client to use for subsequent calls.
 
 **Examples**
 
 ```javascript
 let util = require('util');
 let Client = require('krpc-node');
-let client = Client();
-client.rpc.on('open', function (event) {
-    console.log(util.format('Connection Opened : %j', event));
-    client.send(client.services.krpc.getClients());
-});
-client.rpc.on('error', function (err) {
-    console.log(util.format('Error : %j', err));
-});
-client.rpc.on('message', function (response , event) {
-    console.log(util.format('Response : %j', response));
-});
-client.rpc.on('close', function (event) {
-    console.log(util.format('Connection Closed : %j', event));
-});
-```
+let options = null;
+Client(options, clientCreated);
 
-Returns **[client](#client)** The client instance.
+function clientCreated(err, client) {
+    if(err){
+        throw err;
+    }
+    console.log(util.format('Connection Opened'));
+    client.send(client.services.krpc.getClients(), getClientsCompleted);
+}
+
+function getClientsCompleted(err, response){
+    if(err){
+        throw err;
+    }
+    expect(response.error).to.not.be.ok();
+    expect(response.results.length).to.equal(1);
+    let result = response.results[0];
+    expect(result.error).to.not.be.ok();
+    result.value.items.forEach(function (item) {
+        expect(item).to.be.ok();
+		console.log(item);
+    });
+}
+```
 
 ## client
 
@@ -75,21 +89,31 @@ An instance of the Client class
 
 **Properties**
 
--   `socket` **[WebSocket](https://developer.mozilla.org/en-US/docs/WebSockets)** The underlying websocket instance
--   `emitter` **EventEmitter** The emitter that handles events.
--   `decodeStack` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)>** The stack of functions to use to decode responses from the server.
--   `send` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Sends one or more calls to the server to process
--   `on` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Registers for one of the events [open, message, error, close].
--   `services` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of services that can be called. Each function within a service will return a procedureCall object.
-    -   `services.drawing` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing objects in the flight scene. For drawing and interacting with the user interface, see the UI service.
-    -   `services.infernalRobotics` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214/">Infernal Robotics</a>.
-    -   `services.kerbalAlarmClock` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/22809-10x-kerbal-alarm-clock-v3500-dec-3/">Kerbal Alarm Clock</a>.
-    -   `services.krpc` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Main kRPC service, used by clients to interact with basic server functionality.
-    -   `services.remoteTech` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/">RemoteTech</a>.
-    -   `services.spaceCenter` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality to interact with Kerbal Space Program. This includes controlling the active vessel, managing its resources, planning maneuver nodes and auto-piloting.
-    -   `services.ui` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing and interacting with in-game user interface elements. For drawing 3D objects in the flight scene, see the Drawing service.
--   `encoders` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [encoders](#encoders) that can be used to manually encode values.
--   `decoders` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [decoders](#decoders) that can be used to manually decode values.
+- `callbackStack` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)&gt;** An ordered array of callback functions to call when responses are received.
+- `decodeStack` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)&gt;** An ordered array of decode functions to call when responses are received.
+- `rpc` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating directly with the server.
+    - `rpc.socket` **[WebSocket](https://developer.mozilla.org/en-US/docs/WebSockets)** The underlying websocket instance used to communicate with the server.
+    - `rpc.emitter` **[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)** The emitter that handles events.
+    - `rpc.on` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Registers for one of the events for messages from the server [open, message, error, close].
+- `send` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Sends one or more calls to the server to process
+- `services` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of services that can be called. Each function within a service will return a procedureCall object.
+    - `services.drawing` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing objects in the flight scene. For drawing and interacting with the user interface, see the UI service.
+    - `services.infernalRobotics` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214/">Infernal Robotics</a>.
+    - `services.kerbalAlarmClock` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/22809-10x-kerbal-alarm-clock-v3500-dec-3/">Kerbal Alarm Clock</a>.
+    - `services.krpc` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Main kRPC service, used by clients to interact with basic server functionality.
+    - `services.remoteTech` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/">RemoteTech</a>.
+    - `services.spaceCenter` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality to interact with Kerbal Space Program. This includes controlling the active vessel, managing its resources, planning maneuver nodes and auto-piloting.
+    - `services.ui` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality for drawing and interacting with in-game user interface elements. For drawing 3D objects in the flight scene, see the Drawing service.
+- `encoders` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [encoders](#encoders) that can be used to manually encode values.
+- `decoders` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [decoders](#decoders) that can be used to manually decode values.
+- `streams` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The list of registered stream responses and how to decode them
+- `streamState` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The last known values of the result returned from the streams.
+- `connectToStreamServer` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Establishes a separate connection to the stream server.
+- `addStream` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Adds a single call to the stream communication. Make sure you call connectToStreamServer fist.
+- `stream` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating with the stream server.
+    - `stream.socket` **[WebSocket](https://developer.mozilla.org/en-US/docs/WebSockets)** The underlying websocket instance used to communicate with the server.
+    - `stream.emitter` **[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)** The emitter that handles events.
+    - `stream.on` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Registers for one of the events for messages from the server [open, message, error, close].
 
 ## On
 
