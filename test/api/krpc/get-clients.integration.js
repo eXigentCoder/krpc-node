@@ -1,37 +1,41 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
+const async = require('async');
+
 describe('Get-clients', function () {
     it('Should work', function (done) {
-        let client = Client();
-        client.on('open', onOpen(client));
-        client.on('error', onError(done));
-        client.on('message', onMessage(done));
+        async.waterfall([
+            async.apply(createClient, {}),
+            getConnectedClients
+        ], function (err) {
+            if (err) {
+                return done(err);
+            }
+            done();
+        });
     });
 });
 
-function onOpen(client) {
-    return function () {
-        client.send(client.services.krpc.getClients());
-    };
+function createClient(options, callback) {
+    Client(options, clientCreated);
+    function clientCreated(err, client) {
+        return callback(err, client);
+    }
 }
 
-function onError(done) {
-    return function (err) {
-        done(err);
-    };
-}
-
-function onMessage(done) {
-    return function (response) {
+function getConnectedClients(client, callback) {
+    client.send(client.services.krpc.getClients(), function (err, response) {
+        if (err) {
+            return callback(err);
+        }
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
         let result = response.results[0];
         expect(result.error).to.not.be.ok();
         result.value.items.forEach(function (item) {
             expect(item).to.be.ok();
-            //todo
         });
-        return done();
-    };
+        return callback();
+    });
 }

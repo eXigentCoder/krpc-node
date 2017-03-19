@@ -38,3 +38,5 @@ jspm_packages
 GameData/*
 .idea/*
 notes.txt
+resources/*
+*.orig
