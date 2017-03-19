@@ -10,8 +10,7 @@ describe('Encoders', function () {
         it('value should equal decode(encode(value))', function () {
             let value = 0.5;
             let buffer = encoders.double(value);
-            buffer.offset = 0;
-            let decoded = decoders.double(buffer);
+            let decoded = decoders.double(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });
@@ -19,34 +18,16 @@ describe('Encoders', function () {
         it('value should equal decode(encode(value))', function () {
             let value = 0.5;
             let buffer = encoders.float(value);
-            buffer.offset = 0;
-            let decoded = decoders.float(buffer);
+            let decoded = decoders.float(buffer.buffer);
             expect(decoded).to.equal(value);
-        });
-        it('Should decode a known value', function () {
-            let buffer = ByteBuffer.fromBinary([18, 6, 18, 4, 0, 0, 0, 63]);
-            buffer.offset = 4;
-            buffer.littleEndian = true;
-            let decoded = decoders.float(buffer);
-            expect(decoded).to.equal(0.5);
-        });
-        it('Should encode to a known value', function () {
-            let expectedBuffer = ByteBuffer.fromBinary([18, 6, 18, 4, 0, 0, 0, 63]);
-            expectedBuffer.littleEndian = true;
-            expectedBuffer.offset = 4;
-            let expected = decoders.float(expectedBuffer);
-            let buffer = encoders.float(0.5);
-            buffer.offset = 0;
-            let actual = decoders.float(buffer);
-            expect(actual).to.equal(expected);
         });
     });
     describe('sInt32', function () {
         it('value should equal decode(encode(value))', function () {
             let value = 12;
             let buffer = encoders.sInt32(value);
-            buffer.offset = 0;
-            let decoded = decoders.sInt32(buffer);
+            //buffer.offset = 0;
+            let decoded = decoders.sInt32(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });
@@ -55,7 +36,7 @@ describe('Encoders', function () {
             let value = new Long(12);
             let buffer = encoders.sInt64(Number(value.toString()));
             buffer.offset = 0;
-            let decoded = decoders.sInt64(buffer);
+            let decoded = decoders.sInt64(buffer.buffer);
             expect(decoded.toString()).to.equal(value.toString());
         });
     });
@@ -64,7 +45,7 @@ describe('Encoders', function () {
             let value = 12;
             let buffer = encoders.uInt32(value);
             buffer.offset = 0;
-            let decoded = decoders.uInt32(buffer);
+            let decoded = decoders.uInt32(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });
@@ -73,7 +54,7 @@ describe('Encoders', function () {
             let value = new Long(12);
             let buffer = encoders.uInt64(Number(value.toString()));
             buffer.offset = 0;
-            let decoded = decoders.uInt64(buffer);
+            let decoded = decoders.uInt64(buffer.buffer);
             expect(decoded.toString()).to.equal(value.toString());
         });
     });
@@ -82,7 +63,7 @@ describe('Encoders', function () {
             let value = true;
             let buffer = encoders.bool(value);
             buffer.offset = 0;
-            let decoded = decoders.bool(buffer);
+            let decoded = decoders.bool(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });
@@ -91,7 +72,7 @@ describe('Encoders', function () {
             let value = "This value should get encoded and still be readable!";
             let buffer = encoders.string(value);
             buffer.offset = 0;
-            let decoded = decoders.string(buffer);
+            let decoded = decoders.string(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });
@@ -103,7 +84,7 @@ describe('Encoders', function () {
             let buffer = encodeFunction(value);
             buffer.offset = 0;
             let decoderFunction = decoders.enum(enumInstance);
-            let decoded = decoderFunction(buffer);
+            let decoded = decoderFunction(buffer.buffer);
             expect(decoded).to.equal(value);
         });
     });

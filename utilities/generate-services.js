@@ -9,35 +9,36 @@ const procCallName = 'buildProcedureCall';
 const decodersName = 'decoders';
 const encodersName = 'encoders';
 let eol = os.EOL;
-let client = Client();
-client.rpc.on('open', onOpen);
-client.rpc.on('error', onError);
-client.rpc.on('message', onMessage);
-var enums = {};
-function onOpen() {
-    client.rpc.send(client.services.krpc.getServices());
-}
+let enums = {};
 
-function onError(err) {
-    throw err;
-}
-
-function onMessage(response) {
-    let serviceResponse = response.results[0];
-    if (serviceResponse.error) {
-        throw new Error(serviceResponse.error);
+Client(null, function (clientCreationErr, client) {
+    if (clientCreationErr) {
+        throw clientCreationErr;
     }
-    serviceResponse.value.services.forEach(function (service) {
-        enums[service.name] = service.enumerations;
-    });
-    async.eachSeries(serviceResponse.value.services, createService, function (err) {
-        if (err) {
-            throw err;
+    client.send(client.services.krpc.getServices(), servicesRetrieved);
+    function servicesRetrieved(serviceErr, response) {
+        if (serviceErr) {
+            throw serviceErr;
         }
+        let serviceResponse = response.results[0];
+        if (serviceResponse.error) {
+            throw new Error(serviceResponse.error);
+        }
+        serviceResponse.value.services.forEach(function (service) {
+            enums[service.name] = service.enumerations;
+        });
         client.rpc.socket.close(1000);
-        process.exit(0);
-    });
-}
+        async.eachSeries(serviceResponse.value.services, createService, servicesCreated);
+
+        function servicesCreated(serviceCreationErr) {
+            if (serviceCreationErr) {
+                throw serviceCreationErr;
+            }
+            //eslint-disable-next-line no-process-exit
+            process.exit(0);
+        }
+    }
+});
 
 function createService(service, callback) {
     let fileName = _.kebabCase(service.name) + ".js";
@@ -108,14 +109,14 @@ function processDocumentation(procedureOrService, isService, serviceName) {
     } else {
         content += eol;
     }
-    if (procedureOrService.return_type) {
-        content += _.trimEnd(documentResultType(procedureOrService.return_type, procedureOrService)) + eol;
+    if (procedureOrService.returnType) {
+        content += _.trimEnd(documentResultType(procedureOrService.returnType, procedureOrService)) + eol;
         content += ' * @returns {{call :Object, decode: function}}' + eol;
     } else {
         content += ' * @result {void}' + eol;
         content += ' * @returns {void}' + eol;
     }
-    content += '*/' + eol;
+    content += ' */' + eol;
     return content;
 }
 
@@ -326,10 +327,10 @@ function processTypeCode303(type, doNotAddBraces, param) {
 }
 
 function getDecodeFn(procedure, service) {
-    if (!procedure.return_type) {
+    if (!procedure.returnType) {
         return 'null';
     }
-    switch (procedure.return_type.code) {
+    switch (procedure.returnType.code) {
         case 0:
             return 'null';
         case 1:
@@ -353,7 +354,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(decodersName, procedure.return_type);
+            return getEnumFunction(decodersName, procedure.returnType);
         case 200:
             return 'proto.ProcedureCall';
         case 201:
@@ -371,7 +372,7 @@ function getDecodeFn(procedure, service) {
         case 303:
             return 'proto.Dictionary';
         default:
-            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.return_type, service));
+            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.returnType, service));
     }
 }
 
@@ -391,6 +392,7 @@ function getEncodeFnForParam(service, parameter) {
         throw new Error("Not implemented");
     }
     let content = '        ';
+    var addDotFinish = false;
     switch (parameter.type.code) {
         case 0:
             throw new Error("Not implemented");
@@ -428,33 +430,44 @@ function getEncodeFnForParam(service, parameter) {
             content += getEnumFunction(encodersName, parameter.type);
             break;
         case 200:
-            content += 'new proto.ProcedureCall';
+            content += '{buffer: proto.ProcedureCall.encode';
+            addDotFinish = true;
             break;
         case 201:
-            content += 'new proto.Stream';
+            content += '{buffer: proto.Stream.encode';
+            addDotFinish = true;
             break;
         case 202:
-            content += 'new proto.Status';
+            content += '{buffer: proto.Status.encode';
+            addDotFinish = true;
             break;
         case 203:
-            content += 'new proto.Services';
+            content += '{buffer: proto.Services.encode';
+            addDotFinish = true;
             break;
         case 300:
-            content += 'new proto.Tuple';
+            content += '{buffer: proto.Tuple.encode';
+            addDotFinish = true;
             break;
         case 301:
-            content += 'new proto.List';
+            content += '{buffer: proto.List.encode';
+            addDotFinish = true;
             break;
         case 302:
-            content += 'new proto.Set';
+            content += '{buffer: proto.Set.encode';
+            addDotFinish = true;
             break;
         case 303:
-            content += 'new proto.Dictionary';
+            content += '{buffer: proto.Dictionary.encode';
+            addDotFinish = true;
             break;
         default:
             throw new Error(util.format("Unable to determine encoder type string for type for %j %j", parameter, service));
     }
     content += '(' + getParamName(parameter) + ')';
+    if (addDotFinish) {
+        content += '.finish()}';
+    }
     return content;
 }
 
@@ -463,14 +476,15 @@ function getEnumFunction(prefix, type) {
     if (!enumVal) {
         throw new Error("enum not found");
     }
-    let content = prefix + '.enum({';
+    let content = prefix + '.enum({' + eol;
     let length = enumVal.values.length;
     enumVal.values.forEach(function (enumEntry, index) {
-        content += enumEntry.value + ' : \'' + enumEntry.name + '\'';
+        content += '            ' + enumEntry.value + ': \'' + enumEntry.name + '\'';
         if (index < length - 1) {
-            content += ', ';
+            content += ',';
         }
+        content += eol;
     });
-    content += '})';
+    content += '        })';
     return content;
 }

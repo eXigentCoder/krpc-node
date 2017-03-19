@@ -5,17 +5,23 @@ const _ = require('lodash');
 
 describe('Get-status', function () {
     it('Should work', function (done) {
-        let client = Client();
-        client.rpc.on('open', onOpen(client));
-        client.rpc.on('error', onError(done));
-        client.rpc.on('message', onMessage(done));
+        Client(null, clientCreated);
+
+        function clientCreated(err, client) {
+            if (err) {
+                return done(err);
+            }
+            client.rpc.on('open', onOpen(client));
+            client.rpc.on('error', onError(done));
+            client.rpc.on('message', onMessage(done));
+        }
     });
 });
 
 function onOpen(client) {
     return function () {
         let getStatus = client.services.krpc.getStatus();
-        client.rpc.send(getStatus);
+        client.send(getStatus);
     };
 }
 
@@ -35,7 +41,7 @@ function onMessage(done) {
         let status = statusResult.value;
         expect(status).to.be.ok();
         expect(_.isObject(status)).to.be.ok();
-        expect(_.isNil(status.adaptive_rate_control)).to.not.be.ok();
+        expect(_.isNil(status.adaptiveRateControl)).to.not.be.ok();
         return done();
     };
 }

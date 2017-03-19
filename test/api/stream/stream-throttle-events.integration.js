@@ -7,18 +7,31 @@ let success = false;
 let game = {};
 let done;
 
-describe('Streams', function () {
-    it('Stream throttle', function (testDone) {
+describe('Stream throttle - events', function () {
+    it('Should work', function (testDone) {
         done = testDone;
-        client = Client();
-        client.rpc.on('open', clientConnectionOpen);
-        client.rpc.on('error', onError);
-        client.rpc.on('close', onClose);
+        Client(null, clientCreated);
+
+        function clientCreated(err, _client) {
+            if (err) {
+                return done(err);
+            }
+            client = _client;
+            client.rpc.on('open', clientConnectionOpen);
+            client.rpc.on('error', onError);
+            client.rpc.on('close', onClose);
+        }
     });
 });
 
 // ----=================[ Start helper functions ]=================----
 function onError(err) {
+    console.error("Client Error");
+    done(err);
+}
+
+function streamError(err) {
+    console.error("Stream Error");
     done(err);
 }
 
@@ -26,7 +39,7 @@ function onClose(event) {
     if (success) {
         done();
     }
-    return done(new Error(util.format("Socket closed before done", event)));
+    return done(new Error(util.format("Socket closed before done: %s (%s)", event.reason, event.code)));
 }
 
 function getFirstResult(response) {
@@ -45,21 +58,22 @@ function replaceMessageHandler(fn) {
 
 function clientConnectionOpen() {
     let procedure = client.services.krpc.getClientId();
-    client.rpc.send(procedure);
+    client.send(procedure);
     client.rpc.on('message', getClientIdComplete);
 }
 
 function getClientIdComplete(response) {
-    let id = getFirstResult(response).toString('base64');
+    let firstResult = getFirstResult(response);
+    let id = firstResult.toString('base64');
     client.connectToStreamServer(id);
     client.stream.on('open', streamOpen);
-    client.stream.on('error', onError);
+    client.stream.on('error', streamError);
     client.stream.on('close', onClose);
 }
 
 function streamOpen() {
     let procedure = client.services.spaceCenter.getActiveVessel();
-    client.rpc.send(procedure);
+    client.send(procedure);
     replaceMessageHandler(getActiveVesselComplete);
 }
 
@@ -67,7 +81,7 @@ function getActiveVesselComplete(response) {
     game.vessel = {
         id: getFirstResult(response)
     };
-    client.rpc.send(client.services.spaceCenter.vesselGetControl(game.vessel.id));
+    client.send(client.services.spaceCenter.vesselGetControl(game.vessel.id));
     replaceMessageHandler(getActiveVesselControlComplete);
 }
 
@@ -75,12 +89,12 @@ function getActiveVesselControlComplete(response) {
     game.vessel.control = {
         id: getFirstResult(response)
     };
-    client.rpc.send(client.services.spaceCenter.vesselGetOrbitalReferenceFrame(game.vessel.id));
+    client.send(client.services.spaceCenter.vesselGetOrbitalReferenceFrame(game.vessel.id));
     replaceMessageHandler(getOrbitalReferenceFrame);
 }
 function getOrbitalReferenceFrame(response) {
     game.vessel.orbitalReference = getFirstResult(response);
-    client.rpc.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
+    client.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
     replaceMessageHandler(getVesselFlightComplete);
 }
 
@@ -90,7 +104,7 @@ function getVesselFlightComplete(getVesselResponse) {
     };
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
     let addStreamCall = client.services.krpc.addStream(getThrottle.call);
-    client.rpc.send(addStreamCall);
+    client.send(addStreamCall);
     replaceMessageHandler(throttleStreamAdded);
     client.stream.on('message', streamUpdate);
     function throttleStreamAdded(throttleResponse) {
@@ -102,7 +116,7 @@ function getVesselFlightComplete(getVesselResponse) {
         };
         let getHeading = client.services.spaceCenter.flightGetHeading(game.vessel.flight.id);
         addStreamCall = client.services.krpc.addStream(getHeading.call);
-        client.rpc.send(addStreamCall);
+        client.send(addStreamCall);
         replaceMessageHandler(headingStreamAdded);
 
         function headingStreamAdded(headingResponse) {
@@ -116,13 +130,16 @@ function getVesselFlightComplete(getVesselResponse) {
 }
 
 let counter = 0;
-function streamUpdate(streamUpdateResponse) {
+function streamUpdate(streamState, streamUpdateResponse) {
     streamUpdateResponse.results.forEach(function (update) {
         if (update.result.error) {
             console.error(update.result.error);
             return;
         }
         let stream = game.streams[update.id.toString()];
+        if (!stream) {
+            return;
+        }
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
         counter++;
