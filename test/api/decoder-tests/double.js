@@ -17,7 +17,7 @@ describe('Decoding - double', function () {
                 async.apply(getVessel, data),
                 getAutoPilot,
                 setAutoPilotRollThreshold,
-                getAutoPilotRollThreshold
+                getAutoPilotRollThreshold //decoders.double
             ], done);
         }
     });
