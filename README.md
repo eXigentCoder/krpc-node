@@ -130,7 +130,13 @@ Sends one or more calls to the server to process
 
 **Parameters**
 
--   `calls` **([procedureCall](#procedurecall) \| [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[procedureCall](#procedurecall)>)** One or more calls to send to the server.
+-   `calls` **([procedureCall](#procedurecall) | [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[procedureCall](#procedurecall)>)** One or more calls to send to the server.
+-   `callback` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)** The function called once the client has been created.
+
+**Callback Parameters**
+
+-	`err` **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** The error object if there was a problem creating the client, otherwise null.
+-	`response` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The client response object.
 
 ## procedureCall
 
@@ -141,226 +147,21 @@ A procedure call with a decode function an a procedure object to send to the ser
 -   `decode` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The function used to decode the response from the server.
 -   `call` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The actual call + arguments to send to the server to execute.
 
-## encodeDouble
+## addStream
 
-Takes in a value and encodes it as a `double` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeFloat
-
-Takes in a value and encodes it as a `float` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+Adds an call to the continuous update stream.
 
 **Parameters**
 
--   `value`  The value to encode.
+-   `call` **[procedureCall](#procedurecall)** One or more calls to send to the server.
+-   `propertyPath` **[procedureCall](#procedurecall)** The [lodash set path](https://lodash.com/docs/4.17.4#set) to use to set the result of the stream call on `client.streamState`.
+-   `callback` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)** The function called once the stream has been added.
 
-Returns **(ByteBuffer | void)**
+**Callback Parameters**
 
-## encodeSInt32
+-	`err` **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** The error object if there was a problem creating the client, otherwise null.
+-	`stream` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The stream object.
 
-Takes in a value and encodes it as a `sInt32` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeSInt64
-
-Takes in a value and encodes it as a `sInt64` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeUInt32
-
-Takes in a value and encodes it as a `uInt32` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeUInt64
-
-Takes in a value and encodes it as a `uInt64` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeBool
-
-Takes in a value and encodes it as a `bool` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeString
-
-Takes in a value and encodes it as a `string` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeBytes
-
-Takes in a value and encodes it as `bytes` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-Returns **(ByteBuffer | void)**
-
-## encodeEnum
-
-Returns a function that can be used to encode a string as the specific enum value.
-
-**Parameters**
-
--   `enumDefinition` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The key-value enum object. Keys should be numbers, values should be strings.
-
-Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The [function](#encodeValueBasedOnEnum) that will do the encoding.
-
-## encodeValueBasedOnEnum
-
-Takes in a string value and using the provided enum definition encodes it as a `sInt` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
-
-**Parameters**
-
--   `value`  The value to encode.
-
-
--   Throws **[Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)** If the provided value was not found in the enum definition
-
-Returns **(ByteBuffer | void)**
-
-## decodeDouble
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `double` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)**
-
-## decodeFloat
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `float` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **([number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)**
-
-## decodeSInt32
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `sInt32` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**
-
-## decodeSInt64
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `sInt64` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **(!Long | !{value: Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | !Long | {value: !Long, length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})**
-
-## decodeUInt32
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `uInt32` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **({value, length} | [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) | !{value: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)})**
-
-## decodeUInt64
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `uInt64` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **any**
-
-## decodeBool
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `bool` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
-
-## decodeString
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `string` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **([string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | !{string: [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), length: [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)} | {string, length})**
-
-## decodeBytes
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing `bytes` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
-
-Returns **any**
-
-## decodeEnum
-
-Returns a function that can be used to decode a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> into an entry from the provided enum definition.
-
-**Parameters**
-
--   `enumDefinition` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The key-value enum object. Keys should be numbers, values should be strings.
-
-Returns **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The [function](#decodeBufferToEnumValue) that will do the decoding.
-
-## decodeBufferToEnumValue
-
-Takes in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object representing a `double` and decodes it.
-
-**Parameters**
-
--   `buffer` **ByteBuffer** The buffer object
 
 # Practical Examples
 
