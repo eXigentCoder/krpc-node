@@ -75,6 +75,58 @@ describe('Multiple Calls', function () {
             }
         }
     });
+
+    it('Should work with multiple single calls a double call and callbacks', function (done) {
+        Client(null, clientCreated);
+        let complete = 0;
+        let total = 0;
+
+        function clientCreated(err, client) {
+            if (err) {
+                return done(err);
+            }
+            let getClientId = client.services.krpc.getClientId();
+            let getStatus = client.services.krpc.getStatus();
+            let getActiveVessel = client.services.spaceCenter.getActiveVessel();
+            send(client, getClientId, getClientIdComplete);
+            send(client, [getActiveVessel, getStatus], getActiveVesselAndStatusComplete);
+        }
+
+        function getClientIdComplete(err, response) {
+            if (err) {
+                return done(err);
+            }
+            let clientId = getResultN(response, 0).toString('base64');
+            expect(clientId).to.be.ok();
+            expect(clientId.length).to.be.greaterThan(5);
+            return singleCallComplete();
+        }
+
+        function getActiveVesselAndStatusComplete(err, response) {
+            if (err) {
+                return done(err);
+            }
+            let vesselId = getResultN(response, 0);
+            expect(vesselId).to.be.ok();
+            let status = getResultN(response, 1);
+            expect(status).to.be.ok();
+            expect(status.version).to.be.ok();
+            expect(status.version.length).to.be.greaterThan(4);
+            return singleCallComplete();
+        }
+
+        function send(client, call, callback) {
+            total++;
+            client.send(call, callback);
+        }
+
+        function singleCallComplete() {
+            complete++;
+            if (complete === total) {
+                done();
+            }
+        }
+    });
 });
 
 
