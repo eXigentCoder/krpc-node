@@ -15,7 +15,7 @@ describe('Decoding - bool', function () {
             async.waterfall([
                 async.apply(getVessel, data),
                 getControl,
-                controlGetThrottle
+                controlGetBreaks //decoders.bool
             ], done);
         }
     });
@@ -40,7 +40,7 @@ function getControl(data, callback) {
     });
 }
 
-function controlGetThrottle(data, callback) {
+function controlGetBreaks(data, callback) {
     data.client.send(data.client.services.spaceCenter.controlGetBrakes(data.controlId), function (err, response) {
         if (err) {
             return callback(err);

@@ -13,7 +13,7 @@ describe('Decoding - bytes', function () {
             }
             let data = {client: client};
             async.waterfall([
-                async.apply(getVessel, data)
+                async.apply(getVessel, data)//decoders.bytes
             ], done);
         }
     });
