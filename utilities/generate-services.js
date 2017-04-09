@@ -386,6 +386,7 @@ function getDecodeFnSubType(decodeTypeString, type, depth = 1) {
         throw new Error(util.format('Maximum depth exceeded', decodeTypeString, type, depth));
     }
     let result = '{' + eol;
+    result += '            type: ' + decodeTypeString + ',' + eol;
     for (let i = 0; i < type.types.length; i++) {
         let subType = type.types[i];
         result += '            "' + i + '":' + getDecoder(subType, depth);
