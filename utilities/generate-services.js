@@ -330,7 +330,11 @@ function getDecodeFn(procedure, service) {
     if (!procedure.returnType) {
         return 'null';
     }
-    switch (procedure.returnType.code) {
+    return getDecoder(procedure.returnType, 1);
+}
+
+function getDecoder(type, depth = 1) {
+    switch (type.code) {
         case 0:
             return 'null';
         case 1:
@@ -354,7 +358,7 @@ function getDecodeFn(procedure, service) {
         case 100:
             return decodersName + '.uInt64';
         case 101:
-            return getEnumFunction(decodersName, procedure.returnType);
+            return getEnumFunction(decodersName, type);
         case 200:
             return 'proto.ProcedureCall';
         case 201:
@@ -364,16 +368,34 @@ function getDecodeFn(procedure, service) {
         case 203:
             return 'proto.Services';
         case 300:
-            return 'proto.Tuple';
+            return getDecodeFnSubType('proto.Tuple', type, depth);
         case 301:
-            return 'proto.List';
+            return getDecodeFnSubType('proto.List', type, depth);
         case 302:
-            return 'proto.Set';
+            return getDecodeFnSubType('proto.Set', type, depth);
         case 303:
-            return 'proto.Dictionary';
+            return getDecodeFnSubType('proto.Dictionary', type, depth);
         default:
-            throw new Error(util.format("Unable to determine decoder type string for type for %j %j", procedure.returnType, service));
+            throw new Error(util.format("Unable to determine decoder type string for type for %j", type));
     }
+}
+
+function getDecodeFnSubType(decodeTypeString, type, depth = 1) {
+    depth++;
+    if (depth > 5) {
+        throw new Error(util.format('Maximum depth exceeded', decodeTypeString, type, depth));
+    }
+    let result = '{' + eol;
+    for (let i = 0; i < type.types.length; i++) {
+        let subType = type.types[i];
+        result += '            "' + i + '":' + getDecoder(subType, depth);
+        if (i < type.types.length - 1) {
+            result += ',';
+        }
+        result += eol;
+    }
+    result += '        }';
+    return result;
 }
 
 function getEncodersArray(parameters, service) {
