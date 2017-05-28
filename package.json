@@ -18,7 +18,9 @@
     "readme-remote-tech": "node_modules/.bin/documentation readme \"lib/services/remote-tech.js\" --readme-file=\"documentation/remote-tech.md\" --section=API --shallow=true",
     "readme-space-center": "node_modules/.bin/documentation readme \"lib/services/space-center.js\" --readme-file=\"documentation/space-center.md\" --section=API --shallow=true",
     "readme-ui": "node_modules/.bin/documentation readme \"lib/services/ui.js\" --readme-file=\"documentation/ui.md\" --section=API --shallow=true",
-    "update": "npm-check -Eu"
+    "update": "npm-check -Eu",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -37,7 +39,8 @@
     "documentation": "4.0.0-beta10",
     "lodash": "4.17.4",
     "protobufjs": "6.6.5",
-    "ws": "2.2.0"
+    "ws": "2.2.0",
+    "snyk": "^1.31.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -48,5 +51,6 @@
     "mocha": "3.2.0",
     "npm-check": "5.4.0",
     "plato": "1.7.0"
-  }
+  },
+  "snyk": true
 }
