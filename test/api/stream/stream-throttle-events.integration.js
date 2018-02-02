@@ -136,7 +136,7 @@ function streamUpdate(streamState, streamUpdateResponse) {
             console.error(update.result.error);
             return;
         }
-        let stream = game.streams[update.id.toString()];
+        let stream = game.streams && game.streams[update.id.toString()];
         if (!stream) {
             return;
         }
