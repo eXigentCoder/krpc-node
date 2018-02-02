@@ -106,8 +106,8 @@ function addThrottleToStream(data, callback) {
 
 function addHeadingToStream(data, callback) {
     let getHeading = data.client.services.spaceCenter.flightGetHeading(data.vessel.flightId);
-    data.client.addStream(getHeading, "Heading", throttleStreamAdded);
-    function throttleStreamAdded(err) {
+    data.client.addStream(getHeading, "Heading", headingStreamAdded);
+    function headingStreamAdded(err) {
         data.client.stream.on('message', streamUpdate(data));
         return callback(err, data);
     }
