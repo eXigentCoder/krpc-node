@@ -225,6 +225,10 @@ function getParamName(param) {
     if (name === 'this') {
         name = _.camelCase(param.type.name);
     }
+    // TODO: check for other reserved keywords too
+    if (name === 'function') {
+        name += '_';
+    }
     if (!name) {
         throw new Error('Name was null');
     }
