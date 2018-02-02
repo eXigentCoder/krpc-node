@@ -5,7 +5,7 @@
 ## Drawing
 
 Provides functionality for drawing objects in the flight scene.
-For drawing and interacting with the user interface, see the UI service.
+ For drawing and interacting with the user interface, see the UI service.
 
 Returns **void** 
 
@@ -19,7 +19,7 @@ Draw a line in the scene.
 
 -   `start` **{number, number, number}** Position of the start of the line.
 -   `end` **{number, number, number}** Position of the end of the line.
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the line is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -33,7 +33,7 @@ Draw a direction vector in the scene, from the center of mass of the active vess
 **Parameters**
 
 -   `direction` **{number, number, number}** Direction to draw the line in.
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 -   `length` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The length of the line.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the line is visible.
 
@@ -48,7 +48,7 @@ Draw a polygon in the scene, defined by a list of vertices.
 **Parameters**
 
 -   `vertices` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;{number, number, number}>** Vertices of the polygon.
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the polygon is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -62,7 +62,7 @@ Draw text in the scene.
 **Parameters**
 
 -   `text` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The string to draw.
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 -   `position` **{number, number, number}** Position of the text.
 -   `rotation` **{number, number, number, number}** Rotation of the text, as a quaternion.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the text is visible.
@@ -89,7 +89,7 @@ Remove the object.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **void** 
 
@@ -101,7 +101,7 @@ Start position of the line.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -113,7 +113,7 @@ Start position of the line.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -126,7 +126,7 @@ End position of the line.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -138,7 +138,7 @@ End position of the line.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -151,7 +151,7 @@ Set the color
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -163,7 +163,7 @@ Set the color
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -176,7 +176,7 @@ Set the thickness
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -188,7 +188,7 @@ Set the thickness
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -201,7 +201,7 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -213,8 +213,8 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
+-   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -226,7 +226,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -238,7 +238,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -252,7 +252,7 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -265,7 +265,7 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `line` **Long** A long value representing the id for the Drawing.Line see [Long.js]<https://www.npmjs.com/package/long>
+-   `line` **Long** A long value representing the id for the Drawing.Line
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -278,7 +278,7 @@ Remove the object.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **void** 
 
@@ -290,7 +290,7 @@ Vertices for the polygon.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -302,7 +302,7 @@ Vertices for the polygon.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 -   `value` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;{number, number, number}>** 
 
 Returns **void** 
@@ -315,7 +315,7 @@ Set the color
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -327,7 +327,7 @@ Set the color
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -340,7 +340,7 @@ Set the thickness
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -352,7 +352,7 @@ Set the thickness
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -365,7 +365,7 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -377,8 +377,8 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
+-   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -390,7 +390,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -402,7 +402,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -416,7 +416,7 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -429,10 +429,18 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `polygon` **Long** A long value representing the id for the Drawing.Polygon see [Long.js]<https://www.npmjs.com/package/long>
+-   `polygon` **Long** A long value representing the id for the Drawing.Polygon
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
+
+## textStaticAvailableFonts
+
+**Extends Drawing**
+
+A list of all available fonts.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
 ## textRemove
 
@@ -442,7 +450,7 @@ Remove the object.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **void** 
 
@@ -454,7 +462,7 @@ Position of the text.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -466,7 +474,7 @@ Position of the text.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -479,7 +487,7 @@ Rotation of the text as a quaternion.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -491,22 +499,10 @@ Rotation of the text as a quaternion.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **{number, number, number, number}** 
 
 Returns **void** 
-
-## textGetAvailableFonts
-
-**Extends Drawing**
-
-A list of all available fonts.
-
-**Parameters**
-
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
 ## textGetContent
 
@@ -516,7 +512,7 @@ The text string
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -528,7 +524,7 @@ The text string
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -541,7 +537,7 @@ Name of the font
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -553,7 +549,7 @@ Name of the font
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -566,7 +562,7 @@ Font size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -578,7 +574,7 @@ Font size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -591,7 +587,7 @@ Character size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -603,7 +599,7 @@ Character size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -616,7 +612,7 @@ Font style.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -628,8 +624,8 @@ Font style.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the UI.FontStyle see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
+-   `value` **Long** A long value representing the id for the UI.FontStyle
 
 Returns **void** 
 
@@ -641,7 +637,7 @@ Alignment.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -653,8 +649,8 @@ Alignment.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the UI.TextAlignment see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
+-   `value` **Long** A long value representing the id for the UI.TextAlignment
 
 Returns **void** 
 
@@ -666,7 +662,7 @@ Line spacing.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -678,7 +674,7 @@ Line spacing.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -691,7 +687,7 @@ Anchor.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -703,8 +699,8 @@ Anchor.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the UI.TextAnchor see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
+-   `value` **Long** A long value representing the id for the UI.TextAnchor
 
 Returns **void** 
 
@@ -716,7 +712,7 @@ Set the color
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -728,7 +724,7 @@ Set the color
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -741,7 +737,7 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -753,8 +749,8 @@ Reference frame for the positions of the object.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
+-   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -766,7 +762,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -778,7 +774,7 @@ Whether the object is visible.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -792,7 +788,7 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -805,7 +801,7 @@ Creates the material from a shader with the given name.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the Drawing.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the Drawing.Text
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
