@@ -143,7 +143,7 @@ function streamUpdate(streamState, streamUpdateResponse) {
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
         counter++;
-        if (counter > 50) {
+        if (counter === 50) {
             done();
         }
     });

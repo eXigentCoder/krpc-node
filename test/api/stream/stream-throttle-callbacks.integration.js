@@ -118,7 +118,7 @@ function streamUpdate(data) {
     return function _streamUpdate(streamState) {
         console.log(streamState);
         counter++;
-        if (counter > 50) {
+        if (counter === 50) {
             data.done();
         }
     };
