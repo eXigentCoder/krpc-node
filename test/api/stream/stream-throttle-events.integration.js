@@ -103,7 +103,7 @@ function getVesselFlightComplete(getVesselResponse) {
         id: getFirstResult(getVesselResponse)
     };
     let getThrottle = client.services.spaceCenter.controlGetThrottle(game.vessel.control.id);
-    let addStreamCall = client.services.krpc.addStream(getThrottle.call);
+    let addStreamCall = client.services.krpc.addStream(getThrottle.call, true);
     client.send(addStreamCall);
     replaceMessageHandler(throttleStreamAdded);
     client.stream.on('message', streamUpdate);
@@ -115,7 +115,7 @@ function getVesselFlightComplete(getVesselResponse) {
             decode: getThrottle.decode
         };
         let getHeading = client.services.spaceCenter.flightGetHeading(game.vessel.flight.id);
-        addStreamCall = client.services.krpc.addStream(getHeading.call);
+        addStreamCall = client.services.krpc.addStream(getHeading.call, true);
         client.send(addStreamCall);
         replaceMessageHandler(headingStreamAdded);
 
