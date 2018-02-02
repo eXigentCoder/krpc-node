@@ -38,6 +38,8 @@ message Request {
 message ProcedureCall {
   string service = 1;
   string procedure = 2;
+  uint32 service_id = 4;
+  uint32 procedure_id = 5;
   repeated Argument arguments = 3;
 }
 
@@ -93,7 +95,8 @@ message Procedure {
   string name = 1;
   repeated Parameter parameters = 2;
   Type return_type = 3;
-  string documentation = 4;
+  bool return_is_nullable = 4;
+  string documentation = 5;
 }
 
 message Parameter {
@@ -149,10 +152,11 @@ message Type {
     ENUMERATION = 101;
 
     // Messages
-    PROCEDURE_CALL = 200;
-    STREAM = 201;
-    STATUS = 202;
-    SERVICES = 203;
+    EVENT = 200;
+    PROCEDURE_CALL = 201;
+    STREAM = 202;
+    STATUS = 203;
+    SERVICES = 204;
 
     // Collections
     TUPLE = 300;
@@ -191,6 +195,10 @@ message Stream {
   uint64 id = 1;
 }
 
+message Event {
+  Stream stream = 1;
+}
+
 message Status {
   string version = 1;
   uint64 bytes_read = 2;
@@ -211,4 +219,16 @@ message Status {
   uint64 stream_rpcs_executed = 17;
   float stream_rpc_rate = 18;
   float time_per_stream_update = 19;
+}
+
+// Multiplexed request messages
+
+message MultiplexedRequest {
+  ConnectionRequest connection_request = 1;
+  Request request = 2;
+}
+
+message MultiplexedResponse {
+  Response response = 1;
+  StreamUpdate stream_update = 2;
 }

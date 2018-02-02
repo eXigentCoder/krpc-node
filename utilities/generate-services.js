@@ -175,8 +175,8 @@ const typeCodeMappings = {
     100: {originalName: 'CLASS', dotNet: 'Class', jsDoc: 'Object'},
     101: {originalName: 'ENUMERATION', dotNet: 'Enumeration', jsDoc: 'Object'},
     //  Messages
-    200: {originalName: 'REQUEST', dotNet: 'Request', jsDoc: 'Object'},
-    201: {originalName: 'STREAM_UPDATE', dotNet: 'StreamUpdate', jsDoc: 'Object'},
+    200: {originalName: 'EVENT', dotNet: 'Event', jsDoc: 'Object'},
+    201: {originalName: 'PROCEDURE_CALL', dotNet: 'ProcedureCall', jsDoc: 'Object'},
     202: {originalName: 'STREAM', dotNet: 'Stream', jsDoc: 'Object'},
     203: {originalName: 'STATUS', dotNet: 'Status', jsDoc: 'Object'},
     204: {originalName: 'SERVICES', dotNet: 'Services', jsDoc: 'Object'},
@@ -203,6 +203,7 @@ function getTypeStringFromCode(type, doNotAddBraces, param) {
         case 201:
         case 202:
         case 203:
+        case 204:
             return processValueType(type, doNotAddBraces, param);
         case 100:
         case 101:
@@ -360,12 +361,14 @@ function getDecoder(type, depth = 1) {
         case 101:
             return getEnumFunction(decodersName, type);
         case 200:
-            return 'proto.ProcedureCall';
+            return 'proto.Event';
         case 201:
-            return 'proto.Stream';
+            return 'proto.ProcedureCall';
         case 202:
-            return 'proto.Status';
+            return 'proto.Stream';
         case 203:
+            return 'proto.Status';
+        case 204:
             return 'proto.Services';
         case 300:
             return getDecodeFnSubType('proto.Tuple', type, depth);
@@ -456,18 +459,22 @@ function getEncodeFnForParam(service, parameter) {
             content += getEnumFunction(encodersName, parameter.type);
             break;
         case 200:
-            content += '{buffer: proto.ProcedureCall.encode';
+            content += '{buffer: proto.Event.encode';
             addDotFinish = true;
             break;
         case 201:
-            content += '{buffer: proto.Stream.encode';
+            content += '{buffer: proto.ProcedureCall.encode';
             addDotFinish = true;
             break;
         case 202:
-            content += '{buffer: proto.Status.encode';
+            content += '{buffer: proto.Stream.encode';
             addDotFinish = true;
             break;
         case 203:
+            content += '{buffer: proto.Status.encode';
+            addDotFinish = true;
+            break;
+        case 204:
             content += '{buffer: proto.Services.encode';
             addDotFinish = true;
             break;
