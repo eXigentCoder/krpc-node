@@ -95,6 +95,12 @@ function processDocumentation(procedureOrService, isService, serviceName) {
         .replace(/<\/summary>\s/g, '')
         .replace(/\s<remarks>\s/g, '\n ')
         .replace(/<\/remarks>\s/g, '')
+        .replace(/\s<returns>/g, '\nReturns: ')
+        .replace(/<\/returns>/g, '')
+        .replace(/<paramref name="/g, '{')
+        .replace(/<\/paramref>/g, '')
+        .replace(/<c>/g, '')
+        .replace(/<\/c>/g, '')
         .replace(/<param.*<\/param>/g, '')
         .replace(/<see cref="/g, '{@link ')
         .replace(/" \/>/g, '}');
