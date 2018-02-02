@@ -387,25 +387,25 @@ function getDecoder(type, depth = 1) {
     }
 }
 
-function getDecodeFnSubType(decodeTypeString, type, depth = 1) {
-    depth++;
+function getDecodeFnSubType(decodeTypeString, type, depth = 0) {
     if (depth > 5) {
         throw new Error(util.format('Maximum depth exceeded', decodeTypeString, type, depth));
     }
+    var indent = new Array(depth*8+1).join(' ');
     let result = '{' + eol;
-    result += '            isCollection: true,' + eol;
-    result += '            decode: ' + decodeTypeString + ',' + eol;
-    result += '            subTypes: [' + eol;
+    result += indent + '    isCollection: true,' + eol;
+    result += indent + '    decode: ' + decodeTypeString + ',' + eol;
+    result += indent + '    subTypes: [' + eol;
     for (let i = 0; i < type.types.length; i++) {
         let subType = type.types[i];
-        result += '                ' + getDecoder(subType, depth);
+        result += indent + '        ' + getDecoder(subType, depth+1);
         if (i < type.types.length - 1) {
             result += ',';
         }
         result += eol;
     }
-    result += '            ]' + eol;
-    result += '        }';
+    result += indent + '    ]' + eol;
+    result += indent + '}';
     return result;
 }
 
