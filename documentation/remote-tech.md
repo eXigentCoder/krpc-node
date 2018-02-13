@@ -4,7 +4,8 @@
 
 ## RemoteTech
 
-This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/">RemoteTech</a>.
+This service provides functionality to interact with
+<a href="https://forum.kerbalspaceprogram.com/index.php?/topic/139167-13-remotetech-v188-2017-09-03/">RemoteTech</a>.
 
 Returns **void** 
 
@@ -16,7 +17,7 @@ Get a communications object, representing the communication capability of a part
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -28,7 +29,15 @@ Get the antenna object for a particular part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getAvailable
+
+**Extends RemoteTech**
+
+Whether RemoteTech is installed.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -48,7 +57,7 @@ Get the part containing this antenna.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -60,7 +69,7 @@ Whether the antenna has a connection.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -75,7 +84,7 @@ To set the target to a celestial body, ground station or vessel see [M:RemoteTec
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -90,8 +99,8 @@ To set the target to a celestial body, ground station or vessel see [M:RemoteTec
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the RemoteTech.Target see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
+-   `value` **Long** A long value representing the id for the RemoteTech.Target
 
 Returns **void** 
 
@@ -103,7 +112,7 @@ The celestial body the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -115,8 +124,8 @@ The celestial body the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
 
@@ -128,7 +137,7 @@ The ground station the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -140,7 +149,7 @@ The ground station the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -153,7 +162,7 @@ The vessel the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -165,8 +174,8 @@ The vessel the antenna is targetting.
 
 **Parameters**
 
--   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `antenna` **Long** A long value representing the id for the RemoteTech.Antenna
+-   `value` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -175,13 +184,11 @@ Returns **void**
 **Extends RemoteTech**
 
 The signal delay between the this vessel and another vessel, in seconds.
- <param name="other">
- </param>
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
--   `other` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
+-   `other` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -193,7 +200,7 @@ Get the vessel.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -205,7 +212,7 @@ Whether the vessel can be controlled locally.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -217,7 +224,7 @@ Whether the vessel has a flight computer on board.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -229,7 +236,7 @@ Whether the vessel has any connection.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -241,7 +248,7 @@ Whether the vessel has a connection to a ground station.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -253,7 +260,7 @@ The shortest signal delay to the vessel, in seconds.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -265,7 +272,7 @@ The signal delay between the vessel and the closest ground station, in seconds.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -277,6 +284,6 @@ The antennas for this vessel.
 
 **Parameters**
 
--   `comms` **Long** A long value representing the id for the RemoteTech.Comms see [Long.js]<https://www.npmjs.com/package/long>
+-   `comms` **Long** A long value representing the id for the RemoteTech.Comms
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 

@@ -8,6 +8,23 @@ Main kRPC service, used by clients to interact with basic server functionality.
 
 Returns **void** 
 
+## getClientId
+
+**Extends KRPC**
+
+Returns the identifier for the current client.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getClientName
+
+**Extends KRPC**
+
+Returns the name of the current client.
+This is an empty string if the client has no name.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
 ## getStatus
 
 **Extends KRPC**
@@ -34,8 +51,34 @@ Add a streaming request and return its identifier.
 **Parameters**
 
 -   `call` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `start` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## startStream
+
+**Extends KRPC**
+
+Start a previously added streaming request.
+
+**Parameters**
+
+-   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## setStreamRate
+
+**Extends KRPC**
+
+Set the update rate for a stream in Hz.
+
+**Parameters**
+
+-   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `rate` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
 
 ## removeStream
 
@@ -48,6 +91,18 @@ Remove a streaming request.
 -   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
+
+## addEvent
+
+**Extends KRPC**
+
+Create an event from a server side expression.
+
+**Parameters**
+
+-   `expression` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
 ## getClients
 
@@ -63,5 +118,717 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends KRPC**
 
 Get the current game scene.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getPaused
+
+**Extends KRPC**
+
+Whether the game is paused.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## setPaused
+
+**Extends KRPC**
+
+Whether the game is paused.
+
+**Parameters**
+
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## expressionStaticConstantDouble
+
+**Extends KRPC**
+
+A constant value of double precision floating point type.
+
+**Parameters**
+
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticConstantFloat
+
+**Extends KRPC**
+
+A constant value of single precision floating point type.
+
+**Parameters**
+
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticConstantInt
+
+**Extends KRPC**
+
+A constant value of integer type.
+
+**Parameters**
+
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticConstantBool
+
+**Extends KRPC**
+
+A constant value of boolean type.
+
+**Parameters**
+
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticConstantString
+
+**Extends KRPC**
+
+A constant value of string type.
+
+**Parameters**
+
+-   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCall
+
+**Extends KRPC**
+
+An RPC call.
+
+**Parameters**
+
+-   `call` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticEqual
+
+**Extends KRPC**
+
+Equality comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticNotEqual
+
+**Extends KRPC**
+
+Inequality comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticGreaterThan
+
+**Extends KRPC**
+
+Greater than numerical comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticGreaterThanOrEqual
+
+**Extends KRPC**
+
+Greater than or equal numerical comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticLessThan
+
+**Extends KRPC**
+
+Less than numerical comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticLessThanOrEqual
+
+**Extends KRPC**
+
+Less than or equal numerical comparison.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAnd
+
+**Extends KRPC**
+
+Boolean and operator.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticOr
+
+**Extends KRPC**
+
+Boolean or operator.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticExclusiveOr
+
+**Extends KRPC**
+
+Boolean exclusive-or operator.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticNot
+
+**Extends KRPC**
+
+Boolean negation operator.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAdd
+
+**Extends KRPC**
+
+Numerical addition.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticSubtract
+
+**Extends KRPC**
+
+Numerical subtraction.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticMultiply
+
+**Extends KRPC**
+
+Numerical multiplication.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticDivide
+
+**Extends KRPC**
+
+Numerical division.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticModulo
+
+**Extends KRPC**
+
+Numerical modulo operator.
+
+Returns: The remainder of arg0 divided by arg1
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticPower
+
+**Extends KRPC**
+
+Numerical power operator.
+
+Returns: arg0 raised to the power of arg1, with type of arg0
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticLeftShift
+
+**Extends KRPC**
+
+Bitwise left shift.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticRightShift
+
+**Extends KRPC**
+
+Bitwise right shift.
+
+**Parameters**
+
+-   `arg0` **Long** A long value representing the id for the KRPC.Expression
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCast
+
+**Extends KRPC**
+
+Perform a cast to the given type.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `type` **Long** A long value representing the id for the KRPC.Type
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticParameter
+
+**Extends KRPC**
+
+A named parameter of type double.
+Returns: A named parameter.
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the parameter.
+-   `type` **Long** A long value representing the id for the KRPC.Type
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticFunction
+
+**Extends KRPC**
+
+A function.
+Returns: A function.
+
+**Parameters**
+
+-   `parameters` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** A list of long values representing the ids for the KRPC.Expression
+-   `body` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticInvoke
+
+**Extends KRPC**
+
+A function call.
+Returns: A function call.
+
+**Parameters**
+
+-   `function_` **Long** A long value representing the id for the KRPC.Expression
+-   `args`  
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCreateTuple
+
+**Extends KRPC**
+
+Construct a tuple.
+Returns: The tuple.
+
+**Parameters**
+
+-   `elements` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** A list of long values representing the ids for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCreateList
+
+**Extends KRPC**
+
+Construct a list.
+Returns: The list.
+
+**Parameters**
+
+-   `values` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** A list of long values representing the ids for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCreateSet
+
+**Extends KRPC**
+
+Construct a set.
+Returns: The set.
+
+**Parameters**
+
+-   `values` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** The values. Should all be of the same type.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCreateDictionary
+
+**Extends KRPC**
+
+Construct a dictionary, from a list of corresponding keys and values.
+Returns: The dictionary.
+
+**Parameters**
+
+-   `keys` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** A list of long values representing the ids for the KRPC.Expression
+-   `values` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Long>** A list of long values representing the ids for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticToList
+
+**Extends KRPC**
+
+Convert a collection to a list.
+Returns: The collection as a list.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticToSet
+
+**Extends KRPC**
+
+Convert a collection to a set.
+Returns: The collection as a set.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticGet
+
+**Extends KRPC**
+
+Access an element in a tuple, list or dictionary.
+Returns: The element.
+
+<param name="index">The index of the element to access.
+A zero indexed integer for a tuple or list, or a key for a dictionary.</param>
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `index` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticCount
+
+**Extends KRPC**
+
+Number of elements in a collection.
+Returns: The number of elements in the collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticSum
+
+**Extends KRPC**
+
+Sum all elements of a collection.
+Returns: The sum of the elements in the collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticMax
+
+**Extends KRPC**
+
+Maximum of all elements in a collection.
+Returns: The maximum elements in the collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticMin
+
+**Extends KRPC**
+
+Minimum of all elements in a collection.
+Returns: The minimum elements in the collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAverage
+
+**Extends KRPC**
+
+Minimum of all elements in a collection.
+Returns: The minimum elements in the collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticSelect
+
+**Extends KRPC**
+
+Run a function on every element in the collection.
+Returns: The modified collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `func` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticWhere
+
+**Extends KRPC**
+
+Run a function on every element in the collection.
+Returns: The modified collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `func` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticContains
+
+**Extends KRPC**
+
+Determine if a collection contains a value.
+Returns: Whether the collection contains a value.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `value` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAggregate
+
+**Extends KRPC**
+
+Applies an accumulator function over a sequence.
+Returns: The accumulated value.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `func` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAggregateWithSeed
+
+**Extends KRPC**
+
+Applies an accumulator function over a sequence, with a given seed.
+Returns: The accumulated value.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `seed` **Long** A long value representing the id for the KRPC.Expression
+-   `func` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticConcat
+
+**Extends KRPC**
+
+Concatenate two sequences.
+Returns: The first sequence followed by the second sequence.
+
+**Parameters**
+
+-   `arg1` **Long** A long value representing the id for the KRPC.Expression
+-   `arg2` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticOrderBy
+
+**Extends KRPC**
+
+Order a collection using a key function.
+Returns: The ordered collection.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `key` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAll
+
+**Extends KRPC**
+
+Determine whether all items in a collection satisfy a boolean predicate.
+Returns: Whether all items satisfy the predicate.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `predicate` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## expressionStaticAny
+
+**Extends KRPC**
+
+Determine whether any item in a collection satisfies a boolean predicate.
+Returns: Whether any item satisfies the predicate.
+
+**Parameters**
+
+-   `arg` **Long** A long value representing the id for the KRPC.Expression
+-   `predicate` **Long** A long value representing the id for the KRPC.Expression
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## typeStaticDouble
+
+**Extends KRPC**
+
+Double type.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## typeStaticFloat
+
+**Extends KRPC**
+
+Float type.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## typeStaticInt
+
+**Extends KRPC**
+
+Int type.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## typeStaticBool
+
+**Extends KRPC**
+
+Bool type.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## typeStaticString
+
+**Extends KRPC**
+
+String type.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 

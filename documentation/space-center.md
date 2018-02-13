@@ -4,7 +4,8 @@
 
 ## SpaceCenter
 
-Provides functionality to interact with Kerbal Space Program. This includes controlling the active vessel, managing its resources, planning maneuver nodes and auto-piloting.
+Provides functionality to interact with Kerbal Space Program. This includes controlling
+the active vessel, managing its resources, planning maneuver nodes and auto-piloting.
 
 Returns **void** 
 
@@ -20,11 +21,15 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Returns a list of vessels from the given &lt;paramref name="craftDirectory} that can be launched.
+Returns a list of vessels from the given {craftDirectory}
+that can be launched.
+<param name="craftDirectory">Name of the directory in the current saves
+"Ships" directory. For example "VAB" or "SPH".</param>
 
 **Parameters**
 
--   `craftDirectory` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the directory in the current saves "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.
+-   `craftDirectory` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the directory in the current saves
+    "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -33,12 +38,23 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Launch a vessel.
+<param name="craftDirectory">Name of the directory in the current saves
+"Ships" directory, that contains the craft file.
+For example "VAB" or "SPH".</param>
+<param name="name">Name of the vessel to launch. This is the name of the ".craft" file
+in the save directory, without the ".craft" file extension.</param>
+<param name="launchSite">Name of the launch site. For example "LaunchPad" or
+"Runway".</param>
 
 **Parameters**
 
--   `craftDirectory` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the directory in the current saves "Ships" directory, that contains the craft file. For example <c>"VAB"</c> or <c>"SPH"</c>.
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the vessel to launch. This is the name of the ".craft" file in the save directory, without the ".craft" file extension.
--   `launchSite` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the launch site. For example <c>"LaunchPad"</c> or <c>"Runway"</c>.
+-   `craftDirectory` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the directory in the current saves
+    "Ships" directory, that contains the craft file.
+    For example <c>"VAB"</c> or <c>"SPH"</c>.
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the vessel to launch. This is the name of the ".craft" file
+    in the save directory, without the ".craft" file extension.
+-   `launchSite` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the launch site. For example <c>"LaunchPad"</c> or
+    <c>"Runway"</c>.
 
 Returns **void** 
 
@@ -47,7 +63,9 @@ Returns **void**
 **Extends SpaceCenter**
 
 Launch a new vessel from the VAB onto the launchpad.
- This is equivalent to calling [M:SpaceCenter.LaunchVessel](M:SpaceCenter.LaunchVessel) with the craft directory set to "VAB" and the launch site set to "LaunchPad".
+
+ This is equivalent to calling [M:SpaceCenter.LaunchVessel](M:SpaceCenter.LaunchVessel) with the craft directory
+set to "VAB" and the launch site set to "LaunchPad".
 
 **Parameters**
 
@@ -60,7 +78,9 @@ Returns **void**
 **Extends SpaceCenter**
 
 Launch a new vessel from the SPH onto the runway.
- This is equivalent to calling [M:SpaceCenter.LaunchVessel](M:SpaceCenter.LaunchVessel) with the craft directory set to "SPH" and the launch site set to "Runway".
+
+ This is equivalent to calling [M:SpaceCenter.LaunchVessel](M:SpaceCenter.LaunchVessel) with the craft directory
+set to "SPH" and the launch site set to "Runway".
 
 **Parameters**
 
@@ -73,7 +93,8 @@ Returns **void**
 **Extends SpaceCenter**
 
 Save the game with a given name.
-This will create a save file called <c>name.sfs</c> in the folder of the current save game.
+This will create a save file called name.sfs in the folder of the
+current save game.
 
 **Parameters**
 
@@ -86,7 +107,8 @@ Returns **void**
 **Extends SpaceCenter**
 
 Load the game with the given name.
-This will create a load a save file called <c>name.sfs</c> from the folder of the current save game.
+This will create a load a save file called name.sfs from the folder of the
+current save game.
 
 **Parameters**
 
@@ -99,7 +121,7 @@ Returns **void**
 **Extends SpaceCenter**
 
 Save a quicksave.
-This is the same as calling [M:SpaceCenter.Save](M:SpaceCenter.Save) with the name "quicksave".
+ This is the same as calling [M:SpaceCenter.Save](M:SpaceCenter.Save) with the name "quicksave".
 
 Returns **void** 
 
@@ -108,7 +130,7 @@ Returns **void**
 **Extends SpaceCenter**
 
 Load a quicksave.
-This is the same as calling [M:SpaceCenter.Load](M:SpaceCenter.Load) with the name "quicksave".
+ This is the same as calling [M:SpaceCenter.Load](M:SpaceCenter.Load) with the name "quicksave".
 
 Returns **void** 
 
@@ -116,10 +138,11 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Returns <c>true</c> if regular "on-rails" time warp can be used, at the specified warp
-&lt;paramref name="factor}. The maximum time warp rate is limited by various things,
+Returns true if regular "on-rails" time warp can be used, at the specified warp
+{factor}. The maximum time warp rate is limited by various things,
 including how close the active vessel is to a planet. See
-<a href="http://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a> for details.
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
+for details.
 
 **Parameters**
 
@@ -132,13 +155,17 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Uses time acceleration to warp forward to a time in the future, specified
-by universal time &lt;paramref name="ut}. This call blocks until the desired
+by universal time {ut}. This call blocks until the desired
 time is reached. Uses regular "on-rails" or physical time warp as appropriate.
 For example, physical time warp is used when the active vessel is traveling
 through an atmosphere. When using regular "on-rails" time warp, the warp
-rate is limited by &lt;paramref name="maxRailsRate}, and when using physical
-time warp, the warp rate is limited by &lt;paramref name="maxPhysicsRate}.
-    <returns>When the time warp is complete.</returns>
+rate is limited by {maxRailsRate}, and when using physical
+time warp, the warp rate is limited by {maxPhysicsRate}.
+
+<param name="maxRailsRate">The maximum warp rate in regular "on-rails" time warp.
+</param>
+
+Returns: When the time warp is complete.
 
 **Parameters**
 
@@ -152,14 +179,19 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Converts a position vector from one reference frame to another.
-    <returns>The corresponding position vector in reference frame &lt;paramref name="to}.</returns>
+Converts a position from one reference frame to another.
+<param name="position">Position, as a vector, in reference frame
+{from}.</param>
+
+Returns: The corresponding position, as a vector, in reference frame
+{to}.
 
 **Parameters**
 
--   `position` **{number, number, number}** Position vector in reference frame <paramref name="from" />.
--   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
--   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `position` **{number, number, number}** Position, as a vector, in reference frame
+    <paramref name="from" />.
+-   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -167,14 +199,19 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Converts a direction vector from one reference frame to another.
-    <returns>The corresponding direction vector in reference frame &lt;paramref name="to}.</returns>
+Converts a direction from one reference frame to another.
+<param name="direction">Direction, as a vector, in reference frame
+{from}. </param>
+
+Returns: The corresponding direction, as a vector, in reference frame
+{to}.
 
 **Parameters**
 
--   `direction` **{number, number, number}** Direction vector in reference frame <paramref name="from" />.
--   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
--   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `direction` **{number, number, number}** Direction, as a vector, in reference frame
+    <paramref name="from" />.
+-   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -183,13 +220,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Converts a rotation from one reference frame to another.
-    <returns>The corresponding rotation in reference frame &lt;paramref name="to}.</returns>
+<param name="rotation">Rotation, as a quaternion of the form <math>(x, y, z, w)</math>,
+in reference frame {from}.</param>
+
+Returns: The corresponding rotation, as a quaternion of the form
+<math>(x, y, z, w)</math>, in reference frame {to}.
 
 **Parameters**
 
--   `rotation` **{number, number, number, number}** Rotation in reference frame <paramref name="from" />.
--   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
--   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `rotation` **{number, number, number, number}** Rotation, as a quaternion of the form <math>(x, y, z, w)</math>,
+    in reference frame <paramref name="from" />.
+-   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -197,17 +239,61 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Converts a velocity vector (acting at the specified position vector) from one
-reference frame to another. The position vector is required to take the
-relative angular velocity of the reference frames into account.
-     <returns>The corresponding velocity in reference frame &lt;paramref name="to}.</returns>
+Converts a velocity (acting at the specified position) from one reference frame
+to another. The position is required to take the relative angular velocity of the
+reference frames into account.
+<param name="position">Position, as a vector, in reference frame
+{from}.</param>
+<param name="velocity">Velocity, as a vector that points in the direction of travel and
+whose magnitude is the speed in meters per second, in reference frame
+{from}.</param>
+
+Returns: The corresponding velocity, as a vector, in reference frame
+{to}.
 
 **Parameters**
 
--   `position` **{number, number, number}** Position vector in reference frame <paramref name="from" />.
--   `velocity` **{number, number, number}** Velocity vector in reference frame <paramref name="from" />.
--   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
--   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `position` **{number, number, number}** Position, as a vector, in reference frame
+    <paramref name="from" />.
+-   `velocity` **{number, number, number}** Velocity, as a vector that points in the direction of travel and
+    whose magnitude is the speed in meters per second, in reference frame
+    <paramref name="from" />.
+-   `from` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `to` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## raycastDistance
+
+**Extends SpaceCenter**
+
+Cast a ray from a given position in a given direction, and return the distance to the hit point.
+If no hit occurs, returns infinity.
+
+Returns: The distance to the hit, in meters, or infinity if there was no hit.
+
+**Parameters**
+
+-   `position` **{number, number, number}** Position, as a vector, of the origin of the ray.
+-   `direction` **{number, number, number}** Direction of the ray, as a unit vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## raycastPart
+
+**Extends SpaceCenter**
+
+Cast a ray from a given position in a given direction, and return the part that it hits.
+If no hit occurs, returns null.
+
+Returns: The part that was hit or null if there was no hit.
+
+**Parameters**
+
+-   `position` **{number, number, number}** Position, as a vector, of the origin of the ray.
+-   `direction` **{number, number, number}** Direction of the ray, as a unit vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -227,7 +313,7 @@ The currently active vessel.
 
 **Parameters**
 
--   `value` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `value` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -264,7 +350,7 @@ The currently targeted celestial body.
 
 **Parameters**
 
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
 
@@ -284,7 +370,7 @@ The currently targeted vessel.
 
 **Parameters**
 
--   `value` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `value` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -304,7 +390,7 @@ The currently targeted docking port.
 
 **Parameters**
 
--   `value` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `value` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **void** 
 
@@ -316,6 +402,14 @@ The waypoint manager.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
+## getContractManager
+
+**Extends SpaceCenter**
+
+The contract manager.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
 ## getCamera
 
 **Extends SpaceCenter**
@@ -323,6 +417,46 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 An object that can be used to control the camera.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getUiVisible
+
+**Extends SpaceCenter**
+
+Whether the UI is visible.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## setUiVisible
+
+**Extends SpaceCenter**
+
+Whether the UI is visible.
+
+**Parameters**
+
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## getNavball
+
+**Extends SpaceCenter**
+
+Whether the navball is visible.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## setNavball
+
+**Extends SpaceCenter**
+
+Whether the navball is visible.
+
+**Parameters**
+
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
 
 ## getUt
 
@@ -336,8 +470,8 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">gravitational constant</a>
-G in <math>N(m/kg)^2</math>.
+The value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
+gravitational constant</a> G in <math>N(m/kg)^2</math>.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -381,9 +515,10 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The time warp rate, using regular "on-rails" time warp. A value between
 0 and 7 inclusive. 0 means no time warp. Returns 0 if physical time warp
 is active.
+
 If requested time warp factor cannot be set, it will be set to the next
 lowest possible value. For example, if the vessel is too close to a
-planet. See <a href="http://wiki.kerbalspaceprogram.com/wiki/Time_warp">
+planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
 the KSP wiki</a> for details.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -395,9 +530,10 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The time warp rate, using regular "on-rails" time warp. A value between
 0 and 7 inclusive. 0 means no time warp. Returns 0 if physical time warp
 is active.
+
 If requested time warp factor cannot be set, it will be set to the next
 lowest possible value. For example, if the vessel is too close to a
-planet. See <a href="http://wiki.kerbalspaceprogram.com/wiki/Time_warp">
+planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
 the KSP wiki</a> for details.
 
 **Parameters**
@@ -433,8 +569,9 @@ Returns **void**
 **Extends SpaceCenter**
 
 The current maximum regular "on-rails" warp factor that can be set.
-A value between 0 and 7 inclusive.  See
-<a href="http://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a> for details.
+A value between 0 and 7 inclusive. See
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
+for details.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -442,7 +579,7 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Whether <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a> is installed.
+Whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -454,7 +591,7 @@ Engage the auto-pilot.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **void** 
 
@@ -466,7 +603,7 @@ Disengage the auto-pilot.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **void** 
 
@@ -474,11 +611,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Blocks until the vessel is pointing in the target direction and has the target roll (if set).
+Blocks until the vessel is pointing in the target direction and has
+the target roll (if set). Throws an exception if the auto-pilot has not been engaged.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **void** 
 
@@ -490,7 +628,7 @@ Set target pitch and heading angles.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `pitch` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Target pitch angle, in degrees between -90° and +90°.
 -   `heading` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Target heading angle, in degrees between 0° and 360°.
 
@@ -501,12 +639,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 The error, in degrees, between the direction the ship has been asked
-to point in and the direction it is pointing in. Returns zero if the auto-pilot
+to point in and the direction it is pointing in. Throws an exception if the auto-pilot
 has not been engaged and SAS is not enabled or is in stability assist mode.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -515,11 +653,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The error, in degrees, between the vessels current and target pitch.
-Returns zero if the auto-pilot has not been engaged.
+Throws an exception if the auto-pilot has not been engaged.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -528,11 +666,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The error, in degrees, between the vessels current and target heading.
-Returns zero if the auto-pilot has not been engaged.
+Throws an exception if the auto-pilot has not been engaged.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -541,11 +679,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The error, in degrees, between the vessels current and target roll.
-Returns zero if the auto-pilot has not been engaged or no target roll is set.
+Throws an exception if the auto-pilot has not been engaged or no target roll is set.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -554,12 +692,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The reference frame for the target direction ([M:SpaceCenter.AutoPilot.TargetDirection](M:SpaceCenter.AutoPilot.TargetDirection)).
-An error will be thrown if this property is set to a reference frame that rotates with the vessel being controlled,
-as it is impossible to rotate the vessel in such a reference frame.
+ An error will be thrown if this property is set to a reference frame that rotates with
+the vessel being controlled, as it is impossible to rotate the vessel in such a
+reference frame.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -568,13 +707,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The reference frame for the target direction ([M:SpaceCenter.AutoPilot.TargetDirection](M:SpaceCenter.AutoPilot.TargetDirection)).
-An error will be thrown if this property is set to a reference frame that rotates with the vessel being controlled,
-as it is impossible to rotate the vessel in such a reference frame.
+ An error will be thrown if this property is set to a reference frame that rotates with
+the vessel being controlled, as it is impossible to rotate the vessel in such a
+reference frame.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
+-   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -586,7 +726,7 @@ The target pitch, in degrees, between -90° and +90°.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -598,7 +738,7 @@ The target pitch, in degrees, between -90° and +90°.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -611,7 +751,7 @@ The target heading, in degrees, between 0° and 360°.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -623,7 +763,7 @@ The target heading, in degrees, between 0° and 360°.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -632,11 +772,11 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The target roll, in degrees. <c>NaN</c> if no target roll is set.
+The target roll, in degrees. NaN if no target roll is set.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -644,11 +784,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The target roll, in degrees. <c>NaN</c> if no target roll is set.
+The target roll, in degrees. NaN if no target roll is set.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -658,10 +798,11 @@ Returns **void**
 **Extends SpaceCenter**
 
 Direction vector corresponding to the target pitch and heading.
+This is in the reference frame specified by [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -670,10 +811,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Direction vector corresponding to the target pitch and heading.
+This is in the reference frame specified by [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -683,11 +825,11 @@ Returns **void**
 **Extends SpaceCenter**
 
 The state of SAS.
- <remarks>Equivalent to [M:SpaceCenter.Control.SAS](M:SpaceCenter.Control.SAS)
+<remarks>Equivalent to [M:SpaceCenter.Control.SAS](M:SpaceCenter.Control.SAS)
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -696,11 +838,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The state of SAS.
- <remarks>Equivalent to [M:SpaceCenter.Control.SAS](M:SpaceCenter.Control.SAS)
+<remarks>Equivalent to [M:SpaceCenter.Control.SAS](M:SpaceCenter.Control.SAS)
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -710,12 +852,13 @@ Returns **void**
 **Extends SpaceCenter**
 
 The current [T:SpaceCenter.SASMode](T:SpaceCenter.SASMode).
-These modes are equivalent to the mode buttons to the left of the navball that appear when SAS is enabled.
- <remarks>Equivalent to [M:SpaceCenter.Control.SASMode](M:SpaceCenter.Control.SASMode)
+These modes are equivalent to the mode buttons to the left of the navball that appear
+when SAS is enabled.
+<remarks>Equivalent to [M:SpaceCenter.Control.SASMode](M:SpaceCenter.Control.SASMode)
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -724,13 +867,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The current [T:SpaceCenter.SASMode](T:SpaceCenter.SASMode).
-These modes are equivalent to the mode buttons to the left of the navball that appear when SAS is enabled.
- <remarks>Equivalent to [M:SpaceCenter.Control.SASMode](M:SpaceCenter.Control.SASMode)
+These modes are equivalent to the mode buttons to the left of the navball that appear
+when SAS is enabled.
+<remarks>Equivalent to [M:SpaceCenter.Control.SASMode](M:SpaceCenter.Control.SASMode)
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.SASMode see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
+-   `value` **Long** A long value representing the id for the SpaceCenter.SASMode
 
 Returns **void** 
 
@@ -743,7 +887,7 @@ Defaults to 5 degrees.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -756,7 +900,7 @@ Defaults to 5 degrees.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -767,12 +911,12 @@ Returns **void**
 
 The maximum amount of time that the vessel should need to come to a complete stop.
 This determines the maximum angular velocity of the vessel.
-A vector of three stopping times, in seconds, one for each of the pitch, roll and yaw axes.
-Defaults to 0.5 seconds for each axis.
+A vector of three stopping times, in seconds, one for each of the pitch, roll
+and yaw axes. Defaults to 0.5 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -782,12 +926,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The maximum amount of time that the vessel should need to come to a complete stop.
 This determines the maximum angular velocity of the vessel.
-A vector of three stopping times, in seconds, one for each of the pitch, roll and yaw axes.
-Defaults to 0.5 seconds for each axis.
+A vector of three stopping times, in seconds, one for each of the pitch, roll
+and yaw axes. Defaults to 0.5 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -803,7 +947,7 @@ Defaults to 5 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -818,7 +962,7 @@ Defaults to 5 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -827,14 +971,15 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The angle at which the autopilot considers the vessel to be pointing close to the target.
+The angle at which the autopilot considers the vessel to be pointing
+close to the target.
 This determines the midpoint of the target velocity attenuation function.
 A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
 Defaults to 1° for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -842,14 +987,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The angle at which the autopilot considers the vessel to be pointing close to the target.
+The angle at which the autopilot considers the vessel to be pointing
+close to the target.
 This determines the midpoint of the target velocity attenuation function.
 A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
 Defaults to 1° for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -858,13 +1004,13 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Whether the rotation rate controllers PID parameters should be automatically tuned using the
-vessels moment of inertia and available torque. Defaults to <c>true</c>.
-See [M:SpaceCenter.AutoPilot.TimeToPeak](M:SpaceCenter.AutoPilot.TimeToPeak) and  [M:SpaceCenter.AutoPilot.Overshoot](M:SpaceCenter.AutoPilot.Overshoot).
+Whether the rotation rate controllers PID parameters should be automatically tuned
+using the vessels moment of inertia and available torque. Defaults to true.
+See [M:SpaceCenter.AutoPilot.TimeToPeak](M:SpaceCenter.AutoPilot.TimeToPeak) and [M:SpaceCenter.AutoPilot.Overshoot](M:SpaceCenter.AutoPilot.Overshoot).
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -872,13 +1018,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Whether the rotation rate controllers PID parameters should be automatically tuned using the
-vessels moment of inertia and available torque. Defaults to <c>true</c>.
-See [M:SpaceCenter.AutoPilot.TimeToPeak](M:SpaceCenter.AutoPilot.TimeToPeak) and  [M:SpaceCenter.AutoPilot.Overshoot](M:SpaceCenter.AutoPilot.Overshoot).
+Whether the rotation rate controllers PID parameters should be automatically tuned
+using the vessels moment of inertia and available torque. Defaults to true.
+See [M:SpaceCenter.AutoPilot.TimeToPeak](M:SpaceCenter.AutoPilot.TimeToPeak) and [M:SpaceCenter.AutoPilot.Overshoot](M:SpaceCenter.AutoPilot.Overshoot).
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -893,7 +1039,7 @@ Defaults to 3 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -907,7 +1053,7 @@ Defaults to 3 seconds for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -922,7 +1068,7 @@ Defaults to 0.01 for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -936,7 +1082,7 @@ Defaults to 0.01 for each axis.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -946,11 +1092,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 Gains for the pitch PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -959,11 +1106,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Gains for the pitch PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -973,11 +1121,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 Gains for the roll PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -986,11 +1135,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Gains for the roll PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -1000,11 +1150,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 Gains for the yaw PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1013,11 +1164,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Gains for the yaw PID controller.
-When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically, which will overwrite any manual changes.
+ When [M:SpaceCenter.AutoPilot.AutoTune](M:SpaceCenter.AutoPilot.AutoTune) is true, these values are updated automatically,
+which will overwrite any manual changes.
 
 **Parameters**
 
--   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot see [Long.js]<https://www.npmjs.com/package/long>
+-   `autoPilot` **Long** A long value representing the id for the SpaceCenter.AutoPilot
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -1030,7 +1182,7 @@ The current mode of the camera.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1042,8 +1194,8 @@ The current mode of the camera.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CameraMode see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
+-   `value` **Long** A long value representing the id for the SpaceCenter.CameraMode
 
 Returns **void** 
 
@@ -1056,7 +1208,7 @@ A value between [M:SpaceCenter.Camera.MinPitch](M:SpaceCenter.Camera.MinPitch) a
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1069,7 +1221,7 @@ A value between [M:SpaceCenter.Camera.MinPitch](M:SpaceCenter.Camera.MinPitch) a
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -1082,7 +1234,7 @@ The heading of the camera, in degrees.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1094,7 +1246,7 @@ The heading of the camera, in degrees.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -1108,7 +1260,7 @@ A value between [M:SpaceCenter.Camera.MinDistance](M:SpaceCenter.Camera.MinDista
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1121,7 +1273,7 @@ A value between [M:SpaceCenter.Camera.MinDistance](M:SpaceCenter.Camera.MinDista
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -1134,7 +1286,7 @@ The minimum pitch of the camera.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1146,7 +1298,7 @@ The maximum pitch of the camera.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1158,7 +1310,7 @@ Minimum distance from the camera to the subject, in meters.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1170,7 +1322,7 @@ Maximum distance from the camera to the subject, in meters.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1182,7 +1334,7 @@ Default distance from the camera to the subject, in meters.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1191,12 +1343,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 In map mode, the celestial body that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a celestial body.
+Returns null if the camera is not focussed on a celestial body.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1205,13 +1357,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 In map mode, the celestial body that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a celestial body.
+Returns null if the camera is not focussed on a celestial body.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
 
@@ -1220,12 +1372,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 In map mode, the vessel that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a vessel.
+Returns null if the camera is not focussed on a vessel.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1234,13 +1386,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 In map mode, the vessel that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a vessel.
+Returns null if the camera is not focussed on a vessel.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
+-   `value` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -1249,12 +1401,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 In map mode, the maneuver node that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a maneuver node.
+Returns null if the camera is not focussed on a maneuver node.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1263,13 +1415,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 In map mode, the maneuver node that the camera is focussed on.
-Returns <c>null</c> if the camera is not focussed on a maneuver node.
+Returns null if the camera is not focussed on a maneuver node.
 Returns an error is the camera is not in map mode.
 
 **Parameters**
 
--   `camera` **Long** A long value representing the id for the SpaceCenter.Camera see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `camera` **Long** A long value representing the id for the SpaceCenter.Camera
+-   `value` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **void** 
 
@@ -1277,14 +1429,14 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The height of the surface relative to mean sea level at the given position,
-in meters. When over water this is equal to 0.
+The height of the surface relative to mean sea level, in meters,
+at the given position. When over water this is equal to 0.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees
--   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1292,15 +1444,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The height of the surface relative to mean sea level at the given position,
-in meters. When over water, this is the height of the sea-bed and is therefore a
-negative value.
+The height of the surface relative to mean sea level, in meters,
+at the given position. When over water, this is the height
+of the sea-bed and is therefore  negative value.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees
--   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1308,14 +1460,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The position at mean sea level at the given latitude and longitude, in the given reference frame.
+The position at mean sea level at the given latitude and longitude,
+in the given reference frame.
+Returns: Position as a vector.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees
--   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1325,13 +1479,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The position of the surface at the given latitude and longitude, in the given
 reference frame. When over water, this is the position of the surface of the water.
+Returns: Position as a vector.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees
--   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1341,13 +1496,138 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The position of the surface at the given latitude and longitude, in the given
 reference frame. When over water, this is the position at the bottom of the sea-bed.
+Returns: Position as a vector.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees
--   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyPositionAtAltitude
+
+**Extends SpaceCenter**
+
+The position at the given latitude, longitude and altitude, in the given reference frame.
+Returns: Position as a vector.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude in degrees.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude in degrees.
+-   `altitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Altitude in meters above sea level.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyLatitudeAtPosition
+
+**Extends SpaceCenter**
+
+The latitude of the given position, in the given reference frame.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** Position as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyLongitudeAtPosition
+
+**Extends SpaceCenter**
+
+The longitude of the given position, in the given reference frame.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** Position as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyAltitudeAtPosition
+
+**Extends SpaceCenter**
+
+The altitude, in meters, of the given position in the given reference frame.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** Position as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyAtmosphericDensityAtPosition
+
+**Extends SpaceCenter**
+
+The atmospheric density at the given position, in <math>kg/m^3</math>,
+in the given reference frame.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** The position vector at which to measure the density.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyTemperatureAt
+
+**Extends SpaceCenter**
+
+The temperature on the body at the given position, in the given reference frame.
+
+ This calculation is performed using the bodies current position, which means that
+the value could be wrong if you want to know the temperature in the far future.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** Position as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyDensityAt
+
+**Extends SpaceCenter**
+
+Gets the air density, in <math>kg/m^3</math>, for the specified
+altitude above sea level, in meters.
+ This is an approximation, because actual calculations, taking sun exposure into account
+to compute air temperature, require us to know the exact point on the body where the
+density is to be computed (knowing the altitude is not enough).
+However, the difference is small for high altitudes, so it makes very little difference
+for trajectory prediction.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `altitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyPressureAt
+
+**Extends SpaceCenter**
+
+Gets the air pressure, in Pascals, for the specified
+altitude above sea level, in meters.
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `altitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1355,11 +1635,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The biomes at the given latitude and longitude, in degrees.
+The biome at the given latitude and longitude, in degrees.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 -   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 -   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
@@ -1369,14 +1649,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the position vector of the center of the body in the specified reference frame.
- <param name="referenceFrame">
- </param>
+The position of the center of the body, in the specified reference frame.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1384,14 +1665,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the velocity vector of the body in the specified reference frame.
- <param name="referenceFrame">
- </param>
+The linear velocity of the body, in the specified reference frame.
+Returns: The velocity as a vector. The vector points in the direction of travel,
+and its magnitude is the speed of the body in meters per second.
+<param name="referenceFrame">The reference frame that the returned
+velocity vector is in.</param>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1399,14 +1682,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the rotation of the body in the specified reference frame.
- <param name="referenceFrame">
- </param>
+The rotation of the body, in the specified reference frame.
+Returns: The rotation as a quaternion of the form <math>(x, y, z, w)</math>.
+<param name="referenceFrame">The reference frame that the returned
+rotation is in.</param>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1414,15 +1698,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the direction in which the north pole of the celestial body is
-pointing, as a unit vector, in the specified reference frame.
- <param name="referenceFrame">
- </param>
+The direction in which the north pole of the celestial body is pointing,
+in the specified reference frame.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1430,17 +1715,17 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the angular velocity of the body in the specified reference
-frame. The magnitude of the vector is the rotational speed of the body, in
-radians per second, and the direction of the vector indicates the axis of
-rotation, using the right-hand rule.
- <param name="referenceFrame">
- </param>
+The angular velocity of the body in the specified reference frame.
+Returns: The angular velocity as a vector. The magnitude of the vector is the rotational
+speed of the body, in radians per second. The direction of the vector indicates the axis
+of rotation, using the right-hand rule.
+<param name="referenceFrame">The reference frame the returned
+angular velocity is in.</param>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1452,7 +1737,7 @@ The name of the body.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1464,7 +1749,7 @@ A list of celestial bodies that are in orbit around this celestial body.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1476,7 +1761,7 @@ The mass of the body, in kilograms.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1489,7 +1774,7 @@ gravitational parameter</a> of the body in <math>m^3s^{-2}</math>.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1497,11 +1782,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The acceleration due to gravity at sea level (mean altitude) on the body, in <math>m/s^2</math>.
+The acceleration due to gravity at sea level (mean altitude) on the body,
+in <math>m/s^2</math>.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1513,7 +1799,7 @@ The sidereal rotational period of the body, in seconds.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1525,7 +1811,33 @@ The rotational speed of the body, in radians per second.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyGetRotationAngle
+
+**Extends SpaceCenter**
+
+The current rotation angle of the body, in radians.
+A value between 0 and <math>2\\pi</math>
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## celestialBodyGetInitialRotation
+
+**Extends SpaceCenter**
+
+The initial rotation angle of the body (at UT 0), in radians.
+A value between 0 and <math>2\\pi</math>
+
+**Parameters**
+
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1537,7 +1849,7 @@ The equatorial radius of the body, in meters.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1549,7 +1861,7 @@ The radius of the sphere of influence of the body, in meters.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1561,7 +1873,7 @@ The orbit of the body.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1569,11 +1881,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-<c>true</c> if the body has an atmosphere.
+<summary>true if the body has an atmosphere.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1585,7 +1897,7 @@ The depth of the atmosphere, in meters.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1593,11 +1905,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-<c>true</c> if there is oxygen in the atmosphere, required for air-breathing engines.
+<summary>true if there is oxygen in the atmosphere, required for air-breathing engines.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1609,7 +1921,7 @@ The biomes present on this body.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1617,11 +1929,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The altitude, in meters, above which a vessel is considered to be flying "high" when doing science.
+The altitude, in meters, above which a vessel is considered to be
+flying "high" when doing science.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1629,11 +1942,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The altitude, in meters, above which a vessel is considered to be in "high" space when doing science.
+The altitude, in meters, above which a vessel is considered to be
+in "high" space when doing science.
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1651,7 +1965,7 @@ towards the equator at 90°E longitude.</description></item></list>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1668,7 +1982,7 @@ equator.</description></item></list>
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1676,7 +1990,7 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the reference frame that is fixed relative to this celestial body, but
+The reference frame that is fixed relative to this celestial body, but
 orientated with the body's orbital prograde/normal/radial directions.
 <list type="bullet"><item><description>The origin is at the center of the body.
 </description></item><item><description>The axes rotate with the orbital prograde/normal/radial
@@ -1687,7 +2001,679 @@ directions.</description></item><item><description>The x-axis points in the orbi
 
 **Parameters**
 
--   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `celestialBody` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commLinkGetType
+
+**Extends SpaceCenter**
+
+The type of link.
+
+**Parameters**
+
+-   `commLink` **Long** A long value representing the id for the SpaceCenter.CommLink
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commLinkGetSignalStrength
+
+**Extends SpaceCenter**
+
+Signal strength of the link.
+
+**Parameters**
+
+-   `commLink` **Long** A long value representing the id for the SpaceCenter.CommLink
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commLinkGetStart
+
+**Extends SpaceCenter**
+
+Start point of the link.
+
+**Parameters**
+
+-   `commLink` **Long** A long value representing the id for the SpaceCenter.CommLink
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commLinkGetEnd
+
+**Extends SpaceCenter**
+
+Start point of the link.
+
+**Parameters**
+
+-   `commLink` **Long** A long value representing the id for the SpaceCenter.CommLink
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commNodeGetName
+
+**Extends SpaceCenter**
+
+Name of the communication node.
+
+**Parameters**
+
+-   `commNode` **Long** A long value representing the id for the SpaceCenter.CommNode
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commNodeGetIsHome
+
+**Extends SpaceCenter**
+
+Whether the communication node is on Kerbin.
+
+**Parameters**
+
+-   `commNode` **Long** A long value representing the id for the SpaceCenter.CommNode
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commNodeGetIsControlPoint
+
+**Extends SpaceCenter**
+
+Whether the communication node is a control point, for example a manned vessel.
+
+**Parameters**
+
+-   `commNode` **Long** A long value representing the id for the SpaceCenter.CommNode
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commNodeGetIsVessel
+
+**Extends SpaceCenter**
+
+Whether the communication node is a vessel.
+
+**Parameters**
+
+-   `commNode` **Long** A long value representing the id for the SpaceCenter.CommNode
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commNodeGetVessel
+
+**Extends SpaceCenter**
+
+The vessel for this communication node.
+
+**Parameters**
+
+-   `commNode` **Long** A long value representing the id for the SpaceCenter.CommNode
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetCanCommunicate
+
+**Extends SpaceCenter**
+
+Whether the vessel can communicate with KSC.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetCanTransmitScience
+
+**Extends SpaceCenter**
+
+Whether the vessel can transmit science data to KSC.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetSignalStrength
+
+**Extends SpaceCenter**
+
+Signal strength to KSC.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetSignalDelay
+
+**Extends SpaceCenter**
+
+Signal delay to KSC in seconds.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetPower
+
+**Extends SpaceCenter**
+
+The combined power of all active antennae on the vessel.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## commsGetControlPath
+
+**Extends SpaceCenter**
+
+The communication path used to control the vessel.
+
+**Parameters**
+
+-   `comms` **Long** A long value representing the id for the SpaceCenter.Comms
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractCancel
+
+**Extends SpaceCenter**
+
+Cancel an active contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **void** 
+
+## contractAccept
+
+**Extends SpaceCenter**
+
+Accept an offered contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **void** 
+
+## contractDecline
+
+**Extends SpaceCenter**
+
+Decline an offered contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **void** 
+
+## contractGetType
+
+**Extends SpaceCenter**
+
+Type of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetTitle
+
+**Extends SpaceCenter**
+
+Title of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetDescription
+
+**Extends SpaceCenter**
+
+Description of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetNotes
+
+**Extends SpaceCenter**
+
+Notes for the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetSynopsis
+
+**Extends SpaceCenter**
+
+Synopsis for the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetKeywords
+
+**Extends SpaceCenter**
+
+Keywords for the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetState
+
+**Extends SpaceCenter**
+
+State of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetActive
+
+**Extends SpaceCenter**
+
+Whether the contract is active.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetFailed
+
+**Extends SpaceCenter**
+
+Whether the contract has been failed.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetSeen
+
+**Extends SpaceCenter**
+
+Whether the contract has been seen.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetRead
+
+**Extends SpaceCenter**
+
+Whether the contract has been read.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetCanBeCanceled
+
+**Extends SpaceCenter**
+
+Whether the contract can be canceled.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetCanBeDeclined
+
+**Extends SpaceCenter**
+
+Whether the contract can be declined.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetCanBeFailed
+
+**Extends SpaceCenter**
+
+Whether the contract can be failed.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetFundsAdvance
+
+**Extends SpaceCenter**
+
+Funds received when accepting the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetFundsCompletion
+
+**Extends SpaceCenter**
+
+Funds received on completion of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetFundsFailure
+
+**Extends SpaceCenter**
+
+Funds lost if the contract is failed.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetReputationCompletion
+
+**Extends SpaceCenter**
+
+Reputation gained on completion of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetReputationFailure
+
+**Extends SpaceCenter**
+
+Reputation lost if the contract is failed.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetScienceCompletion
+
+**Extends SpaceCenter**
+
+Science gained on completion of the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractGetParameters
+
+**Extends SpaceCenter**
+
+Parameters for the contract.
+
+**Parameters**
+
+-   `contract` **Long** A long value representing the id for the SpaceCenter.Contract
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetTypes
+
+**Extends SpaceCenter**
+
+A list of all contract types.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetAllContracts
+
+**Extends SpaceCenter**
+
+A list of all contracts.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetActiveContracts
+
+**Extends SpaceCenter**
+
+A list of all active contracts.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetOfferedContracts
+
+**Extends SpaceCenter**
+
+A list of all offered, but unaccepted, contracts.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetCompletedContracts
+
+**Extends SpaceCenter**
+
+A list of all completed contracts.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractManagerGetFailedContracts
+
+**Extends SpaceCenter**
+
+A list of all failed contracts.
+
+**Parameters**
+
+-   `contractManager` **Long** A long value representing the id for the SpaceCenter.ContractManager
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetTitle
+
+**Extends SpaceCenter**
+
+Title of the parameter.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetNotes
+
+**Extends SpaceCenter**
+
+Notes for the parameter.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetChildren
+
+**Extends SpaceCenter**
+
+Child contract parameters.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetCompleted
+
+**Extends SpaceCenter**
+
+Whether the parameter has been completed.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetFailed
+
+**Extends SpaceCenter**
+
+Whether the parameter has been failed.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetOptional
+
+**Extends SpaceCenter**
+
+Whether the contract parameter is optional.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetFundsCompletion
+
+**Extends SpaceCenter**
+
+Funds received on completion of the contract parameter.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetFundsFailure
+
+**Extends SpaceCenter**
+
+Funds lost if the contract parameter is failed.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetReputationCompletion
+
+**Extends SpaceCenter**
+
+Reputation gained on completion of the contract parameter.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetReputationFailure
+
+**Extends SpaceCenter**
+
+Reputation lost if the contract parameter is failed.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## contractParameterGetScienceCompletion
+
+**Extends SpaceCenter**
+
+Science gained on completion of the contract parameter.
+
+**Parameters**
+
+-   `contractParameter` **Long** A long value representing the id for the SpaceCenter.ContractParameter
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1696,11 +2682,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Activates the next stage. Equivalent to pressing the space bar in-game.
- <returns>A list of vessel objects that are jettisoned from the active vessel.</returns>
+Returns: A list of vessel objects that are jettisoned from the active vessel.
+ When called, the active vessel may change. It is therefore possible that,
+after calling this function, the object(s) returned by previous call(s) to
+[M:SpaceCenter.ActiveVessel](M:SpaceCenter.ActiveVessel) no longer refer to the active vessel.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1708,12 +2697,17 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns <c>true</c> if the given action group is enabled.
+Returns true if the given action group is enabled.
+<param name="group">
+A number between 0 and 9 inclusive,
+or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
+</param>
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
--   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive.
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive,
+    or between 0 and 250 inclusive when the &lt;a href="<https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/,Extended> Action Groups mod</a> is installed.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1721,16 +2715,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Sets the state of the given action group (a value between 0 and 9
-inclusive).
-  <param name="state">
- </param>
+Sets the state of the given action group.
+<param name="group">
+A number between 0 and 9 inclusive,
+or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
+</param>
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
--   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive.
--   `state` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** \-
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive,
+    or between 0 and 250 inclusive when the &lt;a href="<https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/,Extended> Action Groups mod</a> is installed.
+-   `state` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
 
@@ -1739,11 +2735,16 @@ Returns **void**
 **Extends SpaceCenter**
 
 Toggles the state of the given action group.
+<param name="group">
+A number between 0 and 9 inclusive,
+or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
+</param>
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
--   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive.
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `group` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** A number between 0 and 9 inclusive,
+    or between 0 and 250 inclusive when the &lt;a href="<https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/,Extended> Action Groups mod</a> is installed.
 
 Returns **void** 
 
@@ -1758,7 +2759,7 @@ in the prograde, normal and radial directions.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Universal time of the maneuver node.
 -   `prograde` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Delta-v in the prograde direction.
 -   `normal` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Delta-v in the normal direction.
@@ -1774,20 +2775,44 @@ Remove all maneuver nodes.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **void** 
+
+## controlGetState
+
+**Extends SpaceCenter**
+
+The control state of the vessel.
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlGetSource
+
+**Extends SpaceCenter**
+
+The source of the vessels control, for example by a kerbal or a probe core.
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
 ## controlGetSas
 
 **Extends SpaceCenter**
 
 The state of SAS.
- <remarks>Equivalent to [M:SpaceCenter.AutoPilot.SAS](M:SpaceCenter.AutoPilot.SAS)
+<remarks>Equivalent to [M:SpaceCenter.AutoPilot.SAS](M:SpaceCenter.AutoPilot.SAS)
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1796,11 +2821,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The state of SAS.
- <remarks>Equivalent to [M:SpaceCenter.AutoPilot.SAS](M:SpaceCenter.AutoPilot.SAS)
+<remarks>Equivalent to [M:SpaceCenter.AutoPilot.SAS](M:SpaceCenter.AutoPilot.SAS)
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1812,11 +2837,11 @@ Returns **void**
 The current [T:SpaceCenter.SASMode](T:SpaceCenter.SASMode).
 These modes are equivalent to the mode buttons to
 the left of the navball that appear when SAS is enabled.
- <remarks>Equivalent to [M:SpaceCenter.AutoPilot.SASMode](M:SpaceCenter.AutoPilot.SASMode)
+<remarks>Equivalent to [M:SpaceCenter.AutoPilot.SASMode](M:SpaceCenter.AutoPilot.SASMode)
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1827,12 +2852,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The current [T:SpaceCenter.SASMode](T:SpaceCenter.SASMode).
 These modes are equivalent to the mode buttons to
 the left of the navball that appear when SAS is enabled.
- <remarks>Equivalent to [M:SpaceCenter.AutoPilot.SASMode](M:SpaceCenter.AutoPilot.SASMode)
+<remarks>Equivalent to [M:SpaceCenter.AutoPilot.SASMode](M:SpaceCenter.AutoPilot.SASMode)
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.SASMode see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **Long** A long value representing the id for the SpaceCenter.SASMode
 
 Returns **void** 
 
@@ -1845,7 +2870,7 @@ This is the mode displayed next to the speed at the top of the navball.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1858,8 +2883,8 @@ This is the mode displayed next to the speed at the top of the navball.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.SpeedMode see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **Long** A long value representing the id for the SpaceCenter.SpeedMode
 
 Returns **void** 
 
@@ -1871,7 +2896,7 @@ The state of RCS.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1883,7 +2908,36 @@ The state of RCS.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetReactionWheels
+
+**Extends SpaceCenter**
+
+Returns whether all reactive wheels on the vessel are active,
+and sets the active state of all reaction wheels.
+See [M:SpaceCenter.ReactionWheel.Active](M:SpaceCenter.ReactionWheel.Active).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetReactionWheels
+
+**Extends SpaceCenter**
+
+Returns whether all reactive wheels on the vessel are active,
+and sets the active state of all reaction wheels.
+See [M:SpaceCenter.ReactionWheel.Active](M:SpaceCenter.ReactionWheel.Active).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1896,7 +2950,7 @@ The state of the landing gear/legs.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1908,7 +2962,69 @@ The state of the landing gear/legs.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetLegs
+
+**Extends SpaceCenter**
+
+Returns whether all landing legs on the vessel are deployed,
+and sets the deployment state of all landing legs.
+Does not include wheels (for example landing gear).
+See [M:SpaceCenter.Leg.Deployed](M:SpaceCenter.Leg.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetLegs
+
+**Extends SpaceCenter**
+
+Returns whether all landing legs on the vessel are deployed,
+and sets the deployment state of all landing legs.
+Does not include wheels (for example landing gear).
+See [M:SpaceCenter.Leg.Deployed](M:SpaceCenter.Leg.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetWheels
+
+**Extends SpaceCenter**
+
+Returns whether all wheels on the vessel are deployed,
+and sets the deployment state of all wheels.
+Does not include landing legs.
+See [M:SpaceCenter.Wheel.Deployed](M:SpaceCenter.Wheel.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetWheels
+
+**Extends SpaceCenter**
+
+Returns whether all wheels on the vessel are deployed,
+and sets the deployment state of all wheels.
+Does not include landing legs.
+See [M:SpaceCenter.Wheel.Deployed](M:SpaceCenter.Wheel.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1921,7 +3037,7 @@ The state of the lights.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1933,7 +3049,7 @@ The state of the lights.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1946,7 +3062,7 @@ The state of the wheel brakes.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1958,7 +3074,241 @@ The state of the wheel brakes.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetAntennas
+
+**Extends SpaceCenter**
+
+Returns whether all antennas on the vessel are deployed,
+and sets the deployment state of all antennas.
+See [M:SpaceCenter.Antenna.Deployed](M:SpaceCenter.Antenna.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetAntennas
+
+**Extends SpaceCenter**
+
+Returns whether all antennas on the vessel are deployed,
+and sets the deployment state of all antennas.
+See [M:SpaceCenter.Antenna.Deployed](M:SpaceCenter.Antenna.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetCargoBays
+
+**Extends SpaceCenter**
+
+Returns whether any of the cargo bays on the vessel are open,
+and sets the open state of all cargo bays.
+See [M:SpaceCenter.CargoBay.Open](M:SpaceCenter.CargoBay.Open).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetCargoBays
+
+**Extends SpaceCenter**
+
+Returns whether any of the cargo bays on the vessel are open,
+and sets the open state of all cargo bays.
+See [M:SpaceCenter.CargoBay.Open](M:SpaceCenter.CargoBay.Open).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetIntakes
+
+**Extends SpaceCenter**
+
+Returns whether all of the air intakes on the vessel are open,
+and sets the open state of all air intakes.
+See [M:SpaceCenter.Intake.Open](M:SpaceCenter.Intake.Open).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetIntakes
+
+**Extends SpaceCenter**
+
+Returns whether all of the air intakes on the vessel are open,
+and sets the open state of all air intakes.
+See [M:SpaceCenter.Intake.Open](M:SpaceCenter.Intake.Open).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetParachutes
+
+**Extends SpaceCenter**
+
+Returns whether all parachutes on the vessel are deployed,
+and sets the deployment state of all parachutes.
+Cannot be set to false.
+See [M:SpaceCenter.Parachute.Deployed](M:SpaceCenter.Parachute.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetParachutes
+
+**Extends SpaceCenter**
+
+Returns whether all parachutes on the vessel are deployed,
+and sets the deployment state of all parachutes.
+Cannot be set to false.
+See [M:SpaceCenter.Parachute.Deployed](M:SpaceCenter.Parachute.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetRadiators
+
+**Extends SpaceCenter**
+
+Returns whether all radiators on the vessel are deployed,
+and sets the deployment state of all radiators.
+See [M:SpaceCenter.Radiator.Deployed](M:SpaceCenter.Radiator.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetRadiators
+
+**Extends SpaceCenter**
+
+Returns whether all radiators on the vessel are deployed,
+and sets the deployment state of all radiators.
+See [M:SpaceCenter.Radiator.Deployed](M:SpaceCenter.Radiator.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetResourceHarvesters
+
+**Extends SpaceCenter**
+
+Returns whether all of the resource harvesters on the vessel are deployed,
+and sets the deployment state of all resource harvesters.
+See [M:SpaceCenter.ResourceHarvester.Deployed](M:SpaceCenter.ResourceHarvester.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetResourceHarvesters
+
+**Extends SpaceCenter**
+
+Returns whether all of the resource harvesters on the vessel are deployed,
+and sets the deployment state of all resource harvesters.
+See [M:SpaceCenter.ResourceHarvester.Deployed](M:SpaceCenter.ResourceHarvester.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetResourceHarvestersActive
+
+**Extends SpaceCenter**
+
+Returns whether any of the resource harvesters on the vessel are active,
+and sets the active state of all resource harvesters.
+See [M:SpaceCenter.ResourceHarvester.Active](M:SpaceCenter.ResourceHarvester.Active).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetResourceHarvestersActive
+
+**Extends SpaceCenter**
+
+Returns whether any of the resource harvesters on the vessel are active,
+and sets the active state of all resource harvesters.
+See [M:SpaceCenter.ResourceHarvester.Active](M:SpaceCenter.ResourceHarvester.Active).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlGetSolarPanels
+
+**Extends SpaceCenter**
+
+Returns whether all solar panels on the vessel are deployed,
+and sets the deployment state of all solar panels.
+See [M:SpaceCenter.SolarPanel.Deployed](M:SpaceCenter.SolarPanel.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetSolarPanels
+
+**Extends SpaceCenter**
+
+Returns whether all solar panels on the vessel are deployed,
+and sets the deployment state of all solar panels.
+See [M:SpaceCenter.SolarPanel.Deployed](M:SpaceCenter.SolarPanel.Deployed).
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1971,7 +3321,7 @@ The state of the abort action group.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -1983,7 +3333,7 @@ The state of the abort action group.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -1996,7 +3346,7 @@ The state of the throttle. A value between 0 and 1.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2008,8 +3358,43 @@ The state of the throttle. A value between 0 and 1.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## controlGetInputMode
+
+**Extends SpaceCenter**
+
+Sets the behavior of the pitch, yaw, roll and translation control inputs.
+When set to additive, these inputs are added to the vessels current inputs.
+This mode is the default.
+When set to override, these inputs (if non-zero) override the vessels inputs.
+This mode prevents keyboard control, or SAS, from interfering with the controls when
+they are set.
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSetInputMode
+
+**Extends SpaceCenter**
+
+Sets the behavior of the pitch, yaw, roll and translation control inputs.
+When set to additive, these inputs are added to the vessels current inputs.
+This mode is the default.
+When set to override, these inputs (if non-zero) override the vessels inputs.
+This mode prevents keyboard control, or SAS, from interfering with the controls when
+they are set.
+
+**Parameters**
+
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+-   `value` **Long** A long value representing the id for the SpaceCenter.ControlInputMode
 
 Returns **void** 
 
@@ -2023,7 +3408,7 @@ Equivalent to the w and s keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2037,7 +3422,7 @@ Equivalent to the w and s keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2052,7 +3437,7 @@ Equivalent to the a and d keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2066,7 +3451,7 @@ Equivalent to the a and d keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2081,7 +3466,7 @@ Equivalent to the q and e keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2095,7 +3480,7 @@ Equivalent to the q and e keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2110,7 +3495,7 @@ Equivalent to the h and n keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2124,7 +3509,7 @@ Equivalent to the h and n keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2139,7 +3524,7 @@ Equivalent to the i and k keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2153,7 +3538,7 @@ Equivalent to the i and k keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2168,7 +3553,7 @@ Equivalent to the j and l keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2182,7 +3567,7 @@ Equivalent to the j and l keys.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2198,7 +3583,7 @@ the wheels backwards.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2213,7 +3598,7 @@ the wheels backwards.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2228,7 +3613,7 @@ A value of 1 steers to the left, and a value of -1 steers to the right.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2242,7 +3627,7 @@ A value of 1 steers to the left, and a value of -1 steers to the right.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2256,7 +3641,7 @@ the in-game UI.
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2268,7 +3653,200 @@ Returns a list of all existing maneuver nodes, ordered by time from first to las
 
 **Parameters**
 
--   `control` **Long** A long value representing the id for the SpaceCenter.Control see [Long.js]<https://www.npmjs.com/package/long>
+-   `control` **Long** A long value representing the id for the SpaceCenter.Control
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberGetName
+
+**Extends SpaceCenter**
+
+The crew members name.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetName
+
+**Extends SpaceCenter**
+
+The crew members name.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **void** 
+
+## crewMemberGetType
+
+**Extends SpaceCenter**
+
+The type of crew member.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberGetOnMission
+
+**Extends SpaceCenter**
+
+Whether the crew member is on a mission.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberGetCourage
+
+**Extends SpaceCenter**
+
+The crew members courage.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetCourage
+
+**Extends SpaceCenter**
+
+The crew members courage.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## crewMemberGetStupidity
+
+**Extends SpaceCenter**
+
+The crew members stupidity.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetStupidity
+
+**Extends SpaceCenter**
+
+The crew members stupidity.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## crewMemberGetExperience
+
+**Extends SpaceCenter**
+
+The crew members experience.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetExperience
+
+**Extends SpaceCenter**
+
+The crew members experience.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## crewMemberGetBadass
+
+**Extends SpaceCenter**
+
+Whether the crew member is a badass.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetBadass
+
+**Extends SpaceCenter**
+
+Whether the crew member is a badass.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## crewMemberGetVeteran
+
+**Extends SpaceCenter**
+
+Whether the crew member is a veteran.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## crewMemberSetVeteran
+
+**Extends SpaceCenter**
+
+Whether the crew member is a veteran.
+
+**Parameters**
+
+-   `crewMember` **Long** A long value representing the id for the SpaceCenter.CrewMember
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## flightSimulateAerodynamicForceAt
+
+**Extends SpaceCenter**
+
+Simulate and return the total aerodynamic forces acting on the vessel,
+if it where to be traveling with the given velocity at the given position in the
+atmosphere of the given celestial body.
+Returns: A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.
+
+**Parameters**
+
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
+-   `body` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `position` **{number, number, number}** 
+-   `velocity` **{number, number, number}** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2280,7 +3858,7 @@ The current G force acting on the vessel in <math>m/s^2</math>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2293,7 +3871,7 @@ Measured from the center of mass of the vessel.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2306,7 +3884,7 @@ Measured from the center of mass of the vessel.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2319,7 +3897,7 @@ Measured from the center of mass of the vessel.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2332,7 +3910,7 @@ and is negative when the vessel is over the sea.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2344,7 +3922,7 @@ The <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel 
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2356,7 +3934,7 @@ The <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vesse
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2364,12 +3942,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The velocity vector of the vessel. The magnitude of the vector is the speed of the vessel in meters per second.
-The direction of the vector is the direction of the vessels motion.
+The velocity of the vessel, in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The velocity as a vector. The vector points in the direction of travel,
+and its magnitude is the speed of the vessel in meters per second.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2377,11 +3956,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The speed of the vessel in meters per second.
+The speed of the vessel in meters per second,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2389,11 +3969,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The horizontal speed of the vessel in meters per second.
+The horizontal speed of the vessel in meters per second,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2401,11 +3982,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The vertical speed of the vessel in meters per second.
+The vertical speed of the vessel in meters per second,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2413,11 +3995,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The position of the center of mass of the vessel.
+The position of the center of mass of the vessel,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)<returns>The position as a vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2425,11 +4008,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The rotation of the vessel.
+The rotation of the vessel, in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)<returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2437,11 +4020,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The direction vector that the vessel is pointing in.
+The direction that the vessel is pointing in,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2449,11 +4034,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The pitch angle of the vessel relative to the horizon, in degrees. A value between -90° and +90°.
+The pitch of the vessel relative to the horizon, in degrees.
+A value between -90° and +90°.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2461,11 +4047,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The heading angle of the vessel relative to north, in degrees. A value between 0° and 360°.
+The heading of the vessel (its angle relative to north), in degrees.
+A value between 0° and 360°.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2473,11 +4060,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The roll angle of the vessel relative to the horizon, in degrees. A value between -180° and +180°.
+The roll of the vessel relative to the horizon, in degrees.
+A value between -180° and +180°.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2485,11 +4073,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the prograde direction.
+The prograde direction of the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2497,11 +4087,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the retrograde direction.
+The retrograde direction of the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2509,11 +4101,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the normal direction.
+The direction normal to the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2521,11 +4115,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the anti-normal direction.
+The direction opposite to the normal of the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2533,11 +4129,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the radial direction.
+The radial direction of the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2545,11 +4143,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector pointing in the anti-radial direction.
+The direction opposite to the radial direction of the vessels orbit,
+in the reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The direction as a unit vector.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2561,7 +4161,7 @@ The current density of the atmosphere around the vessel, in <math>kg/m^3</math>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2569,13 +4169,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The dynamic pressure acting on the vessel, in Pascals. This is a measure of the strength of the
-aerodynamic forces. It is equal to <math>\\frac{1}{2} . \\mbox{air density} .  \\mbox{velocity}^2</math>.
+The dynamic pressure acting on the vessel, in Pascals. This is a measure of the
+strength of the aerodynamic forces. It is equal to
+<math>\\frac{1}{2} . \\mbox{air density} . \\mbox{velocity}^2</math>.
 It is commonly denoted <math>Q</math>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2587,7 +4188,7 @@ The static atmospheric pressure at mean sea level, in Pascals.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2599,7 +4200,7 @@ The static atmospheric pressure acting on the vessel, in Pascals.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2607,12 +4208,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The total aerodynamic forces acting on the vessel, as a vector pointing in the direction of the force, with its
-magnitude equal to the strength of the force in Newtons.
+The total aerodynamic forces acting on the vessel,
+in reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2620,12 +4223,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Aerodynamic_force">aerodynamic lift</a> currently acting on the vessel,
-as a vector pointing in the direction of the force, with its magnitude equal to the strength of the force in Newtons.
+The <a href="https://en.wikipedia.org/wiki/Aerodynamic_force">aerodynamic lift</a>
+currently acting on the vessel.
+Returns: A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2633,12 +4238,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Aerodynamic_force">aerodynamic drag</a> currently acting on the vessel,
-as a vector pointing in the direction of the force, with its magnitude equal to the strength of the force in Newtons.
+The <a href="https://en.wikipedia.org/wiki/Aerodynamic_force">aerodynamic drag</a> currently acting on the vessel.
+Returns: A vector pointing in the direction of the force, with its magnitude
+equal to the strength of the force in Newtons.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2650,7 +4256,7 @@ The speed of sound, in the atmosphere around the vessel, in <math>m/s</math>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2662,7 +4268,7 @@ The speed of the vessel, in multiples of the speed of sound.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2671,11 +4277,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The vessels Reynolds number.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2683,11 +4289,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/True_airspeed">true air speed</a> of the vessel, in <math>m/s</math>.
+The <a href="https://en.wikipedia.org/wiki/True_airspeed">true air speed</a>
+of the vessel, in meters per second.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2695,11 +4302,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Equivalent_airspeed">equivalent air speed</a> of the vessel, in <math>m/s</math>.
+The <a href="https://en.wikipedia.org/wiki/Equivalent_airspeed">equivalent air speed</a>
+of the vessel, in meters per second.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2707,12 +4315,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-An estimate of the current terminal velocity of the vessel, in <math>m/s</math>.
+An estimate of the current terminal velocity of the vessel, in meters per second.
 This is the speed at which the drag forces cancel out the force of gravity.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2720,11 +4328,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the pitch angle between the orientation of the vessel and its velocity vector, in degrees.
+The pitch angle between the orientation of the vessel and its velocity vector,
+in degrees.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2732,11 +4341,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the yaw angle between the orientation of the vessel and its velocity vector, in degrees.
+The yaw angle between the orientation of the vessel and its velocity vector, in degrees.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2744,12 +4353,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">total air temperature</a> of the atmosphere
-around the vessel, in Kelvin. This temperature includes the [M:SpaceCenter.Flight.StaticAirTemperature](M:SpaceCenter.Flight.StaticAirTemperature) and the vessel's kinetic energy.
+The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">total air temperature</a>
+of the atmosphere around the vessel, in Kelvin.
+This includes the [M:SpaceCenter.Flight.StaticAirTemperature](M:SpaceCenter.Flight.StaticAirTemperature) and the vessel's kinetic energy.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2757,12 +4367,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">static (ambient) temperature</a> of the
-atmosphere around the vessel, in Kelvin.
+The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">static (ambient)
+temperature</a> of the atmosphere around the vessel, in Kelvin.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2770,13 +4380,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the current amount of stall, between 0 and 1. A value greater than 0.005 indicates a minor stall
-and a value greater than 0.5 indicates a large-scale stall.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+The current amount of stall, between 0 and 1. A value greater than 0.005 indicates
+a minor stall and a value greater than 0.5 indicates a large-scale stall.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2784,13 +4394,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the coefficient of drag. This is the amount of drag produced by the vessel. It depends on air speed,
-air density and wing area.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+The coefficient of drag. This is the amount of drag produced by the vessel.
+It depends on air speed, air density and wing area.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2798,12 +4408,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the coefficient of lift. This is the amount of lift produced by the vessel, and depends on air speed, air density and wing area.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+The coefficient of lift. This is the amount of lift produced by the vessel, and
+depends on air speed, air density and wing area.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2811,12 +4422,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the <a href="https://en.wikipedia.org/wiki/Ballistic_coefficient">ballistic coefficient</a>.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+The <a href="https://en.wikipedia.org/wiki/Ballistic_coefficient">ballistic coefficient</a>.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2824,14 +4435,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the thrust specific fuel consumption for the jet engines on the vessel. This is a measure of the
-efficiency of the engines, with a lower value indicating a more efficient vessel. This value is the
-number of Newtons of fuel that are burned, per hour, to produce one newton of thrust.
-Requires <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/19321-105-ferram-aerospace-research-v01557-johnson-21816/">Ferram Aerospace Research</a>.
+The thrust specific fuel consumption for the jet engines on the vessel. This is a
+measure of the efficiency of the engines, with a lower value indicating a more
+efficient vessel. This value is the number of Newtons of fuel that are burned,
+per hour, to produce one newton of thrust.
+ Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
 
 **Parameters**
 
--   `flight` **Long** A long value representing the id for the SpaceCenter.Flight see [Long.js]<https://www.npmjs.com/package/long>
+-   `flight` **Long** A long value representing the id for the SpaceCenter.Flight
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2839,16 +4451,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns a vector whose direction the direction of the maneuver node burn, and whose magnitude
-is the delta-v of the burn in m/s.
- <param name="referenceFrame">
- </param>
-Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingBurnVector](M:SpaceCenter.Node.RemainingBurnVector).
+Returns the burn vector for the maneuver node.
+<param name="referenceFrame">The reference frame that the returned vector is in.
+Defaults to [M:SpaceCenter.Vessel.OrbitalReferenceFrame](M:SpaceCenter.Vessel.OrbitalReferenceFrame).</param>
+Returns: A vector whose direction is the direction of the maneuver node burn, and
+magnitude is the delta-v of the burn in meters per second.
+
+ Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingBurnVector](M:SpaceCenter.Node.RemainingBurnVector).
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2856,15 +4470,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns a vector whose direction the direction of the maneuver node burn, and whose magnitude
-is the delta-v of the burn in m/s. The direction and magnitude change as the burn is executed.
- <param name="referenceFrame">
- </param>
+Returns the remaining burn vector for the maneuver node.
+<param name="referenceFrame">The reference frame that the returned vector is in.
+Defaults to [M:SpaceCenter.Vessel.OrbitalReferenceFrame](M:SpaceCenter.Vessel.OrbitalReferenceFrame).</param>
+Returns: A vector whose direction is the direction of the maneuver node burn, and
+magnitude is the delta-v of the burn in meters per second.
+
+ Changes as the maneuver node is executed. See [M:SpaceCenter.Node.BurnVector](M:SpaceCenter.Node.BurnVector).
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2876,7 +4493,7 @@ Removes the maneuver node.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **void** 
 
@@ -2884,14 +4501,15 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Returns the position vector of the maneuver node in the given reference frame.
- <param name="referenceFrame">
- </param>
+The position vector of the maneuver node in the given reference frame.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2899,14 +4517,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the unit direction vector of the maneuver nodes burn in the given reference frame.
- <param name="referenceFrame">
- </param>
+The direction of the maneuver nodes burn.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2914,11 +4533,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the prograde direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the prograde direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2926,11 +4546,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the prograde direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the prograde direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2939,11 +4560,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the normal direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the normal direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2951,11 +4573,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the normal direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the normal direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2964,11 +4587,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the radial direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the radial direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -2976,11 +4600,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The magnitude of the maneuver nodes delta-v in the radial direction, in meters per second.
+The magnitude of the maneuver nodes delta-v in the radial direction,
+in meters per second.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -2990,11 +4615,11 @@ Returns **void**
 **Extends SpaceCenter**
 
 The delta-v of the maneuver node, in meters per second.
-Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingDeltaV](M:SpaceCenter.Node.RemainingDeltaV).
+ Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingDeltaV](M:SpaceCenter.Node.RemainingDeltaV).
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3003,11 +4628,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The delta-v of the maneuver node, in meters per second.
-Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingDeltaV](M:SpaceCenter.Node.RemainingDeltaV).
+ Does not change when executing the maneuver node. See [M:SpaceCenter.Node.RemainingDeltaV](M:SpaceCenter.Node.RemainingDeltaV).
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -3016,12 +4641,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Gets the remaining delta-v of the maneuver node, in meters per second. Changes as the node
-is executed. This is equivalent to the delta-v reported in-game.
+Gets the remaining delta-v of the maneuver node, in meters per second. Changes as the
+node is executed. This is equivalent to the delta-v reported in-game.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3033,7 +4658,7 @@ The universal time at which the maneuver will occur, in seconds.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3045,7 +4670,7 @@ The universal time at which the maneuver will occur, in seconds.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -3058,7 +4683,7 @@ The time until the maneuver node will be encountered, in seconds.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3070,7 +4695,7 @@ The orbit that results from executing the maneuver node.
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3078,12 +4703,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the reference frame that is fixed relative to the maneuver node's burn.
+The reference frame that is fixed relative to the maneuver node's burn.
 <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list>
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3091,7 +4716,7 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the reference frame that is fixed relative to the maneuver node, and
+The reference frame that is fixed relative to the maneuver node, and
 orientated with the orbital prograde/normal/radial directions of the
 original orbit at the maneuver node's position.
 <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The x-axis points in the orbital anti-radial direction of the original
@@ -3101,7 +4726,7 @@ at the position of the maneuver node.</description></item></list>
 
 **Parameters**
 
--   `node` **Long** A long value representing the id for the SpaceCenter.Node see [Long.js]<https://www.npmjs.com/package/long>
+-   `node` **Long** A long value representing the id for the SpaceCenter.Node
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3109,14 +4734,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector that is normal to the orbits reference plane, in the given
-reference frame. The reference plane is the plane from which the orbits inclination is measured.
- <param name="referenceFrame">
- </param>
+The direction that is normal to the orbits reference plane,
+in the given reference frame.
+The reference plane is the plane from which the orbits inclination is measured.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3124,14 +4751,28 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The unit direction vector from which the orbits longitude of ascending node is measured,
+The direction from which the orbits longitude of ascending node is measured,
 in the given reference frame.
- <param name="referenceFrame">
- </param>
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitMeanAnomalyAtUt
+
+**Extends SpaceCenter**
+
+The mean anomaly at the given time.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The universal time in seconds.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3143,7 +4784,7 @@ The orbital radius at the point in the orbit given by the true anomaly.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `trueAnomaly` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The true anomaly.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -3156,7 +4797,7 @@ The true anomaly at the given orbital radius.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `radius` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The orbital radius in meters.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -3169,7 +4810,7 @@ The true anomaly at the given time.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The universal time in seconds.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -3182,7 +4823,7 @@ The universal time, in seconds, corresponding to the given true anomaly.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `trueAnomaly` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** True anomaly.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -3195,7 +4836,7 @@ The eccentric anomaly at the given universal time.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The universal time, in seconds.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -3208,8 +4849,123 @@ The orbital speed at the given time, in meters per second.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 -   `time` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time from now, in seconds.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitRadiusAt
+
+**Extends SpaceCenter**
+
+The orbital radius at the given time, in meters.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The universal time to measure the radius at.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitPositionAt
+
+**Extends SpaceCenter**
+
+The position at a given time, in the specified reference frame.
+Returns: The position as a vector.
+
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The universal time to measure the position at.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitTimeOfClosestApproach
+
+**Extends SpaceCenter**
+
+Estimates and returns the time at closest approach to a target vessel.
+Returns: The universal time at closest approach, in seconds.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitDistanceAtClosestApproach
+
+**Extends SpaceCenter**
+
+Estimates and returns the distance at closest approach to a target vessel, in meters.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitListClosestApproaches
+
+**Extends SpaceCenter**
+
+Returns the times at closest approach and corresponding distances, to a target vessel.
+Returns: 
+A list of two lists.
+The first is a list of times at closest approach, as universal times in seconds.
+The second is a list of corresponding distances at closest approach, in meters.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `orbits` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The number of future orbits to search.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitTrueAnomalyAtAn
+
+**Extends SpaceCenter**
+
+The true anomaly of the ascending node with the given target vessel.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitTrueAnomalyAtDn
+
+**Extends SpaceCenter**
+
+The true anomaly of the descending node with the given target vessel.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## orbitRelativeInclination
+
+**Extends SpaceCenter**
+
+Relative inclination of this orbit and the orbit of the given target vessel, in radians.
+
+**Parameters**
+
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+-   `target` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3221,7 +4977,7 @@ The celestial body (e.g. planet or moon) around which the object is orbiting.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3229,12 +4985,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Gets the apoapsis of the orbit, in meters, from the center of mass of the body being orbited.
-For the apoapsis altitude reported on the in-game map view, use [M:SpaceCenter.Orbit.ApoapsisAltitude](M:SpaceCenter.Orbit.ApoapsisAltitude).
+Gets the apoapsis of the orbit, in meters, from the center of mass
+of the body being orbited.
+ For the apoapsis altitude reported on the in-game map view,
+use [M:SpaceCenter.Orbit.ApoapsisAltitude](M:SpaceCenter.Orbit.ApoapsisAltitude).
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3242,12 +5000,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The periapsis of the orbit, in meters, from the center of mass of the body being orbited.
-For the periapsis altitude reported on the in-game map view, use [M:SpaceCenter.Orbit.PeriapsisAltitude](M:SpaceCenter.Orbit.PeriapsisAltitude).
+The periapsis of the orbit, in meters, from the center of mass
+of the body being orbited.
+ For the periapsis altitude reported on the in-game map view,
+use [M:SpaceCenter.Orbit.PeriapsisAltitude](M:SpaceCenter.Orbit.PeriapsisAltitude).
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3256,11 +5016,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The apoapsis of the orbit, in meters, above the sea level of the body being orbited.
-This is equal to [M:SpaceCenter.Orbit.Apoapsis](M:SpaceCenter.Orbit.Apoapsis) minus the equatorial radius of the body.
+ This is equal to [M:SpaceCenter.Orbit.Apoapsis](M:SpaceCenter.Orbit.Apoapsis) minus the equatorial radius of the body.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3269,11 +5029,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The periapsis of the orbit, in meters, above the sea level of the body being orbited.
-This is equal to [M:SpaceCenter.Orbit.Periapsis](M:SpaceCenter.Orbit.Periapsis) minus the equatorial radius of the body.
+ This is equal to [M:SpaceCenter.Orbit.Periapsis](M:SpaceCenter.Orbit.Periapsis) minus the equatorial radius of the body.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3285,7 +5045,7 @@ The semi-major axis of the orbit, in meters.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3297,7 +5057,7 @@ The semi-minor axis of the orbit, in meters.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3306,12 +5066,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The current radius of the orbit, in meters. This is the distance between the center
-of mass of the object in orbit, and the center of mass of the body around which it is orbiting.
-This value will change over time if the orbit is elliptical.
+of mass of the object in orbit, and the center of mass of the body around which it
+is orbiting.
+ This value will change over time if the orbit is elliptical.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3320,11 +5081,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The current orbital speed of the object in meters per second.
-This value will change over time if the orbit is elliptical.
+ This value will change over time if the orbit is elliptical.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3336,7 +5097,7 @@ The orbital period, in seconds.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3348,7 +5109,7 @@ The time until the object reaches apoapsis, in seconds.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3360,7 +5121,7 @@ The time until the object reaches periapsis, in seconds.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3368,11 +5129,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a> of the orbit.
+The <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
+of the orbit.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3380,12 +5142,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a> of the orbit,
+The <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a>
+of the orbit,
 in radians.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3393,12 +5156,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of the
-ascending node</a>, in radians.
+The <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
+the ascending node</a>, in radians.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3406,11 +5169,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of periapsis</a>, in radians.
+The <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
+periapsis</a>, in radians.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3422,7 +5186,7 @@ The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3431,11 +5195,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The time since the epoch (the point at which the
-<a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a> was measured, in seconds.
+<a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>
+was measured, in seconds.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3447,7 +5212,7 @@ The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3459,7 +5224,7 @@ The <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly<
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3471,7 +5236,7 @@ The <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3479,12 +5244,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-If the object is going to change sphere of influence in the future, returns the new orbit
-after the change. Otherwise returns <c>null</c>.
+If the object is going to change sphere of influence in the future, returns the new
+orbit after the change. Otherwise returns null.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3492,12 +5257,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The time until the object changes sphere of influence, in seconds. Returns <c>NaN</c> if the
-object is not going to change sphere of influence.
+The time until the object changes sphere of influence, in seconds. Returns NaN
+if the object is not going to change sphere of influence.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3509,7 +5274,206 @@ The current orbital speed in meters per second.
 
 **Parameters**
 
--   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit see [Long.js]<https://www.npmjs.com/package/long>
+-   `orbit` **Long** A long value representing the id for the SpaceCenter.Orbit
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaTransmit
+
+**Extends SpaceCenter**
+
+Transmit data.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **void** 
+
+## antennaCancel
+
+**Extends SpaceCenter**
+
+Cancel current transmission of data.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **void** 
+
+## antennaGetPart
+
+**Extends SpaceCenter**
+
+The part object for this antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetState
+
+**Extends SpaceCenter**
+
+The current state of the antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetDeployable
+
+**Extends SpaceCenter**
+
+Whether the antenna is deployable.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetDeployed
+
+**Extends SpaceCenter**
+
+Whether the antenna is deployed.
+ Fixed antennas are always deployed.
+Returns an error if you try to deploy a fixed antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaSetDeployed
+
+**Extends SpaceCenter**
+
+Whether the antenna is deployed.
+ Fixed antennas are always deployed.
+Returns an error if you try to deploy a fixed antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## antennaGetCanTransmit
+
+**Extends SpaceCenter**
+
+Whether data can be transmitted by this antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetAllowPartial
+
+**Extends SpaceCenter**
+
+Whether partial data transmission is permitted.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaSetAllowPartial
+
+**Extends SpaceCenter**
+
+Whether partial data transmission is permitted.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## antennaGetPower
+
+**Extends SpaceCenter**
+
+The power of the antenna.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetCombinable
+
+**Extends SpaceCenter**
+
+Whether the antenna can be combined with other antennae on the vessel
+to boost the power.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetCombinableExponent
+
+**Extends SpaceCenter**
+
+Exponent used to calculate the combined power of multiple antennae on a vessel.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetPacketInterval
+
+**Extends SpaceCenter**
+
+Interval between sending packets in seconds.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetPacketSize
+
+**Extends SpaceCenter**
+
+Amount of data sent per packet in Mits.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## antennaGetPacketResourceCost
+
+**Extends SpaceCenter**
+
+Units of electric charge consumed per packet sent.
+
+**Parameters**
+
+-   `antenna` **Long** A long value representing the id for the SpaceCenter.Antenna
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3521,7 +5485,7 @@ The part object for this cargo bay.
 
 **Parameters**
 
--   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay see [Long.js]<https://www.npmjs.com/package/long>
+-   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3533,7 +5497,7 @@ The state of the cargo bay.
 
 **Parameters**
 
--   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay see [Long.js]<https://www.npmjs.com/package/long>
+-   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3545,7 +5509,7 @@ Whether the cargo bay is open.
 
 **Parameters**
 
--   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay see [Long.js]<https://www.npmjs.com/package/long>
+-   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3557,7 +5521,7 @@ Whether the cargo bay is open.
 
 **Parameters**
 
--   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay see [Long.js]<https://www.npmjs.com/package/long>
+-   `cargoBay` **Long** A long value representing the id for the SpaceCenter.CargoBay
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3570,7 +5534,7 @@ The part object for this control surface.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3582,7 +5546,7 @@ Whether the control surface has pitch control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3594,7 +5558,7 @@ Whether the control surface has pitch control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3607,7 +5571,7 @@ Whether the control surface has yaw control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3619,7 +5583,7 @@ Whether the control surface has yaw control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3632,7 +5596,7 @@ Whether the control surface has roll control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3644,8 +5608,35 @@ Whether the control surface has roll control enabled.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## controlSurfaceGetAuthorityLimiter
+
+**Extends SpaceCenter**
+
+The authority limiter for the control surface, which controls how far the
+control surface will move.
+
+**Parameters**
+
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## controlSurfaceSetAuthorityLimiter
+
+**Extends SpaceCenter**
+
+The authority limiter for the control surface, which controls how far the
+control surface will move.
+
+**Parameters**
+
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
 
@@ -3657,7 +5648,7 @@ Whether the control surface movement is inverted.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3669,7 +5660,7 @@ Whether the control surface movement is inverted.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3682,7 +5673,7 @@ Whether the control surface has been fully deployed.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3694,7 +5685,7 @@ Whether the control surface has been fully deployed.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3707,7 +5698,7 @@ Surface area of the control surface in <math>m^2</math>.
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3715,12 +5706,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The available torque in the pitch, roll and yaw axes of the vessel, in Newton meters.
-These axes correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
+The available torque, in Newton meters, that can be produced by this control surface,
+in the positive and negative pitch, roll and yaw axes of the vessel. These axes
+correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
 
 **Parameters**
 
--   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface see [Long.js]<https://www.npmjs.com/package/long>
+-   `controlSurface` **Long** A long value representing the id for the SpaceCenter.ControlSurface
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3730,10 +5722,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 Fires the decoupler. Returns the new vessel created when the decoupler fires.
 Throws an exception if the decoupler has already fired.
+ When called, the active vessel may change. It is therefore possible that,
+after calling this function, the object(s) returned by previous call(s) to
+[M:SpaceCenter.ActiveVessel](M:SpaceCenter.ActiveVessel) no longer refer to the active vessel.
 
 **Parameters**
 
--   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler see [Long.js]<https://www.npmjs.com/package/long>
+-   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3745,7 +5740,7 @@ The part object for this decoupler.
 
 **Parameters**
 
--   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler see [Long.js]<https://www.npmjs.com/package/long>
+-   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3757,7 +5752,7 @@ Whether the decoupler has fired.
 
 **Parameters**
 
--   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler see [Long.js]<https://www.npmjs.com/package/long>
+-   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3769,7 +5764,7 @@ Whether the decoupler is enabled in the staging sequence.
 
 **Parameters**
 
--   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler see [Long.js]<https://www.npmjs.com/package/long>
+-   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3781,7 +5776,7 @@ The impulse that the decoupler imparts when it is fired, in Newton seconds.
 
 **Parameters**
 
--   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler see [Long.js]<https://www.npmjs.com/package/long>
+-   `decoupler` **Long** A long value representing the id for the SpaceCenter.Decoupler
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3792,11 +5787,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 Undocks the docking port and returns the new [T:SpaceCenter.Vessel](T:SpaceCenter.Vessel) that is created.
 This method can be called for either docking port in a docked pair.
 Throws an exception if the docking port is not docked to anything.
-After undocking, the active vessel may change. See [M:SpaceCenter.ActiveVessel](M:SpaceCenter.ActiveVessel).
+ When called, the active vessel may change. It is therefore possible that,
+after calling this function, the object(s) returned by previous call(s) to
+[M:SpaceCenter.ActiveVessel](M:SpaceCenter.ActiveVessel) no longer refer to the active vessel.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3804,12 +5801,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The position of the docking port in the given reference frame.
+The position of the docking port, in the given reference frame.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3818,11 +5818,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The direction that docking port points in, in the given reference frame.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3831,11 +5834,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The rotation of the docking port, in the given reference frame.
+Returns: The rotation as a quaternion of the form <math>(x, y, z, w)</math>.
+<param name="referenceFrame">The reference frame that the returned
+rotation is in.</param>
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3847,7 +5853,7 @@ The part object for this docking port.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3859,7 +5865,7 @@ The current state of the docking port.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3867,12 +5873,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The part that this docking port is docked to. Returns <c>null</c> if this
+The part that this docking port is docked to. Returns null if this
 docking port is not docked to anything.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3885,7 +5891,7 @@ becomes ready to dock with another port, in meters.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3897,7 +5903,7 @@ Whether the docking port has a shield.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3906,14 +5912,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The state of the docking ports shield, if it has one.
-Returns <c>true</c> if the docking port has a shield, and the shield is
-closed. Otherwise returns <c>false</c>. When set to <c>true</c>, the shield is
-closed, and when set to <c>false</c> the shield is opened. If the docking
+
+Returns true if the docking port has a shield, and the shield is
+closed. Otherwise returns false. When set to true, the shield is
+closed, and when set to false the shield is opened. If the docking
 port does not have a shield, setting this attribute has no effect.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3922,14 +5929,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The state of the docking ports shield, if it has one.
-Returns <c>true</c> if the docking port has a shield, and the shield is
-closed. Otherwise returns <c>false</c>. When set to <c>true</c>, the shield is
-closed, and when set to <c>false</c> the shield is opened. If the docking
+
+Returns true if the docking port has a shield, and the shield is
+closed. Otherwise returns false. When set to true, the shield is
+closed, and when set to false the shield is opened. If the docking
 port does not have a shield, setting this attribute has no effect.
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -3940,12 +5948,17 @@ Returns **void**
 
 The reference frame that is fixed relative to this docking port, and
 oriented with the port.
-<list type="bullet"><item><description>The origin is at the position of the docking port.</description></item><item><description>The axes rotate with the docking port.</description></item><item><description>The x-axis points out to the right side of the docking port.</description></item><item><description>The y-axis points in the direction the docking port is facing.</description></item><item><description>The z-axis points out of the bottom off the docking port.</description></item></list> This reference frame is not necessarily equivalent to the reference frame
+<list type="bullet"><item><description>The origin is at the position of the docking port.
+</description></item><item><description>The axes rotate with the docking port.</description></item><item><description>The x-axis points out to the right side of the docking port.
+</description></item><item><description>The y-axis points in the direction the docking port is facing.
+</description></item><item><description>The z-axis points out of the bottom off the docking port.
+</description></item></list><remarks>
+This reference frame is not necessarily equivalent to the reference frame
 for the part, returned by [M:SpaceCenter.Part.ReferenceFrame](M:SpaceCenter.Part.ReferenceFrame).
 
 **Parameters**
 
--   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort see [Long.js]<https://www.npmjs.com/package/long>
+-   `dockingPort` **Long** A long value representing the id for the SpaceCenter.DockingPort
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3957,7 +5970,7 @@ Toggle the current engine mode.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **void** 
 
@@ -3969,7 +5982,7 @@ The part object for this engine.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3982,7 +5995,7 @@ depending on [M:SpaceCenter.Engine.CanShutdown](M:SpaceCenter.Engine.CanShutdown
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -3995,7 +6008,7 @@ depending on [M:SpaceCenter.Engine.CanShutdown](M:SpaceCenter.Engine.CanShutdown
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -4008,7 +6021,7 @@ The current amount of thrust being produced by the engine, in Newtons.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4019,11 +6032,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The amount of thrust, in Newtons, that would be produced by the engine
 when activated and with its throttle set to 100%.
 Returns zero if the engine does not have any fuel.
-Takes the engine's current [M:SpaceCenter.Engine.ThrustLimit](M:SpaceCenter.Engine.ThrustLimit) and atmospheric conditions into account.
+Takes the engine's current [M:SpaceCenter.Engine.ThrustLimit](M:SpaceCenter.Engine.ThrustLimit) and atmospheric conditions
+into account.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4036,7 +6050,7 @@ when activated and fueled, with its throttle and throttle limiter set to 100%.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4051,7 +6065,7 @@ vessel's throttle is set to 100% and the engine is in a vacuum.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4065,7 +6079,7 @@ rocket booster cannot be changed in flight.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4079,7 +6093,7 @@ rocket booster cannot be changed in flight.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -4089,14 +6103,14 @@ Returns **void**
 **Extends SpaceCenter**
 
 The components of the engine that generate thrust.
-For example, this corresponds to the rocket nozzel on a solid rocket booster,
+ For example, this corresponds to the rocket nozzel on a solid rocket booster,
 or the individual nozzels on a RAPIER engine.
 The overall thrust produced by the engine, as reported by [M:SpaceCenter.Engine.AvailableThrust](M:SpaceCenter.Engine.AvailableThrust),
 [M:SpaceCenter.Engine.MaxThrust](M:SpaceCenter.Engine.MaxThrust) and others, is the sum of the thrust generated by each thruster.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4109,7 +6123,7 @@ if the engine is not active.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4121,7 +6135,7 @@ The vacuum specific impulse of the engine, in seconds.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4133,7 +6147,7 @@ The specific impulse of the engine at sea level on Kerbin, in seconds.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4145,7 +6159,7 @@ The names of the propellants that the engine consumes.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4157,7 +6171,7 @@ The propellants that the engine consumes.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4167,12 +6181,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The ratio of resources that the engine consumes. A dictionary mapping resource names
 to the ratio at which they are consumed by the engine.
-For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every 0.6 units of
-LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
+ For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every
+0.6 units of LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4181,11 +6195,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the engine has any fuel available.
-The engine must be activated for this property to update correctly.
+ The engine must be activated for this property to update correctly.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4200,7 +6214,7 @@ setting, as some engines take time to adjust their throttle
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4209,12 +6223,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the [M:SpaceCenter.Control.Throttle](M:SpaceCenter.Control.Throttle) affects the engine. For example,
-this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
+this is true for liquid fueled rockets, and false for solid rocket
 boosters.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4223,12 +6237,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the engine can be restarted once shutdown. If the engine cannot be shutdown,
-returns <c>false</c>. For example, this is <c>true</c> for liquid fueled rockets
-and <c>false</c> for solid rocket boosters.
+returns false. For example, this is true for liquid fueled rockets
+and false for solid rocket boosters.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4237,11 +6251,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the engine can be shutdown once activated. For example, this is
-<c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
+true for liquid fueled rockets and false for solid rocket boosters.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4253,7 +6267,7 @@ Whether the engine has multiple modes of operation.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4265,7 +6279,7 @@ The name of the current engine mode.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4277,7 +6291,7 @@ The name of the current engine mode.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -4291,7 +6305,7 @@ A dictionary mapping mode names to [T:SpaceCenter.Engine](T:SpaceCenter.Engine) 
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4303,7 +6317,7 @@ Whether the engine will automatically switch modes.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4315,7 +6329,7 @@ Whether the engine will automatically switch modes.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -4328,7 +6342,7 @@ Whether the engine is gimballed.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4341,7 +6355,7 @@ Returns 0 if the engine is not gimballed.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4354,7 +6368,7 @@ no effect if the engine is not gimballed.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4367,7 +6381,7 @@ no effect if the engine is not gimballed.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -4381,7 +6395,7 @@ Returns 0 if the gimbal is locked.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4394,7 +6408,7 @@ Returns 0 if the gimbal is locked.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -4403,13 +6417,14 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The available torque in the pitch, roll and yaw axes of the vessel, in Newton meters.
-These axes correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
+The available torque, in Newton meters, that can be produced by this engine,
+in the positive and negative pitch, roll and yaw axes of the vessel. These axes
+correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
 Returns zero if the engine is inactive, or not gimballed.
 
 **Parameters**
 
--   `engine` **Long** A long value representing the id for the SpaceCenter.Engine see [Long.js]<https://www.npmjs.com/package/long>
+-   `engine` **Long** A long value representing the id for the SpaceCenter.Engine
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4421,7 +6436,7 @@ Run the experiment.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **void** 
 
@@ -4433,7 +6448,7 @@ Transmit all experimental data contained by this part.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **void** 
 
@@ -4445,7 +6460,7 @@ Dump the experimental data contained by the experiment.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **void** 
 
@@ -4457,7 +6472,7 @@ Reset the experiment.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **void** 
 
@@ -4469,7 +6484,7 @@ The part object for this experiment.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4481,7 +6496,7 @@ Whether the experiment is inoperable.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4493,7 +6508,7 @@ Whether the experiment has been deployed.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4505,7 +6520,7 @@ Whether the experiment can be re-run.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4517,7 +6532,7 @@ Whether the experiment contains data.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4529,7 +6544,7 @@ The data contained in this experiment.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4541,7 +6556,7 @@ Determines if the experiment is available given the current conditions.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4553,7 +6568,7 @@ The name of the biome the experiment is currently in.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4561,12 +6576,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Containing information on the corresponding specific science result for the current conditions.
-Returns null if experiment is unavailable.
+Containing information on the corresponding specific science result for the current
+conditions. Returns null if the experiment is unavailable.
 
 **Parameters**
 
--   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment see [Long.js]<https://www.npmjs.com/package/long>
+-   `experiment` **Long** A long value representing the id for the SpaceCenter.Experiment
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4578,7 +6593,7 @@ Jettison the fairing. Has no effect if it has already been jettisoned.
 
 **Parameters**
 
--   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing see [Long.js]<https://www.npmjs.com/package/long>
+-   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing
 
 Returns **void** 
 
@@ -4590,7 +6605,7 @@ The part object for this fairing.
 
 **Parameters**
 
--   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing see [Long.js]<https://www.npmjs.com/package/long>
+-   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4602,7 +6617,7 @@ Whether the fairing has been jettisoned.
 
 **Parameters**
 
--   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing see [Long.js]<https://www.npmjs.com/package/long>
+-   `fairing` **Long** A long value representing the id for the SpaceCenter.Fairing
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4614,7 +6629,7 @@ Remove the force.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 
 Returns **void** 
 
@@ -4626,7 +6641,7 @@ The part that this force is applied to.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4634,11 +6649,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The force vector. The magnitude of the vector is the strength of the force in Newtons.
+The force vector, in Newtons.
+Returns: A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4646,11 +6663,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The force vector. The magnitude of the vector is the strength of the force in Newtons.
+The force vector, in Newtons.
+Returns: A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -4659,11 +6678,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The position at which the force acts.
+The position at which the force acts, in reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The position as a vector.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4671,11 +6691,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The position at which the force acts.
+The position at which the force acts, in reference frame [T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame).
+Returns: The position as a vector.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -4688,7 +6709,7 @@ The reference frame of the force vector and position.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4700,8 +6721,8 @@ The reference frame of the force vector and position.
 
 **Parameters**
 
--   `force` **Long** A long value representing the id for the SpaceCenter.Force see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `force` **Long** A long value representing the id for the SpaceCenter.Force
+-   `value` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -4713,7 +6734,7 @@ The part object for this intake.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4725,7 +6746,7 @@ Whether the intake is open.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4737,7 +6758,7 @@ Whether the intake is open.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -4750,7 +6771,7 @@ Speed of the flow into the intake, in <math>m/s</math>.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4762,7 +6783,7 @@ The rate of flow into the intake, in units of resource per second.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4774,128 +6795,9 @@ The area of the intake's opening, in square meters.
 
 **Parameters**
 
--   `intake` **Long** A long value representing the id for the SpaceCenter.Intake see [Long.js]<https://www.npmjs.com/package/long>
+-   `intake` **Long** A long value representing the id for the SpaceCenter.Intake
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingGearGetPart
-
-**Extends SpaceCenter**
-
-The part object for this landing gear.
-
-**Parameters**
-
--   `landingGear` **Long** A long value representing the id for the SpaceCenter.LandingGear see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingGearGetDeployable
-
-**Extends SpaceCenter**
-
-Whether the landing gear is deployable.
-
-**Parameters**
-
--   `landingGear` **Long** A long value representing the id for the SpaceCenter.LandingGear see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingGearGetState
-
-**Extends SpaceCenter**
-
-Gets the current state of the landing gear.
-Fixed landing gear are always deployed.
-
-**Parameters**
-
--   `landingGear` **Long** A long value representing the id for the SpaceCenter.LandingGear see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingGearGetDeployed
-
-**Extends SpaceCenter**
-
-Whether the landing gear is deployed.
-Fixed landing gear are always deployed.
-Returns an error if you try to deploy fixed landing gear.
-
-**Parameters**
-
--   `landingGear` **Long** A long value representing the id for the SpaceCenter.LandingGear see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingGearSetDeployed
-
-**Extends SpaceCenter**
-
-Whether the landing gear is deployed.
-Fixed landing gear are always deployed.
-Returns an error if you try to deploy fixed landing gear.
-
-**Parameters**
-
--   `landingGear` **Long** A long value representing the id for the SpaceCenter.LandingGear see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-Returns **void** 
-
-## landingLegGetPart
-
-**Extends SpaceCenter**
-
-The part object for this landing leg.
-
-**Parameters**
-
--   `landingLeg` **Long** A long value representing the id for the SpaceCenter.LandingLeg see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingLegGetState
-
-**Extends SpaceCenter**
-
-The current state of the landing leg.
-
-**Parameters**
-
--   `landingLeg` **Long** A long value representing the id for the SpaceCenter.LandingLeg see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingLegGetDeployed
-
-**Extends SpaceCenter**
-
-Whether the landing leg is deployed.
-Fixed landing legs are always deployed.
-Returns an error if you try to deploy fixed landing gear.
-
-**Parameters**
-
--   `landingLeg` **Long** A long value representing the id for the SpaceCenter.LandingLeg see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## landingLegSetDeployed
-
-**Extends SpaceCenter**
-
-Whether the landing leg is deployed.
-Fixed landing legs are always deployed.
-Returns an error if you try to deploy fixed landing gear.
-
-**Parameters**
-
--   `landingLeg` **Long** A long value representing the id for the SpaceCenter.LandingLeg see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-Returns **void** 
 
 ## launchClampRelease
 
@@ -4905,7 +6807,7 @@ Releases the docking clamp. Has no effect if the clamp has already been released
 
 **Parameters**
 
--   `launchClamp` **Long** A long value representing the id for the SpaceCenter.LaunchClamp see [Long.js]<https://www.npmjs.com/package/long>
+-   `launchClamp` **Long** A long value representing the id for the SpaceCenter.LaunchClamp
 
 Returns **void** 
 
@@ -4917,7 +6819,84 @@ The part object for this launch clamp.
 
 **Parameters**
 
--   `launchClamp` **Long** A long value representing the id for the SpaceCenter.LaunchClamp see [Long.js]<https://www.npmjs.com/package/long>
+-   `launchClamp` **Long** A long value representing the id for the SpaceCenter.LaunchClamp
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## legGetPart
+
+**Extends SpaceCenter**
+
+The part object for this landing leg.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## legGetState
+
+**Extends SpaceCenter**
+
+The current state of the landing leg.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## legGetDeployable
+
+**Extends SpaceCenter**
+
+Whether the leg is deployable.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## legGetDeployed
+
+**Extends SpaceCenter**
+
+Whether the landing leg is deployed.
+ Fixed landing legs are always deployed.
+Returns an error if you try to deploy fixed landing gear.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## legSetDeployed
+
+**Extends SpaceCenter**
+
+Whether the landing leg is deployed.
+ Fixed landing legs are always deployed.
+Returns an error if you try to deploy fixed landing gear.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## legGetIsGrounded
+
+**Extends SpaceCenter**
+
+Returns whether the leg is touching the ground.
+
+**Parameters**
+
+-   `leg` **Long** A long value representing the id for the SpaceCenter.Leg
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4929,7 +6908,7 @@ The part object for this light.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4941,7 +6920,7 @@ Whether the light is switched on.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4953,7 +6932,7 @@ Whether the light is switched on.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -4966,7 +6945,7 @@ The color of the light, as an RGB triple.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4978,7 +6957,7 @@ The color of the light, as an RGB triple.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -4991,7 +6970,7 @@ The current power usage, in units of charge per second.
 
 **Parameters**
 
--   `light` **Long** A long value representing the id for the SpaceCenter.Light see [Long.js]<https://www.npmjs.com/package/long>
+-   `light` **Long** A long value representing the id for the SpaceCenter.Light
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -4999,11 +6978,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns <c>true</c> if the module has a field with the given name.
+Returns true if the module has a field with the given name.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -5016,7 +6995,7 @@ Returns the value of a field.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -5029,7 +7008,7 @@ Set the value of a field to the given integer number.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Value to set.
 
@@ -5043,7 +7022,7 @@ Set the value of a field to the given floating point number.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Value to set.
 
@@ -5057,7 +7036,7 @@ Set the value of a field to the given string.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Value to set.
 
@@ -5071,7 +7050,7 @@ Set the value of a field to its original value.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the field.
 
 Returns **void** 
@@ -5080,14 +7059,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-<c>true</c> if the module has an event with the given name.
-            <param name="name">
- </param>
+<summary>true if the module has an event with the given name.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5095,14 +7072,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Trigger the named event. Equivalent to clicking the button in the right-click menu of the part.
- <param name="name">
- </param>
+Trigger the named event. Equivalent to clicking the button in the right-click menu
+of the part.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
 
@@ -5110,14 +7086,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-<c>true</c> if the part has an action with the given name.
-            <param name="name">
- </param>
+<summary>true if the part has an action with the given name.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5126,16 +7100,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Set the value of an action with the given name.
- <param name="name">
- </param>
- <param name="value">
- </param>
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
--   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** \-
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
 
@@ -5147,7 +7117,7 @@ Name of the PartModule. For example, "ModuleEngines".
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5159,7 +7129,7 @@ The part that contains this module.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5172,7 +7142,7 @@ These are the values visible in the right-click menu of the part.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5185,7 +7155,7 @@ visible in the right-click menu of the part.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5193,12 +7163,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of all the names of the modules actions. These are the parts actions that can be assigned
-to action groups in the in-game editor.
+A list of all the names of the modules actions. These are the parts actions that can
+be assigned to action groups in the in-game editor.
 
 **Parameters**
 
--   `module` **Long** A long value representing the id for the SpaceCenter.Module see [Long.js]<https://www.npmjs.com/package/long>
+-   `module` **Long** A long value representing the id for the SpaceCenter.Module
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5211,7 +7181,20 @@ been deployed.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
+
+Returns **void** 
+
+## parachuteArm
+
+**Extends SpaceCenter**
+
+Deploys the parachute. This has no effect if the parachute has already
+been armed or deployed. Only applicable to RealChutes parachutes.
+
+**Parameters**
+
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **void** 
 
@@ -5223,7 +7206,7 @@ The part object for this parachute.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5235,7 +7218,20 @@ Whether the parachute has been deployed.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## parachuteGetArmed
+
+**Extends SpaceCenter**
+
+Whether the parachute has been armed or deployed. Only applicable to
+RealChutes parachutes.
+
+**Parameters**
+
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5247,7 +7243,7 @@ The current state of the parachute.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5256,10 +7252,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The altitude at which the parachute will full deploy, in meters.
+Only applicable to stock parachutes.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5268,10 +7265,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The altitude at which the parachute will full deploy, in meters.
+Only applicable to stock parachutes.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -5281,10 +7279,11 @@ Returns **void**
 **Extends SpaceCenter**
 
 The minimum pressure at which the parachute will semi-deploy, in atmospheres.
+Only applicable to stock parachutes.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5293,10 +7292,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The minimum pressure at which the parachute will semi-deploy, in atmospheres.
+Only applicable to stock parachutes.
 
 **Parameters**
 
--   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute see [Long.js]<https://www.npmjs.com/package/long>
+-   `parachute` **Long** A long value representing the id for the SpaceCenter.Parachute
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -5306,16 +7306,17 @@ Returns **void**
 **Extends SpaceCenter**
 
 The position of the part in the given reference frame.
-This is a fixed position in the part, defined by the parts model.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
+ This is a fixed position in the part, defined by the parts model.
 It s not necessarily the same as the parts center of mass.
 Use [M:SpaceCenter.Part.CenterOfMass](M:SpaceCenter.Part.CenterOfMass) to get the parts center of mass.
- <param name="referenceFrame">
- </param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5325,13 +7326,34 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The position of the parts center of mass in the given reference frame.
 If the part is physicsless, this is equivalent to [M:SpaceCenter.Part.Position](M:SpaceCenter.Part.Position).
- <param name="referenceFrame">
- </param>
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partBoundingBox
+
+**Extends SpaceCenter**
+
+The axis-aligned bounding box of the part in the given reference frame.
+Returns: The positions of the minimum and maximum vertices of the box,
+as position vectors.
+<param name="referenceFrame">The reference frame that the returned
+position vectors are in.</param>
+ This is computed from the collision mesh of the part.
+If the part is not collidable, the box has zero volume and is centered on
+the [M:SpaceCenter.Part.Position](M:SpaceCenter.Part.Position) of the part.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5339,14 +7361,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The direction of the part in the given reference frame.
- <param name="referenceFrame">
- </param>
+The direction the part points in, in the given reference frame.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5354,14 +7377,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The velocity of the part in the given reference frame.
- <param name="referenceFrame">
- </param>
+The linear velocity of the part in the given reference frame.
+Returns: The velocity as a vector. The vector points in the direction of travel,
+and its magnitude is the speed of the body in meters per second.
+<param name="referenceFrame">The reference frame that the returned
+velocity vector is in.</param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5369,14 +7394,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The rotation of the part in the given reference frame.
- <param name="referenceFrame">
- </param>
+The rotation of the part, in the given reference frame.
+Returns: The rotation as a quaternion of the form <math>(x, y, z, w)</math>.
+<param name="referenceFrame">The reference frame that the returned
+rotation is in.</param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5385,14 +7411,20 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Exert a constant force on the part, acting at the given position.
-Returns an object that can be used to remove or modify the force.
+Returns: An object that can be used to remove or modify the force.
+<param name="force">A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.</param>
+
+<param name="referenceFrame">The reference frame that the
+force and position are in.</param>
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `force` **{number, number, number}** 
--   `position` **{number, number, number}** 
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `force` **{number, number, number}** A vector pointing in the direction that the force acts,
+    with its magnitude equal to the strength of the force in Newtons.
+-   `position` **{number, number, number}** The position at which the force acts, as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5401,14 +7433,20 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Exert an instantaneous force on the part, acting at the given position.
-The force is applied instantaneously in a single physics update.
+<param name="force">A vector pointing in the direction that the force acts,
+with its magnitude equal to the strength of the force in Newtons.</param>
+
+<param name="referenceFrame">The reference frame that the
+force and position are in.</param>
+<remarks>The force is applied instantaneously in a single physics update.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `force` **{number, number, number}** 
--   `position` **{number, number, number}** 
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `force` **{number, number, number}** A vector pointing in the direction that the force acts,
+    with its magnitude equal to the strength of the force in Newtons.
+-   `position` **{number, number, number}** The position at which the force acts, as a vector.
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **void** 
 
@@ -5417,12 +7455,12 @@ Returns **void**
 **Extends SpaceCenter**
 
 Internal name of the part, as used in
-<a href="http://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
+<a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
 For example "Mark1-2Pod".
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5434,7 +7472,7 @@ Title of the part, as shown when the part is right clicked in-game. For example 
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5442,13 +7480,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The name tag for the part. Can be set to a custom string using the in-game user interface.
-This requires either the <a href="http://github.com/krpc/NameTag/releases/latest">NameTag</a> or
-<a href="http://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a> mods to be installed.
+The name tag for the part. Can be set to a custom string using the
+in-game user interface.
+ This requires either the
+<a href="https://github.com/krpc/NameTag/releases/latest">NameTag</a> or
+<a href="https://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a>
+mod to be installed.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5456,14 +7497,67 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The name tag for the part. Can be set to a custom string using the in-game user interface.
-This requires either the <a href="http://github.com/krpc/NameTag/releases/latest">NameTag</a> or
-<a href="http://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a> mods to be installed.
+The name tag for the part. Can be set to a custom string using the
+in-game user interface.
+ This requires either the
+<a href="https://github.com/krpc/NameTag/releases/latest">NameTag</a> or
+<a href="https://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a>
+mod to be installed.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **void** 
+
+## partGetHighlighted
+
+**Extends SpaceCenter**
+
+Whether the part is highlighted.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partSetHighlighted
+
+**Extends SpaceCenter**
+
+Whether the part is highlighted.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## partGetHighlightColor
+
+**Extends SpaceCenter**
+
+The color used to highlight the part, as an RGB triple.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partSetHighlightColor
+
+**Extends SpaceCenter**
+
+The color used to highlight the part, as an RGB triple.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+-   `value` **{number, number, number}** 
 
 Returns **void** 
 
@@ -5475,7 +7569,7 @@ The cost of the part, in units of funds.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5487,7 +7581,7 @@ The vessel that contains this part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5495,12 +7589,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The parts parent. Returns <c>null</c> if the part does not have a parent.
-This, in combination with [M:SpaceCenter.Part.Children](M:SpaceCenter.Part.Children), can be used to traverse the vessels parts tree.
+The parts parent. Returns null if the part does not have a parent.
+This, in combination with [M:SpaceCenter.Part.Children](M:SpaceCenter.Part.Children), can be used to traverse the vessels
+parts tree.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5509,11 +7604,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The parts children. Returns an empty list if the part has no children.
-This, in combination with [M:SpaceCenter.Part.Parent](M:SpaceCenter.Part.Parent), can be used to traverse the vessels parts tree.
+This, in combination with [M:SpaceCenter.Part.Parent](M:SpaceCenter.Part.Parent), can be used to traverse the vessels
+parts tree.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5522,11 +7618,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the part is axially attached to its parent, i.e. on the top
-or bottom of its parent. If the part has no parent, returns <c>false</c>.
+or bottom of its parent. If the part has no parent, returns false.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5535,11 +7631,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the part is radially attached to its parent, i.e. on the side of its parent.
-If the part has no parent, returns <c>false</c>.
+If the part has no parent, returns false.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5547,11 +7643,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The stage in which this part will be activated. Returns -1 if the part is not activated by staging.
+The stage in which this part will be activated. Returns -1 if the part is not
+activated by staging.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5559,11 +7656,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The stage in which this part will be decoupled. Returns -1 if the part is never decoupled from the vessel.
+The stage in which this part will be decoupled. Returns -1 if the part is never
+decoupled from the vessel.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5571,11 +7669,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Whether the part is <a href="http://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
+Whether the part is
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5588,7 +7687,7 @@ Returns zero if the part is massless.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5596,11 +7695,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The mass of the part, not including any resources it contains, in kilograms. Returns zero if the part is massless.
+The mass of the part, not including any resources it contains, in kilograms.
+Returns zero if the part is massless.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5612,7 +7712,7 @@ Whether the part is shielded from the exterior of the vessel, for example by a f
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5624,7 +7724,7 @@ The dynamic pressure acting on the part, in Pascals.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5636,7 +7736,7 @@ The impact tolerance of the part, in meters per second.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5648,7 +7748,7 @@ Temperature of the part, in Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5660,7 +7760,7 @@ Temperature of the skin of the part, in Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5672,7 +7772,7 @@ Maximum temperature that the part can survive, in Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5684,7 +7784,7 @@ Maximum temperature that the skin of the part can survive, in Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5692,11 +7792,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A measure of how much energy it takes to increase the internal temperature of the part, in Joules per Kelvin.
+A measure of how much energy it takes to increase the internal temperature of the part,
+in Joules per Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5704,11 +7805,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A measure of how much energy it takes to increase the skin temperature of the part, in Joules per Kelvin.
+A measure of how much energy it takes to increase the skin temperature of the part,
+in Joules per Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5716,11 +7818,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A measure of how much energy it takes to increase the temperature of the resources contained in the part, in Joules per Kelvin.
+A measure of how much energy it takes to increase the temperature of the resources
+contained in the part, in Joules per Kelvin.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5731,11 +7834,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The rate at which heat energy is begin generated by the part.
 For example, some engines generate heat by combusting fuel.
 Measured in energy per unit time, or power, in Watts.
-A positive value means the part is gaining heat energy, and negative means it is losing heat energy.
+A positive value means the part is gaining heat energy, and negative means it is losing
+heat energy.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5743,13 +7847,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The rate at which heat energy is conducting into or out of the part via contact with other parts.
-Measured in energy per unit time, or power, in Watts.
-A positive value means the part is gaining heat energy, and negative means it is losing heat energy.
+The rate at which heat energy is conducting into or out of the part via contact with
+other parts. Measured in energy per unit time, or power, in Watts.
+A positive value means the part is gaining heat energy, and negative means it is
+losing heat energy.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5757,13 +7862,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The rate at which heat energy is convecting into or out of the part from the surrounding atmosphere.
-Measured in energy per unit time, or power, in Watts.
-A positive value means the part is gaining heat energy, and negative means it is losing heat energy.
+The rate at which heat energy is convecting into or out of the part from the
+surrounding atmosphere. Measured in energy per unit time, or power, in Watts.
+A positive value means the part is gaining heat energy, and negative means it is
+losing heat energy.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5771,13 +7877,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The rate at which heat energy is radiating into or out of the part from the surrounding environment.
-Measured in energy per unit time, or power, in Watts.
-A positive value means the part is gaining heat energy, and negative means it is losing heat energy.
+The rate at which heat energy is radiating into or out of the part from the surrounding
+environment. Measured in energy per unit time, or power, in Watts.
+A positive value means the part is gaining heat energy, and negative means it is
+losing heat energy.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5792,7 +7899,7 @@ and negative means its skin is gaining heat energy.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5804,7 +7911,7 @@ A [T:SpaceCenter.Resources](T:SpaceCenter.Resources) object for the part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5816,7 +7923,7 @@ Whether this part is crossfeed capable.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5828,7 +7935,7 @@ Whether this part is a fuel line.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5836,11 +7943,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The parts that are connected to this part via fuel lines, where the direction of the fuel line is into this part.
+The parts that are connected to this part via fuel lines, where the direction of the
+fuel line is into this part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5848,11 +7956,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The parts that are connected to this part via fuel lines, where the direction of the fuel line is out of this part.
+The parts that are connected to this part via fuel lines, where the direction of the
+fuel line is out of this part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5864,7 +7973,19 @@ The modules for this part.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partGetAntenna
+
+**Extends SpaceCenter**
+
+A [T:SpaceCenter.Antenna](T:SpaceCenter.Antenna) if the part is an antenna, otherwise null.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5872,11 +7993,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.CargoBay](T:SpaceCenter.CargoBay) if the part is a cargo bay, otherwise <c>null</c>.
+A [T:SpaceCenter.CargoBay](T:SpaceCenter.CargoBay) if the part is a cargo bay, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5884,11 +8005,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.ControlSurface](T:SpaceCenter.ControlSurface) if the part is an aerodynamic control surface, otherwise <c>null</c>.
+A [T:SpaceCenter.ControlSurface](T:SpaceCenter.ControlSurface) if the part is an aerodynamic control surface,
+otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5896,11 +8018,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Decoupler](T:SpaceCenter.Decoupler) if the part is a decoupler, otherwise <c>null</c>.
+A [T:SpaceCenter.Decoupler](T:SpaceCenter.Decoupler) if the part is a decoupler, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5908,11 +8030,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.DockingPort](T:SpaceCenter.DockingPort) if the part is a docking port, otherwise <c>null</c>.
+A [T:SpaceCenter.DockingPort](T:SpaceCenter.DockingPort) if the part is a docking port, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5920,11 +8042,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-An [T:SpaceCenter.Engine](T:SpaceCenter.Engine) if the part is an engine, otherwise <c>null</c>.
+An [T:SpaceCenter.Engine](T:SpaceCenter.Engine) if the part is an engine, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5932,11 +8054,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-An [T:SpaceCenter.Experiment](T:SpaceCenter.Experiment) if the part is a science experiment, otherwise <c>null</c>.
+An [T:SpaceCenter.Experiment](T:SpaceCenter.Experiment) if the part is a science experiment, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5944,11 +8066,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Fairing](T:SpaceCenter.Fairing) if the part is a fairing, otherwise <c>null</c>.
+A [T:SpaceCenter.Fairing](T:SpaceCenter.Fairing) if the part is a fairing, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5956,38 +8078,26 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-An [T:SpaceCenter.Intake](T:SpaceCenter.Intake) if the part is an intake, otherwise <c>null</c>.
-This includes any part that generates thrust. This covers many different types of engine,
-including liquid fuel rockets, solid rocket boosters and jet engines.
+An [T:SpaceCenter.Intake](T:SpaceCenter.Intake) if the part is an intake, otherwise null.
+ This includes any part that generates thrust. This covers many different types
+of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
 For RCS thrusters see [T:SpaceCenter.RCS](T:SpaceCenter.RCS).
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
-## partGetLandingGear
+## partGetLeg
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.LandingGear](T:SpaceCenter.LandingGear) if the part is a landing gear, otherwise <c>null</c>.
+A [T:SpaceCenter.Leg](T:SpaceCenter.Leg) if the part is a landing leg, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## partGetLandingLeg
-
-**Extends SpaceCenter**
-
-A [T:SpaceCenter.LandingLeg](T:SpaceCenter.LandingLeg) if the part is a landing leg, otherwise <c>null</c>.
-
-**Parameters**
-
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -5995,11 +8105,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.LaunchClamp](T:SpaceCenter.LaunchClamp) if the part is a launch clamp, otherwise <c>null</c>.
+A [T:SpaceCenter.LaunchClamp](T:SpaceCenter.LaunchClamp) if the part is a launch clamp, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6007,11 +8117,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Light](T:SpaceCenter.Light) if the part is a light, otherwise <c>null</c>.
+A [T:SpaceCenter.Light](T:SpaceCenter.Light) if the part is a light, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6019,11 +8129,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Parachute](T:SpaceCenter.Parachute) if the part is a parachute, otherwise <c>null</c>.
+A [T:SpaceCenter.Parachute](T:SpaceCenter.Parachute) if the part is a parachute, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6031,11 +8141,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Radiator](T:SpaceCenter.Radiator) if the part is a radiator, otherwise <c>null</c>.
+A [T:SpaceCenter.Radiator](T:SpaceCenter.Radiator) if the part is a radiator, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6043,11 +8153,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.RCS](T:SpaceCenter.RCS) if the part is an RCS block/thruster, otherwise <c>null</c>.
+A [T:SpaceCenter.RCS](T:SpaceCenter.RCS) if the part is an RCS block/thruster, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6055,11 +8165,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.ReactionWheel](T:SpaceCenter.ReactionWheel) if the part is a reaction wheel, otherwise <c>null</c>.
+A [T:SpaceCenter.ReactionWheel](T:SpaceCenter.ReactionWheel) if the part is a reaction wheel, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6067,11 +8177,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.ResourceConverter](T:SpaceCenter.ResourceConverter) if the part is a resource converter, otherwise <c>null</c>.
+A [T:SpaceCenter.ResourceConverter](T:SpaceCenter.ResourceConverter) if the part is a resource converter,
+otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6079,11 +8190,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.ResourceHarvester](T:SpaceCenter.ResourceHarvester) if the part is a resource harvester, otherwise <c>null</c>.
+A [T:SpaceCenter.ResourceHarvester](T:SpaceCenter.ResourceHarvester) if the part is a resource harvester,
+otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6091,11 +8203,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.Sensor](T:SpaceCenter.Sensor) if the part is a sensor, otherwise <c>null</c>.
+A [T:SpaceCenter.Sensor](T:SpaceCenter.Sensor) if the part is a sensor, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6103,11 +8215,23 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A [T:SpaceCenter.SolarPanel](T:SpaceCenter.SolarPanel) if the part is a solar panel, otherwise <c>null</c>.
+A [T:SpaceCenter.SolarPanel](T:SpaceCenter.SolarPanel) if the part is a solar panel, otherwise null.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partGetWheel
+
+**Extends SpaceCenter**
+
+A [T:SpaceCenter.Wheel](T:SpaceCenter.Wheel) if the part is a wheel, otherwise null.
+
+**Parameters**
+
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6120,7 +8244,7 @@ in the parts reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.Refer
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6128,12 +8252,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The inertia tensor of the part in the parts reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
+The inertia tensor of the part in the parts reference frame
+([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 Returns the 3x3 matrix as a list of elements, in row-major order.
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6141,13 +8266,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to this part, and centered on a fixed position within the part, defined by the parts model.
-<list type="bullet"><item><description>The origin is at the position of the part, as returned by [M:SpaceCenter.Part.Position](M:SpaceCenter.Part.Position).</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.</description></item></list> For docking port parts, this reference frame is not necessarily equivalent to the reference frame
-for the docking port, returned by [M:SpaceCenter.DockingPort.ReferenceFrame](M:SpaceCenter.DockingPort.ReferenceFrame).
+The reference frame that is fixed relative to this part, and centered on a fixed
+position within the part, defined by the parts model.
+<list type="bullet"><item><description>The origin is at the position of the part, as returned by
+[M:SpaceCenter.Part.Position](M:SpaceCenter.Part.Position).</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+</description></item></list><remarks>
+For docking port parts, this reference frame is not necessarily equivalent to the
+reference frame for the docking port, returned by
+[M:SpaceCenter.DockingPort.ReferenceFrame](M:SpaceCenter.DockingPort.ReferenceFrame).
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6155,13 +8285,18 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to this part, and centered on its center of mass.
-<list type="bullet"><item><description>The origin is at the center of mass of the part, as returned by [M:SpaceCenter.Part.CenterOfMass](M:SpaceCenter.Part.CenterOfMass).</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.</description></item></list> For docking port parts, this reference frame is not necessarily equivalent to the reference frame
-for the docking port, returned by [M:SpaceCenter.DockingPort.ReferenceFrame](M:SpaceCenter.DockingPort.ReferenceFrame).
+The reference frame that is fixed relative to this part, and centered on its
+center of mass.
+<list type="bullet"><item><description>The origin is at the center of mass of the part, as returned by
+[M:SpaceCenter.Part.CenterOfMass](M:SpaceCenter.Part.CenterOfMass).</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+</description></item></list><remarks>
+For docking port parts, this reference frame is not necessarily equivalent to the
+reference frame for the docking port, returned by
+[M:SpaceCenter.DockingPort.ReferenceFrame](M:SpaceCenter.DockingPort.ReferenceFrame).
 
 **Parameters**
 
--   `part` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `part` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6169,14 +8304,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of parts whose [M:SpaceCenter.Part.Name](M:SpaceCenter.Part.Name) is &lt;paramref name="name}.
- <param name="name">
- </param>
+A list of parts whose [M:SpaceCenter.Part.Name](M:SpaceCenter.Part.Name) is {name}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6184,14 +8317,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of all parts whose [M:SpaceCenter.Part.Title](M:SpaceCenter.Part.Title) is &lt;paramref name="title}.
- <param name="title">
- </param>
+A list of all parts whose [M:SpaceCenter.Part.Title](M:SpaceCenter.Part.Title) is {title}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `title` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6199,14 +8330,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of all parts whose [M:SpaceCenter.Part.Tag](M:SpaceCenter.Part.Tag) is &lt;paramref name="tag}.
- <param name="tag">
- </param>
+A list of all parts whose [M:SpaceCenter.Part.Tag](M:SpaceCenter.Part.Tag) is {tag}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `tag` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `tag` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6215,14 +8344,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 A list of all parts that contain a [T:SpaceCenter.Module](T:SpaceCenter.Module) whose
-[M:SpaceCenter.Module.Name](M:SpaceCenter.Module.Name) is &lt;paramref name="moduleName}.
- <param name="moduleName">
- </param>
+[M:SpaceCenter.Module.Name](M:SpaceCenter.Module.Name) is {moduleName}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `moduleName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `moduleName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6230,14 +8357,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of all parts that are activated in the given &lt;paramref name="stage}.
- <param name="stage">
- </param>
+A list of all parts that are activated in the given {stage}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `stage` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `stage` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6245,14 +8370,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-A list of all parts that are decoupled in the given &lt;paramref name="stage}.
- <param name="stage">
- </param>
+A list of all parts that are decoupled in the given {stage}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `stage` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `stage` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6261,14 +8384,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 A list of modules (combined across all parts in the vessel) whose
-[M:SpaceCenter.Module.Name](M:SpaceCenter.Module.Name) is &lt;paramref name="moduleName}.
- <param name="moduleName">
- </param>
+[M:SpaceCenter.Module.Name](M:SpaceCenter.Module.Name) is {moduleName}.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `moduleName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** \-
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `moduleName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6280,7 +8401,7 @@ A list of all of the vessels parts.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6292,7 +8413,7 @@ The vessels root part.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6304,7 +8425,7 @@ The part from which the vessel is controlled.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6316,10 +8437,22 @@ The part from which the vessel is controlled.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+-   `value` **Long** A long value representing the id for the SpaceCenter.Part
 
 Returns **void** 
+
+## partsGetAntennas
+
+**Extends SpaceCenter**
+
+A list of all antennas in the vessel.
+
+**Parameters**
+
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
 ## partsGetControlSurfaces
 
@@ -6329,7 +8462,7 @@ A list of all control surfaces in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6341,7 +8474,7 @@ A list of all cargo bays in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6353,7 +8486,7 @@ A list of all decouplers in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6365,7 +8498,7 @@ A list of all docking ports in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6374,12 +8507,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 A list of all engines in the vessel.
-This includes any part that generates thrust. This covers many different types of engine,
-including liquid fuel rockets, solid rocket boosters, jet engines and RCS thrusters.
+ This includes any part that generates thrust. This covers many different types
+of engine, including liquid fuel rockets, solid rocket boosters, jet engines and
+RCS thrusters.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6391,7 +8525,7 @@ A list of all science experiments in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6403,7 +8537,7 @@ A list of all fairings in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6415,23 +8549,11 @@ A list of all intakes in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
-## partsGetLandingGear
-
-**Extends SpaceCenter**
-
-A list of all landing gear attached to the vessel.
-
-**Parameters**
-
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## partsGetLandingLegs
+## partsGetLegs
 
 **Extends SpaceCenter**
 
@@ -6439,7 +8561,7 @@ A list of all landing legs attached to the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6451,7 +8573,7 @@ A list of all launch clamps attached to the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6463,7 +8585,7 @@ A list of all lights in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6475,7 +8597,7 @@ A list of all parachutes in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6487,7 +8609,7 @@ A list of all radiators in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6499,7 +8621,7 @@ A list of all RCS blocks/thrusters in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6511,7 +8633,7 @@ A list of all reaction wheels in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6523,7 +8645,7 @@ A list of all resource converters in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6535,7 +8657,7 @@ A list of all resource harvesters in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6547,7 +8669,7 @@ A list of all sensors in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6559,7 +8681,19 @@ A list of all solar panels in the vessel.
 
 **Parameters**
 
--   `parts` **Long** A long value representing the id for the SpaceCenter.Parts see [Long.js]<https://www.npmjs.com/package/long>
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## partsGetWheels
+
+**Extends SpaceCenter**
+
+A list of all wheels in the vessel.
+
+**Parameters**
+
+-   `parts` **Long** A long value representing the id for the SpaceCenter.Parts
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6571,7 +8705,7 @@ The name of the propellant.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6583,7 +8717,7 @@ The current amount of propellant.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6595,7 +8729,7 @@ The required amount of propellant.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6603,11 +8737,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The total amount of the underlying resource currently reachable given resource flow rules.
+The total amount of the underlying resource currently reachable given
+resource flow rules.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6615,11 +8750,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The total vehicle capacity for the underlying propellant resource, restricted by resource flow rules.
+The total vehicle capacity for the underlying propellant resource,
+restricted by resource flow rules.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6627,11 +8763,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-If this propellant should be ignored when calculating required mass flow given specific impulse.
+If this propellant should be ignored when calculating required mass flow
+given specific impulse.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6643,7 +8780,7 @@ If this propellant should be ignored for thrust curve calculations.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6655,7 +8792,7 @@ If this propellant has a stack gauge or not.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6667,7 +8804,7 @@ If this propellant is deprived.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6679,19 +8816,7 @@ The propellant ratio.
 
 **Parameters**
 
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## propellantGetConnectedResources
-
-**Extends SpaceCenter**
-
-The reachable resources connected to this propellant.
-
-**Parameters**
-
--   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant see [Long.js]<https://www.npmjs.com/package/long>
+-   `propellant` **Long** A long value representing the id for the SpaceCenter.Propellant
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6703,7 +8828,7 @@ The part object for this RCS.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6712,13 +8837,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the RCS thrusters are active.
-An RCS thruster is inactive if the RCS action group is disabled ([M:SpaceCenter.Control.RCS](M:SpaceCenter.Control.RCS)),
-the RCS thruster itself is not enabled ([M:SpaceCenter.RCS.Enabled](M:SpaceCenter.RCS.Enabled)) or
-it is covered by a fairing ([M:SpaceCenter.Part.Shielded](M:SpaceCenter.Part.Shielded)).
+An RCS thruster is inactive if the RCS action group is disabled
+([M:SpaceCenter.Control.RCS](M:SpaceCenter.Control.RCS)), the RCS thruster itself is not enabled
+([M:SpaceCenter.RCS.Enabled](M:SpaceCenter.RCS.Enabled)) or it is covered by a fairing ([M:SpaceCenter.Part.Shielded](M:SpaceCenter.Part.Shielded)).
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6730,7 +8855,7 @@ Whether the RCS thrusters are enabled.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6742,7 +8867,7 @@ Whether the RCS thrusters are enabled.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6755,7 +8880,7 @@ Whether the RCS thruster will fire when pitch control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6767,7 +8892,7 @@ Whether the RCS thruster will fire when pitch control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6780,7 +8905,7 @@ Whether the RCS thruster will fire when yaw control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6792,7 +8917,7 @@ Whether the RCS thruster will fire when yaw control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6805,7 +8930,7 @@ Whether the RCS thruster will fire when roll control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6817,7 +8942,7 @@ Whether the RCS thruster will fire when roll control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6830,7 +8955,7 @@ Whether the RCS thruster will fire when pitch control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6842,7 +8967,7 @@ Whether the RCS thruster will fire when pitch control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6855,7 +8980,7 @@ Whether the RCS thruster will fire when yaw control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6867,7 +8992,7 @@ Whether the RCS thruster will fire when yaw control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6880,7 +9005,7 @@ Whether the RCS thruster will fire when roll control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6892,7 +9017,7 @@ Whether the RCS thruster will fire when roll control input is given.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -6901,13 +9026,14 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The available torque in the pitch, roll and yaw axes of the vessel, in Newton meters.
-These axes correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
-Returns zero if the RCS is inactive.
+The available torque, in Newton meters, that can be produced by this RCS,
+in the positive and negative pitch, roll and yaw axes of the vessel. These axes
+correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
+Returns zero if RCS is disable.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6915,11 +9041,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The maximum amount of thrust that can be produced by the RCS thrusters when active, in Newtons.
+The maximum amount of thrust that can be produced by the RCS thrusters when active,
+in Newtons.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6927,11 +9054,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The maximum amount of thrust that can be produced by the RCS thrusters when active in a vacuum, in Newtons.
+The maximum amount of thrust that can be produced by the RCS thrusters when active
+in a vacuum, in Newtons.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6943,7 +9071,7 @@ A list of thrusters, one of each nozzel in the RCS part.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6956,7 +9084,7 @@ if the RCS is not active.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6968,7 +9096,7 @@ The vacuum specific impulse of the RCS, in seconds.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6980,7 +9108,7 @@ The specific impulse of the RCS at sea level on Kerbin, in seconds.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -6992,7 +9120,7 @@ The names of resources that the RCS consumes.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7005,7 +9133,7 @@ to the ratios at which they are consumed by the RCS.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7014,11 +9142,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether the RCS has fuel available.
-The RCS thruster must be activated for this property to update correctly.
+ The RCS thruster must be activated for this property to update correctly.
 
 **Parameters**
 
--   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS see [Long.js]<https://www.npmjs.com/package/long>
+-   `rcs` **Long** A long value representing the id for the SpaceCenter.RCS
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7030,7 +9158,7 @@ The part object for this radiator.
 
 **Parameters**
 
--   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator see [Long.js]<https://www.npmjs.com/package/long>
+-   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7042,7 +9170,7 @@ Whether the radiator is deployable.
 
 **Parameters**
 
--   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator see [Long.js]<https://www.npmjs.com/package/long>
+-   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7050,12 +9178,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-For a deployable radiator, <c>true</c> if the radiator is extended.
-If the radiator is not deployable, this is always <c>true</c>.
+For a deployable radiator, true if the radiator is extended.
+If the radiator is not deployable, this is always true.
 
 **Parameters**
 
--   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator see [Long.js]<https://www.npmjs.com/package/long>
+-   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7063,12 +9191,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-For a deployable radiator, <c>true</c> if the radiator is extended.
-If the radiator is not deployable, this is always <c>true</c>.
+For a deployable radiator, true if the radiator is extended.
+If the radiator is not deployable, this is always true.
 
 **Parameters**
 
--   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator see [Long.js]<https://www.npmjs.com/package/long>
+-   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7078,11 +9206,11 @@ Returns **void**
 **Extends SpaceCenter**
 
 The current state of the radiator.
-A fixed radiator is always [M:SpaceCenter.RadiatorState.Extended](M:SpaceCenter.RadiatorState.Extended).
+ A fixed radiator is always [M:SpaceCenter.RadiatorState.Extended](M:SpaceCenter.RadiatorState.Extended).
 
 **Parameters**
 
--   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator see [Long.js]<https://www.npmjs.com/package/long>
+-   `radiator` **Long** A long value representing the id for the SpaceCenter.Radiator
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7094,7 +9222,7 @@ The part object for this reaction wheel.
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7106,7 +9234,7 @@ Whether the reaction wheel is active.
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7118,7 +9246,7 @@ Whether the reaction wheel is active.
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7131,7 +9259,7 @@ Whether the reaction wheel is broken.
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7139,13 +9267,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The available torque in the pitch, roll and yaw axes of the vessel, in Newton meters.
-These axes correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
+The available torque, in Newton meters, that can be produced by this reaction wheel,
+in the positive and negative pitch, roll and yaw axes of the vessel. These axes
+correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
 Returns zero if the reaction wheel is inactive or broken.
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7153,13 +9282,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The maximum torque the reaction wheel can provide, is it active,
-in the pitch, roll and yaw axes of the vessel, in Newton meters.
+The maximum torque, in Newton meters, that can be produced by this reaction wheel,
+when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
 These axes correspond to the coordinate axes of the [M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame).
 
 **Parameters**
 
--   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel see [Long.js]<https://www.npmjs.com/package/long>
+-   `reactionWheel` **Long** A long value representing the id for the SpaceCenter.ReactionWheel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7171,7 +9300,7 @@ True if the specified converter is active.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7184,7 +9313,7 @@ The name of the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7197,7 +9326,7 @@ Start the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **void** 
@@ -7210,7 +9339,7 @@ Stop the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **void** 
@@ -7223,7 +9352,7 @@ The state of the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7237,7 +9366,7 @@ This is the full status message shown in the in-game UI.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7250,7 +9379,7 @@ List of the names of resources consumed by the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7263,7 +9392,7 @@ List of the names of resources produced by the specified converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 -   `index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Index of the converter.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7276,7 +9405,7 @@ The part object for this converter.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7288,7 +9417,43 @@ The number of converters in the part.
 
 **Parameters**
 
--   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## resourceConverterGetThermalEfficiency
+
+**Extends SpaceCenter**
+
+The thermal efficiency of the converter, as a percentage of its maximum.
+
+**Parameters**
+
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## resourceConverterGetCoreTemperature
+
+**Extends SpaceCenter**
+
+The core temperature of the converter, in Kelvin.
+
+**Parameters**
+
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## resourceConverterGetOptimumCoreTemperature
+
+**Extends SpaceCenter**
+
+The core temperature at which the converter will operate with peak efficiency, in Kelvin.
+
+**Parameters**
+
+-   `resourceConverter` **Long** A long value representing the id for the SpaceCenter.ResourceConverter
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7300,7 +9465,7 @@ The part object for this harvester.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7312,7 +9477,7 @@ The state of the harvester.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7324,7 +9489,7 @@ Whether the harvester is deployed.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7336,7 +9501,7 @@ Whether the harvester is deployed.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7349,7 +9514,7 @@ Whether the harvester is actively drilling.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7361,7 +9526,7 @@ Whether the harvester is actively drilling.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7374,7 +9539,7 @@ The rate at which the drill is extracting ore, in units per second.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7386,7 +9551,7 @@ The thermal efficiency of the drill, as a percentage of its maximum.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7398,7 +9563,7 @@ The core temperature of the drill, in Kelvin.
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7410,7 +9575,7 @@ The core temperature at which the drill will operate with peak efficiency, in Ke
 
 **Parameters**
 
--   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceHarvester` **Long** A long value representing the id for the SpaceCenter.ResourceHarvester
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7422,7 +9587,7 @@ Data amount.
 
 **Parameters**
 
--   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7434,7 +9599,7 @@ Science value.
 
 **Parameters**
 
--   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7446,7 +9611,7 @@ Transmit value.
 
 **Parameters**
 
--   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceData` **Long** A long value representing the id for the SpaceCenter.ScienceData
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7454,11 +9619,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Amount of science already earned from this subject, not updated until after transmission/recovery.
+Amount of science already earned from this subject, not updated until after
+transmission/recovery.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7470,7 +9636,7 @@ Total science allowable for this subject.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7482,7 +9648,7 @@ Whether the experiment has been completed.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7494,7 +9660,7 @@ Multiply science value by this to determine data amount in mits.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7502,11 +9668,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Diminishing value multiplier for decreasing the science value returned from repeated experiments.
+Diminishing value multiplier for decreasing the science value returned from repeated
+experiments.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7518,7 +9685,7 @@ Multiplier for specific Celestial Body/Experiment Situation combination.
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7530,7 +9697,7 @@ Title of science subject, displayed in science archives
 
 **Parameters**
 
--   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject see [Long.js]<https://www.npmjs.com/package/long>
+-   `scienceSubject` **Long** A long value representing the id for the SpaceCenter.ScienceSubject
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7542,7 +9709,7 @@ The part object for this sensor.
 
 **Parameters**
 
--   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor see [Long.js]<https://www.npmjs.com/package/long>
+-   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7554,7 +9721,7 @@ Whether the sensor is active.
 
 **Parameters**
 
--   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor see [Long.js]<https://www.npmjs.com/package/long>
+-   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7566,7 +9733,7 @@ Whether the sensor is active.
 
 **Parameters**
 
--   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor see [Long.js]<https://www.npmjs.com/package/long>
+-   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7579,19 +9746,7 @@ The current value of the sensor.
 
 **Parameters**
 
--   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor see [Long.js]<https://www.npmjs.com/package/long>
-
-Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
-
-## sensorGetPowerUsage
-
-**Extends SpaceCenter**
-
-The current power usage of the sensor, in units of charge per second.
-
-**Parameters**
-
--   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor see [Long.js]<https://www.npmjs.com/package/long>
+-   `sensor` **Long** A long value representing the id for the SpaceCenter.Sensor
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7603,7 +9758,19 @@ The part object for this solar panel.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## solarPanelGetDeployable
+
+**Extends SpaceCenter**
+
+Whether the solar panel is deployable.
+
+**Parameters**
+
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7615,7 +9782,7 @@ Whether the solar panel is extended.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7627,7 +9794,7 @@ Whether the solar panel is extended.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7640,7 +9807,7 @@ The current state of the solar panel.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7653,7 +9820,7 @@ units of charge per second.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7666,7 +9833,7 @@ as a percentage. A value between 0 and 1.
 
 **Parameters**
 
--   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel see [Long.js]<https://www.npmjs.com/package/long>
+-   `solarPanel` **Long** A long value representing the id for the SpaceCenter.SolarPanel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7676,13 +9843,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The position at which the thruster generates thrust, in the given reference frame.
 For gimballed engines, this takes into account the current rotation of the gimbal.
- <param name="referenceFrame">
- </param>
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7693,13 +9861,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The direction of the force generated by the thruster, in the given reference frame.
 This is opposite to the direction in which the thruster expels propellant.
 For gimballed engines, this takes into account the current rotation of the gimbal.
- <param name="referenceFrame">
- </param>
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7709,15 +9878,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The position at which the thruster generates thrust, when the engine is in its
 initial position (no gimballing), in the given reference frame.
- <param name="referenceFrame">
- </param>
-This position can move when the gimbal rotates. This is because the thrust position and
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
+ This position can move when the gimbal rotates. This is because the thrust position and
 gimbal position are not necessarily the same.
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7728,13 +9898,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 The direction of the force generated by the thruster, when the engine is in its
 initial position (no gimballing), in the given reference frame.
 This is opposite to the direction in which the thruster expels propellant.
- <param name="referenceFrame">
- </param>
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7743,11 +9914,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Position around which the gimbal pivots.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7759,7 +9933,7 @@ The [T:SpaceCenter.Part](T:SpaceCenter.Part) that contains this thruster.
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7771,15 +9945,16 @@ A reference frame that is fixed relative to the thruster and orientated with
 its thrust direction ([M:SpaceCenter.Thruster.ThrustDirection](M:SpaceCenter.Thruster.ThrustDirection)).
 For gimballed engines, this takes into account the current rotation of the gimbal.
 <list type="bullet"><item><description>
-The origin is at the position of thrust for this thruster ([M:SpaceCenter.Thruster.ThrustPosition](M:SpaceCenter.Thruster.ThrustPosition)).
-</description></item><item><description>
+The origin is at the position of thrust for this thruster
+([M:SpaceCenter.Thruster.ThrustPosition](M:SpaceCenter.Thruster.ThrustPosition)).</description></item><item><description>
 The axes rotate with the thrust direction.
 This is the direction in which the thruster expels propellant, including any gimballing.
-</description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.</description></item></list>
+</description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
+</description></item></list>
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7791,7 +9966,7 @@ Whether the thruster is gimballed.
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7799,11 +9974,601 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The current gimbal angle in the pitch, roll and yaw axes.
+The current gimbal angle in the pitch, roll and yaw axes, in degrees.
 
 **Parameters**
 
--   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster see [Long.js]<https://www.npmjs.com/package/long>
+-   `thruster` **Long** A long value representing the id for the SpaceCenter.Thruster
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetPart
+
+**Extends SpaceCenter**
+
+The part object for this wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetState
+
+**Extends SpaceCenter**
+
+The current state of the wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetRadius
+
+**Extends SpaceCenter**
+
+Radius of the wheel, in meters.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetGrounded
+
+**Extends SpaceCenter**
+
+Whether the wheel is touching the ground.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetHasBrakes
+
+**Extends SpaceCenter**
+
+Whether the wheel has brakes.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetBrakes
+
+**Extends SpaceCenter**
+
+The braking force, as a percentage of maximum, when the brakes are applied.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetBrakes
+
+**Extends SpaceCenter**
+
+The braking force, as a percentage of maximum, when the brakes are applied.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## wheelGetAutoFrictionControl
+
+**Extends SpaceCenter**
+
+Whether automatic friction control is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetAutoFrictionControl
+
+**Extends SpaceCenter**
+
+Whether automatic friction control is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetManualFrictionControl
+
+**Extends SpaceCenter**
+
+Manual friction control value. Only has an effect if automatic friction control is disabled.
+A value between 0 and 5 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetManualFrictionControl
+
+**Extends SpaceCenter**
+
+Manual friction control value. Only has an effect if automatic friction control is disabled.
+A value between 0 and 5 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## wheelGetDeployable
+
+**Extends SpaceCenter**
+
+Whether the wheel is deployable.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetDeployed
+
+**Extends SpaceCenter**
+
+Whether the wheel is deployed.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetDeployed
+
+**Extends SpaceCenter**
+
+Whether the wheel is deployed.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetPowered
+
+**Extends SpaceCenter**
+
+Whether the wheel is powered by a motor.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetMotorEnabled
+
+**Extends SpaceCenter**
+
+Whether the motor is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetMotorEnabled
+
+**Extends SpaceCenter**
+
+Whether the motor is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetMotorInverted
+
+**Extends SpaceCenter**
+
+Whether the direction of the motor is inverted.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetMotorInverted
+
+**Extends SpaceCenter**
+
+Whether the direction of the motor is inverted.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetMotorState
+
+**Extends SpaceCenter**
+
+Whether the direction of the motor is inverted.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetMotorOutput
+
+**Extends SpaceCenter**
+
+The output of the motor. This is the torque currently being generated, in Newton meters.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetTractionControlEnabled
+
+**Extends SpaceCenter**
+
+Whether automatic traction control is enabled.
+A wheel only has traction control if it is powered.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetTractionControlEnabled
+
+**Extends SpaceCenter**
+
+Whether automatic traction control is enabled.
+A wheel only has traction control if it is powered.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetTractionControl
+
+**Extends SpaceCenter**
+
+Setting for the traction control.
+Only takes effect if the wheel has automatic traction control enabled.
+A value between 0 and 5 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetTractionControl
+
+**Extends SpaceCenter**
+
+Setting for the traction control.
+Only takes effect if the wheel has automatic traction control enabled.
+A value between 0 and 5 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## wheelGetDriveLimiter
+
+**Extends SpaceCenter**
+
+Manual setting for the motor limiter.
+Only takes effect if the wheel has automatic traction control disabled.
+A value between 0 and 100 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetDriveLimiter
+
+**Extends SpaceCenter**
+
+Manual setting for the motor limiter.
+Only takes effect if the wheel has automatic traction control disabled.
+A value between 0 and 100 inclusive.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **void** 
+
+## wheelGetSteerable
+
+**Extends SpaceCenter**
+
+Whether the wheel has steering.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetSteeringEnabled
+
+**Extends SpaceCenter**
+
+Whether the wheel steering is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetSteeringEnabled
+
+**Extends SpaceCenter**
+
+Whether the wheel steering is enabled.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetSteeringInverted
+
+**Extends SpaceCenter**
+
+Whether the wheel steering is inverted.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelSetSteeringInverted
+
+**Extends SpaceCenter**
+
+Whether the wheel steering is inverted.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+-   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+Returns **void** 
+
+## wheelGetHasSuspension
+
+**Extends SpaceCenter**
+
+Whether the wheel has suspension.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetSuspensionSpringStrength
+
+**Extends SpaceCenter**
+
+Suspension spring strength, as set in the editor.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetSuspensionDamperStrength
+
+**Extends SpaceCenter**
+
+Suspension damper strength, as set in the editor.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetBroken
+
+**Extends SpaceCenter**
+
+Whether the wheel is broken.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetRepairable
+
+**Extends SpaceCenter**
+
+Whether the wheel is repairable.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetStress
+
+**Extends SpaceCenter**
+
+Current stress on the wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetStressTolerance
+
+**Extends SpaceCenter**
+
+Stress tolerance of the wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetStressPercentage
+
+**Extends SpaceCenter**
+
+Current stress on the wheel as a percentage of its stress tolerance.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetDeflection
+
+**Extends SpaceCenter**
+
+Current deflection of the wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## wheelGetSlip
+
+**Extends SpaceCenter**
+
+Current slip of the wheel.
+
+**Parameters**
+
+-   `wheel` **Long** A long value representing the id for the SpaceCenter.Wheel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## referenceFrameStaticCreateRelative
+
+**Extends SpaceCenter**
+
+Create a relative reference frame. This is a custom reference frame
+whose components offset the components of a parent reference frame.
+<param name="referenceFrame">The parent reference frame on which to
+base this reference frame.</param>
+<param name="position">The offset of the position of the origin,
+as a position vector. Defaults to <math>(0, 0, 0)</math></param>
+<param name="rotation">The rotation to apply to the parent frames rotation,
+as a quaternion of the form <math>(x, y, z, w)</math>.
+Defaults to <math>(0, 0, 0, 1)</math> (i.e. no rotation)</param>
+<param name="velocity">The linear velocity to offset the parent frame by,
+as a vector pointing in the direction of travel, whose magnitude is the speed in
+meters per second. Defaults to <math>(0, 0, 0)</math>.</param>
+<param name="angularVelocity">The angular velocity to offset the parent frame by,
+as a vector. This vector points in the direction of the axis of rotation,
+and its magnitude is the speed of the rotation in radians per second.
+Defaults to <math>(0, 0, 0)</math>.</param>
+
+**Parameters**
+
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `position` **{number, number, number}** The offset of the position of the origin,
+    as a position vector. Defaults to <math>(0, 0, 0)</math>
+-   `rotation` **{number, number, number, number}** The rotation to apply to the parent frames rotation,
+    as a quaternion of the form <math>(x, y, z, w)</math>.
+    Defaults to <math>(0, 0, 0, 1)</math> (i.e. no rotation)
+-   `velocity` **{number, number, number}** The linear velocity to offset the parent frame by,
+    as a vector pointing in the direction of travel, whose magnitude is the speed in
+    meters per second. Defaults to <math>(0, 0, 0)</math>.
+-   `angularVelocity` **{number, number, number}** The angular velocity to offset the parent frame by,
+    as a vector. This vector points in the direction of the axis of rotation,
+    and its magnitude is the speed of the rotation in radians per second.
+    Defaults to <math>(0, 0, 0)</math>.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## referenceFrameStaticCreateHybrid
+
+**Extends SpaceCenter**
+
+Create a hybrid reference frame. This is a custom reference frame
+whose components inherited from other reference frames.
+
+<param name="velocity">The reference frame providing the linear velocity of the frame.
+</param>
+<param name="angularVelocity">The reference frame providing the angular velocity
+of the frame.</param>
+ The {position} reference frame is required but all other
+reference frames are optional. If omitted, they are set to the
+{position} reference frame.
+
+**Parameters**
+
+-   `position` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `rotation` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `velocity` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+-   `angularVelocity` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7815,7 +10580,7 @@ The name of the resource.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7827,7 +10592,7 @@ The part containing the resource.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7839,7 +10604,7 @@ The total amount of the resource that can be stored in the part.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7851,7 +10616,7 @@ The amount of the resource that is currently stored in the part.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7863,7 +10628,7 @@ The density of the resource, in <math>kg/l</math>.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7875,7 +10640,7 @@ The flow mode of the resource.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7887,7 +10652,7 @@ Whether use of this resource is enabled.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7899,7 +10664,7 @@ Whether use of this resource is enabled.
 
 **Parameters**
 
--   `resource` **Long** A long value representing the id for the SpaceCenter.Resource see [Long.js]<https://www.npmjs.com/package/long>
+-   `resource` **Long** A long value representing the id for the SpaceCenter.Resource
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -7908,16 +10673,17 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Start transferring a resource transfer between a pair of parts. The transfer will move at most
-&lt;paramref name="maxAmount} units of the resource, depending on how much of the resource is
-available in the source part and how much storage is available in the destination part.
+Start transferring a resource transfer between a pair of parts. The transfer will move
+at most {maxAmount} units of the resource, depending on how much of
+the resource is available in the source part and how much storage is available in the
+destination part.
 Use [M:SpaceCenter.ResourceTransfer.Complete](M:SpaceCenter.ResourceTransfer.Complete) to check if the transfer is complete.
 Use [M:SpaceCenter.ResourceTransfer.Amount](M:SpaceCenter.ResourceTransfer.Amount) to see how much of the resource has been transferred.
 
 **Parameters**
 
--   `fromPart` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
--   `toPart` **Long** A long value representing the id for the SpaceCenter.Part see [Long.js]<https://www.npmjs.com/package/long>
+-   `fromPart` **Long** A long value representing the id for the SpaceCenter.Part
+-   `toPart` **Long** A long value representing the id for the SpaceCenter.Part
 -   `resource` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the resource to transfer.
 -   `maxAmount` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The maximum amount of resource to transfer.
 
@@ -7931,7 +10697,7 @@ Whether the transfer has completed.
 
 **Parameters**
 
--   `resourceTransfer` **Long** A long value representing the id for the SpaceCenter.ResourceTransfer see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceTransfer` **Long** A long value representing the id for the SpaceCenter.ResourceTransfer
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7943,7 +10709,7 @@ The amount of the resource that has been transferred.
 
 **Parameters**
 
--   `resourceTransfer` **Long** A long value representing the id for the SpaceCenter.ResourceTransfer see [Long.js]<https://www.npmjs.com/package/long>
+-   `resourceTransfer` **Long** A long value representing the id for the SpaceCenter.ResourceTransfer
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -7955,7 +10721,7 @@ All the individual resources with the given name that can be stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7968,7 +10734,7 @@ Check whether the named resource can be stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the resource.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7981,7 +10747,7 @@ Returns the amount of a resource that can be stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the resource.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -7994,7 +10760,7 @@ Returns the amount of a resource that is currently stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the resource.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -8003,7 +10769,7 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the density of a resource, in kg/l.
+Returns the density of a resource, in <math>kg/l</math>.
 
 **Parameters**
 
@@ -8031,7 +10797,7 @@ All the individual resources that can be stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8043,7 +10809,7 @@ A list of resource names that can be stored.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8052,11 +10818,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether use of all the resources are enabled.
-This is true if all of the resources are enabled. If any of the resources are not enabled, this is false.
+ This is true if all of the resources are enabled.
+If any of the resources are not enabled, this is false.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8065,11 +10832,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Whether use of all the resources are enabled.
-This is true if all of the resources are enabled. If any of the resources are not enabled, this is false.
+ This is true if all of the resources are enabled.
+If any of the resources are not enabled, this is false.
 
 **Parameters**
 
--   `resources` **Long** A long value representing the id for the SpaceCenter.Resources see [Long.js]<https://www.npmjs.com/package/long>
+-   `resources` **Long** A long value representing the id for the SpaceCenter.Resources
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -8082,7 +10850,7 @@ Recover the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -8092,14 +10860,15 @@ Returns **void**
 
 Returns a [T:SpaceCenter.Flight](T:SpaceCenter.Flight) object that can be used to get flight
 telemetry for the vessel, in the specified reference frame.
- <param name="referenceFrame">
-Reference frame. Defaults to the vessel's surface reference frame ([M:SpaceCenter.Vessel.SurfaceReferenceFrame](M:SpaceCenter.Vessel.SurfaceReferenceFrame)).
+<param name="referenceFrame">
+Reference frame. Defaults to the vessel's surface reference frame
+([M:SpaceCenter.Vessel.SurfaceReferenceFrame](M:SpaceCenter.Vessel.SurfaceReferenceFrame)).
 </param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8108,14 +10877,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Returns a [T:SpaceCenter.Resources](T:SpaceCenter.Resources) object, that can used to get
-information about resources stored in a given &lt;paramref name="stage}.
-  <param name="cumulative">When <c>false</c>, returns the resources for parts
-decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
+information about resources stored in a given {stage}.
+
+<param name="cumulative">When false, returns the resources for parts
+decoupled in just the given stage. When true returns the resources decoupled in
 the given stage and all subsequent stages combined.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 -   `stage` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Get resources for parts that are decoupled in this stage.
 -   `cumulative` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** When <c>false</c>, returns the resources for parts
     decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
@@ -8127,14 +10897,32 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the position vector of the center of mass of the vessel in the given reference frame.
- <param name="referenceFrame">
- </param>
+The position of the center of mass of the vessel, in the given reference frame.
+Returns: The position as a vector.
+<param name="referenceFrame">The reference frame that the returned
+position vector is in.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselBoundingBox
+
+**Extends SpaceCenter**
+
+The axis-aligned bounding box of the vessel in the given reference frame.
+Returns: The positions of the minimum and maximum vertices of the box,
+as position vectors.
+<param name="referenceFrame">The reference frame that the returned
+position vectors are in.</param>
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8142,14 +10930,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the velocity vector of the center of mass of the vessel in the given reference frame.
- <param name="referenceFrame">
- </param>
+The velocity of the center of mass of the vessel, in the given reference frame.
+Returns: The velocity as a vector. The vector points in the direction of travel,
+and its magnitude is the speed of the body in meters per second.
+<param name="referenceFrame">The reference frame that the returned
+velocity vector is in.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8157,14 +10947,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the rotation of the center of mass of the vessel in the given reference frame.
- <param name="referenceFrame">
- </param>
+The rotation of the vessel, in the given reference frame.
+Returns: The rotation as a quaternion of the form <math>(x, y, z, w)</math>.
+<param name="referenceFrame">The reference frame that the returned
+rotation is in.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8172,14 +10963,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the direction in which the vessel is pointing, as a unit vector, in the given reference frame.
- <param name="referenceFrame">
- </param>
+The direction in which the vessel is pointing, in the given reference frame.
+Returns: The direction as a unit vector.
+<param name="referenceFrame">The reference frame that the returned
+direction is in.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8187,16 +10979,17 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Returns the angular velocity of the vessel in the given reference frame. The magnitude of the returned
-vector is the rotational speed in radians per second, and the direction of the vector indicates the
-axis of rotation (using the right hand rule).
- <param name="referenceFrame">
- </param>
+The angular velocity of the vessel, in the given reference frame.
+Returns: The angular velocity as a vector. The magnitude of the vector is the rotational
+speed of the vessel, in radians per second. The direction of the vector indicates the
+axis of rotation, using the right-hand rule.
+<param name="referenceFrame">The reference frame the returned
+angular velocity is in.</param>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `referenceFrame` **Long** A long value representing the id for the SpaceCenter.ReferenceFrame
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8208,7 +11001,7 @@ The name of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8220,7 +11013,7 @@ The name of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -8233,7 +11026,7 @@ The type of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8245,8 +11038,8 @@ The type of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.VesselType see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+-   `value` **Long** A long value representing the id for the SpaceCenter.VesselType
 
 Returns **void** 
 
@@ -8258,7 +11051,7 @@ The situation the vessel is in.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8270,7 +11063,7 @@ Whether the vessel is recoverable.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8282,7 +11075,7 @@ The mission elapsed time in seconds.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8294,7 +11087,7 @@ The name of the biome the vessel is currently in.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8306,7 +11099,7 @@ The current orbit of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8320,7 +11113,20 @@ RCS and thrust.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselGetComms
+
+**Extends SpaceCenter**
+
+Returns a [T:SpaceCenter.Comms](T:SpaceCenter.Comms) object that can be used to interact
+with CommNet for this vessel.
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8333,7 +11139,43 @@ simple auto-piloting of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselGetCrewCapacity
+
+**Extends SpaceCenter**
+
+The number of crew that can occupy the vessel.
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselGetCrewCount
+
+**Extends SpaceCenter**
+
+The number of crew that are occupying the vessel.
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselGetCrew
+
+**Extends SpaceCenter**
+
+The crew in the vessel.
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8346,7 +11188,7 @@ about resources stored in the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8358,7 +11200,7 @@ A [T:SpaceCenter.Parts](T:SpaceCenter.Parts) object, that can used to interact w
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8370,7 +11212,7 @@ The total mass of the vessel, including resources, in kg.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8382,7 +11224,7 @@ The total mass of the vessel, excluding resources, in kg.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8396,7 +11238,7 @@ every engine in the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8410,7 +11252,7 @@ active engines, in Newtons. This is computed by summing
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8424,7 +11266,7 @@ engines, in Newtons. This is computed by summing
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8438,7 +11280,7 @@ summing [M:SpaceCenter.Engine.MaxVacuumThrust](M:SpaceCenter.Engine.MaxVacuumThr
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8447,11 +11289,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The combined specific impulse of all active engines, in seconds. This is computed using the formula
-<a href="http://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8460,11 +11302,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
-<a href="http://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8474,11 +11316,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The combined specific impulse of all active engines at sea level on Kerbin, in seconds.
 This is computed using the formula
-<a href="http://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
+<a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8487,12 +11329,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 The moment of inertia of the vessel around its center of mass in <math>kg.m^2</math>.
-The inertia values are around the pitch, roll and yaw directions respectively.
-This corresponds to the vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+The inertia values in the returned 3-tuple are around the
+pitch, roll and yaw directions respectively.
+This corresponds to the vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8500,12 +11343,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The inertia tensor of the vessel around its center of mass, in the vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+The inertia tensor of the vessel around its center of mass,
+in the vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 Returns the 3x3 matrix as a list of elements, in row-major order.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8513,15 +11357,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The maximum torque that the vessel generate. Includes contributions from reaction wheels,
-RCS, gimballed engines and aerodynamic control surfaces.
+The maximum torque that the vessel generates. Includes contributions from
+reaction wheels, RCS, gimballed engines and aerodynamic control surfaces.
 Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 These axes are equivalent to the pitch, roll and yaw axes of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8531,12 +11375,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The maximum torque that the currently active and powered reaction wheels can generate.
 Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 These axes are equivalent to the pitch, roll and yaw axes of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8546,12 +11390,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The maximum torque that the currently active RCS thrusters can generate.
 Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 These axes are equivalent to the pitch, roll and yaw axes of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8561,12 +11405,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The maximum torque that the currently active and gimballed engines can generate.
 Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 These axes are equivalent to the pitch, roll and yaw axes of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8576,12 +11420,28 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 The maximum torque that the aerodynamic control surfaces can generate.
 Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-vessels reference frame ([M:SpaceCenter.Vessel.ReferenceFrame](M:SpaceCenter.Vessel.ReferenceFrame)).
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
 These axes are equivalent to the pitch, roll and yaw axes of the vessel.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## vesselGetAvailableOtherTorque
+
+**Extends SpaceCenter**
+
+The maximum torque that parts (excluding reaction wheels, gimballed engines,
+RCS and control surfaces) can generate.
+Returns the torques in <math>N.m</math> around each of the coordinate axes of the
+vessels reference frame ([T:SpaceCenter.ReferenceFrame](T:SpaceCenter.ReferenceFrame)).
+These axes are equivalent to the pitch, roll and yaw axes of the vessel.
+
+**Parameters**
+
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8589,12 +11449,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to the vessel, and orientated with the vessel.
+The reference frame that is fixed relative to the vessel,
+and orientated with the vessel.
 <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8602,13 +11463,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to the vessel, and orientated with the vessels
-orbital prograde/normal/radial directions.
-<list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the orbital prograde/normal/radial directions.</description></item><item><description>The x-axis points in the orbital anti-radial direction.</description></item><item><description>The y-axis points in the orbital prograde direction.</description></item><item><description>The z-axis points in the orbital normal direction.</description></item></list> Be careful not to confuse this with 'orbit' mode on the navball.
+The reference frame that is fixed relative to the vessel,
+and orientated with the vessels orbital prograde/normal/radial directions.
+<list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the orbital prograde/normal/radial directions.</description></item><item><description>The x-axis points in the orbital anti-radial direction.</description></item><item><description>The y-axis points in the orbital prograde direction.</description></item><item><description>The z-axis points in the orbital normal direction.</description></item></list><remarks>
+Be careful not to confuse this with 'orbit' mode on the navball.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8616,19 +11478,20 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to the vessel, and orientated with the surface
-of the body being orbited.
+The reference frame that is fixed relative to the vessel,
+and orientated with the surface of the body being orbited.
 <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the north and up directions on the surface of the body.</description></item><item><description>The x-axis points in the <a href="https://en.wikipedia.org/wiki/Zenith">zenith</a>
 direction (upwards, normal to the body being orbited, from the center of the body towards the center of
 mass of the vessel).</description></item><item><description>The y-axis points northwards towards the
 <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a> (north, and tangential to the
 surface of the body -- the direction in which a compass would point when on the surface).</description></item><item><description>The z-axis points eastwards towards the
 <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a> (east, and tangential to the
-surface of the body -- east on a compass when on the surface).</description></item></list> Be careful not to confuse this with 'surface' mode on the navball.
+surface of the body -- east on a compass when on the surface).</description></item></list><remarks>
+Be careful not to confuse this with 'surface' mode on the navball.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8636,15 +11499,16 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The reference frame that is fixed relative to the vessel, and orientated with the velocity
-vector of the vessel relative to the surface of the body being orbited.
+The reference frame that is fixed relative to the vessel,
+and orientated with the velocity vector of the vessel relative
+to the surface of the body being orbited.
 <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel's velocity vector.</description></item><item><description>The y-axis points in the direction of the vessel's velocity vector,
 relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
 <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list>
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8656,7 +11520,7 @@ Removes the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **void** 
 
@@ -8664,11 +11528,11 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Celestial body the waypoint is attached to.
+The celestial body the waypoint is attached to.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8676,12 +11540,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Celestial body the waypoint is attached to.
+The celestial body the waypoint is attached to.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
 
@@ -8689,11 +11553,11 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-Name of the waypoint as it appears on the map and the contract.
+The name of the waypoint as it appears on the map and the contract.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8701,11 +11565,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-Name of the waypoint as it appears on the map and the contract.
+The name of the waypoint as it appears on the map and the contract.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -8718,7 +11582,7 @@ The seed of the icon color. See [M:SpaceCenter.WaypointManager.Colors](M:SpaceCe
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8730,7 +11594,7 @@ The seed of the icon color. See [M:SpaceCenter.WaypointManager.Colors](M:SpaceCe
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8743,7 +11607,7 @@ The icon of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8755,7 +11619,7 @@ The icon of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -8768,7 +11632,7 @@ The latitude of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8780,7 +11644,7 @@ The latitude of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8793,7 +11657,7 @@ The longitude of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8805,7 +11669,7 @@ The longitude of the waypoint.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8818,7 +11682,7 @@ The altitude of the waypoint above sea level, in meters.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8830,7 +11694,7 @@ The altitude of the waypoint above sea level, in meters.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8839,11 +11703,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The altitude of the waypoint above the surface of the body or sea level, whichever is closer, in meters.
+The altitude of the waypoint above the surface of the body or sea level,
+whichever is closer, in meters.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8851,11 +11716,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The altitude of the waypoint above the surface of the body or sea level, whichever is closer, in meters.
+The altitude of the waypoint above the surface of the body or sea level,
+whichever is closer, in meters.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8864,11 +11730,12 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-The altitude of the waypoint above the surface of the body, in meters. When over water, this is the altitude above the sea floor.
+The altitude of the waypoint above the surface of the body, in meters.
+When over water, this is the altitude above the sea floor.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8876,11 +11743,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The altitude of the waypoint above the surface of the body, in meters. When over water, this is the altitude above the sea floor.
+The altitude of the waypoint above the surface of the body, in meters.
+When over water, this is the altitude above the sea floor.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -8889,11 +11757,11 @@ Returns **void**
 
 **Extends SpaceCenter**
 
-True if waypoint is a point near or on the body rather than high in orbit.
+<summary>true if the waypoint is near to the surface of a body.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8901,11 +11769,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-True if waypoint is actually glued to the ground.
+<summary>true if the waypoint is attached to the ground.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8913,14 +11781,15 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-The integer index of this waypoint amongst its cluster of sibling waypoints.
-In other words, when you have a cluster of waypoints called "Somewhere Alpha", "Somewhere Beta", and "Somewhere Gamma",
-then the alpha site has index 0, the beta site has index 1 and the gamma site has index 2.
-When [M:SpaceCenter.Waypoint.Clustered](M:SpaceCenter.Waypoint.Clustered) is false, this value is zero but meaningless.
+The integer index of this waypoint within its cluster of sibling waypoints.
+In other words, when you have a cluster of waypoints called "Somewhere Alpha",
+"Somewhere Beta" and "Somewhere Gamma", the alpha site has index 0, the beta
+site has index 1 and the gamma site has index 2.
+When [M:SpaceCenter.Waypoint.Clustered](M:SpaceCenter.Waypoint.Clustered) is false, this is zero.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8928,12 +11797,14 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends SpaceCenter**
 
-True if this waypoint is part of a set of clustered waypoints with greek letter names appended (Alpha, Beta, Gamma, etc).
-If true, there is a one-to-one correspondence with the greek letter name and the [M:SpaceCenter.Waypoint.Index](M:SpaceCenter.Waypoint.Index).
+<summary>true if this waypoint is part of a set of clustered waypoints with greek letter
+names appended (Alpha, Beta, Gamma, etc).
+If true, there is a one-to-one correspondence with the greek letter name and
+the [M:SpaceCenter.Waypoint.Index](M:SpaceCenter.Waypoint.Index).
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8945,20 +11816,19 @@ Whether the waypoint belongs to a contract.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
-## waypointGetContractId
+## waypointGetContract
 
 **Extends SpaceCenter**
 
-The id of the associated contract.
-Returns 0 if the waypoint does not belong to a contract.
+The associated contract.
 
 **Parameters**
 
--   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypoint` **Long** A long value representing the id for the SpaceCenter.Waypoint
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -8968,15 +11838,35 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 Creates a waypoint at the given position at ground level, and returns a
 [T:SpaceCenter.Waypoint](T:SpaceCenter.Waypoint) object that can be used to modify it.
-     <returns>
- </returns>
+
+Returns:
 
 **Parameters**
 
--   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager
 -   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude of the waypoint.
 -   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude of the waypoint.
--   `body` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `body` **Long** A long value representing the id for the SpaceCenter.CelestialBody
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the waypoint.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## waypointManagerAddWaypointAtAltitude
+
+**Extends SpaceCenter**
+
+Creates a waypoint at the given position and altitude, and returns a
+[T:SpaceCenter.Waypoint](T:SpaceCenter.Waypoint) object that can be used to modify it.
+
+Returns:
+
+**Parameters**
+
+-   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager
+-   `latitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Latitude of the waypoint.
+-   `longitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Longitude of the waypoint.
+-   `altitude` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Altitude (above sea level) of the waypoint.
+-   `body` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the waypoint.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -8989,7 +11879,7 @@ A list of all existing waypoints.
 
 **Parameters**
 
--   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -9001,7 +11891,7 @@ Returns all available icons (from "GameData/Squad/Contracts/Icons/").
 
 **Parameters**
 
--   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -9014,6 +11904,6 @@ Any other integers may be used as seed.
 
 **Parameters**
 
--   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager see [Long.js]<https://www.npmjs.com/package/long>
+-   `waypointManager` **Long** A long value representing the id for the SpaceCenter.WaypointManager
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
