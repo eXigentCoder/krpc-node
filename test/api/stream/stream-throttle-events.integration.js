@@ -9,6 +9,7 @@ let done;
 
 describe('Stream throttle - events', function () {
     it('Should work', function (testDone) {
+        this.timeout(10000);
         done = testDone;
         Client(null, clientCreated);
 
@@ -143,7 +144,7 @@ function streamUpdate(streamState, streamUpdateResponse) {
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
         counter++;
-        if (counter === 50) {
+        if (counter === 20) {
             done();
         }
     });

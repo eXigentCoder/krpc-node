@@ -5,6 +5,7 @@ const async = require('async');
 
 describe('Stream throttle - callbacks', function () {
     it('Should work', function (done) {
+        this.timeout(10000);
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -118,7 +119,7 @@ function streamUpdate(data) {
     return function _streamUpdate(streamState) {
         console.log(streamState);
         counter++;
-        if (counter === 50) {
+        if (counter === 20) {
             data.done();
         }
     };
