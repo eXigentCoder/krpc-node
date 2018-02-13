@@ -6,9 +6,10 @@ let client;
 let success = false;
 let game = {};
 let done;
+const _ = require('lodash');
 
-describe('Stream throttle - events', function () {
-    it('Should work', function (testDone) {
+describe('Stream throttle - events', function() {
+    it('Should work', function(testDone) {
         this.timeout(10000);
         done = testDone;
         Client(null, clientCreated);
@@ -27,12 +28,12 @@ describe('Stream throttle - events', function () {
 
 // ----=================[ Start helper functions ]=================----
 function onError(err) {
-    console.error("Client Error");
+    console.error('Client Error');
     done(err);
 }
 
 function streamError(err) {
-    console.error("Stream Error");
+    console.error('Stream Error');
     done(err);
 }
 
@@ -40,7 +41,9 @@ function onClose(event) {
     if (success) {
         done();
     }
-    return done(new Error(util.format("Socket closed before done: %s (%s)", event.reason, event.code)));
+    return done(
+        new Error(util.format('Socket closed before done: %s (%s)', event.reason, event.code))
+    );
 }
 
 function getFirstResult(response) {
@@ -95,7 +98,9 @@ function getActiveVesselControlComplete(response) {
 }
 function getOrbitalReferenceFrame(response) {
     game.vessel.orbitalReference = getFirstResult(response);
-    client.send(client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference));
+    client.send(
+        client.services.spaceCenter.vesselFlight(game.vessel.id, game.vessel.orbitalReference)
+    );
     replaceMessageHandler(getVesselFlightComplete);
 }
 
@@ -110,9 +115,9 @@ function getVesselFlightComplete(getVesselResponse) {
     client.stream.on('message', streamUpdate);
     function throttleStreamAdded(throttleResponse) {
         let stream = getFirstResult(throttleResponse);
-        game.streams = game.streams || [];
+        game.streams = game.streams || {};
         game.streams[stream.id.toString()] = {
-            name: "Throttle",
+            name: 'Throttle',
             decode: getThrottle.decode
         };
         let getHeading = client.services.spaceCenter.flightGetHeading(game.vessel.flight.id);
@@ -123,7 +128,7 @@ function getVesselFlightComplete(getVesselResponse) {
         function headingStreamAdded(headingResponse) {
             stream = getFirstResult(headingResponse);
             game.streams[stream.id.toString()] = {
-                name: "Heading",
+                name: 'Heading',
                 decode: getHeading.decode
             };
         }
@@ -132,7 +137,7 @@ function getVesselFlightComplete(getVesselResponse) {
 
 let counter = 0;
 function streamUpdate(streamState, streamUpdateResponse) {
-    streamUpdateResponse.results.forEach(function (update) {
+    streamUpdateResponse.results.forEach(function(update) {
         if (update.result.error) {
             console.error(update.result.error);
             return;
@@ -144,7 +149,7 @@ function streamUpdate(streamState, streamUpdateResponse) {
         let parsedValue = stream.decode(update.result.value);
         console.log(stream.name, ' : ', parsedValue);
         counter++;
-        if (counter === 20) {
+        if (counter === 50) {
             done();
         }
     });
