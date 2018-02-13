@@ -6,7 +6,6 @@ let client;
 let success = false;
 let game = {};
 let done;
-const _ = require('lodash');
 
 describe('Stream throttle - events', function() {
     it('Should work', function(testDone) {
