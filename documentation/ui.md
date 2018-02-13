@@ -4,7 +4,8 @@
 
 ## UI
 
-Provides functionality for drawing and interacting with in-game user interface elements. For drawing 3D objects in the flight scene, see the Drawing service.
+Provides functionality for drawing and interacting with in-game user interface elements.
+ For drawing 3D objects in the flight scene, see the Drawing service.
 
 Returns **void** 
 
@@ -13,7 +14,7 @@ Returns **void**
 **Extends UI**
 
 Add a new canvas.
-If you want to add UI elements to KSPs stock UI canvas, use [M:UI.StockCanvas](M:UI.StockCanvas).
+ If you want to add UI elements to KSPs stock UI canvas, use [M:UI.StockCanvas](M:UI.StockCanvas).
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -22,13 +23,13 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends UI**
 
 Display a message on the screen.
-The message appears just like a stock message, for example quicksave or quickload messages.
+ The message appears just like a stock message, for example quicksave or quickload messages.
 
 **Parameters**
 
 -   `content` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Message content.
 -   `duration` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Duration before the message disappears, in seconds.
--   `position` **Long** A long value representing the id for the UI.MessagePosition see [Long.js]<https://www.npmjs.com/package/long>
+-   `position` **Long** A long value representing the id for the UI.MessagePosition
 
 Returns **void** 
 
@@ -60,7 +61,7 @@ Remove the UI object.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 
 Returns **void** 
 
@@ -72,7 +73,7 @@ The rect transform for the text.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -84,7 +85,7 @@ The text for the button.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -93,12 +94,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends UI**
 
 Whether the button has been clicked.
-This property is set to true when the user clicks the button.
+ This property is set to true when the user clicks the button.
 A client script should reset the property to false in order to detect subsequent button presses.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -107,12 +108,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends UI**
 
 Whether the button has been clicked.
-This property is set to true when the user clicks the button.
+ This property is set to true when the user clicks the button.
 A client script should reset the property to false in order to detect subsequent button presses.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -125,7 +126,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -137,7 +138,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `button` **Long** A long value representing the id for the UI.Button see [Long.js]<https://www.npmjs.com/package/long>
+-   `button` **Long** A long value representing the id for the UI.Button
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -150,7 +151,7 @@ Create a new container for user interface elements.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the panel is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -163,7 +164,7 @@ Add text to the canvas.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 -   `content` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The text.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the text is visible.
 
@@ -177,7 +178,7 @@ Add an input field to the canvas.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the input field is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -190,7 +191,7 @@ Add a button to the canvas.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 -   `content` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label for the button.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the button is visible.
 
@@ -204,7 +205,7 @@ Remove the UI object.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 
 Returns **void** 
 
@@ -216,7 +217,7 @@ The rect transform for the canvas.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -228,7 +229,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -240,7 +241,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `canvas` **Long** A long value representing the id for the UI.Canvas see [Long.js]<https://www.npmjs.com/package/long>
+-   `canvas` **Long** A long value representing the id for the UI.Canvas
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -253,7 +254,7 @@ Remove the UI object.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **void** 
 
@@ -265,7 +266,7 @@ The rect transform for the input field.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -277,7 +278,7 @@ The value of the input field.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -289,7 +290,7 @@ The value of the input field.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -299,12 +300,12 @@ Returns **void**
 **Extends UI**
 
 The text component of the input field.
-Use [M:UI.InputField.Value](M:UI.InputField.Value) to get and set the value in the field.
+ Use [M:UI.InputField.Value](M:UI.InputField.Value) to get and set the value in the field.
 This object can be used to alter the style of the input field's text.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -313,12 +314,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends UI**
 
 Whether the input field has been changed.
-This property is set to true when the user modifies the value of the input field.
+ This property is set to true when the user modifies the value of the input field.
 A client script should reset the property to false in order to detect subsequent changes.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -327,12 +328,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends UI**
 
 Whether the input field has been changed.
-This property is set to true when the user modifies the value of the input field.
+ This property is set to true when the user modifies the value of the input field.
 A client script should reset the property to false in order to detect subsequent changes.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -345,7 +346,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -357,7 +358,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `inputField` **Long** A long value representing the id for the UI.InputField see [Long.js]<https://www.npmjs.com/package/long>
+-   `inputField` **Long** A long value representing the id for the UI.InputField
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -370,7 +371,7 @@ Create a panel within this panel.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the new panel is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -383,7 +384,7 @@ Add text to the panel.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 -   `content` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The text.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the text is visible.
 
@@ -397,7 +398,7 @@ Add an input field to the panel.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the input field is visible.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -410,7 +411,7 @@ Add a button to the panel.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 -   `content` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The label for the button.
 -   `visible` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Whether the button is visible.
 
@@ -424,7 +425,7 @@ Remove the UI object.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 
 Returns **void** 
 
@@ -436,7 +437,7 @@ The rect transform for the panel.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -448,7 +449,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -460,7 +461,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `panel` **Long** A long value representing the id for the UI.Panel see [Long.js]<https://www.npmjs.com/package/long>
+-   `panel` **Long** A long value representing the id for the UI.Panel
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -473,7 +474,7 @@ Position of the rectangles pivot point relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -485,7 +486,7 @@ Position of the rectangles pivot point relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -498,7 +499,7 @@ Position of the rectangles pivot point relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -510,7 +511,7 @@ Position of the rectangles pivot point relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -523,7 +524,7 @@ Width and height of the rectangle.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -535,7 +536,7 @@ Width and height of the rectangle.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -548,7 +549,7 @@ Position of the rectangles upper right corner relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -560,7 +561,7 @@ Position of the rectangles upper right corner relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -573,7 +574,7 @@ Position of the rectangles lower left corner relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -585,7 +586,7 @@ Position of the rectangles lower left corner relative to the anchors.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -598,7 +599,7 @@ Set the minimum and maximum anchor points as a fraction of the size of the paren
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -611,7 +612,7 @@ The anchor point for the lower left corner of the rectangle defined as a fractio
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -623,7 +624,7 @@ The anchor point for the lower left corner of the rectangle defined as a fractio
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -636,7 +637,7 @@ The anchor point for the upper right corner of the rectangle defined as a fracti
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -648,7 +649,7 @@ The anchor point for the upper right corner of the rectangle defined as a fracti
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -661,7 +662,7 @@ Location of the pivot point around which the rectangle rotates, defined as a fra
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -673,7 +674,7 @@ Location of the pivot point around which the rectangle rotates, defined as a fra
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number}** 
 
 Returns **void** 
@@ -686,7 +687,7 @@ Rotation, as a quaternion, of the object around its pivot point.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -698,7 +699,7 @@ Rotation, as a quaternion, of the object around its pivot point.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number, number, number}** 
 
 Returns **void** 
@@ -711,7 +712,7 @@ Scale factor applied to the object in the x, y and z dimensions.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -723,7 +724,7 @@ Scale factor applied to the object in the x, y and z dimensions.
 
 **Parameters**
 
--   `rectTransform` **Long** A long value representing the id for the UI.RectTransform see [Long.js]<https://www.npmjs.com/package/long>
+-   `rectTransform` **Long** A long value representing the id for the UI.RectTransform
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -736,7 +737,7 @@ Remove the UI object.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **void** 
 
@@ -748,7 +749,7 @@ The rect transform for the text.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -760,7 +761,7 @@ A list of all available fonts.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -772,7 +773,7 @@ The text string
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -784,7 +785,7 @@ The text string
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -797,7 +798,7 @@ Name of the font
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -809,7 +810,7 @@ Name of the font
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -822,7 +823,7 @@ Font size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -834,7 +835,7 @@ Font size.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -847,7 +848,7 @@ Font style.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -859,8 +860,8 @@ Font style.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the UI.FontStyle see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
+-   `value` **Long** A long value representing the id for the UI.FontStyle
 
 Returns **void** 
 
@@ -872,7 +873,7 @@ Alignment.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -884,8 +885,8 @@ Alignment.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the UI.TextAnchor see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
+-   `value` **Long** A long value representing the id for the UI.TextAnchor
 
 Returns **void** 
 
@@ -897,7 +898,7 @@ Line spacing.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -909,7 +910,7 @@ Line spacing.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -922,7 +923,7 @@ Set the color
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -934,7 +935,7 @@ Set the color
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **{number, number, number}** 
 
 Returns **void** 
@@ -947,7 +948,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -959,7 +960,7 @@ Whether the UI object is visible.
 
 **Parameters**
 
--   `text` **Long** A long value representing the id for the UI.Text see [Long.js]<https://www.npmjs.com/package/long>
+-   `text` **Long** A long value representing the id for the UI.Text
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 

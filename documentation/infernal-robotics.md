@@ -4,7 +4,8 @@
 
 ## InfernalRobotics
 
-This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214/">Infernal Robotics</a>.
+This service provides functionality to interact with
+<a href="https://forum.kerbalspaceprogram.com/index.php?/topic/104535-112-magic-smoke-industries-infernal-robotics-202/">Infernal Robotics</a>.
 
 Returns **void** 
 
@@ -12,11 +13,11 @@ Returns **void**
 
 **Extends InfernalRobotics**
 
-A list of all the servo groups in the given &lt;paramref name="vessel}.
+A list of all the servo groups in the given {vessel}.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -24,12 +25,12 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends InfernalRobotics**
 
-Returns the servo group in the given &lt;paramref name="vessel} with the given &lt;paramref name="name},
-or <c>null</c> if none exists. If multiple servo groups have the same name, only one of them is returned.
+Returns the servo group in the given {vessel} with the given {name},
+or null if none exists. If multiple servo groups have the same name, only one of them is returned.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of servo group to find.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -38,13 +39,21 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends InfernalRobotics**
 
-Returns the servo in the given &lt;paramref name="vessel} with the given &lt;paramref name="name} or
-<c>null</c> if none exists. If multiple servos have the same name, only one of them is returned.
+Returns the servo in the given {vessel} with the given {name} or
+null if none exists. If multiple servos have the same name, only one of them is returned.
 
 **Parameters**
 
--   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `vessel` **Long** A long value representing the id for the SpaceCenter.Vessel
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the servo to find.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getAvailable
+
+**Extends InfernalRobotics**
+
+Whether Infernal Robotics is installed.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -56,7 +65,7 @@ Moves the servo to the right.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -68,7 +77,7 @@ Moves the servo to the left.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -80,7 +89,7 @@ Moves the servo to the center.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -92,7 +101,7 @@ Moves the servo to the next preset.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -104,7 +113,7 @@ Moves the servo to the previous preset.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -112,12 +121,12 @@ Returns **void**
 
 **Extends InfernalRobotics**
 
-Moves the servo to &lt;paramref name="position} and sets the
-speed multiplier to &lt;paramref name="speed}.
+Moves the servo to {position} and sets the
+speed multiplier to {speed}.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `position` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The position to move the servo to.
 -   `speed` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Speed multiplier for the movement.
 
@@ -131,7 +140,7 @@ Stops the servo.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **void** 
 
@@ -143,7 +152,7 @@ The name of the servo.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -155,7 +164,7 @@ The name of the servo.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -168,7 +177,7 @@ The part containing the servo.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -180,7 +189,7 @@ Whether the servo should be highlighted in-game.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -193,7 +202,7 @@ The position of the servo.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -205,7 +214,7 @@ The minimum position of the servo, specified by the part configuration.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -217,7 +226,7 @@ The maximum position of the servo, specified by the part configuration.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -229,7 +238,7 @@ The minimum position of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -241,7 +250,7 @@ The minimum position of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -254,7 +263,7 @@ The maximum position of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -266,7 +275,7 @@ The maximum position of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -279,7 +288,7 @@ The speed multiplier of the servo, specified by the part configuration.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -291,7 +300,7 @@ The speed multiplier of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -303,7 +312,7 @@ The speed multiplier of the servo, specified by the in-game tweak menu.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -316,7 +325,7 @@ The current speed at which the servo is moving.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -328,7 +337,7 @@ The current speed at which the servo is moving.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -341,7 +350,7 @@ The current speed multiplier set in the UI.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -353,7 +362,7 @@ The current speed multiplier set in the UI.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -366,7 +375,7 @@ Whether the servo is moving.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -378,7 +387,7 @@ Whether the servo is freely moving.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -390,7 +399,7 @@ Whether the servo is locked.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -402,7 +411,7 @@ Whether the servo is locked.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -415,7 +424,7 @@ Whether the servos axis is inverted.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -427,7 +436,7 @@ Whether the servos axis is inverted.
 
 **Parameters**
 
--   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo see [Long.js]<https://www.npmjs.com/package/long>
+-   `servo` **Long** A long value representing the id for the InfernalRobotics.Servo
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -436,12 +445,12 @@ Returns **void**
 
 **Extends InfernalRobotics**
 
-Returns the servo with the given &lt;paramref name="name} from this group,
-or <c>null</c> if none exists.
+Returns the servo with the given {name} from this group,
+or null if none exists.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of servo to find.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
@@ -454,7 +463,7 @@ Moves all of the servos in the group to the right.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -466,7 +475,7 @@ Moves all of the servos in the group to the left.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -478,7 +487,7 @@ Moves all of the servos in the group to the center.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -490,7 +499,7 @@ Moves all of the servos in the group to the next preset.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -502,7 +511,7 @@ Moves all of the servos in the group to the previous preset.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -514,7 +523,7 @@ Stops the servos in the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **void** 
 
@@ -526,7 +535,7 @@ The name of the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -538,7 +547,7 @@ The name of the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -551,7 +560,7 @@ The key assigned to be the "forward" key for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -563,7 +572,7 @@ The key assigned to be the "forward" key for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -576,7 +585,7 @@ The key assigned to be the "reverse" key for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -588,7 +597,7 @@ The key assigned to be the "reverse" key for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -601,7 +610,7 @@ The speed multiplier for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -613,7 +622,7 @@ The speed multiplier for the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -626,7 +635,7 @@ Whether the group is expanded in the InfernalRobotics UI.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -638,7 +647,7 @@ Whether the group is expanded in the InfernalRobotics UI.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -651,7 +660,7 @@ The servos that are in the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -663,6 +672,6 @@ The parts containing the servos in the group.
 
 **Parameters**
 
--   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup see [Long.js]<https://www.npmjs.com/package/long>
+-   `servoGroup` **Long** A long value representing the id for the InfernalRobotics.ServoGroup
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 

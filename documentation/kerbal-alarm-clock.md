@@ -4,7 +4,8 @@
 
 ## KerbalAlarmClock
 
-This service provides functionality to interact with <a href="http://forum.kerbalspaceprogram.com/index.php?/topic/22809-10x-kerbal-alarm-clock-v3500-dec-3/">Kerbal Alarm Clock</a>.
+This service provides functionality to interact with
+<a href="https://forum.kerbalspaceprogram.com/index.php?/topic/22809-13x-kerbal-alarm-clock-v3850-may-30/">Kerbal Alarm Clock</a>.
 
 Returns **void** 
 
@@ -12,7 +13,7 @@ Returns **void**
 
 **Extends KerbalAlarmClock**
 
-Get the alarm with the given &lt;paramref name="name}, or <c>null</c>
+Get the alarm with the given {name}, or null
 if no alarms have that name. If more than one alarm has the name,
 only returns one of them.
 
@@ -26,11 +27,11 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 **Extends KerbalAlarmClock**
 
-Get a list of alarms of the specified &lt;paramref name="type}.
+Get a list of alarms of the specified {type}.
 
 **Parameters**
 
--   `type` **Long** A long value representing the id for the KerbalAlarmClock.AlarmType see [Long.js]<https://www.npmjs.com/package/long>
+-   `type` **Long** A long value representing the id for the KerbalAlarmClock.AlarmType
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -42,9 +43,17 @@ Create a new alarm and return it.
 
 **Parameters**
 
--   `type` **Long** A long value representing the id for the KerbalAlarmClock.AlarmType see [Long.js]<https://www.npmjs.com/package/long>
+-   `type` **Long** A long value representing the id for the KerbalAlarmClock.AlarmType
 -   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the new alarm.
 -   `ut` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Time at which the new alarm should trigger.
+
+Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
+
+## getAvailable
+
+**Extends KerbalAlarmClock**
+
+Whether Kerbal Alarm Clock is available.
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -64,7 +73,7 @@ Removes the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **void** 
 
@@ -76,7 +85,7 @@ The action that the alarm triggers.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -88,8 +97,8 @@ The action that the alarm triggers.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the KerbalAlarmClock.AlarmAction see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
+-   `value` **Long** A long value representing the id for the KerbalAlarmClock.AlarmAction
 
 Returns **void** 
 
@@ -101,7 +110,7 @@ The number of seconds before the event that the alarm will fire.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -113,7 +122,7 @@ The number of seconds before the event that the alarm will fire.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -126,7 +135,7 @@ The time at which the alarm will fire.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -138,7 +147,7 @@ The time at which the alarm will fire.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -151,7 +160,7 @@ The type of the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -163,7 +172,7 @@ The unique identifier for the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -175,7 +184,7 @@ The short name of the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -187,7 +196,7 @@ The short name of the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -200,7 +209,7 @@ The long description of the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -212,7 +221,7 @@ The long description of the alarm.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **void** 
@@ -225,7 +234,7 @@ The number of seconds until the alarm will fire.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -237,7 +246,7 @@ Whether the alarm will be repeated after it has fired.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -249,7 +258,7 @@ Whether the alarm will be repeated after it has fired.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 Returns **void** 
@@ -262,7 +271,7 @@ The time delay to automatically create an alarm after it has fired.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -274,7 +283,7 @@ The time delay to automatically create an alarm after it has fired.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 -   `value` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **void** 
@@ -287,7 +296,7 @@ The vessel that the alarm is attached to.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -299,8 +308,8 @@ The vessel that the alarm is attached to.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.Vessel see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
+-   `value` **Long** A long value representing the id for the SpaceCenter.Vessel
 
 Returns **void** 
 
@@ -312,7 +321,7 @@ The celestial body the vessel is departing from.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -324,8 +333,8 @@ The celestial body the vessel is departing from.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
 
@@ -337,7 +346,7 @@ The celestial body the vessel is arriving at.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
 
 Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), decode: [function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)}** 
 
@@ -349,7 +358,7 @@ The celestial body the vessel is arriving at.
 
 **Parameters**
 
--   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm see [Long.js]<https://www.npmjs.com/package/long>
--   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody see [Long.js]<https://www.npmjs.com/package/long>
+-   `alarm` **Long** A long value representing the id for the KerbalAlarmClock.Alarm
+-   `value` **Long** A long value representing the id for the SpaceCenter.CelestialBody
 
 Returns **void** 
