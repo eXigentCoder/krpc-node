@@ -34,13 +34,13 @@
   "author": "Ryan Kotzen",
   "license": "MIT",
   "dependencies": {
-    "async": "2.1.5",
+    "async": "2.6.0",
     "bytebuffer": "5.0.1",
     "documentation": "4.0.0-beta10",
-    "lodash": "4.17.4",
-    "protobufjs": "6.6.5",
-    "ws": "2.2.0",
-    "snyk": "^1.31.0"
+    "lodash": "4.17.5",
+    "protobufjs": "6.8.4",
+    "snyk": "^1.31.0",
+    "ws": "2.2.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -49,7 +49,7 @@
     "istanbul": "0.4.5",
     "long": "3.2.0",
     "mocha": "3.2.0",
-    "npm-check": "5.4.0",
+    "npm-check": "5.5.2",
     "plato": "1.7.0"
   },
   "snyk": true
