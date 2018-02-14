@@ -2,28 +2,31 @@
 require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
-const util = require("util");
+const util = require('util');
 
-describe('Decoding - double', function () {
-    it('Should be able to decode a `double` successfully', function (done) {
+describe('Decoding - double', function() {
+    it('Should be able to decode a `double` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
                 return done(err);
             }
-            let data = {client: client};
-            async.waterfall([
-                async.apply(getVessel, data),
-                getAutoPilot,
-                setAutoPilotRollThreshold,
-                getAutoPilotRollThreshold //decoders.double
-            ], done);
+            let data = { client: client };
+            async.waterfall(
+                [
+                    async.apply(getVessel, data),
+                    getAutoPilot,
+                    setAutoPilotRollThreshold,
+                    getAutoPilotRollThreshold //decoders.double
+                ],
+                done
+            );
         }
     });
 });
 function getVessel(data, callback) {
-    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -33,7 +36,10 @@ function getVessel(data, callback) {
 }
 
 function getAutoPilot(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetAutoPilot(data.vesselId), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetAutoPilot(data.vesselId), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }
@@ -43,23 +49,40 @@ function getAutoPilot(data, callback) {
 }
 function setAutoPilotRollThreshold(data, callback) {
     data.autoPilotRollThreshold = 3;
-    data.client.send(data.client.services.spaceCenter.autoPilotSetRollThreshold(data.autoPilotId, data.autoPilotRollThreshold), function (err) {
-        if (err) {
-            return callback(err);
+    data.client.send(
+        data.client.services.spaceCenter.autoPilotSetRollThreshold(
+            data.autoPilotId,
+            data.autoPilotRollThreshold
+        ),
+        function(err) {
+            if (err) {
+                return callback(err);
+            }
+            return callback(null, data);
         }
-        return callback(null, data);
-    });
+    );
 }
 
 function getAutoPilotRollThreshold(data, callback) {
-    data.client.send(data.client.services.spaceCenter.autoPilotGetRollThreshold(data.autoPilotId), function (err, response) {
-        if (err) {
-            return callback(err);
+    data.client.send(
+        data.client.services.spaceCenter.autoPilotGetRollThreshold(data.autoPilotId),
+        function(err, response) {
+            if (err) {
+                return callback(err);
+            }
+            let actualValue = response.results[0].value;
+            if (data.autoPilotRollThreshold !== actualValue) {
+                return callback(
+                    new Error(
+                        util.format(
+                            'actual autoPilotRollThreshold (%s) did not match the set autoPilotRollThreshold (%s)',
+                            actualValue,
+                            data.autoPilotRollThreshold
+                        )
+                    )
+                );
+            }
+            return callback(null, data);
         }
-        let actualValue = response.results[0].value;
-        if (data.autoPilotRollThreshold !== actualValue) {
-            return callback(new Error(util.format("actual autoPilotRollThreshold (%s) did not match the set autoPilotRollThreshold (%s)", actualValue, data.autoPilotRollThreshold)));
-        }
-        return callback(null, data);
-    });
+    );
 }

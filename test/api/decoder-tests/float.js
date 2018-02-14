@@ -3,25 +3,21 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('Decoding - float', function () {
-    it('Should be able to decode a `float` successfully', function (done) {
+describe('Decoding - float', function() {
+    it('Should be able to decode a `float` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
                 return done(err);
             }
-            let data = {client: client};
-            async.waterfall([
-                async.apply(getVessel, data),
-                getControl,
-                controlGetThrottle
-            ], done);
+            let data = { client: client };
+            async.waterfall([async.apply(getVessel, data), getControl, controlGetThrottle], done);
         }
     });
 });
 function getVessel(data, callback) {
-    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -31,7 +27,10 @@ function getVessel(data, callback) {
 }
 
 function getControl(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vesselId), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vesselId), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }
@@ -41,7 +40,10 @@ function getControl(data, callback) {
 }
 
 function controlGetThrottle(data, callback) {
-    data.client.send(data.client.services.spaceCenter.controlGetThrottle(data.controlId), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.controlGetThrottle(data.controlId), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }

@@ -3,26 +3,22 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('Decoding - string', function () {
-    it('Should be able to decode a `string` successfully', function (done) {
+describe('Decoding - string', function() {
+    it('Should be able to decode a `string` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
                 return done(err);
             }
-            let data = {client: client};
-            async.waterfall([
-                async.apply(getVessel, data),
-                getBiome,
-                getVesselName
-            ], done);
+            let data = { client: client };
+            async.waterfall([async.apply(getVessel, data), getBiome, getVesselName], done);
         }
     });
 });
 
 function getVessel(data, callback) {
-    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -32,7 +28,10 @@ function getVessel(data, callback) {
 }
 
 function getBiome(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetBiome(data.vesselId), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetBiome(data.vesselId), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }
@@ -42,7 +41,10 @@ function getBiome(data, callback) {
 }
 
 function getVesselName(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetName(data.vesselId), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetName(data.vesselId), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }

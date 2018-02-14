@@ -3,23 +3,24 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('Decoding - sInt32', function () {
-    it('Should be able to decode a `sInt32` successfully', function (done) {
+describe('Decoding - sInt32', function() {
+    it('Should be able to decode a `sInt32` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
                 return done(err);
             }
-            let data = {client: client};
-            async.waterfall([
-                async.apply(getMaximumRailsWarpFactor, data)
-            ], done);
+            let data = { client: client };
+            async.waterfall([async.apply(getMaximumRailsWarpFactor, data)], done);
         }
     });
 });
 function getMaximumRailsWarpFactor(data, callback) {
-    data.client.send(data.client.services.spaceCenter.getMaximumRailsWarpFactor(), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.getMaximumRailsWarpFactor(), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }

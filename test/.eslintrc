@@ -1,6 +1,10 @@
 {
     "rules": {
-        "no-invalid-this": "off"
+        "no-invalid-this": "off",
+        "node/no-unpublished-require":["off"]
+    },
+    "env": {
+        "mocha": true
     },
     "globals": {
         "chai": true,

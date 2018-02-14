@@ -9,5 +9,5 @@ report/
 docs/
 utility/
 GameData/
-utilities/
+./utilities/
 krpc/

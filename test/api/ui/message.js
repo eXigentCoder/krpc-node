@@ -1,8 +1,8 @@
 'use strict';
 require('../../init');
 let Client = require('../../../lib/client');
-describe('UI', function () {
-    it('Display message', function (done) {
+describe('UI', function() {
+    it('Display message', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(clientErr, client) {
@@ -10,7 +10,10 @@ describe('UI', function () {
                 return done(clientErr);
             }
             client.rpc.on('error', onError(done));
-            client.send(client.services.ui.message('Hello World!', 5, 'TopCenter'), function (messegeErr, response) {
+            client.send(client.services.ui.message('Hello World!', 5, 'TopCenter'), function(
+                messegeErr,
+                response
+            ) {
                 if (messegeErr) {
                     return done(messegeErr);
                 }
@@ -24,9 +27,8 @@ describe('UI', function () {
     });
 });
 
-
 function onError(done) {
-    return function (err) {
+    return function(err) {
         done(err);
     };
 }

@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('removeStream', function () {
-    it('Should work', function (done) {
+describe('removeStream', function() {
+    it('Should work', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -15,19 +15,21 @@ describe('removeStream', function () {
                 client,
                 done
             };
-            async.waterfall([
-                async.apply(getClientIdAndActiveVessel, data),
-                connectToStreamServer,
-                getVesselControl,
-                addThrottleToStream,
-                removeStream
-            ], function (waterfallErr) {
-                return done(waterfallErr);
-            });
+            async.waterfall(
+                [
+                    async.apply(getClientIdAndActiveVessel, data),
+                    connectToStreamServer,
+                    getVesselControl,
+                    addThrottleToStream,
+                    removeStream
+                ],
+                function(waterfallErr) {
+                    return done(waterfallErr);
+                }
+            );
         }
     });
 });
-
 
 function getFirstResult(response) {
     return getResultN(response, 0);
@@ -45,7 +47,7 @@ function getClientIdAndActiveVessel(data, callback) {
         data.client.services.krpc.getClientId(),
         data.client.services.spaceCenter.getActiveVessel()
     ];
-    data.client.send(calls, function (err, response) {
+    data.client.send(calls, function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -58,13 +60,16 @@ function getClientIdAndActiveVessel(data, callback) {
 }
 
 function connectToStreamServer(data, callback) {
-    data.client.connectToStreamServer(data.clientId, function (err) {
+    data.client.connectToStreamServer(data.clientId, function(err) {
         return callback(err, data);
     });
 }
 
 function getVesselControl(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vessel.id), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vessel.id), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }
@@ -75,14 +80,14 @@ function getVesselControl(data, callback) {
 
 function addThrottleToStream(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
-    data.client.addStream(getThrottle, "Throttle", throttleStreamAdded);
+    data.client.addStream(getThrottle, 'Throttle', throttleStreamAdded);
     function throttleStreamAdded(err) {
         return callback(err, data);
     }
 }
 
 function removeStream(data, callback) {
-    data.client.removeStream("Throttle", throttleStreamRemoved);
+    data.client.removeStream('Throttle', throttleStreamRemoved);
     function throttleStreamRemoved(err) {
         return callback(err);
     }

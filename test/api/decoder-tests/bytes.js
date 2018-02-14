@@ -3,23 +3,26 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('Decoding - bytes', function () {
-    it('Should be able to decode a `bytes` successfully', function (done) {
+describe('Decoding - bytes', function() {
+    it('Should be able to decode a `bytes` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
                 return done(err);
             }
-            let data = {client: client};
-            async.waterfall([
-                async.apply(getVessel, data)//decoders.bytes
-            ], done);
+            let data = { client: client };
+            async.waterfall(
+                [
+                    async.apply(getVessel, data) //decoders.bytes
+                ],
+                done
+            );
         }
     });
 });
 function getVessel(data, callback) {
-    data.client.send(data.client.services.krpc.getClientId(), function (err, response) {
+    data.client.send(data.client.services.krpc.getClientId(), function(err, response) {
         if (err) {
             return callback(err);
         }

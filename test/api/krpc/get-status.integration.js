@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const _ = require('lodash');
 
-describe('Get-status', function () {
-    it('Should work', function (done) {
+describe('Get-status', function() {
+    it('Should work', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -19,20 +19,20 @@ describe('Get-status', function () {
 });
 
 function onOpen(client) {
-    return function () {
+    return function() {
         let getStatus = client.services.krpc.getStatus();
         client.send(getStatus);
     };
 }
 
 function onError(done) {
-    return function (err) {
+    return function(err) {
         done(err);
     };
 }
 
 function onMessage(done) {
-    return function (response) {
+    return function(response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
         let statusResult = response.results[0];
@@ -45,4 +45,3 @@ function onMessage(done) {
         return done();
     };
 }
-

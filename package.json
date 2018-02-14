@@ -9,6 +9,7 @@
     "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
     "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
+    "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"{lib,test}/**/*.js\"",
     "report": "plato -r -d report -e .eslintrc lib",
     "readme-client": "node_modules/.bin/documentation readme \"lib/client.js\" \"lib/encoders.js\" \"lib/decoders.js\" --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
     "readme-drawing": "node_modules/.bin/documentation readme \"lib/services/drawing.js\" --readme-file=\"documentation/drawing.md\" --section=API --shallow=true",
@@ -20,7 +21,10 @@
     "readme-ui": "node_modules/.bin/documentation readme \"lib/services/ui.js\" --readme-file=\"documentation/ui.md\" --section=API --shallow=true",
     "update": "npm-check -Eu",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "patch": "npm version patch && npm publish",
+    "minor": "npm version minor && npm publish",
+    "major": "npm version major && npm publish",
+    "preversion": "npm run prettier && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -46,11 +50,15 @@
     "chai": "4.1.2",
     "dirty-chai": "2.0.1",
     "eslint": "4.17.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "istanbul": "0.4.5",
     "long": "4.0.0",
     "mocha": "5.0.0",
     "npm-check": "5.5.2",
-    "plato": "1.7.0"
+    "plato": "1.7.0",
+    "prettier": "^1.10.2"
   },
   "snyk": true
 }

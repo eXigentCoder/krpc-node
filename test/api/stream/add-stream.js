@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
 
-describe('addStream', function () {
-    it('Should throw an error if the same name is used for the stream', function (done) {
+describe('addStream', function() {
+    it('Should throw an error if the same name is used for the stream', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -15,21 +15,23 @@ describe('addStream', function () {
                 client,
                 done
             };
-            async.waterfall([
-                async.apply(getClientIdAndActiveVessel, data),
-                connectToStreamServer,
-                getVesselControl,
-                addThrottleToStream,
-                addThrottleToStreamAgain
-            ], function (waterfallErr) {
-                if (waterfallErr) {
-                    return done(waterfallErr);
+            async.waterfall(
+                [
+                    async.apply(getClientIdAndActiveVessel, data),
+                    connectToStreamServer,
+                    getVesselControl,
+                    addThrottleToStream,
+                    addThrottleToStreamAgain
+                ],
+                function(waterfallErr) {
+                    if (waterfallErr) {
+                        return done(waterfallErr);
+                    }
                 }
-            });
+            );
         }
     });
 });
-
 
 function getFirstResult(response) {
     return getResultN(response, 0);
@@ -47,7 +49,7 @@ function getClientIdAndActiveVessel(data, callback) {
         data.client.services.krpc.getClientId(),
         data.client.services.spaceCenter.getActiveVessel()
     ];
-    data.client.send(calls, function (err, response) {
+    data.client.send(calls, function(err, response) {
         if (err) {
             return callback(err);
         }
@@ -60,13 +62,16 @@ function getClientIdAndActiveVessel(data, callback) {
 }
 
 function connectToStreamServer(data, callback) {
-    data.client.connectToStreamServer(data.clientId, function (err) {
+    data.client.connectToStreamServer(data.clientId, function(err) {
         return callback(err, data);
     });
 }
 
 function getVesselControl(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vessel.id), function (err, response) {
+    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vessel.id), function(
+        err,
+        response
+    ) {
         if (err) {
             return callback(err);
         }
@@ -77,7 +82,7 @@ function getVesselControl(data, callback) {
 
 function addThrottleToStream(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
-    data.client.addStream(getThrottle, "Throttle", throttleStreamAdded);
+    data.client.addStream(getThrottle, 'Throttle', throttleStreamAdded);
     function throttleStreamAdded(err) {
         return callback(err, data);
     }
@@ -85,10 +90,14 @@ function addThrottleToStream(data, callback) {
 
 function addThrottleToStreamAgain(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
-    data.client.addStream(getThrottle, "Throttle", throttleStreamAdded);
+    data.client.addStream(getThrottle, 'Throttle', throttleStreamAdded);
     function throttleStreamAdded(err) {
         if (!err) {
-            return callback(new Error("The second addStream call with the same name should have thrown an error"));
+            return callback(
+                new Error(
+                    'The second addStream call with the same name should have thrown an error'
+                )
+            );
         }
         expect(err).to.be.ok();
         return data.done();

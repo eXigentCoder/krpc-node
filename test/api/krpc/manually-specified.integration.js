@@ -4,8 +4,8 @@ let Client = require('../../../lib/client');
 let success = false;
 let util = require('util');
 
-describe('Manual test workflow', function () {
-    it('Should work', function (done) {
+describe('Manual test workflow', function() {
+    it('Should work', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -21,40 +21,41 @@ describe('Manual test workflow', function () {
 });
 
 function onOpen(client) {
-    return function () {
+    return function() {
         let procedure = client.services.spaceCenter.getActiveVessel();
         client.send(procedure);
     };
 }
 
 function onError(done) {
-    return function (err) {
+    return function(err) {
         done(err);
     };
 }
 function onClose(done) {
-    return function (event) {
+    return function(event) {
         if (success) {
             done();
         }
-        return done(new Error(util.format("Socket closed before done: %s (%s)", event.reason, event.code)));
+        return done(
+            new Error(util.format('Socket closed before done: %s (%s)', event.reason, event.code))
+        );
     };
 }
 
 let counter = 0;
 function onMessage(done, client) {
-    return function (response) {
+    return function(response) {
         counter++;
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
-        response.results.forEach(function (result) {
+        response.results.forEach(function(result) {
             expect(result.error).to.not.be.ok();
             if (counter === 1) {
                 let vesselId = result.value;
                 let procedure = client.services.spaceCenter.vesselGetControl(vesselId);
                 client.send(procedure);
-            }
-            else if (counter === 2) {
+            } else if (counter === 2) {
                 let controlId = result.value;
                 let procedure = client.services.spaceCenter.controlSetAbort(controlId, true);
                 client.send(procedure);

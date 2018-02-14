@@ -3,8 +3,8 @@ require('../../init');
 let Client = require('../../../lib/client');
 const _ = require('lodash');
 
-describe('Decoding - enum', function () {
-    it('Should be able to decode a `enum` successfully', function (done) {
+describe('Decoding - enum', function() {
+    it('Should be able to decode a `enum` successfully', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -16,9 +16,8 @@ describe('Decoding - enum', function () {
     });
 });
 
-
 function onMessage(done) {
-    return function (err, response) {
+    return function(err, response) {
         if (err) {
             return done(err);
         }
@@ -28,8 +27,7 @@ function onMessage(done) {
         expect(gameSceneResult.error).to.not.be.ok();
         expect(gameSceneResult.value).to.be.ok();
         expect(_.isString(gameSceneResult.value)).to.be.ok();
-        console.log("Game Scene: " + gameSceneResult.value);
+        console.log('Game Scene: ' + gameSceneResult.value);
         return done();
     };
 }
-

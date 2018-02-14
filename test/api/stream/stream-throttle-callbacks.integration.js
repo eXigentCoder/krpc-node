@@ -136,7 +136,11 @@ function streamUpdate(data) {
         if (counter === 20) {
             if (_.isNil(streamState.Throttle)) {
                 //Note throttle
-                return data.done(new Error("streamState.Throttle was falsy. Note that throttle updates sometimes won't happen if the value doesn't change in game"));
+                return data.done(
+                    new Error(
+                        "streamState.Throttle was falsy. Note that throttle updates sometimes won't happen if the value doesn't change in game"
+                    )
+                );
             }
             if (_.isNil(streamState.Heading)) {
                 return data.done(new Error('streamState.Throttle was falsy'));

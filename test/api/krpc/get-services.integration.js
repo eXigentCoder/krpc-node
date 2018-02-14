@@ -2,8 +2,8 @@
 require('../../init');
 let Client = require('../../../lib/client');
 
-describe('Get-services', function () {
-    it('Should work', function (done) {
+describe('Get-services', function() {
+    it('Should work', function(done) {
         Client(null, clientCreated);
 
         function clientCreated(err, client) {
@@ -18,19 +18,19 @@ describe('Get-services', function () {
 });
 
 function onOpen(client) {
-    return function () {
+    return function() {
         client.send(client.services.krpc.getServices());
     };
 }
 
 function onError(done) {
-    return function (err) {
+    return function(err) {
         done(err);
     };
 }
 
 function onMessage(done) {
-    return function (response) {
+    return function(response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
         let serviceResponse = response.results[0];
@@ -40,4 +40,3 @@ function onMessage(done) {
         return done();
     };
 }
-
