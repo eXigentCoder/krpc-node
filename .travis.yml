@@ -4,26 +4,5 @@ node_js:
 branches:
   only:
   - master
-  - develop
-  - dev
 before_script:
 - npm run lint-ci
-before_deploy:
-- git checkout -qf master
-- git config --global user.email "potz666@gmail.com"
-- git config --global user.name "eXigentCoder-CI"
-- git config credential.helper "store --file=.git/credentials"
-- npm version patch -m "Release %s of the library [skip ci]"
-- git push https://$GH_TOKEN@github.com/eXigentCoder/krpc-node.git --all
-deploy:
-  skip_cleanup: true
-  provider: npm
-  email: potz666@gmail.com
-  api_key:
-    secure: H1h8ZQpDR4/IAiAEEeJAcmlIhLuOxT9kVAjcGKKSLb0e3P+LGMxkT4h8XQGGbOBtKkU6Mo/X9EHwkxV8c2V79jb7Wpi5Kptz19CtKY7xkO2q9ew4pIEyNhOCF4fSOtTalqi34F/vd1oFzASOQyL1+0z69T83iLawqxxNCVV0d2KhPqjkr4+aAkagbEmFxI8oB8It8VgpDGS34rSzqsvq+vWfR/yOfVWtAvyYrXb+b01PdCjhZ2I8iDWSz6PlTIouEHFQ3SRTfgarTZfE6Rtoo3rqQ9Y0YqngJsG6injPd7kGK2LZHiV/Pc7jKhe4JevncJWQUS7jJyUvZ/lLALl1LPjmImbpqSkbi5/BpvNT4bQnumCh4XF0nVV8DYcutUJA8YuSfO65vwWPujTbP4USBSNcF0cYOiBo5oVypYbglYJaqIF4AQGh/zjctLGWOccvF5cIReJZuqLPs4eEYEC825PqNaIa6qo+a4WkbzxMZ1fSDucPHQQsaB7Cczy3VIdzJb+s5urKA1XBj57Z4Y8b3zvGcMFJ9PMI0zkZHxj0boO85PZMPxdKRCTKNOZsu6suF66drkYDc1Qut3QKGojCy5ysKZlEiMDAfxSzgU6dKaqwB/WSQcE3x5h06eWUKSpFy7O9NvirDjQbyDcYZV6ThEk6E0eE9GFS5PXdC6FDVNk=
-  on:
-    branch: master
-    repo: eXigentCoder/krpc-node
-env:
-  global:
-    secure: hgfHkLnlBZzKkkhWV020Zn8aE4x6ySnER2bh8SSScx5mFu9xyW/PjyBEx5/4HxJwQYYnQXftwo028vNZeVR3iigoCZuGjqKVVuVXX1RXxkwz1EvDG3Z5vIKzl9Wb8o7WKHBeP3f6997QWQkf5/yzT2vT1zEJJ1zX6W7Jcvb1+v+IiP8xJsP8HDY4W1gDZWj3pl6IFBm/JnMW6KoX2eyOLN8jj8j/ZF26XGOzjxNw2jS/yXgKHAv1LWe8dzWZy6bPZ8EzHC5NCACtjg0obV08X060OJ8i0ON33LwyDr3Gy0zStPIcmsl72RBrrW/+a1pK2KxFfgvMRn9SW12Ih432iX9fzCtjOf4bVCn+z+5UesmvHfxOBvsuLvd4TsP6vcuN/iqknl6u1OrrlMuBPYIwsBZCOrgbygp3PlA/M+Z/vJe54eVRPK6byyYx3560V8/MyauoHpZmXzfQiFq4y5IuwXaFJ1AjNjNEK5nfMfV+7zYWYP4JSZDSXbXPZ+sGHSgHHOpo8jBIWPXnNHE89M0RZweiRgF47fRBmQT7EBhPyL1/pKV3pF/Q1lBJxeyhueKDQBFC+bdr0kILe0bZ8MWgXYsZneQwK61Okn7LfWG5+CLwlP52NITAZn+nTKMDkxT6yn3f2/KPbz6igFFCc77CpBEDLHgWXHkOHEzWGVmBAQA=
