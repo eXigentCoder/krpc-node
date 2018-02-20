@@ -4917,7 +4917,7 @@ Returns **{call: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 **Extends SpaceCenter**
 
 Returns the times at closest approach and corresponding distances, to a target vessel.
-Returns: 
+Returns:
 A list of two lists.
 The first is a list of times at closest approach, as universal times in seconds.
 The second is a list of corresponding distances at closest approach, in meters.

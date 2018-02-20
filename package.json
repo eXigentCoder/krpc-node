@@ -11,6 +11,7 @@
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"{lib,test}/**/*.js\"",
     "report": "plato -r -d report -e .eslintrc lib",
+    "readme" : "npm run readme-client && npm run readme-drawing && npm run readme-infernal-robotics && npm run readme-kerbal-alarm-clock && npm run readme-krpc && npm run readme-remote-tech && npm run readme-space-center && npm run readme-ui",
     "readme-client": "node_modules/.bin/documentation readme \"lib/client.js\" \"lib/encoders.js\" \"lib/decoders.js\" --readme-file=README.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
     "readme-drawing": "node_modules/.bin/documentation readme \"lib/services/drawing.js\" --readme-file=\"documentation/drawing.md\" --section=API --shallow=true",
     "readme-infernal-robotics": "node_modules/.bin/documentation readme \"lib/services/infernal-robotics.js\" --readme-file=\"documentation/infernal-robotics.md\" --section=API --shallow=true",
