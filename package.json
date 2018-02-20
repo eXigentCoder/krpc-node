@@ -24,7 +24,8 @@
     "patch": "npm version patch && npm publish",
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
-    "preversion": "npm run prettier && npm run lint"
+    "preversion": "npm run prettier && npm run lint",
+    "postpublish": "git push origin master --follow-tags"
   },
   "repository": {
     "type": "git",
