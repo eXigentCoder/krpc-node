@@ -4,12 +4,20 @@
 
 ### Table of Contents
 
--   [Client](#client)
+-   [Client Functions](#client-functions)
     -   [createClient](#createclient)
     -   [creationResultCallback](#creationresultcallback)
-    -   [client](#client-1)
-        -   [send](#send)
+    -   [defaultCreateClientOptions](#defaultcreateclientoptions)
+    -   [client](#client)
+    -   [send](#send)
     -   [sendCallback](#sendcallback)
+    -   [procedureCall](#procedurecall)
+    -   [on](#on)
+    -   [stream](#stream)
+    -   [addStream](#addstream)
+    -   [addStreamCallback](#addstreamcallback)
+    -   [removeStream](#removestream)
+    -   [removeStreamCallback](#removestreamcallback)
 -   [Encoders](#encoders)
     -   [encodeDouble](#encodedouble)
     -   [encodeFloat](#encodefloat)
@@ -24,7 +32,6 @@
 -   [Decoders](#decoders)
     -   [decodeDouble](#decodedouble)
     -   [decodeFloat](#decodefloat)
-    -   [defaultOptions](#defaultoptions)
     -   [decodeSInt32](#decodesint32)
     -   [decodeSInt64](#decodesint64)
     -   [decodeUInt32](#decodeuint32)
@@ -34,18 +41,18 @@
     -   [decodeEnum](#decodeenum)
     -   [decodeBufferToEnumValue](#decodebuffertoenumvalue)
 
-## Client
+## Client Functions
 
 The core of the library for interacting with the server
 
 
 ### createClient
 
-Async function that creates a new krpc-node client
+Async function that creates a new `krpc-node` client
 
 **Parameters**
 
--   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the client, defaults to [defaultOptions](#defaultoptions)
+-   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the client, defaults to [defaultCreateClientOptions](#defaultcreateclientoptions)
     -   `options.rpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the web socket client for primary rpc calls to the server
         -   `options.rpc.protocol` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The protocol to use to connect to the server. `ws` or `wss`. (optional, default `ws`)
         -   `options.rpc.host` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The host address of the server. (optional, default `"127.0.0.1"`)
@@ -92,7 +99,7 @@ const createClient = require('krpc-node');
 
 ### creationResultCallback
 
-This callback that is called after attempting to create a new client
+The callback that is called after attempting to create a new client
 
 Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
@@ -100,6 +107,31 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 -   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error creating the client
 -   `client` **[client](#client)** The created client, ready to use
+
+### defaultCreateClientOptions
+
+Default options used to create a client. Gets merged in with the options you provide
+
+**Examples**
+
+```javascript
+const defaultCreateClientOptions = {
+     rpc: {
+         protocol: 'ws',
+         host: '127.0.0.1',
+         port: '50000',
+         wsProtocols: null,
+         wsOptions: null
+     },
+     stream: {
+         protocol: 'ws',
+         host: '127.0.0.1',
+         port: '50001',
+         wsProtocols: null,
+         wsOptions: null
+     }
+ };
+```
 
 ### client
 
@@ -110,8 +142,8 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 -   `rpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating directly with the server.
     -   `rpc.socket` **[WebSocket](https://developer.mozilla.org/docs/WebSockets)** The underlying websocket instance used for primary communications with the server.
     -   `rpc.emitter` **EventEmitter** The event emitter for primary rpc connection to the server
-    -   `rpc.on` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Registers for one of the events for messages from the server [open, message, error, close].
--   `send` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Sends a one or more service call(s) to the server see [send](send). The documentation for available service calls can be found in the services section of the[main README.md](https://github.com/eXigentCoder/krpc-node/blob/master/README.md)
+    -   `rpc.on` **[on](#on)** Registers for one of the events for messages from the server [open, message, error, close].
+-   `send` **[send](#send)** Sends a one or more service call(s) to the server see [send](#send). The documentation for available service calls can be found in the services section of the[main README.md](https://github.com/eXigentCoder/krpc-node/blob/master/README.md)
 -   `services` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of services that can be called.
     -   `services.krpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Main kRPC service, used by clients to interact with basic server functionality.[See the KRPC service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/krpc.md)
     -   `services.spaceCenter` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Provides functionality to interact with Kerbal Space Program. This includes controlling the active vessel, managing its resources, planning maneuver nodes and auto-piloting.[See the SpaceCenter service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/space-center.md)
@@ -122,14 +154,22 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
     -   `services.remoteTech` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with[RemoteTech](href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/) mod.[See the RemoteTech service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/remote-tech.md)
 -   `encoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [encoders](#encoders) that can be used to manually encode values.
 -   `decoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [decoders](#decoders) that can be used to manually decode values.
+-   `streams` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Will store the streams with the string representation of their unique id as the key. Values are of type [stream](#stream)
+-   `Establishes` **connectToStreamServer** a separate connection to the stream server.
+-   `addStream` **[addStream](#addstream)** Adds a single call to the stream communication. Make sure you call connectToStreamServer fist.
+-   `removeStream` **[removeStream](#removestream)** Removes a single call from the stream communication. Make sure you call connectToStreamServer and of course have called addStream fist.
+-   `stream` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating with the stream server.
+    -   `stream.socket` **[WebSocket](https://developer.mozilla.org/docs/WebSockets)** The underlying websocket instance used to communicate with the server for stream information.
+    -   `stream.emitter` **EventEmitter** The emitter that handles events for stream information.
+    -   `stream.on` **[on](#on)** Registers for one of the events for messages from the server sent via streams [open, message, error, close].
 
-#### send
+### send
 
-Sends a request to the server
+Async function which sends one or more request(s) to the server
 
 **Parameters**
 
--   `calls` **(call | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;call>)** A list of rpc calls to make on the server
+-   `procedureCall` **([procedureCall](#procedurecall) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[procedureCall](#procedurecall)>)** A list of rpc procedureCall to make on the server
 -   `sendCallback` **[sendCallback](#sendcallback)** 
 
 ### sendCallback
@@ -142,6 +182,75 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 -   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error sending the calls to the server
 -   `response` **[response](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)** The server response
+
+### procedureCall
+
+An object which represents a remote procedure call to execute on the server
+
+**Parameters**
+
+-   `decode` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function used to decode the response when it is returned by the server
+-   `call` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The actual call and any arguments to send to the server to execute.
+
+### on
+
+Function that allows you to register for one of the events relating to the websocket [open, message, error, close].
+
+**Parameters**
+
+-   `eventName`  The name of the event to register for
+-   `fn`  the function to execute when the event occurs
+
+### stream
+
+An object representing a proceedure call that is being streamed from the server
+
+**Parameters**
+
+-   `propertyPath` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A unique name to represent the call
+-   `decode` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The function used to decode responses for the server for this call
+-   `id` **Long** A Long.js representation of the 64bit integer used to uniquely identify this stream on the server
+-   `value` **any?** The last known value of the call
+
+### addStream
+
+Adds an call to the continuous update stream.
+
+**Parameters**
+
+-   `procedureCall` **[procedureCall](#procedurecall)** The call to add to the stream
+-   `propertyPath` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A unique name to represent the call
+-   `callback` **[addStreamCallback](#addstreamcallback)** the callback function to execute when the operation has ended
+
+### addStreamCallback
+
+This callback that is called after attempting to add a call to the stream
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error adding the call to the stream
+-   `The` **[stream](#stream)** stream that was added
+
+### removeStream
+
+Removes a call from the continuous update stream.
+
+**Parameters**
+
+-   `propertyPath`  A unique name that represents the existing call that is being streamed
+-   `callback` **[removeStreamCallback](#removestreamcallback)** The callback function to execute when the operation has ended
+
+### removeStreamCallback
+
+This callback that is called after attempting to remove a call from the stream
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error sending the calls to the server
 
 ## Encoders
 
@@ -275,31 +384,6 @@ Takes in a node.js buffer object representing a `float` and decodes it.
 -   `buffer` **ByteBuffer** The buffer object
 
 Returns **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)** 
-
-### defaultOptions
-
-Default options used to create a client. Gets merged in with the options you provide
-
-**Examples**
-
-```javascript
-const defaultOptions = {
-     rpc: {
-         protocol: 'ws',
-         host: '127.0.0.1',
-         port: '50000',
-         wsProtocols: null,
-         wsOptions: null
-     },
-     stream: {
-         protocol: 'ws',
-         host: '127.0.0.1',
-         port: '50001',
-         wsProtocols: null,
-         wsOptions: null
-     }
- };
-```
 
 ### decodeSInt32
 

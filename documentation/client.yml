@@ -1,14 +1,21 @@
 toc:
-  - name: Client
+  - name: Client Functions
     description: |
       The core of the library for interacting with the server
     children:
       - createClient
       - creationResultCallback
+      - defaultCreateClientOptions
       - client
-      - on
       - send
       - sendCallback
+      - procedureCall
+      - on
+      - stream
+      - addStream
+      - addStreamCallback
+      - removeStream
+      - removeStreamCallback
   - name: Encoders
     description: |
       Functions to help with raw encoding of values to send to the server
@@ -29,7 +36,6 @@ toc:
     children:
       - decodeDouble
       - decodeFloat
-      - defaultOptions
       - decodeSInt32
       - decodeSInt64
       - decodeUInt32
