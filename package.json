@@ -42,7 +42,7 @@
   "dependencies": {
     "async": "2.6.0",
     "bytebuffer": "5.0.1",
-    "documentation": "4.0.0-beta10",
+    "documentation": "5.4.0",
     "lodash": "4.17.5",
     "protobufjs": "6.8.5",
     "snyk": "1.69.9",
