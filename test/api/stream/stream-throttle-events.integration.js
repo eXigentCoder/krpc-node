@@ -1,6 +1,5 @@
 'use strict';
 require('../../init');
-let util = require('util');
 let Client = require('../../../lib/client');
 let client;
 let success = false;
@@ -40,9 +39,7 @@ function onClose(event) {
     if (success) {
         done();
     }
-    return done(
-        new Error(util.format('Socket closed before done: %s (%s)', event.reason, event.code))
-    );
+    return done(new Error(`Socket closed before done: ${event.reason} (${event.code})`));
 }
 
 function getFirstResult(response) {

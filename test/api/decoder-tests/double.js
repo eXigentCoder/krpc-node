@@ -2,7 +2,6 @@
 require('../../init');
 let Client = require('../../../lib/client');
 const async = require('async');
-const util = require('util');
 
 describe('Decoding - double', function() {
     it('Should be able to decode a `double` successfully', function(done) {
@@ -74,11 +73,9 @@ function getAutoPilotRollThreshold(data, callback) {
             if (data.autoPilotRollThreshold !== actualValue) {
                 return callback(
                     new Error(
-                        util.format(
-                            'actual autoPilotRollThreshold (%s) did not match the set autoPilotRollThreshold (%s)',
-                            actualValue,
+                        `actual autoPilotRollThreshold (${actualValue}) did not match the set autoPilotRollThreshold (${
                             data.autoPilotRollThreshold
-                        )
+                        })`
                     )
                 );
             }
