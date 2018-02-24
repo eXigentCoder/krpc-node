@@ -54,13 +54,13 @@ Async function that creates a new krpc-node client
 **Parameters**
 
 -   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the client, defaults to [defaultOptions](#defaultoptions)
-    -   `options.rpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the web socket client for primary calls to the server
+    -   `options.rpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the web socket client for primary rpc calls to the server
         -   `options.rpc.protocol` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The protocol to use to connect to the server. `ws` or `wss`. (optional, default `ws`)
         -   `options.rpc.host` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The host address of the server. (optional, default `"127.0.0.1"`)
         -   `options.rpc.port` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** The port number on which to connect to the server. (optional, default `"50000"`)
         -   `options.rpc.wsProtocols` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)?** WebSocket protocols to pass to the [ws](https://www.npmjs.com/package/ws) library.
         -   `options.rpc.wsOptions` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Additional connection options  to pass to the [ws](https://www.npmjs.com/package/ws) library.
-    -   `options.stream` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the web socket client for stream calls to the server
+    -   `options.stream` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options used to create the web socket client for stream rpc calls to the server
         -   `options.stream.protocol` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The protocol to use to connect to the server. `ws` or `wss`. (optional, default `ws`)
         -   `options.stream.host` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The host address of the server. (optional, default `"127.0.0.1"`)
         -   `options.stream.port` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** The port number on which to connect to the server. (optional, default `"50000"`)
@@ -102,6 +102,10 @@ const createClient = require('krpc-node');
 
 **Parameters**
 
+-   `rpc` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object representing the primary rpc connection to the server
+    -   `rpc.socket` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The [ws](https://www.npmjs.com/package/ws) socket used for primary communication with the server
+    -   `rpc.emitter` **EventEmitter** The event emitter for primary rpc connection to the server
+    -   `rpc.on` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function to register a listener for events \[].
 -   `send` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Sends a call to the server see [send](send)
 
 ### send
