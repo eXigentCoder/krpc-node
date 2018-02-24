@@ -2,7 +2,6 @@
 require('../../init');
 let Client = require('../../../lib/client');
 let success = false;
-let util = require('util');
 
 describe('Manual test workflow', function() {
     it('Should work', function(done) {
@@ -37,9 +36,7 @@ function onClose(done) {
         if (success) {
             done();
         }
-        return done(
-            new Error(util.format('Socket closed before done: %s (%s)', event.reason, event.code))
-        );
+        return done(new Error(`Socket closed before done: ${event.reason} (${event.code})`));
     };
 }
 

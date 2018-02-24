@@ -6,10 +6,10 @@
   "scripts": {
     "mocha": "mocha --full-trace test/**/*.js",
     "test": "mocha --full-trace test/**/*.unit.js",
-    "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
-    "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
+    "lint": "npm run lint-ci -- --fix",
+    "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\" \"utilities/**/*.js\"",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
-    "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"{lib,test}/**/*.js\"",
+    "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"{lib,test,utilities}/**/*.js\"",
     "report": "plato -r -d report -e .eslintrc lib",
     "readme": "npm run readme-client && npm run readme-drawing && npm run readme-infernal-robotics && npm run readme-kerbal-alarm-clock && npm run readme-krpc && npm run readme-remote-tech && npm run readme-space-center && npm run readme-ui",
     "readme-client": "node_modules/.bin/documentation readme \"lib/client.js\" \"lib/encoders.js\" \"lib/decoders.js\"  --readme-file=documentation/client.md --section=\"API\" --config=\"documentation/client.yml\" --shallow=true",
