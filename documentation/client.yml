@@ -1,17 +1,40 @@
 toc:
- - ClientConstructorFunction
- - client
- - On
- - Send
- - procedureCall
- - encodeDouble
- - encodeFloat
- - encodeSInt32
- - encodeSInt64
- - encodeUInt32
- - encodeUInt64
- - encodeBool
- - encodeString
- - encodeBytes
- - encodeEnum
- - encodeValueBasedOnEnum
+  - name: Client
+    description: |
+      The core of the library for interacting with the server
+    children:
+      - createClient
+      - creationResultCallback
+      - client
+      - on
+      - send
+      - sendCallback
+  - name: Encoders
+    description: |
+      Functions to help with raw encoding of values to send to the server
+    children:
+      - encodeDouble
+      - encodeFloat
+      - encodeSInt32
+      - encodeSInt64
+      - encodeUInt32
+      - encodeUInt64
+      - encodeBool
+      - encodeString
+      - encodeEnum
+      - encodeValueBasedOnEnum
+  - name: Decoders
+    description: |
+      Functions to help with raw decoding of values to send to the server
+    children:
+      - decodeDouble
+      - decodeFloat
+      - defaultOptions
+      - decodeSInt32
+      - decodeSInt64
+      - decodeUInt32
+      - decodeUInt64
+      - decodeBool
+      - decodeString
+      - decodeEnum
+      - decodeBufferToEnumValue

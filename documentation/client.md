@@ -4,50 +4,42 @@
 
 ### Table of Contents
 
--   [defaultOptions](#defaultoptions)
--   [creationResultCallback](#creationresultcallback)
--   [createClient](#createclient)
--   [client](#client)
-    -   [send](#send)
--   [sendCallback](#sendcallback)
+-   [Client](#client)
+    -   [createClient](#createclient)
+    -   [creationResultCallback](#creationresultcallback)
+    -   [client](#client-1)
+        -   [send](#send)
+    -   [sendCallback](#sendcallback)
+-   [Encoders](#encoders)
+    -   [encodeDouble](#encodedouble)
+    -   [encodeFloat](#encodefloat)
+    -   [encodeSInt32](#encodesint32)
+    -   [encodeSInt64](#encodesint64)
+    -   [encodeUInt32](#encodeuint32)
+    -   [encodeUInt64](#encodeuint64)
+    -   [encodeBool](#encodebool)
+    -   [encodeString](#encodestring)
+    -   [encodeEnum](#encodeenum)
+    -   [encodeValueBasedOnEnum](#encodevaluebasedonenum)
+-   [Decoders](#decoders)
+    -   [decodeDouble](#decodedouble)
+    -   [decodeFloat](#decodefloat)
+    -   [defaultOptions](#defaultoptions)
+    -   [decodeSInt32](#decodesint32)
+    -   [decodeSInt64](#decodesint64)
+    -   [decodeUInt32](#decodeuint32)
+    -   [decodeUInt64](#decodeuint64)
+    -   [decodeBool](#decodebool)
+    -   [decodeString](#decodestring)
+    -   [decodeEnum](#decodeenum)
+    -   [decodeBufferToEnumValue](#decodebuffertoenumvalue)
 
-## defaultOptions
+## Client
 
-Default options used to create a client. Gets merged in with the options you provide
+The core of the library for interacting with the server
 
-**Examples**
 
-```javascript
-const defaultOptions = {
-     rpc: {
-         protocol: 'ws',
-         host: '127.0.0.1',
-         port: '50000',
-         wsProtocols: null,
-         wsOptions: null
-     },
-     stream: {
-         protocol: 'ws',
-         host: '127.0.0.1',
-         port: '50001',
-         wsProtocols: null,
-         wsOptions: null
-     }
- };
-```
-
-## creationResultCallback
-
-This callback that is called after attempting to create a new client
-
-Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
-
-**Parameters**
-
--   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error creating the client
--   `client` **[client](#client)** The created client, ready to use
-
-## createClient
+### createClient
 
 Async function that creates a new krpc-node client
 
@@ -98,7 +90,18 @@ const createClient = require('krpc-node');
       }
 ```
 
-## client
+### creationResultCallback
+
+This callback that is called after attempting to create a new client
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error creating the client
+-   `client` **[client](#client)** The created client, ready to use
+
+### client
 
 **Parameters**
 
@@ -117,8 +120,10 @@ const createClient = require('krpc-node');
     -   `services.infernalRobotics` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with the[Infernal Robotics](http://forum.kerbalspaceprogram.com/index.php?/topic/104535-105-magic-smoke-industries-infernal-robotics-0214) mod.[See the InfernalRobotics service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/infernal-robotics.md)
     -   `services.kerbalAlarmClock` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with the[Kerbal Alarm Clock](http://forum.kerbalspaceprogram.com/index.php?/topic/22809-10x-kerbal-alarm-clock-v3500-dec-3/) mod.[See the KerbalAlarmClock service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/kerbal-alarm-clock.md)
     -   `services.remoteTech` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** This service provides functionality to interact with[RemoteTech](href="http://forum.kerbalspaceprogram.com/index.php?/topic/75245-11-remotetech-v1610-2016-04-12/) mod.[See the RemoteTech service.](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/remote-tech.md)
+-   `encoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [encoders](#encoders) that can be used to manually encode values.
+-   `decoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [decoders](#decoders) that can be used to manually decode values.
 
-### send
+#### send
 
 Sends a request to the server
 
@@ -127,7 +132,7 @@ Sends a request to the server
 -   `calls` **(call | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;call>)** A list of rpc calls to make on the server
 -   `sendCallback` **[sendCallback](#sendcallback)** 
 
-## sendCallback
+### sendCallback
 
 This callback that is called after attempting to send calls to the server
 
@@ -137,3 +142,239 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 -   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error sending the calls to the server
 -   `response` **[response](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)** The server response
+
+## Encoders
+
+Functions to help with raw encoding of values to send to the server
+
+
+### encodeDouble
+
+Takes in a value and encodes it as a `double` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeFloat
+
+Takes in a value and encodes it as a `float` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeSInt32
+
+Takes in a value and encodes it as a `sInt32` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeSInt64
+
+Takes in a value and encodes it as a `sInt64` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeUInt32
+
+Takes in a value and encodes it as a `uInt32` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeUInt64
+
+Takes in a value and encodes it as a `uInt64` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeBool
+
+Takes in a value and encodes it as a `bool` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeString
+
+Takes in a value and encodes it as a `string` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+Returns **(ByteBuffer | void)** 
+
+### encodeEnum
+
+Returns a function that can be used to encode a string as the specific enum value.
+
+**Parameters**
+
+-   `enumDefinition` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The key-value enum object. Keys should be numbers, values should be strings.
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The [function](#encodeValueBasedOnEnum) that will do the encoding.
+
+### encodeValueBasedOnEnum
+
+Takes in a string value and using the provided enum definition encodes it as a `sInt` stored in a [ByteBuffer]<https://www.npmjs.com/package/bytebuffer> object for use with the protobufjs library.
+
+**Parameters**
+
+-   `value`  The value to encode.
+
+
+-   Throws **[Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)** If the provided value was not found in the enum definition
+
+Returns **(ByteBuffer | void)** 
+
+## Decoders
+
+Functions to help with raw decoding of values to send to the server
+
+
+### decodeDouble
+
+Takes in a node.js buffer object representing a `double` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)** 
+
+### decodeFloat
+
+Takes in a node.js buffer object representing a `float` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | any)** 
+
+### defaultOptions
+
+Default options used to create a client. Gets merged in with the options you provide
+
+**Examples**
+
+```javascript
+const defaultOptions = {
+     rpc: {
+         protocol: 'ws',
+         host: '127.0.0.1',
+         port: '50000',
+         wsProtocols: null,
+         wsOptions: null
+     },
+     stream: {
+         protocol: 'ws',
+         host: '127.0.0.1',
+         port: '50001',
+         wsProtocols: null,
+         wsOptions: null
+     }
+ };
+```
+
+### decodeSInt32
+
+Takes in a node.js buffer object representing a `sInt32` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+### decodeSInt64
+
+Takes in a node.js buffer object representing a `sInt64` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **(!Long | !{value: Long, length: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)} | !Long | {value: !Long, length: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)})** 
+
+### decodeUInt32
+
+Takes in a node.js buffer object representing a `uInt32` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **({value, length} | [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | !{value: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number), length: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)})** 
+
+### decodeUInt64
+
+Takes in a node.js buffer object representing a `uInt64` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **any** 
+
+### decodeBool
+
+Takes in a node.js buffer object representing a `bool` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+### decodeString
+
+Takes in a node.js buffer object representing a `string` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
+
+Returns **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | !{string: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), length: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)} | {string, length})** 
+
+### decodeEnum
+
+Returns a function that can be used to decode a node.js buffer into an entry from the provided enum definition.
+
+**Parameters**
+
+-   `enumDefinition` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The key-value enum object. Keys should be numbers, values should be strings.
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The [function](#decodeBufferToEnumValue) that will do the decoding.
+
+### decodeBufferToEnumValue
+
+Takes in a node.js buffer object representing a `double` and decodes it.
+
+**Parameters**
+
+-   `buffer` **ByteBuffer** The buffer object
