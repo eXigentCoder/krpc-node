@@ -2,7 +2,7 @@
 require('../../init');
 let createClient = require('../../../lib/client');
 
-describe('Decoding - bool', function() {
+describe('Decoding - bool - async/await', function() {
     it('Should be able to decode a `bool` successfully', async function() {
         const client = await createClient();
         try {

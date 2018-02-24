@@ -33,6 +33,6 @@ function getConnectedClients(client, callback) {
         result.value.items.forEach(function(item) {
             expect(item).to.be.ok();
         });
-        return callback();
+        client.close(callback);
     });
 }
