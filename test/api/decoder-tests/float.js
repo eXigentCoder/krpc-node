@@ -12,7 +12,12 @@ describe('Decoding - float', function() {
                 return done(err);
             }
             let data = { client: client };
-            async.waterfall([async.apply(getVessel, data), getControl, controlGetThrottle], done);
+            async.waterfall(
+                [async.apply(getVessel, data), getControl, controlGetThrottle],
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
+            );
         }
     });
 });

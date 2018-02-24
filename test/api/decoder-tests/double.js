@@ -19,7 +19,9 @@ describe('Decoding - double', function() {
                     setAutoPilotRollThreshold,
                     getAutoPilotRollThreshold //decoders.double
                 ],
-                done
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
             );
         }
     });

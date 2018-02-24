@@ -11,13 +11,13 @@ describe('Decoding - enum', function() {
             if (err) {
                 return done(err);
             }
-            client.send(client.services.krpc.getCurrentGameScene(), onMessage(done));
+            client.send(client.services.krpc.getCurrentGameScene(), onMessage(done, client));
         }
     });
 });
 
-function onMessage(done) {
-    return function(err, response) {
+function onMessage(done, client) {
+    return async function(err, response) {
         if (err) {
             return done(err);
         }
@@ -28,6 +28,7 @@ function onMessage(done) {
         expect(gameSceneResult.value).to.be.ok();
         expect(_.isString(gameSceneResult.value)).to.be.ok();
         console.log('Game Scene: ' + gameSceneResult.value);
+        await client.close();
         return done();
     };
 }

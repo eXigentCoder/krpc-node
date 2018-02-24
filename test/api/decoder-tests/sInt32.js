@@ -12,7 +12,9 @@ describe('Decoding - sInt32', function() {
                 return done(err);
             }
             let data = { client: client };
-            async.waterfall([async.apply(getMaximumRailsWarpFactor, data)], done);
+            async.waterfall([async.apply(getMaximumRailsWarpFactor, data)], function(innerErr) {
+                client.close().then(done(innerErr));
+            });
         }
     });
 });

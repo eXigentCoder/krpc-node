@@ -16,7 +16,9 @@ describe('Decoding - sInt64', function() {
             let data = { client: client };
             async.waterfall(
                 [async.apply(getWaypointManager, data), getWaypoints, waypointGetContractId],
-                done
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
             );
         }
     });
