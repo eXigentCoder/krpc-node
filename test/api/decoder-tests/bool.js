@@ -1,60 +1,22 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
-const async = require('async');
+let createClient = require('../../../lib/client');
+let util = require('util');
 
 describe('Decoding - bool', function() {
-    it('Should be able to decode a `bool` successfully', function(done) {
-        Client(null, clientCreated);
-
-        function clientCreated(err, client) {
-            if (err) {
-                return done(err);
-            }
-            let data = { client: client };
-            async.waterfall(
-                [
-                    async.apply(getVessel, data),
-                    getControl,
-                    controlGetBreaks //decoders.bool
-                ],
-                done
-            );
+    it('Should be able to decode a `bool` successfully', async function() {
+        const client = await createClient();
+        try {
+            const send = util.promisify(client.send);
+            let response = await send(client.services.spaceCenter.getActiveVessel());
+            const vesselId = response.results[0].value;
+            response = await send(client.services.spaceCenter.vesselGetControl(vesselId));
+            const controlId = response.results[0].value;
+            response = await send(client.services.spaceCenter.controlGetBrakes(controlId));
+            const brakesOn = response.results[0].value;
+            console.log(`brakesOn : ${brakesOn}`);
+        } finally {
+            client.close();
         }
     });
 });
-function getVessel(data, callback) {
-    data.client.send(data.client.services.spaceCenter.getActiveVessel(), function(err, response) {
-        if (err) {
-            return callback(err);
-        }
-        data.vesselId = response.results[0].value;
-        return callback(null, data);
-    });
-}
-
-function getControl(data, callback) {
-    data.client.send(data.client.services.spaceCenter.vesselGetControl(data.vesselId), function(
-        err,
-        response
-    ) {
-        if (err) {
-            return callback(err);
-        }
-        data.controlId = response.results[0].value;
-        return callback(null, data);
-    });
-}
-
-function controlGetBreaks(data, callback) {
-    data.client.send(data.client.services.spaceCenter.controlGetBrakes(data.controlId), function(
-        err,
-        response
-    ) {
-        if (err) {
-            return callback(err);
-        }
-        data.brakesOn = response.results[0].value;
-        return callback(null, data);
-    });
-}
