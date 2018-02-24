@@ -6,8 +6,8 @@
   "scripts": {
     "mocha": "mocha --full-trace test/**/*.js",
     "test": "mocha --full-trace test/**/*.unit.js",
-    "lint": "eslint \"lib/**/*.js\" \"test/**/*.js\" --fix",
-    "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\"",
+    "lint": "npm run lint-ci -- --fix",
+    "lint-ci": "eslint \"lib/**/*.js\" \"test/**/*.js\" \"utilities/**/*.js\"",
     "test-ksp-running": "node_modules/.bin/istanbul --include-all-sources cover node_modules/mocha/bin/_mocha test/**/*.js",
     "prettier": "prettier --write --tab-width=4 --single-quote=true --print-width=100 \"{lib,test}/**/*.js\"",
     "report": "plato -r -d report -e .eslintrc lib",
