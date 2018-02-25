@@ -14,7 +14,7 @@ describe('Stream throttle - events', function() {
 
         function clientCreated(err, _client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             client = _client;
             client.rpc.on('open', clientConnectionOpen);
@@ -27,19 +27,19 @@ describe('Stream throttle - events', function() {
 // ----=================[ Start helper functions ]=================----
 function onError(err) {
     console.error('Client Error');
-    done(err);
+    client.close(() => done(err));
 }
 
 function streamError(err) {
     console.error('Stream Error');
-    done(err);
+    client.close(() => done(err));
 }
 
 function onClose(event) {
     if (success) {
-        done();
+        client.close(() => done());
     }
-    return done(new Error(`Socket closed before done: ${event.reason} (${event.code})`));
+    return client.close(() => done(new Error(`Socket closed before done: ${event.reason} (${event.code})`)));
 }
 
 function getFirstResult(response) {
@@ -146,7 +146,7 @@ function streamUpdate(streamState, streamUpdateResponse) {
         console.log(stream.name, ' : ', parsedValue);
         counter++;
         if (counter === 50) {
-            done();
+            client.close(() => done());
         }
     });
 }
