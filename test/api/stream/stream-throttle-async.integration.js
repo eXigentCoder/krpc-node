@@ -50,7 +50,7 @@ function getFirstResult(response) {
 function streamUpdate(resolve, reject) {
     let counter = 0;
     let done = false;
-    return function _streamUpdate(streamState, raw, event) {
+    return function _streamUpdate(streamState) {
         if (done) {
             return;
         }

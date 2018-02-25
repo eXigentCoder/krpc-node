@@ -39,7 +39,9 @@ function onClose(event) {
     if (success) {
         client.close(() => done());
     }
-    return client.close(() => done(new Error(`Socket closed before done: ${event.reason} (${event.code})`)));
+    return client.close(() =>
+        done(new Error(`Socket closed before done: ${event.reason} (${event.code})`))
+    );
 }
 
 function getFirstResult(response) {

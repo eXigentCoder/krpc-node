@@ -18,9 +18,9 @@ describe('removeStream', function() {
                 [
                     async.apply(getClientIdAndActiveVessel, data),
                     connectToStreamServer,
-                    // getVesselControl,
-                    // addThrottleToStream,
-                    // removeStream
+                    getVesselControl,
+                    addThrottleToStream,
+                    removeStream
                 ],
                 function(waterfallErr) {
                     if (waterfallErr) {
