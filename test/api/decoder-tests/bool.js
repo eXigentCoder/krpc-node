@@ -18,7 +18,9 @@ describe('Decoding - bool', function() {
                     getControl,
                     controlGetBreaks //decoders.bool
                 ],
-                done
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
             );
         }
     });

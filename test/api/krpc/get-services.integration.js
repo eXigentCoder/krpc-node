@@ -12,7 +12,7 @@ describe('Get-services', function() {
             }
             client.rpc.on('open', onOpen(client));
             client.rpc.on('error', onError(done));
-            client.rpc.on('message', onMessage(done));
+            client.rpc.on('message', onMessage(done, client));
         }
     });
 });
@@ -29,7 +29,7 @@ function onError(done) {
     };
 }
 
-function onMessage(done) {
+function onMessage(done, client) {
     return function(response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
@@ -37,6 +37,6 @@ function onMessage(done) {
         expect(serviceResponse.error).to.not.be.ok();
         expect(serviceResponse.value.services).to.be.ok();
         expect(serviceResponse.value.services.length).to.equal(7);
-        return done();
+        client.close().then(done);
     };
 }

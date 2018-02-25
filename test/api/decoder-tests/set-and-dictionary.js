@@ -12,7 +12,11 @@ describe('Decoding - set and dictionary', function() {
                 return done(err);
             }
             let data = { client: client };
-            async.waterfall([async.apply(getBodies, data), celestialBodyGetBiomes], done);
+            async.waterfall([async.apply(getBodies, data), celestialBodyGetBiomes], function(
+                innerErr
+            ) {
+                client.close().then(done(innerErr));
+            });
         }
     });
 });

@@ -12,7 +12,11 @@ describe('Decoding - string', function() {
                 return done(err);
             }
             let data = { client: client };
-            async.waterfall([async.apply(getVessel, data), getBiome, getVesselName], done);
+            async.waterfall([async.apply(getVessel, data), getBiome, getVesselName], function(
+                innerErr
+            ) {
+                client.close().then(done(innerErr));
+            });
         }
     });
 });

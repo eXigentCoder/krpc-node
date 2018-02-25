@@ -16,7 +16,9 @@ describe('Decoding - bytes', function() {
                 [
                     async.apply(getVessel, data) //decoders.bytes
                 ],
-                done
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
             );
         }
     });

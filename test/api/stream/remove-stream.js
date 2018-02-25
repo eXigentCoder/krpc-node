@@ -9,11 +9,10 @@ describe('removeStream', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done());
             }
             let data = {
-                client,
-                done
+                client
             };
             async.waterfall(
                 [
@@ -24,7 +23,10 @@ describe('removeStream', function() {
                     removeStream
                 ],
                 function(waterfallErr) {
-                    return done(waterfallErr);
+                    if (waterfallErr) {
+                        return client.close(() => done(waterfallErr));
+                    }
+                    return client.close(() => done());
                 }
             );
         }

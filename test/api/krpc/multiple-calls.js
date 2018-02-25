@@ -8,35 +8,36 @@ describe('Multiple Calls', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let calls = [
                 client.services.krpc.getClientId(),
                 client.services.spaceCenter.getActiveVessel()
             ];
             client.send(calls, callComplete);
-        }
 
-        function callComplete(err, response) {
-            if (err) {
-                return done(err);
+            function callComplete(err, response) {
+                if (err) {
+                    return client.close(() => done(err));
+                }
+                let clientId = getResultN(response, 0).toString('base64');
+                expect(clientId).to.be.ok();
+                expect(clientId.length).to.be.greaterThan(5);
+                let vesselId = getResultN(response, 1);
+                expect(vesselId).to.be.ok();
+                return client.close(() => done());
             }
-            let clientId = getResultN(response, 0).toString('base64');
-            expect(clientId).to.be.ok();
-            expect(clientId.length).to.be.greaterThan(5);
-            let vesselId = getResultN(response, 1);
-            expect(vesselId).to.be.ok();
-            return done();
         }
     });
     it('Should work with multiple single calls and callbacks', function(done) {
         Client(null, clientCreated);
         let complete = 0;
         let total = 0;
-
-        function clientCreated(err, client) {
+        let client;
+        function clientCreated(err, createdClient) {
+            client = createdClient;
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let getClientId = client.services.krpc.getClientId();
             let getActiveVessel = client.services.spaceCenter.getActiveVessel();
@@ -46,7 +47,7 @@ describe('Multiple Calls', function() {
 
         function getClientIdComplete(err, response) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let clientId = getResultN(response, 0).toString('base64');
             expect(clientId).to.be.ok();
@@ -56,7 +57,7 @@ describe('Multiple Calls', function() {
 
         function getActiveVesselComplete(err, response) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let vesselId = getResultN(response, 0);
             expect(vesselId).to.be.ok();
@@ -71,7 +72,7 @@ describe('Multiple Calls', function() {
         function singleCallComplete() {
             complete++;
             if (complete === total) {
-                done();
+                client.close(() => done());
             }
         }
     });
@@ -80,10 +81,12 @@ describe('Multiple Calls', function() {
         Client(null, clientCreated);
         let complete = 0;
         let total = 0;
+        let client;
 
-        function clientCreated(err, client) {
+        function clientCreated(err, createdClient) {
+            client = createdClient;
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let getClientId = client.services.krpc.getClientId();
             let getStatus = client.services.krpc.getStatus();
@@ -94,7 +97,7 @@ describe('Multiple Calls', function() {
 
         function getClientIdComplete(err, response) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let clientId = getResultN(response, 0).toString('base64');
             expect(clientId).to.be.ok();
@@ -104,7 +107,7 @@ describe('Multiple Calls', function() {
 
         function getActiveVesselAndStatusComplete(err, response) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let vesselId = getResultN(response, 0);
             expect(vesselId).to.be.ok();
@@ -123,7 +126,7 @@ describe('Multiple Calls', function() {
         function singleCallComplete() {
             complete++;
             if (complete === total) {
-                done();
+                client.close(() => done());
             }
         }
     });

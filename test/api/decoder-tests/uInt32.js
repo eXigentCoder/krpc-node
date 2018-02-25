@@ -14,7 +14,9 @@ describe('Decoding - uInt32', function() {
             let data = { client: client };
             async.waterfall(
                 [async.apply(getVessel, data), getControl, controlToggleActionGroup],
-                done
+                function(innerErr) {
+                    client.close().then(done(innerErr));
+                }
             );
         }
     });

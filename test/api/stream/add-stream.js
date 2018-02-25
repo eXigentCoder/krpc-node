@@ -9,11 +9,10 @@ describe('addStream', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let data = {
-                client,
-                done
+                client
             };
             async.waterfall(
                 [
@@ -25,8 +24,9 @@ describe('addStream', function() {
                 ],
                 function(waterfallErr) {
                     if (waterfallErr) {
-                        return done(waterfallErr);
+                        return client.close(() => done(waterfallErr));
                     }
+                    return client.close(() => done());
                 }
             );
         }
@@ -100,6 +100,6 @@ function addThrottleToStreamAgain(data, callback) {
             );
         }
         expect(err).to.be.ok();
-        return data.done();
+        return callback();
     }
 }

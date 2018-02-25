@@ -12,7 +12,9 @@ describe('Decoding - uInt64', function() {
                 return done(err);
             }
             let data = { client: client };
-            async.waterfall([async.apply(getVessel, data)], done);
+            async.waterfall([async.apply(getVessel, data)], function(innerErr) {
+                client.close().then(done(innerErr));
+            });
         }
     });
 });

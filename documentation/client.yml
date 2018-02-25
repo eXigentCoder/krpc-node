@@ -11,11 +11,13 @@ toc:
       - sendCallback
       - procedureCall
       - on
+      - connectToStreamServer
       - stream
       - addStream
       - addStreamCallback
       - removeStream
       - removeStreamCallback
+      - close
   - name: Encoders
     description: |
       Functions to help with raw encoding of values to send to the server

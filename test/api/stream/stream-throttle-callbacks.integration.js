@@ -11,11 +11,10 @@ describe('Stream throttle - callbacks', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             let data = {
-                client,
-                done
+                client
             };
             async.waterfall(
                 [
@@ -29,8 +28,9 @@ describe('Stream throttle - callbacks', function() {
                 ],
                 function(waterfallErr) {
                     if (waterfallErr) {
-                        return done(waterfallErr);
+                        return client.close(() => done(waterfallErr));
                     }
+                    return client.close(() => done());
                 }
             );
         }
@@ -114,7 +114,6 @@ function addThrottleToStream(data, callback) {
     let getThrottle = data.client.services.spaceCenter.controlGetThrottle(data.vessel.controlId);
     data.client.addStream(getThrottle, 'Throttle', throttleStreamAdded);
     function throttleStreamAdded(err) {
-        data.client.stream.on('message', streamUpdate(data));
         return callback(err, data);
     }
 }
@@ -123,12 +122,14 @@ function addHeadingToStream(data, callback) {
     let getHeading = data.client.services.spaceCenter.flightGetHeading(data.vessel.flightId);
     data.client.addStream(getHeading, 'Heading', headingStreamAdded);
     function headingStreamAdded(err) {
-        data.client.stream.on('message', streamUpdate(data));
-        return callback(err, data);
+        if (err) {
+            return callback(err);
+        }
+        data.client.stream.on('message', streamUpdate(callback));
     }
 }
 
-function streamUpdate(data) {
+function streamUpdate(callback) {
     let counter = 0;
     return function _streamUpdate(streamState) {
         console.log(streamState);
@@ -136,16 +137,16 @@ function streamUpdate(data) {
         if (counter === 20) {
             if (_.isNil(streamState.Throttle)) {
                 //Note throttle
-                return data.done(
+                return callback(
                     new Error(
                         "streamState.Throttle was falsy. Note that throttle updates sometimes won't happen if the value doesn't change in game"
                     )
                 );
             }
             if (_.isNil(streamState.Heading)) {
-                return data.done(new Error('streamState.Throttle was falsy'));
+                return callback(new Error('streamState.Throttle was falsy'));
             }
-            data.done();
+            callback();
         }
     };
 }
