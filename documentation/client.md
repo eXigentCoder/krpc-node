@@ -9,7 +9,6 @@
     -   [creationResultCallback](#creationresultcallback)
     -   [defaultCreateClientOptions](#defaultcreateclientoptions)
     -   [client](#client)
-        -   [close](#close)
     -   [send](#send)
     -   [sendCallback](#sendcallback)
     -   [procedureCall](#procedurecall)
@@ -20,6 +19,7 @@
     -   [addStreamCallback](#addstreamcallback)
     -   [removeStream](#removestream)
     -   [removeStreamCallback](#removestreamcallback)
+    -   [close](#close)
 -   [Encoders](#encoders)
     -   [encodeDouble](#encodedouble)
     -   [encodeFloat](#encodefloat)
@@ -166,17 +166,7 @@ const defaultCreateClientOptions = {
     -   `stream.socket` **[WebSocket](https://developer.mozilla.org/docs/WebSockets)** The underlying websocket instance used to communicate with the server for stream information.
     -   `stream.emitter` **EventEmitter** The emitter that handles events for stream information.
     -   `stream.on` **[on](#on)** Registers for one of the events for messages from the server sent via streams [open, message, error, close].
--   `close` **[close](https://developer.mozilla.org/docs/Web/JavaScript)** Disconnects the client (RPC & Stream) from the server.
-
-#### close
-
-Closes both the stream and rpc socket connection to the server. Should be called to free up resources and end the event loop.
-
-**Parameters**
-
--   `callback` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** The callback to execute after closing.
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;void>** 
+-   `close` **[close](#close)** Disconnects the client (RPC & Stream) from the server.
 
 ### send
 
@@ -283,6 +273,16 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 **Parameters**
 
 -   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error sending the calls to the server
+
+### close
+
+Closes both the stream and rpc socket connection to the server. Should be called to free up resources and end the event loop.
+
+**Parameters**
+
+-   `callback` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** The callback to execute after closing.
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;void>** 
 
 ## Encoders
 
