@@ -9,10 +9,12 @@
     -   [creationResultCallback](#creationresultcallback)
     -   [defaultCreateClientOptions](#defaultcreateclientoptions)
     -   [client](#client)
+        -   [close](#close)
     -   [send](#send)
     -   [sendCallback](#sendcallback)
     -   [procedureCall](#procedurecall)
     -   [on](#on)
+    -   [connectToStreamServer](#connecttostreamserver)
     -   [stream](#stream)
     -   [addStream](#addstream)
     -   [addStreamCallback](#addstreamcallback)
@@ -65,7 +67,7 @@ Async function that creates a new `krpc-node` client
         -   `options.stream.port` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** The port number on which to connect to the server. (optional, default `"50000"`)
         -   `options.stream.wsProtocols` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)?** WebSocket protocols to pass to the [ws](https://www.npmjs.com/package/ws) library.
         -   `options.stream.wsOptions` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Additional connection options  to pass to the [ws](https://www.npmjs.com/package/ws) library.
--   `callback` **[creationResultCallback](#creationresultcallback)** The function called once the client has been created.
+-   `callback` **[creationResultCallback](#creationresultcallback)?** The function called once the client has been created.
 
 **Examples**
 
@@ -96,6 +98,8 @@ const createClient = require('krpc-node');
           });
       }
 ```
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[client](#client)>** 
 
 ### creationResultCallback
 
@@ -155,13 +159,24 @@ const defaultCreateClientOptions = {
 -   `encoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [encoders](#encoders) that can be used to manually encode values.
 -   `decoders` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The raw [decoders](#decoders) that can be used to manually decode values.
 -   `streams` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Will store the streams with the string representation of their unique id as the key. Values are of type [stream](#stream)
--   `Establishes` **connectToStreamServer** a separate connection to the stream server.
+-   `Establishes` **[connectToStreamServer](#connecttostreamserver)** a separate connection to the stream server.
 -   `addStream` **[addStream](#addstream)** Adds a single call to the stream communication. Make sure you call connectToStreamServer fist.
 -   `removeStream` **[removeStream](#removestream)** Removes a single call from the stream communication. Make sure you call connectToStreamServer and of course have called addStream fist.
 -   `stream` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Contains items related to communicating with the stream server.
     -   `stream.socket` **[WebSocket](https://developer.mozilla.org/docs/WebSockets)** The underlying websocket instance used to communicate with the server for stream information.
     -   `stream.emitter` **EventEmitter** The emitter that handles events for stream information.
     -   `stream.on` **[on](#on)** Registers for one of the events for messages from the server sent via streams [open, message, error, close].
+-   `close` **[close](https://developer.mozilla.org/docs/Web/JavaScript)** Disconnects the client (RPC & Stream) from the server.
+
+#### close
+
+Closes both the stream and rpc socket connection to the server. Should be called to free up resources and end the event loop.
+
+**Parameters**
+
+-   `callback` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)?** The callback to execute after closing.
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;void>** 
 
 ### send
 
@@ -170,7 +185,9 @@ Async function which sends one or more request(s) to the server
 **Parameters**
 
 -   `procedureCall` **([procedureCall](#procedurecall) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[procedureCall](#procedurecall)>)** A list of rpc procedureCall to make on the server
--   `sendCallback` **[sendCallback](#sendcallback)** 
+-   `sendCallback` **[sendCallback](#sendcallback)?** The optional callback to execute when the request is sent.
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[response](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)>** A promise which will resolve to the response from the server.
 
 ### sendCallback
 
@@ -181,7 +198,7 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 **Parameters**
 
 -   `error` **(null | [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error))** Lets the caller know if there was an error sending the calls to the server
--   `response` **[response](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)** The server response
+-   `response` **[response](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5)** The server response.
 
 ### procedureCall
 
@@ -200,6 +217,17 @@ Function that allows you to register for one of the events relating to the webso
 
 -   `eventName`  The name of the event to register for
 -   `fn`  the function to execute when the event occurs
+
+### connectToStreamServer
+
+Connects to the stream server in order to stream continuous updates
+
+**Parameters**
+
+-   `clientId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The clientId returned via krpc.getClientId
+-   `connectToStreamServerCallback`  [callback] The callback to execute when done connecting
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;void>** A promise to resolve when done connecting
 
 ### stream
 
@@ -220,7 +248,9 @@ Adds an call to the continuous update stream.
 
 -   `procedureCall` **[procedureCall](#procedurecall)** The call to add to the stream
 -   `propertyPath` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A unique name to represent the call
--   `callback` **[addStreamCallback](#addstreamcallback)** the callback function to execute when the operation has ended
+-   `callback` **[addStreamCallback](#addstreamcallback)?** the callback function to execute when the operation has ended
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[stream](#stream)>** The stream that was added
 
 ### addStreamCallback
 
@@ -240,7 +270,9 @@ Removes a call from the continuous update stream.
 **Parameters**
 
 -   `propertyPath`  A unique name that represents the existing call that is being streamed
--   `callback` **[removeStreamCallback](#removestreamcallback)** The callback function to execute when the operation has ended
+-   `callback` **[removeStreamCallback](#removestreamcallback)?** The callback function to execute when the operation has ended
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;void>** If successful with resolve to nothing
 
 ### removeStreamCallback
 
