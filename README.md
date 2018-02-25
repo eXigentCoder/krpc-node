@@ -69,6 +69,6 @@ Checkout [the examples repository](https://github.com/eXigentCoder/krpc-node-exa
 
 To learn the history of the library and see me and it in action you can also check out the video below from the JSinSA 2017 conference. For more info on the JSinSA conference, check out [this link](http://www.jsinsa.com/)
 
-[![JSinSA](https://github.com/eXigentCoder/krpc-node/blob/master/images/wires.jpg)](https://www.youtube.com/watch?v=q-uYOhIYWo0&t=205s)
+[![JSinSA](https://raw.githubusercontent.com/eXigentCoder/krpc-node/master/images/wires.jpg)](https://www.youtube.com/watch?v=q-uYOhIYWo0&t=205s)
 
  
