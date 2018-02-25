@@ -9,11 +9,11 @@ describe('Get-status', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             client.rpc.on('open', onOpen(client));
-            client.rpc.on('error', onError(done));
-            client.rpc.on('message', onMessage(done));
+            client.rpc.on('error', onError(done, client));
+            client.rpc.on('message', onMessage(done, client));
         }
     });
 });
@@ -25,13 +25,13 @@ function onOpen(client) {
     };
 }
 
-function onError(done) {
+function onError(done, client) {
     return function(err) {
-        done(err);
+        client.close(() => done(err));
     };
 }
 
-function onMessage(done) {
+function onMessage(done, client) {
     return function(response) {
         expect(response.error).to.not.be.ok();
         expect(response.results.length).to.equal(1);
@@ -42,6 +42,6 @@ function onMessage(done) {
         expect(status).to.be.ok();
         expect(_.isObject(status)).to.be.ok();
         expect(_.isNil(status.adaptiveRateControl)).to.not.be.ok();
-        return done();
+        return client.close(() => done());
     };
 }

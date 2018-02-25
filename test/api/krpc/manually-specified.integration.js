@@ -9,10 +9,10 @@ describe('Manual test workflow', function() {
 
         function clientCreated(err, client) {
             if (err) {
-                return done(err);
+                return client.close(() => done(err));
             }
             client.rpc.on('open', onOpen(client));
-            client.rpc.on('error', onError(done));
+            client.rpc.on('error', onError(done, client));
             client.rpc.on('message', onMessage(done, client));
             client.rpc.on('close', onClose(done));
         }
@@ -26,15 +26,15 @@ function onOpen(client) {
     };
 }
 
-function onError(done) {
+function onError(done, client) {
     return function(err) {
-        done(err);
+        client.close(() => done(err));
     };
 }
 function onClose(done) {
     return function(event) {
         if (success) {
-            done();
+            return done();
         }
         return done(new Error(`Socket closed before done: ${event.reason} (${event.code})`));
     };
@@ -58,7 +58,7 @@ function onMessage(done, client) {
                 client.send(procedure);
             } else {
                 success = true;
-                return done();
+                return client.close();
             }
         });
     };
