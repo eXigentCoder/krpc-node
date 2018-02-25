@@ -1,31 +1,26 @@
 'use strict';
 require('../../init');
-let createClient = require('../../../lib/client');
+let { createClient, krpc, spaceCenter } = require('../../../lib/client');
 let _ = require('lodash');
 
 describe('Stream throttle - async', function() {
     it('Should work', async function() {
         this.timeout(10000);
         const client = await createClient();
-        let response = await client.send([
-            client.services.krpc.getClientId(),
-            client.services.spaceCenter.getActiveVessel()
-        ]);
+        let response = await client.send([krpc.getClientId(), spaceCenter.getActiveVessel()]);
         let clientId = getResultN(response, 0).toString('base64');
         let vesselId = getResultN(response, 1);
         await client.connectToStreamServer(clientId);
-        let controlId = await client.send(client.services.spaceCenter.vesselGetControl(vesselId));
+        let controlId = await client.send(spaceCenter.vesselGetControl(vesselId));
         controlId = getFirstResult(controlId);
         let orbitalReference = await client.send(
-            client.services.spaceCenter.vesselGetOrbitalReferenceFrame(vesselId)
+            spaceCenter.vesselGetOrbitalReferenceFrame(vesselId)
         );
         orbitalReference = getFirstResult(orbitalReference);
-        let flightId = await client.send(
-            client.services.spaceCenter.vesselFlight(vesselId, orbitalReference)
-        );
+        let flightId = await client.send(spaceCenter.vesselFlight(vesselId, orbitalReference));
         flightId = getFirstResult(flightId);
-        let getThrottleCall = client.services.spaceCenter.controlGetThrottle(controlId);
-        let getHeadingCall = client.services.spaceCenter.flightGetHeading(flightId);
+        let getThrottleCall = spaceCenter.controlGetThrottle(controlId);
+        let getHeadingCall = spaceCenter.flightGetHeading(flightId);
 
         await client.addStream(getThrottleCall, 'Throttle');
         await client.addStream(getHeadingCall, 'Heading');
