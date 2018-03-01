@@ -384,7 +384,8 @@ function getDecoder(type, depth = 1) {
         case 9:
             return decodersName + '.bytes';
         case 100:
-            return decodersName + '.uInt64';
+            return getObjectFnSubType(type, depth);
+        //return decodersName + '.uInt64';
         case 101:
             return getEnumFunction(decodersName, type);
         case 200:
@@ -416,7 +417,7 @@ function getDecodeFnSubType(decodeTypeString, type, depth = 0) {
     if (depth > 5) {
         throw new Error('Maximum depth exceeded' + decodeTypeString + JSON.stringify(type) + depth);
     }
-    var indent = new Array(depth * 8 + 1).join(' ');
+    const indent = new Array(depth * 8 + 1).join(' ');
     let result = '{' + eol;
     result += indent + '    isCollection: true,' + eol;
     result += indent + '    decode: ' + decodeTypeString + ',' + eol;
@@ -430,6 +431,19 @@ function getDecodeFnSubType(decodeTypeString, type, depth = 0) {
         result += eol;
     }
     result += indent + '    ]' + eol;
+    result += indent + '}';
+    return result;
+}
+
+function getObjectFnSubType(type, depth = 0) {
+    if (depth > 5) {
+        throw new Error('Maximum depth exceeded' + JSON.stringify(type) + depth);
+    }
+    const indent = new Array(depth * 8 + 1).join(' ');
+    let result = '{' + eol;
+    result += indent + '    isObject: true,' + eol;
+    result += `${indent}    type: '${type.name}',${eol}`;
+    result += indent + '    decode: ' + decodersName + '.uInt64' + eol;
     result += indent + '}';
     return result;
 }
