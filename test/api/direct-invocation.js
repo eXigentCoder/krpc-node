@@ -9,8 +9,8 @@ describe('Getting Started - async', function() {
         const { spaceCenter } = client.services;
         try {
             let response = await client.send(spaceCenter.getActiveVessel());
-            let vesselId = response.results[0].value;
-            response = await spaceCenter._vesselGetControl(vesselId);
+            let vessel = response.results[0].value;
+            response = await spaceCenter._vesselGetControl(vessel.id);
             let controlId = response.results[0].value;
             expect(controlId).to.be.ok();
         } catch (err) {
