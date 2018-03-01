@@ -51,6 +51,7 @@ function buildContent(service) {
     content += processDocumentation(service, true);
     content += eol;
     content += generateClasses(service);
+    content += eol;
     service.procedures.forEach(function(procedure) {
         content += getProcedureCode(procedure, service);
     });
