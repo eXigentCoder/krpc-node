@@ -63,31 +63,6 @@ function requires() {
     return content;
 }
 
-function getProcedureCode(procedure, service) {
-    let content = eol;
-    content += processDocumentation(procedure, false, service.name);
-    let paramString = addParameter(procedure.parameters);
-    let procName = _.camelCase(procedure.name);
-    content +=
-        'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
-    content +=
-        '    let encodedArguments = ' + getEncodersArray(procedure.parameters, service) + ';' + eol;
-    content += '    return {' + eol;
-    content +=
-        '        call: ' +
-        procCallName +
-        "('" +
-        service.name +
-        "', '" +
-        procedure.name +
-        "', encodedArguments)," +
-        eol;
-    content += '        decode: ' + getDecodeFn(procedure, service) + eol;
-    content += '    };' + eol;
-    content += '};' + eol;
-    return content;
-}
-
 function processDocumentation(procedureOrService, isService, serviceName) {
     let content = '/**' + eol;
     if (isService) {
@@ -132,6 +107,31 @@ function processDocumentation(procedureOrService, isService, serviceName) {
         content += ' * @returns {void}' + eol;
     }
     content += ' */' + eol;
+    return content;
+}
+
+function getProcedureCode(procedure, service) {
+    let content = eol;
+    content += processDocumentation(procedure, false, service.name);
+    let paramString = addParameter(procedure.parameters);
+    let procName = _.camelCase(procedure.name);
+    content +=
+        'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
+    content +=
+        '    let encodedArguments = ' + getEncodersArray(procedure.parameters, service) + ';' + eol;
+    content += '    return {' + eol;
+    content +=
+        '        call: ' +
+        procCallName +
+        "('" +
+        service.name +
+        "', '" +
+        procedure.name +
+        "', encodedArguments)," +
+        eol;
+    content += '        decode: ' + getDecodeFn(procedure, service) + eol;
+    content += '    };' + eol;
+    content += '};' + eol;
     return content;
 }
 
