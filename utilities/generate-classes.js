@@ -1,4 +1,5 @@
 'use strict';
+const getProcedureName = require('./get-procedure-name');
 
 module.exports = function generateClasses(service) {
     const classes = {};
@@ -22,10 +23,10 @@ module.exports = function generateClasses(service) {
             const propertyName = parts[2];
             const accessorName = parts[1];
             classes[className][propertyName] = classes[className][propertyName] || {};
-            classes[className][propertyName][accessorName] = procedure.name;
+            classes[className][propertyName][accessorName] = getProcedureName(procedure);
             return;
         }
-        classes[className][parts[1]] = procedure.name;
+        classes[className][parts[1]] = getProcedureName(procedure);
     });
     const result = JSON.stringify(classes, null, 4);
     return 'const classMaps = ' + result;
