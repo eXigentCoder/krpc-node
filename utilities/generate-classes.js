@@ -29,5 +29,5 @@ module.exports = function generateClasses(service) {
         classes[className][parts[1]] = getProcedureName(procedure);
     });
     const result = JSON.stringify(classes, null, 4);
-    return 'const classMaps = ' + result;
+    return 'module.exports.classMaps = ' + result;
 };
