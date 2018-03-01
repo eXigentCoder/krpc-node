@@ -3,6 +3,7 @@ const Client = require('../lib/client');
 const fs = require('fs');
 const async = require('async');
 const _ = require('lodash');
+const generateClasses = require('./generate-classes');
 const procCallName = 'buildProcedureCall';
 const decodersName = 'decoders';
 const encodersName = 'encoders';
@@ -48,6 +49,7 @@ function buildContent(service) {
     let content = requires();
     content += processDocumentation(service, true);
     content += eol;
+    content += generateClasses(service);
     service.procedures.forEach(function(procedure) {
         content += getProcedureCode(procedure, service);
     });
