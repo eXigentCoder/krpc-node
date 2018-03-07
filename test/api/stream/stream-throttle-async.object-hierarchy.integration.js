@@ -16,12 +16,14 @@ describe('Stream throttle - async', function() {
         const returnFunctionOptions = { _fn: true };
         let getThrottleCall = await control.throttle.get(returnFunctionOptions);
         let getHeadingCall = await flight.heading.get(returnFunctionOptions);
-        await client.addStream(getThrottleCall, 'Throttle');
-        await client.addStream(getHeadingCall, 'Heading');
+        const throttleStreamRef = await client.addStream(getThrottleCall, 'Throttle');
+        const headingStreamRef = await client.addStream(getHeadingCall, 'Heading');
         try {
             await new Promise((resolve, reject) => {
                 client.stream.on('message', streamUpdate(resolve, reject));
             });
+            await client.removeStream(throttleStreamRef.propertyPath);
+            await client.removeStream(headingStreamRef.propertyPath);
         } catch (err) {
             await client.close();
             throw err;
@@ -29,17 +31,6 @@ describe('Stream throttle - async', function() {
         await client.close();
     });
 });
-
-function getResultN(response, n) {
-    expect(response.error).to.not.be.ok();
-    let result = response.results[n];
-    expect(result.error).to.not.be.ok();
-    return result.value;
-}
-
-function getFirstResult(response) {
-    return getResultN(response, 0);
-}
 
 function streamUpdate(resolve, reject) {
     let counter = 0;
