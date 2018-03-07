@@ -1,11 +1,11 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const _ = require('lodash');
 
 describe('Get-status', function() {
     it('Should work', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {

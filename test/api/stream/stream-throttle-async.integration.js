@@ -6,7 +6,7 @@ let _ = require('lodash');
 describe('Stream throttle - async', function() {
     it('Should work', async function() {
         this.timeout(10000);
-        const client = await createClient();
+        const client = await createClient({ legacy: true });
         let response = await client.send([krpc.getClientId(), spaceCenter.getActiveVessel()]);
         let clientId = getResultN(response, 0).toString('base64');
         let vesselId = getResultN(response, 1);

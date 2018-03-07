@@ -1,15 +1,17 @@
 'use strict';
-const Client = require('../lib/client');
+const createClient = require('../lib/client');
 const fs = require('fs');
 const async = require('async');
 const _ = require('lodash');
+const generateClasses = require('./generate-classes');
+const getProcedureName = require('./get-procedure-name');
 const procCallName = 'buildProcedureCall';
 const decodersName = 'decoders';
 const encodersName = 'encoders';
 let eol = '\n';
 let enums = {};
 
-Client(null, function(clientCreationErr, client) {
+createClient(null, function(clientCreationErr, client) {
     if (clientCreationErr) {
         throw clientCreationErr;
     }
@@ -18,15 +20,11 @@ Client(null, function(clientCreationErr, client) {
         if (serviceErr) {
             throw serviceErr;
         }
-        let serviceResponse = response.results[0];
-        if (serviceResponse.error) {
-            throw new Error(serviceResponse.error);
-        }
-        serviceResponse.value.services.forEach(function(service) {
+        response.services.forEach(function(service) {
             enums[service.name] = service.enumerations;
         });
         client.rpc.socket.close(1000);
-        async.eachSeries(serviceResponse.value.services, createService, servicesCreated);
+        async.eachSeries(response.services, createService, servicesCreated);
 
         function servicesCreated(serviceCreationErr) {
             if (serviceCreationErr) {
@@ -48,6 +46,8 @@ function buildContent(service) {
     let content = requires();
     content += processDocumentation(service, true);
     content += eol;
+    content += generateClasses(service);
+    content += eol;
     service.procedures.forEach(function(procedure) {
         content += getProcedureCode(procedure, service);
     });
@@ -60,31 +60,6 @@ function requires() {
     content += "const proto = require('../utilities/proto');" + eol;
     content += 'const ' + decodersName + " = require('../decoders');" + eol;
     content += 'const ' + encodersName + " = require('../encoders');" + eol;
-    return content;
-}
-
-function getProcedureCode(procedure, service) {
-    let content = eol;
-    content += processDocumentation(procedure, false, service.name);
-    let paramString = addParameter(procedure.parameters);
-    let procName = _.camelCase(procedure.name);
-    content +=
-        'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
-    content +=
-        '    let encodedArguments = ' + getEncodersArray(procedure.parameters, service) + ';' + eol;
-    content += '    return {' + eol;
-    content +=
-        '        call: ' +
-        procCallName +
-        "('" +
-        service.name +
-        "', '" +
-        procedure.name +
-        "', encodedArguments)," +
-        eol;
-    content += '        decode: ' + getDecodeFn(procedure, service) + eol;
-    content += '    };' + eol;
-    content += '};' + eol;
     return content;
 }
 
@@ -132,6 +107,31 @@ function processDocumentation(procedureOrService, isService, serviceName) {
         content += ' * @returns {void}' + eol;
     }
     content += ' */' + eol;
+    return content;
+}
+
+function getProcedureCode(procedure, service) {
+    let content = eol;
+    content += processDocumentation(procedure, false, service.name);
+    let paramString = addParameter(procedure.parameters);
+    let procName = getProcedureName(procedure);
+    content +=
+        'module.exports.' + procName + ' = function ' + procName + '(' + paramString + ') {' + eol;
+    content +=
+        '    let encodedArguments = ' + getEncodersArray(procedure.parameters, service) + ';' + eol;
+    content += '    return {' + eol;
+    content +=
+        '        call: ' +
+        procCallName +
+        "('" +
+        service.name +
+        "', '" +
+        procedure.name +
+        "', encodedArguments)," +
+        eol;
+    content += '        decode: ' + getDecodeFn(procedure, service) + eol;
+    content += '    };' + eol;
+    content += '};' + eol;
     return content;
 }
 
@@ -384,7 +384,8 @@ function getDecoder(type, depth = 1) {
         case 9:
             return decodersName + '.bytes';
         case 100:
-            return decodersName + '.uInt64';
+            return getObjectFnSubType(type, depth);
+        //return decodersName + '.uInt64';
         case 101:
             return getEnumFunction(decodersName, type);
         case 200:
@@ -416,7 +417,7 @@ function getDecodeFnSubType(decodeTypeString, type, depth = 0) {
     if (depth > 5) {
         throw new Error('Maximum depth exceeded' + decodeTypeString + JSON.stringify(type) + depth);
     }
-    var indent = new Array(depth * 8 + 1).join(' ');
+    const indent = new Array(depth * 8 + 1).join(' ');
     let result = '{' + eol;
     result += indent + '    isCollection: true,' + eol;
     result += indent + '    decode: ' + decodeTypeString + ',' + eol;
@@ -430,6 +431,20 @@ function getDecodeFnSubType(decodeTypeString, type, depth = 0) {
         result += eol;
     }
     result += indent + '    ]' + eol;
+    result += indent + '}';
+    return result;
+}
+
+function getObjectFnSubType(type, depth = 0) {
+    if (depth > 5) {
+        throw new Error('Maximum depth exceeded' + JSON.stringify(type) + depth);
+    }
+    const indent = new Array(depth * 8 + 1).join(' ');
+    let result = '{' + eol;
+    result += indent + '    isObject: true,' + eol;
+    result += `${indent}    service: '${_.camelCase(type.service)}',${eol}`;
+    result += `${indent}    type: '${type.name}',${eol}`;
+    result += indent + '    decode: ' + decodersName + '.uInt64' + eol;
     result += indent + '}';
     return result;
 }

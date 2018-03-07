@@ -12,3 +12,8 @@ process.on('uncaughtException', function(err) {
     console.error('Uncaught Exception', err, err.stack);
     throw err;
 });
+
+after(function() {
+    // eslint-disable-next-line no-process-exit
+    process.exit(0);
+});

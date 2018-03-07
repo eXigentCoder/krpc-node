@@ -1,13 +1,13 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const async = require('async');
 const decoders = require('../../../lib/decoders');
 describe('Decoding - sInt64', function() {
     // Could only find one call that uses this (decode: decoders.sInt64) which is waypointGetContractId. need a better way to test the general case or get the test server working.
     // Maybe do a unit test instead ...
     it.skip('Should be able to decode a `sInt64` successfully', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {

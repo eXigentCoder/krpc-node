@@ -1,13 +1,13 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const async = require('async');
 let _ = require('lodash');
 
 describe('Stream throttle - callbacks', function() {
     it('Should work', function(done) {
         this.timeout(10000);
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
