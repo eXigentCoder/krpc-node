@@ -14,6 +14,7 @@ describe('Getting Started - async', function() {
             let throttle = await control.throttle.get();
             let heading = await flight.heading.get();
             console.log({
+                callType: 'Manual',
                 throttle,
                 heading
             });
@@ -22,8 +23,19 @@ describe('Getting Started - async', function() {
             let getHeadingCall = spaceCenter.flightGetHeading(flight.id);
             let response = await client.send([getThrottleCall, getHeadingCall]);
             console.log({
+                callType: 'Method 1',
                 throttle: response.results[0].value,
                 heading: response.results[1].value
+            });
+            //Or send them in a batch (Method 2)
+            const returnFunctionOptions = { _fn: true };
+            let getThrottleCall2 = await control.throttle.get(returnFunctionOptions);
+            let getHeadingCall2 = await flight.heading.get(returnFunctionOptions);
+            let response2 = await client.send([getThrottleCall2, getHeadingCall2]);
+            console.log({
+                callType: 'Method 2',
+                throttle: response2.results[0].value,
+                heading: response2.results[1].value
             });
         } catch (err) {
             await client.close();
