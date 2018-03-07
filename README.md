@@ -14,9 +14,20 @@ A node.js client library for krpc. Allows you to send commands to Kerbal Space P
 
 # Table of Contents
 
-> [Client](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/client.md)
+* [Client](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/client.md)
+    * [Legacy Mode](#Legacy) - Backwards Compatibility
+* Services:
+    * [KRPC](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/krpc.md) - Api for interacting with the kRPC server.
+    * [SpaceCenter](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/space-center.md) - Main api for controlling KSP.
+    * [Drawing](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/drawing.md) - Api for for drawing objects in the flight scene.
+    * [UI](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/ui.md) - Api for interacting with user interface elements.
+    * [InfernalRobotics](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/infernal-robotics.md) - Api for interacting with the Infernal Robotics mod.
+    * [KerbalAlarmClock](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/kerbal-alarm-clock.md) - Api for interacting with the Kerbal Alarm Clock mod.
+    * [RemoteTech](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/remote-tech.md) - Api for interacting with the Remote Tech mod.
 
-For details on how to use the client, please see the above link, a quick getting started example is below: 
+# Example code
+
+For more details on how to use the client, please see the above link, a quick getting started example is below:
 
 ```javascript
 'use strict';
@@ -28,7 +39,7 @@ describe('Getting Started - async', function() {
         const client = await createClient();
         try {
             let vessel = await client.send(spaceCenter.getActiveVessel());
-            //Alternative syntax: 
+            //Alternative syntax:
             //let vessel = await client.services.spaceCenter._getActiveVessel();
             let control = await vessel.control.get();
             let orbitalReference = await vessel.orbitalReferenceFrame.get();
@@ -65,7 +76,7 @@ describe('Getting Started - async', function() {
         }
         await client.close();
     });
-    
+
     //Warning! This way of calling the client will be deprecated in the next version:
     it('Should work using old school calls', async function() {
         this.timeout(10000);
@@ -119,7 +130,7 @@ describe('Stream throttle - async', function() {
             await new Promise((resolve, reject) => {
                 let counter = 0;
                 let done = false;
-                client.stream.on('message', (streamState)=>{
+                client.stream.on('message', streamState => {
                     if (done) {
                         return;
                     }
@@ -138,17 +149,20 @@ describe('Stream throttle - async', function() {
         await client.close();
     });
 });
-``` 
-> Services:
+```
 
--   [KRPC](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/krpc.md) - Api for interacting with the kRPC server.
--   [SpaceCenter](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/space-center.md) - Main api for controlling KSP.
--   [Drawing](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/drawing.md) - Api for for drawing objects in the flight scene.
--   [UI](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/ui.md) - Api for interacting with user interface elements.
--   [InfernalRobotics](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/infernal-robotics.md) - Api for interacting with the Infernal Robotics mod.
--   [KerbalAlarmClock](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/kerbal-alarm-clock.md) - Api for interacting with the Kerbal Alarm Clock mod.
--   [RemoteTech](https://github.com/eXigentCoder/krpc-node/blob/master/documentation/remote-tech.md) - Api for interacting with the Remote Tech mod.
+# Legacy
 
+To make sure your old code works with version 4.x of the library, simply create the client as follows:
+
+```javascript
+createClient({ legacy: true }, clientCreated);
+function clientCreated(err, client) {
+    // Z0mg Code!
+}
+```
+
+> Please note, this will be deprecated in version 5+
 
 # Practical Examples
 
@@ -159,5 +173,3 @@ Checkout [the examples repository](https://github.com/eXigentCoder/krpc-node-exa
 To learn the history of the library and see me and it in action you can also check out the video below from the JSinSA 2017 conference. For more info on the JSinSA conference, check out [this link](http://www.jsinsa.com/)
 
 [![JSinSA](https://raw.githubusercontent.com/eXigentCoder/krpc-node/master/images/wires.jpg)](https://www.youtube.com/watch?v=q-uYOhIYWo0&t=205s)
-
- 
