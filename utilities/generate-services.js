@@ -20,15 +20,11 @@ Client(null, function(clientCreationErr, client) {
         if (serviceErr) {
             throw serviceErr;
         }
-        let serviceResponse = response.results[0];
-        if (serviceResponse.error) {
-            throw new Error(serviceResponse.error);
-        }
-        serviceResponse.value.services.forEach(function(service) {
+        response.services.forEach(function(service) {
             enums[service.name] = service.enumerations;
         });
         client.rpc.socket.close(1000);
-        async.eachSeries(serviceResponse.value.services, createService, servicesCreated);
+        async.eachSeries(response.services, createService, servicesCreated);
 
         function servicesCreated(serviceCreationErr) {
             if (serviceCreationErr) {
