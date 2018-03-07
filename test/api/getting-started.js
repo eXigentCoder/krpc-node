@@ -10,7 +10,7 @@ describe('Getting Started - async', function() {
             let vessel = await client.send(spaceCenter.getActiveVessel());
             let control = await vessel.control.get();
             let orbitalReference = await vessel.orbitalReferenceFrame.get();
-            let flight = await vessel.flight(orbitalReference); //client.send(spaceCenter.vesselFlight(vesselId, orbitalReference));
+            let flight = await vessel.flight(orbitalReference);
             let getThrottleCall = spaceCenter.controlGetThrottle(control.id);
             let getHeadingCall = spaceCenter.flightGetHeading(flight.id);
             let response = await client.send([getThrottleCall, getHeadingCall]);
