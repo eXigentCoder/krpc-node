@@ -1,21 +1,24 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const async = require('async');
 
 describe('Get-clients', function() {
     it('Should work', function(done) {
-        async.waterfall([async.apply(createClient, {}), getConnectedClients], function(err) {
-            if (err) {
-                return done(err);
+        async.waterfall(
+            [async.apply(_createClient, { legacy: true }), getConnectedClients],
+            function(err) {
+                if (err) {
+                    return done(err);
+                }
+                done();
             }
-            done();
-        });
+        );
     });
 });
 
-function createClient(options, callback) {
-    Client(options, clientCreated);
+function _createClient(options, callback) {
+    createClient(options, clientCreated);
     function clientCreated(err, client) {
         return callback(err, client);
     }

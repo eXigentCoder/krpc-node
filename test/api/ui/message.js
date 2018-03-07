@@ -1,9 +1,9 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 describe('UI', function() {
     it('Display message', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(clientErr, client) {
             if (clientErr) {

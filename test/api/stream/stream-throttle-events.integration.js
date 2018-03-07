@@ -1,6 +1,6 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 let client;
 let success = false;
 let game = {};
@@ -10,7 +10,7 @@ describe('Stream throttle - events', function() {
     it('Should work', function(testDone) {
         this.timeout(10000);
         done = testDone;
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, _client) {
             if (err) {

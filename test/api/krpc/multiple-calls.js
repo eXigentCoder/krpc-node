@@ -1,10 +1,10 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 
 describe('Multiple Calls', function() {
     it('Should work with an array of calls and callbacks', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
@@ -30,7 +30,7 @@ describe('Multiple Calls', function() {
         }
     });
     it('Should work with multiple single calls and callbacks', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
         let complete = 0;
         let total = 0;
         let client;
@@ -78,7 +78,7 @@ describe('Multiple Calls', function() {
     });
 
     it('Should work with multiple single calls a double call and callbacks', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
         let complete = 0;
         let total = 0;
         let client;

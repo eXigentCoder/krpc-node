@@ -1,11 +1,11 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const async = require('async');
 
 describe('Decoding - set and dictionary', function() {
     it('Should be able to decode a `float` successfully', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacySend: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {

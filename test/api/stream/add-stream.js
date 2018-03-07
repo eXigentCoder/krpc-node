@@ -1,11 +1,11 @@
 'use strict';
 require('../../init');
-let Client = require('../../../lib/client');
+let createClient = require('../../../lib/client');
 const async = require('async');
 
 describe('addStream', function() {
     it('Should throw an error if the same name is used for the stream', function(done) {
-        Client(null, clientCreated);
+        createClient({ legacy: true }, clientCreated);
 
         function clientCreated(err, client) {
             if (err) {
