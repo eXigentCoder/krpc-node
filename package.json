@@ -1,6 +1,6 @@
 {
   "name": "krpc-node",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "description": "Node client lib for krpc",
   "engines": {
     "node": ">=8.0.0"
