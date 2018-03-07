@@ -1,18 +1,17 @@
 'use strict';
 require('../../init');
-let { createClient, krpc, spaceCenter } = require('../../../lib/client');
+let { createClient, spaceCenter } = require('../../../lib/client');
 let _ = require('lodash');
 
 describe('Stream throttle - async', function() {
     it('Should work', async function() {
         this.timeout(10000);
         const client = await createClient();
-        let clientId = (await client.send(krpc.getClientId())).toString('base64');
         let vessel = await client.send(spaceCenter.getActiveVessel());
         let control = await vessel.control.get();
         let orbitalReference = await vessel.orbitalReferenceFrame.get();
         let flight = await vessel.flight(orbitalReference);
-        await client.connectToStreamServer(clientId);
+        await client.connectToStreamServer();
         const returnFunctionOptions = { _fn: true };
         let getThrottleCall = await control.throttle.get(returnFunctionOptions);
         let getHeadingCall = await flight.heading.get(returnFunctionOptions);

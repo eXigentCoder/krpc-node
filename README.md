@@ -28,6 +28,8 @@ describe('Getting Started - async', function() {
         const client = await createClient();
         try {
             let vessel = await client.send(spaceCenter.getActiveVessel());
+            //Alternative syntax: 
+            //let vessel = await client.services.spaceCenter._getActiveVessel();
             let control = await vessel.control.get();
             let orbitalReference = await vessel.orbitalReferenceFrame.get();
             let flight = await vessel.flight(orbitalReference);
@@ -83,6 +85,51 @@ describe('Getting Started - async', function() {
             console.log({
                 throttle: response.results[0].value,
                 heading: response.results[1].value
+            });
+        } catch (err) {
+            await client.close();
+            throw err;
+        }
+        await client.close();
+    });
+});
+```
+
+You can also setup a stream that will update values on a ticker:
+
+```javascript
+let { createClient, spaceCenter } = require('krp-node');
+let _ = require('lodash');
+
+describe('Stream throttle - async', function() {
+    it('Should work', async function() {
+        this.timeout(10000);
+        const client = await createClient();
+        let vessel = await client.send(spaceCenter.getActiveVessel());
+        let control = await vessel.control.get();
+        let orbitalReference = await vessel.orbitalReferenceFrame.get();
+        let flight = await vessel.flight(orbitalReference);
+        await client.connectToStreamServer();
+        const returnFunctionOptions = { _fn: true };
+        let getThrottleCall = await control.throttle.get(returnFunctionOptions);
+        let getHeadingCall = await flight.heading.get(returnFunctionOptions);
+        await client.addStream(getThrottleCall, 'Throttle');
+        await client.addStream(getHeadingCall, 'Heading');
+        try {
+            await new Promise((resolve, reject) => {
+                let counter = 0;
+                let done = false;
+                client.stream.on('message', (streamState)=>{
+                    if (done) {
+                        return;
+                    }
+                    console.log(streamState);
+                    counter++;
+                    if (counter === 20) {
+                        done = true;
+                        resolve();
+                    }
+                });
             });
         } catch (err) {
             await client.close();
