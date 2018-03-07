@@ -1,5 +1,5 @@
 'use strict';
-const Client = require('../lib/client');
+const createClient = require('../lib/client');
 const fs = require('fs');
 const async = require('async');
 const _ = require('lodash');
@@ -11,7 +11,7 @@ const encodersName = 'encoders';
 let eol = '\n';
 let enums = {};
 
-Client(null, function(clientCreationErr, client) {
+createClient(null, function(clientCreationErr, client) {
     if (clientCreationErr) {
         throw clientCreationErr;
     }
