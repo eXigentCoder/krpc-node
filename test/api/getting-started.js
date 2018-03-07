@@ -8,20 +8,16 @@ describe('Getting Started - async', function() {
         const client = await createClient();
         try {
             let vessel = await client.send(spaceCenter.getActiveVessel());
-            //let control = await vessel.vesselGetControl();
-
-            // let controlId = response.results[0].value;
-            // response = await client.send(spaceCenter.vesselGetOrbitalReferenceFrame(vesselId));
-            // let orbitalReference = response.results[0].value;
-            // response = await client.send(spaceCenter.vesselFlight(vesselId, orbitalReference));
-            // let flightId = response.results[0].value;
-            // let getThrottleCall = spaceCenter.controlGetThrottle(controlId);
-            // let getHeadingCall = spaceCenter.flightGetHeading(flightId);
-            // response = await client.send([getThrottleCall, getHeadingCall]);
-            // console.log({
-            //     throttle: response.results[0].value,
-            //     heading: response.results[1].value
-            // });
+            let control = await vessel.control.get();
+            let orbitalReference = await vessel.orbitalReferenceFrame.get();
+            let flight = await vessel.flight(orbitalReference); //client.send(spaceCenter.vesselFlight(vesselId, orbitalReference));
+            let getThrottleCall = spaceCenter.controlGetThrottle(control.id);
+            let getHeadingCall = spaceCenter.flightGetHeading(flight.id);
+            let response = await client.send([getThrottleCall, getHeadingCall]);
+            console.log({
+                throttle: response.results[0].value,
+                heading: response.results[1].value
+            });
         } catch (err) {
             await client.close();
             throw err;
