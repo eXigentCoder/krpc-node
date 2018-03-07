@@ -77,8 +77,8 @@ describe('Encoders', function() {
     });
     describe('enum', function() {
         it('value should equal decode(encode(value))', function() {
-            let enumInstance = { 1: 'Value1', 2: 'Value2', 3: 'Value3' };
-            let value = 'Value2';
+            let enumInstance = { 0: 'Value0', 1: 'Value1', 2: 'Value2', 3: 'Value3' };
+            let value = 'Value0';
             let encodeFunction = encoders.enum(enumInstance);
             let buffer = encodeFunction(value);
             buffer.offset = 0;
