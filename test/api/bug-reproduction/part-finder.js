@@ -27,6 +27,7 @@ describe('Bugfixes - part finder issue', function() {
         try {
             const name = await vessel.name.get();
             const type = await vessel.type.get();
+            console.log(name, type);
             const autoPilot = await vessel.autoPilot.get();
             let orbitalReference = await vessel.orbitalReferenceFrame.get();
             const flight = await vessel.flight(orbitalReference);
