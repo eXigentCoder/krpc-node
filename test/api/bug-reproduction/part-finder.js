@@ -8,7 +8,7 @@ describe('Bugfixes - part finder issue', function() {
         //Load up the stock kerbalX craft
         this.timeout(10000);
         const client = await createClient();
-        client.rpc.on('error', err => {});
+        client.rpc.on('error', err => console.error(err));
         try {
             let mainVessel = await client.send(spaceCenter.getActiveVessel());
             await logVesselData(mainVessel);

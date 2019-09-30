@@ -7,9 +7,8 @@ node_modules/
 .editorconfig
 report/
 docs/
-utility/
 GameData/
-utilities/
+./utilities/
 resources/
 krpc/
 images/
