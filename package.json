@@ -45,7 +45,7 @@
     "bytebuffer": "5.0.1",
     "documentation": "5.4.0",
     "lodash": "4.17.5",
-    "protobufjs": "6.8.5",
+    "protobufjs": "6.8.6",
     "ws": "4.1.0"
   },
   "devDependencies": {
