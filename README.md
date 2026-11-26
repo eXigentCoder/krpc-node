@@ -1,5 +1,7 @@
 # krpc-node
 
+> **This library is no longer actively maintained.** It still works, but new work happens in the official JavaScript client: [`@krpc-org/krpc`](https://www.npmjs.com/package/@krpc-org/krpc). Documentation is at [krpc.github.io/krpc — JavaScript client](https://krpc.github.io/krpc/latest/js.html).
+
 A node.js client library for krpc. Allows you to send commands to Kerbal Space Program from node. Browser support coming soon!
 
 > JavaScript to space via krpc!
